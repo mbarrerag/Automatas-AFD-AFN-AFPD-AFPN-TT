@@ -1,0 +1,16 @@
+!DFA
+#alphabet
+a-b
+#states
+s2
+s3
+#initial
+s2
+#accepting
+s2
+#transitions
+s2:a>s2
+s2:b>s3
+s3:a>s3
+s3:b>s2
+
