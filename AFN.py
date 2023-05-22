@@ -129,7 +129,7 @@ class AFN:
         with open(nombreArchivo, 'w') as f:
             f.write(cadena.rstrip("#inaccessible"))
     
-    def AFNtoAFD(self, imprimirTabla = False):
+    def AFNtoAFD(self, imprimirTabla = True):
         estadosAFD = []
         estadoInicialAFD = ['{'+self.estadoInicial[0]+'}']
         deltaAFD = {}
@@ -198,5 +198,5 @@ class AFN:
         return afd
     
     def procesarCadena(self, cadena = ''):
-        afd = self.AFNtoAFD()
+        afd = self.AFNtoAFD(imprimirTabla = False)
         return afd.procesar_cadena(cadena = cadena)
