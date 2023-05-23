@@ -1,5 +1,3 @@
-import ast
-
 class AFD:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
         if nombreArchivo:
@@ -81,7 +79,8 @@ class AFD:
     
     def hallarEstadosInaccesibles(self):
         self.estadosInaccesibles = self.estados.copy()
-        self.estadosInaccesibles.remove(self.estadoInicial[0])
+        if self.estadoInicial in self.estadosInaccesibles:
+            self.estadosInaccesibles.remove(self.estadoInicial)
         for estado in self.estados:
             if estado in self.delta:
                 for transicion in self.delta[estado]:
@@ -90,12 +89,23 @@ class AFD:
         return self.estadosInaccesibles
 
 
+    # def hallarEstadosInaccesibles(self):
+    #     self.estadosInaccesibles = self.estados.copy()
+    #     self.estadosInaccesibles.remove(self.estadoInicial[0])
+    #     for estado in self.estados:
+    #         if estado in self.delta:
+    #             for transicion in self.delta[estado]:
+    #                 if self.delta[estado][transicion] in self.estadosInaccesibles:
+    #                     self.estadosInaccesibles.remove(self.delta[estado][transicion])
+    #     return self.estadosInaccesibles
+
+
 
 
     def cargar_desde_archivo(self, nombreArchivo):
         self.alfabeto = []
         self.estados = []
-        self.estadoInicial = []
+        self.estadoInicial = None
         self.estadosAceptacion = []
         self.delta = {}
         self.estadosLimbo = []
@@ -116,8 +126,8 @@ class AFD:
                             i += 1
                     
                     if lines[i].strip() == '#initial':
-                        self.estadoInicial.append(lines[i+1].strip())
-                        i += 1
+                        self.estadoInicial = lines[i+1].strip()
+                        i += 1 
                     
                     if lines[i].strip() == '#accepting':
                         while lines[i+1].strip() != '#transitions':
@@ -138,22 +148,24 @@ class AFD:
             f.write(str(self))
 
     def procesar_cadena(self, cadena):
-        estadoActual = self.estadoInicial[0]
+        estadoActual = self.estadoInicial
         for simbolo in cadena:
+            if estadoActual not in self.delta:
+                raise KeyError(f"State '{estadoActual}' is not in the DFA's transition function")
             estadoActual = self.delta[estadoActual][simbolo]
         return estadoActual in self.estadosAceptacion
     
     def procesar_cadena_con_detalles(self, cadena):
-        estadoInicial_str = [tuple(estado) for estado in self.estadoInicial]
-        estadoActual = tuple(estadoInicial_str[0])
+        estadoActual = self.estadoInicial
 
         for simbolo in cadena:
             print(f"{estadoActual},{simbolo} --> {self.delta[estadoActual][simbolo]}")
             estadoActual = self.delta[estadoActual][simbolo]
+
         return estadoActual in self.estadosAceptacion
     
     def procesar_cadena_con_detalles_print(self, cadena):
-        estadoActual = self.estadoInicial[0]
+        estadoActual = self.estadoInicial
         procesamiento = f"{estadoActual}"
         for simbolo in cadena:
             procesamiento += f",{simbolo} --> {self.delta[estadoActual][simbolo]}"
@@ -196,7 +208,7 @@ class AFD:
 
         complemento.estados = self.estados.copy()
 
-        complemento.estadoInicial = self.estadoInicial.copy()
+        complemento.estadoInicial = self.estadoInicial
 
         complemento.estadosAceptacion = set(self.estados.copy()) - set(self.estadosAceptacion.copy()) 
 
@@ -208,14 +220,10 @@ class AFD:
         producto_cartesiano = AFD()  
 
         producto_cartesiano.alfabeto = afd1.alfabeto
-        print(producto_cartesiano.alfabeto)
-
 
         producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
 
-
-        producto_cartesiano.estadoInicial = {(estado1, estado2) for estado1 in afd1.estadoInicial for estado2 in afd2.estadoInicial}
-
+        producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
 
         producto_cartesiano.estadosAceptacion = {(estado1, estado2) for estado1 in afd1.estadosAceptacion for estado2 in afd2.estadosAceptacion}
 
@@ -237,7 +245,7 @@ class AFD:
         producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
 
 
-        producto_cartesiano.estadoInicial = {(estado1, estado2) for estado1 in afd1.estadoInicial for estado2 in afd2.estadoInicial}
+        producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
 
 
         producto_cartesiano.estadosAceptacion = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados if estado1 in afd1.estadosAceptacion or estado2 in afd2.estadosAceptacion}
@@ -260,7 +268,7 @@ class AFD:
         producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
 
 
-        producto_cartesiano.estadoInicial = {(estado1, estado2) for estado1 in afd1.estadoInicial for estado2 in afd2.estadoInicial}
+        producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
 
 
         producto_cartesiano.estadosAceptacion = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados if estado1 in afd1.estadosAceptacion and estado2 not in afd2.estadosAceptacion}
@@ -309,10 +317,11 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 #print(afd.hallarComplemento())
 #print(afd.hallarProductoCartesianoY(afd1,afd2))
 #print(afd.hallarProductoCartesianoY(afd1,afd2).delta)
-#cartesiano = afd.hallarProductoCartesianoY(afd1,afd2)
-##cartesionD = afd.hallarProductoCartesianoDiferencia(afd1,afd2)
-#print(cartesiano.procesar_cadena_con_detalles('baababab'))
-#print(cartesionO.procesar_cadena_con_detalles('aabbab'))
+#cartesianoY = afd.hallarProductoCartesianoY(afd1,afd2)
+#cartesianoO = afd.hallarProductoCartesianoO(afd1,afd2)
+#cartesionD = afd.hallarProductoCartesianoDiferencia(afd1,afd2)
+#print(cartesianoY.procesar_cadena_con_detalles('baababab'))
+#print(cartesianoO.procesar_cadena_con_detalles('aabbab'))
 #print(cartesionD.procesar_cadena_con_detalles('aaabbbb'))
 #cartesiano1 = afd.hallarProductoCartesiano(afd1,afd2, 'interseccion')
 #print(cartesiano1.procesar_cadena_con_detalles('aabbabab'))
