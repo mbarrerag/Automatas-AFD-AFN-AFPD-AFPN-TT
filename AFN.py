@@ -154,7 +154,8 @@ class AFN:
                             strTransicion += elemento+','
                         strTransicion = strTransicion.rstrip(',')
                         deltaAFD[estado][caracter] = strTransicion
-                        if not strTransicion in estadosAFD and strTransicion != '':
+                        if not strTransicion in estadosAFD:
+                        #if not strTransicion in estadosAFD and strTransicion != '':
                             estadosAFD.append(strTransicion)
             if copiaEstadosAFD == estadosAFD:
                 break
