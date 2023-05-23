@@ -204,4 +204,8 @@ class AFN:
     
     def procesar_cadena_con_detalles(self, cadena = ''):
         afd = self.AFNtoAFD(imprimirTabla = False)
-        return afd.procesar_cadena_con_detalles(cadena = cadena)
+        estadoActual = afd.estadoInicial[0]
+        for simbolo in cadena:
+            print(f"{estadoActual} --{simbolo}--> {afd.delta[estadoActual][simbolo]}")
+            estadoActual = afd.delta[estadoActual][simbolo]
+        return estadoActual in afd.estadosAceptacion
