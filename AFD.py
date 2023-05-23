@@ -10,7 +10,7 @@ class AFD:
             self.estados = estados
             self.estadoInicial = estadoInicial
             self.estadosAceptacion = estadosAceptacion
-            self.delta = {}
+            self.delta = delta
             self.estadosLimbo = []
             self.estadosInaccesibles = []
             
