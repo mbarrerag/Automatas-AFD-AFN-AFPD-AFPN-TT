@@ -201,3 +201,7 @@ class AFN:
     def procesarCadena(self, cadena = ''):
         afd = self.AFNtoAFD(imprimirTabla = False)
         return afd.procesar_cadena(cadena = cadena)
+    
+    def procesar_cadena_con_detalles(self, cadena = ''):
+        afd = self.AFNtoAFD(imprimirTabla = False)
+        return afd.procesar_cadena_con_detalles(cadena = cadena)
