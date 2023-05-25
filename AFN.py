@@ -155,7 +155,7 @@ class AFN:
                         strTransicion = strTransicion.rstrip(',')
                         deltaAFD[estado][caracter] = strTransicion
                         if not strTransicion in estadosAFD:
-                        #if not strTransicion in estadosAFD and strTransicion != '':
+                        # if not strTransicion in estadosAFD and strTransicion != '':
                             estadosAFD.append(strTransicion)
             if copiaEstadosAFD == estadosAFD:
                 break
@@ -174,7 +174,7 @@ class AFN:
             for caracter in deltaAFD[estado]:
                 deltaAFDItera['{'+estado+'}'][caracter] = '{'+deltaAFD[estado][caracter]+'}'
         deltaAFD = deltaAFDItera
-
+        
         afd = AFD.AFD(alfabeto=self.alfabeto, estados=estadosAFD, estadoInicial=estadoInicialAFD, estadosAceptacion=estadosAceptacionAFD, delta=deltaAFD)
         afd.hallarEstadosInaccesibles()
         afd.hallarEstadosLimbo()
@@ -199,13 +199,149 @@ class AFN:
         return afd
     
     def procesarCadena(self, cadena = ''):
-        afd = self.AFNtoAFD(imprimirTabla = False)
-        return afd.procesar_cadena(cadena = cadena)
+        estadosActuales = self.estadoInicial
+        for caracter in cadena:
+            siguientesEstados = []
+            for estadoActual in estadosActuales:
+                if estadoActual in self.delta:
+                    if caracter in self.delta[estadoActual]:
+                        siguientesEstados += self.delta[estadoActual][caracter]
+            if siguientesEstados == []:
+                return False
+            estadosActuales = siguientesEstados
+        aceptacion = False
+        for estado in estadosActuales:
+            if estado in self.estadosAceptacion:
+                aceptacion = True
+        return aceptacion
+
+
     
     def procesar_cadena_con_detalles(self, cadena = ''):
-        afd = self.AFNtoAFD(imprimirTabla = False)
-        estadoActual = afd.estadoInicial[0]
-        for simbolo in cadena:
-            print(f"{estadoActual} --{simbolo}--> {afd.delta[estadoActual][simbolo]}")
-            estadoActual = afd.delta[estadoActual][simbolo]
-        return estadoActual in afd.estadosAceptacion
+        inicio = self.nodo(estado = self.estadoInicial[0], cadena = cadena, camino = self.estadoInicial[0])
+        self.generarCaminos(nodoActual= inicio)
+        
+        caminos = self.obtenerCaminos(nodoActual= inicio)
+        aceptacion = False
+        for camino in caminos:
+            if camino[0] == 'ac':
+                aceptacion = True
+                print(camino[1])
+                break
+        if aceptacion == False:
+            caminoAImprimir = caminos[0][1]
+            for camino in caminos:
+                if camino[1].__len__() < caminoAImprimir.__len__():
+                    caminoAImprimir = camino[1]
+            print(caminoAImprimir)
+        return aceptacion
+
+    def computarTodosLosProcesamientos(self, cadena='', nombreArchivo=''): 
+        inicio = self.nodo(estado = self.estadoInicial[0], cadena = cadena, camino = self.estadoInicial[0])
+        self.generarCaminos(nodoActual= inicio)
+        
+        caminos = self.obtenerCaminos(nodoActual= inicio, imprimir=True)
+        archivoAceptadas =  open(f'{nombreArchivo}Aceptadas.txt','w')
+        archivoRechazadas = open(f'{nombreArchivo}Rechazadas.txt','w')
+        archivoAbortadas = open(f'{nombreArchivo}Abortadas.txt','w')
+        for camino in caminos:
+            if camino[0] == 'ac':
+                archivoAceptadas.write(f"{camino[1]} \n")
+            elif camino[0] == 're':
+                archivoRechazadas.write(f"{camino[1]} \n")
+            elif camino[0] == 'ab':
+                archivoAbortadas.write(f"{camino[1]} \n")
+        archivoAceptadas.close()
+        archivoRechazadas.close()
+        archivoAbortadas.close()
+        return caminos.__len__()
+    
+    def generarCaminos(self, nodoActual = None):
+        if nodoActual.cadena != '':
+            if nodoActual.estado in self.delta:
+                if nodoActual.cadena[0] in self.delta[nodoActual.estado]:
+                    for estadoTransicionado in  self.delta[nodoActual.estado][nodoActual.cadena[0]]:
+                        nodoActual.next.append(self.nodo(estado = estadoTransicionado, cadena = nodoActual.cadena[1:], camino = nodoActual.camino+f'--{nodoActual.cadena[0]}-->{estadoTransicionado}'))
+                    for nodoSiguiente in nodoActual.next:
+                        self.generarCaminos(nodoSiguiente)    
+                else:
+                    nodoActual.camino += f'--{nodoActual.cadena[0]}-->//'
+            else:
+                nodoActual.camino += f'--{nodoActual.cadena[0]}-->//'
+
+    def obtenerCaminos(self, nodoActual = None, imprimir = False):
+        if nodoActual.next == []:
+            if '//' in nodoActual.camino:
+                if imprimir:
+                    print(f'{nodoActual.camino} : abortado')
+                return [['ab',nodoActual.camino]]
+            else:
+                if nodoActual.estado in self.estadosAceptacion:
+                    if imprimir:
+                        print(f'{nodoActual.camino} : aceptacion')
+                    return [['ac',nodoActual.camino]]
+                else:
+                    if imprimir:
+                        print(f'{nodoActual.camino} : rechazo')
+                    return [['re',nodoActual.camino]]
+        else:
+            caminos = []
+            for siguienteNodo in nodoActual.next:
+                caminos += self.obtenerCaminos(nodoActual=siguienteNodo, imprimir=imprimir)
+            return caminos
+
+    def procesarListaCadenas(self, listaCadenas = [], nombreArchivo = '', imprimirPantalla = False):
+        # nombre invalido ??
+        archivo =  open(f'{nombreArchivo}.txt','w')
+        for cadena in listaCadenas:
+            textoDeCadena = ''
+            textoDeCadena += f'{cadena}\n'
+
+            inicio = self.nodo(estado = self.estadoInicial[0], cadena = cadena, camino = self.estadoInicial[0])
+            self.generarCaminos(nodoActual= inicio)
+            caminos = self.obtenerCaminos(nodoActual= inicio)
+            numeroDeProcesamientosDeAceptacion = 0
+            numeroDeProcesamientosDeRechazo = 0
+            numeroDeProcesamientosDeAbortado = 0
+            for camino in caminos:
+                if camino[0] == 'ac':
+                    numeroDeProcesamientosDeAceptacion += 1
+                elif camino[0] == 're':
+                    numeroDeProcesamientosDeRechazo +=1
+                elif camino[0] == 'ab':
+                    numeroDeProcesamientosDeAbortado +=1
+            
+            if numeroDeProcesamientosDeAceptacion == 0:
+                caminoAImprimir = caminos[0][1]
+                for camino in caminos:
+                    if camino[1].__len__() < caminoAImprimir.__len__():
+                        caminoAImprimir = camino[1]
+                textoDeCadena += f'{caminoAImprimir}\n'
+            else:
+                for camino in caminos:
+                    if camino[0] == 'ac':
+                        textoDeCadena += f'{camino[1]}\n'
+                        break
+            
+            textoDeCadena += f'{caminos.__len__()}\n'
+
+            textoDeCadena += f'{numeroDeProcesamientosDeAceptacion}\n'
+            textoDeCadena += f'{numeroDeProcesamientosDeRechazo}\n'
+            textoDeCadena += f'{numeroDeProcesamientosDeAbortado}\n'
+
+            if numeroDeProcesamientosDeAceptacion == 0:
+                textoDeCadena += 'no\n'
+            else:
+                textoDeCadena += 'si\n'
+            
+            archivo.write(textoDeCadena)
+            if imprimirPantalla:
+                print(textoDeCadena)
+        archivo.close()
+
+    class nodo:
+        def __init__(selfnodo, estado = None, cadena = '', camino = ''):
+            selfnodo.estado = estado
+            selfnodo.cadena = cadena
+            selfnodo.next = []
+            selfnodo.camino = camino
