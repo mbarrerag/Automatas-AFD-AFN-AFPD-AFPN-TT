@@ -1,0 +1,14 @@
+digraph {
+	node [shape=doublecircle]
+	s2
+	node [shape=circle]
+	s3
+	node [shape=ellipse]
+	s2 -> s2 [label=a]
+	s2 -> s3 [label=b]
+	s3 -> s3 [label=a]
+	s3 -> s2 [label=b]
+	node [style=invis width=0]
+	start
+	start -> s2 [style=bold]
+}

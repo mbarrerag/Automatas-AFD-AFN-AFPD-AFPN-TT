@@ -10,8 +10,8 @@ s4
 #initial
 s0
 #accepting
+s0
 s1
-s2
 #transitions
 s0:b>s1
 s0:a>s1
