@@ -311,6 +311,85 @@ class AFD:
         dfa.edge('start', str(self.estadoInicial), style='bold')
 
         return dfa
+    
+    def merge_states(self, states):
+        return ','.join(sorted(states))
+
+    def simplificarAFD(self):
+        self.eliminar_estados_inaccesibles()
+
+        # Initialize triangular table with all pairs of states
+        tabla = {frozenset({p, q}): False for p in self.estados for q in self.estados if p != q}
+
+        # Mark with 'X' if one state is an accepting state and the other is not
+        for pair in tabla:
+            p, q = list(pair)
+            tabla[pair] = (p in self.estadosAceptacion and q not in self.estadosAceptacion) or \
+                        (q in self.estadosAceptacion and p not in self.estadosAceptacion)
+
+        while True:
+            new_table = tabla.copy()
+            for pair in tabla:
+                if not tabla[pair]:
+                    p, q = list(pair)
+                    for a in self.alfabeto:
+                        if self.delta[p][a] != self.delta[q][a] and \
+                        tabla[frozenset({self.delta[p][a], self.delta[q][a]})]:
+                            new_table[pair] = True
+                            break
+
+            if new_table == tabla:
+                break
+            else:
+                tabla = new_table
+
+        # Merge equivalent states
+        clusters = []
+        for pair in tabla:
+            if not tabla[pair]:
+                found = False
+                for cluster in clusters:
+                    if pair.issubset(cluster):
+                        found = True
+                        break
+                    if pair.intersection(cluster):
+                        cluster.update(pair)
+                        found = True
+                        break
+                if not found:
+                    clusters.append(set(pair))
+
+        # Add states that didn't appear in any pair to the clusters
+        all_states_in_pairs = set().union(*clusters)
+        for state in self.estados:
+            if state not in all_states_in_pairs:
+                clusters.append({state})
+
+        # Create new DFA with merged states
+        nuevo_delta = {}
+        for cluster in clusters:
+            merged_state = self.merge_states(cluster)
+            merged_transitions = {}
+            for a in self.alfabeto:
+                next_state = self.delta[next(iter(cluster))][a]
+                for next_cluster in clusters:
+                    if next_state in next_cluster:
+                        merged_transitions[a] = self.merge_states(next_cluster)
+                        break
+            nuevo_delta[merged_state] = merged_transitions
+
+        self.estados = [self.merge_states(cluster) for cluster in clusters]
+        self.delta = nuevo_delta
+
+        # Update the initial and accepting states with their new names
+        for cluster in clusters:
+            if self.estadoInicial in cluster:
+                self.estadoInicial = self.merge_states(cluster)
+            if any(state in self.estadosAceptacion for state in cluster):
+                self.estadosAceptacion = [self.merge_states(cluster) for cluster in clusters if any(state in self.estadosAceptacion for state in cluster)]
+
+
+
        
 afd = AFD(nombreArchivo='testAFD.DFA')
 afd1 = AFD(nombreArchivo='evenA.DFA')
@@ -326,7 +405,7 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 #graph = afd2.draw()
 #graph.view()
 #print(afd1.procesar_cadena('abaa'))
-print(afd1.procesar_cadena_con_detalles('abbaaa'))
+#print(afd1.procesar_cadena_con_detalles('abbaaa'))
 # print(afd2.procesar_cadena_con_detalles('abbabaabbbbb'))
 # print(afd.procesar_cadena_con_detalles('aba'))
 
@@ -343,7 +422,10 @@ print(afd1.procesar_cadena_con_detalles('abbaaa'))
 # print(cartesionD.procesar_cadena_con_detalles('aaabbbb'))
 # cartesiano1 = afd.hallarProductoCartesiano(afd1,afd2, 'interseccion')
 # print(cartesiano1.procesar_cadena_con_detalles('aabbabab'))
-
+afdmin = AFD(nombreArchivo='minTest.DFA')
+afdmin.simplificarAFD()
+print(afdmin)
+afdmin.draw().view()
 
 
 
