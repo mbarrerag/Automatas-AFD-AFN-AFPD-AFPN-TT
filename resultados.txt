@@ -1,2 +1,0 @@
-aba	Q0,a --> Q1,b --> Q0,a --> Q1	si
-abbaa	Q0,a --> Q1,b --> Q0,b --> Q1,a --> Q0,a --> Q1	si

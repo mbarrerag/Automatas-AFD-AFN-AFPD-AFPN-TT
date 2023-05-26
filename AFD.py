@@ -1,4 +1,4 @@
-from graphviz import Digraph
+#from graphviz import Digraph
 
 class AFD:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
@@ -284,7 +284,7 @@ class AFD:
         elif operacion == 'union':
             return self.hallarProductoCartesianoO(afd1,afd2)
         elif operacion == 'diferencia':
-            return self.hallarProductoCartesianoDiferencia(afd1,afd2)
+            return self.hallarProductoCartesianoDiferenciaSimetrica(afd1,afd2)
         else:
             print("Operacion no valida")
 
@@ -336,7 +336,7 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 # print(afd.hallarProductoCartesianoY(afd1,afd2).delta)
 # cartesianoY = afd.hallarProductoCartesianoY(afd1,afd2)
 
-# cartesianoO = afd.hallarProductoCartesianoO(afd1,afd2)
+#cartesianoO = afd.hallarProductoCartesianoDiferencia(afd1,afd2)
 # cartesionD = afd.hallarProductoCartesianoDiferenciaSimetrica(afd1,afd2)
 # print(cartesianoY.procesar_cadena_con_detalles('baababab'))
 # print(cartesianoO.procesar_cadena_con_detalles('aabbab'))
