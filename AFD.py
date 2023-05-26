@@ -1,4 +1,4 @@
-#from graphviz import Digraph
+from graphviz import Digraph
 
 class AFD:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
@@ -326,7 +326,7 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 #graph = afd2.draw()
 #graph.view()
 #print(afd1.procesar_cadena('abaa'))
-#print(afd1.procesar_cadena_con_detalles('abbaaa'))
+print(afd1.procesar_cadena_con_detalles('abbaaa'))
 # print(afd2.procesar_cadena_con_detalles('abbabaabbbbb'))
 # print(afd.procesar_cadena_con_detalles('aba'))
 

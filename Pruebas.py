@@ -66,8 +66,8 @@ class ClasePrueba:
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
          print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento AFD: {procesar_cadena_afd1} \n Procesamiento AFN {procesar_cadena_afn1} \n")
          print("AFN a AFD")
-         afd = afn1.AFNtoAFD()
-         afd_nuevo_procesamiento = afd1.procesar_cadena(cadena)
+         afn_afd = afn1.AFNtoAFD()
+         afd_nuevo_procesamiento = afn_afd.procesar_cadena(cadena)
          print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento nuevo AFD: {afd_nuevo_procesamiento} \n Procesamiento AFN {procesar_cadena_afn1}")
          
     def probarComplemento(self):
@@ -82,30 +82,40 @@ class ClasePrueba:
         afd2 = AFD(nombreArchivo='evenB.DFA')
 
         # Producto cartesiano con intersección (∩)
-        # interseccion = afd1.hallarProductoCartesiano(afd1, afd2, 'interseccion')
-        # print("Producto Cartesiano con Interseccion:")
-        # print(interseccion)
+        interseccion = afd1.hallarProductoCartesiano(afd1, afd2, 'interseccion')
+        print("\n\nProducto Cartesiano con Interseccion:")
+        print(interseccion)
 
         # Producto cartesiano con unión (∪)
-        # union = afd1.hallarProductoCartesiano(afd1, afd2, 'union')
-        # print("Producto Cartesiano con Union:")
-        # print(union)
+        union = afd1.hallarProductoCartesiano(afd1, afd2, 'union')
+        print("\n\nProducto Cartesiano con Union:")
+        print(union)
 
         # # Producto cartesiano con diferencia (-)
         diferencia = afd1.hallarProductoCartesiano(afd1, afd2, 'diferencia')
-        print("Producto Cartesiano con Diferencia Simetrica:")
+        print("\n\nProducto Cartesiano con Diferencia Simetrica:")
         print(diferencia)
 
-        # # Dibujar el AFD resultante del producto cartesiano con intersección (∩)
-        # print("Diagrama del Producto Cartesiano con Intersección:")
-        # interseccion.draw().view()
+        # Dibujar el AFD resultante del producto cartesiano con intersección (∩)
+        print("\n\nDiagrama del Producto Cartesiano con Intersección:")
+        producto_cartesiano = afd1.hallarProductoCartesiano(union, diferencia, 'interseccion')
+        print(producto_cartesiano)
+
+    def probarSimplificacion(self):
+        afd1 = AFD(nombreArchivo='evenA.DFA')
+        cadena = 'aaabbb'
+        print(f"\nAFD original '{afd1}'\n\n")
+        afd1_simplificado = afd1.imprimirAFDSimplificado()
+        print(f"\nSimplificacion '{afd1_simplificado}'\n")
+        afd1_simplificado.procesar_cadena(cadena)
 
 # Llamar a la función para probar el producto cartesiano
 
-# Crear instancia de la clase ClasePrueba y ejecutar el método correspondiente
+# Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
 #clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
-clase_prueba.probarProductoCartesiano()
+#clase_prueba.probarProductoCartesiano()
+#clase_prueba.probarSimplificacion()
