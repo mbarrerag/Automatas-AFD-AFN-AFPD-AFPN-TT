@@ -316,77 +316,78 @@ class AFD:
         return ','.join(sorted(states))
 
     def simplificarAFD(self):
-        self.eliminar_estados_inaccesibles()
+    self.eliminar_estados_inaccesibles()
 
-        # Initialize triangular table with all pairs of states
-        tabla = {frozenset({p, q}): False for p in self.estados for q in self.estados if p != q}
+    # Inicializar tabla triangular con todos los pares de estados
+    tabla = {frozenset({p, q}): False for p in self.estados for q in self.estados if p != q}
 
-        # Mark with 'X' if one state is an accepting state and the other is not
-        for pair in tabla:
-            p, q = list(pair)
-            tabla[pair] = (p in self.estadosAceptacion and q not in self.estadosAceptacion) or \
-                        (q in self.estadosAceptacion and p not in self.estadosAceptacion)
+    # Marcar con 'X' si un estado es un estado de aceptación y el otro no lo es
+    for par in tabla:
+        p, q = list(par)
+        tabla[par] = (p in self.estadosAceptacion and q not in self.estadosAceptacion) or \
+                       (q in self.estadosAceptacion and p not in self.estadosAceptacion)
 
-        while True:
-            new_table = tabla.copy()
-            for pair in tabla:
-                if not tabla[pair]:
-                    p, q = list(pair)
-                    for a in self.alfabeto:
-                        if self.delta[p][a] != self.delta[q][a] and \
-                        tabla[frozenset({self.delta[p][a], self.delta[q][a]})]:
-                            new_table[pair] = True
-                            break
-
-            if new_table == tabla:
-                break
-            else:
-                tabla = new_table
-
-        # Merge equivalent states
-        clusters = []
-        for pair in tabla:
-            if not tabla[pair]:
-                found = False
-                for cluster in clusters:
-                    if pair.issubset(cluster):
-                        found = True
+    while True:
+        nueva_tabla = tabla.copy()
+        for par in tabla:
+            if not tabla[par]:
+                p, q = list(par)
+                for a in self.alfabeto:
+                    if self.delta[p][a] != self.delta[q][a] and \
+                       tabla[frozenset({self.delta[p][a], self.delta[q][a]})]:
+                        nueva_tabla[par] = True
                         break
-                    if pair.intersection(cluster):
-                        cluster.update(pair)
-                        found = True
-                        break
-                if not found:
-                    clusters.append(set(pair))
 
-        # Add states that didn't appear in any pair to the clusters
-        all_states_in_pairs = set().union(*clusters)
-        for state in self.estados:
-            if state not in all_states_in_pairs:
-                clusters.append({state})
+        if nueva_tabla == tabla:
+            break
+        else:
+            tabla = nueva_tabla
 
-        # Create new DFA with merged states
-        nuevo_delta = {}
-        for cluster in clusters:
-            merged_state = self.merge_states(cluster)
-            merged_transitions = {}
-            for a in self.alfabeto:
-                next_state = self.delta[next(iter(cluster))][a]
-                for next_cluster in clusters:
-                    if next_state in next_cluster:
-                        merged_transitions[a] = self.merge_states(next_cluster)
-                        break
-            nuevo_delta[merged_state] = merged_transitions
+    # Combinar estados equivalentes
+    clusters = []
+    for par in tabla:
+        if not tabla[par]:
+            encontrado = False
+            for cluster in clusters:
+                if par.issubset(cluster):
+                    encontrado = True
+                    break
+                if par.intersection(cluster):
+                    cluster.update(par)
+                    encontrado = True
+                    break
+            if not encontrado:
+                clusters.append(set(par))
 
-        self.estados = [self.merge_states(cluster) for cluster in clusters]
-        self.delta = nuevo_delta
+    # Agregar estados que no aparecieron en ningún par a los clusters
+    todos_los_estados_en_pares = set().union(*clusters)
+    for estado in self.estados:
+        if estado not in todos_los_estados_en_pares:
+            clusters.append({estado})
 
-        # Update the initial and accepting states with their new names
-        for cluster in clusters:
-            if self.estadoInicial in cluster:
-                self.estadoInicial = self.merge_states(cluster)
-            if any(state in self.estadosAceptacion for state in cluster):
-                self.estadosAceptacion = [self.merge_states(cluster) for cluster in clusters if any(state in self.estadosAceptacion for state in cluster)]
+    # Crear nuevo AFD con estados combinados
+    nuevo_delta = {}
+    for cluster in clusters:
+        estado_combinado = self.combinar_estados(cluster)
+        transiciones_combinadas = {}
+        for a in self.alfabeto:
+            proximo_estado = self.delta[next(iter(cluster))][a]
+            for proximo_cluster in clusters:
+                if proximo_estado in proximo_cluster:
+                    transiciones_combinadas[a] = self.combinar_estados(proximo_cluster)
+                    break
+        nuevo_delta[estado_combinado] = transiciones_combinadas
+
+    self.estados = [self.combinar_estados(cluster) for cluster in clusters]
+    self.delta = nuevo_delta
+
+    # Actualizar los estados inicial y de aceptación con sus nuevos nombres
+    for cluster in clusters:
+        if self.estadoInicial in cluster:
+            self.estadoInicial = self.combinar_estados(cluster)
+        if any(estado in self.estadosAceptacion for estado in cluster):
+            self.estadosAceptacion = [self.combinar_estados(cluster) for cluster in clusters if any(estado in self.estadosAceptacion for estado in cluster)]
+
 
 
 
