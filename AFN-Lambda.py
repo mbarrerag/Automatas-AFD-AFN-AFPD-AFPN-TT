@@ -76,6 +76,33 @@ class AFN_Lambda:
                             self.delta[source][letter] = targets
                         i += 1
 
+    def __str__(self):
+        output = '#!nfe\n'
+
+        output += '#alphabet\n'
+        for character in self.alfabeto:
+            output += character + '\n'
+
+        output += '#states \n'
+        for estado in self.estados:
+            output += estado + '\n'
+
+        output += '#initial \n'
+        output += self.estadoInicial + '\n'
+
+        output += '#accepting \n'
+        for estado in self.estadosAceptacion:
+            output += estado + '\n'
+
+        output += '#transitions \n'
+        for estado in self.delta:
+            transitions = self.delta.get(estado)
+            print(transitions)
+
+        return output
+
+
+
     def hallarEstadosInaccesibles(self) -> list[str]:
         isAccesible = {}
         for estado in self.estados:
@@ -100,7 +127,7 @@ class AFN_Lambda:
             newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
             for accesibleState in newAccesibleStates:
-                if not isAccesible[accesibleStatestate]:
+                if not isAccesible[accesibleState]:
                     stack.put(accesibleState)
 
             currentState = stack.get() if not stack.empty() else None  # Desapilamos
@@ -141,17 +168,20 @@ class AFN_Lambda:
         return lambdaClosure
 
 
-'''
+
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+
 print(firstAFNL.alfabeto)
 print(firstAFNL.estados)
 print(firstAFNL.estadoInicial)
 print(firstAFNL.estadosAceptacion)
 print(firstAFNL.delta)
 print(firstAFNL.hallarEstadosInaccesibles())
-'''
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+print('\n')
+print(firstAFNL.__str__())
+
+# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 
 '''
 print(secondAFNL.alfabeto)
@@ -160,8 +190,9 @@ print(secondAFNL.estadoInicial)
 print(secondAFNL.estadosAceptacion)
 print(secondAFNL.delta)
 print(secondAFNL.hallarEstadosInaccesibles())
-'''
+
 print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
+'''
 
 lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 '''
@@ -173,10 +204,11 @@ print(lambdaClosureAFNL.delta)
 print(lambdaClosureAFNL.hallarEstadosInaccesibles())
 '''
 
+'''
 for state in lambdaClosureAFNL.estados:
     print(state + ":")
     print(lambdaClosureAFNL.calcularLambdaClausura(st=state))
 
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
-
+'''
