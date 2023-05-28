@@ -123,10 +123,12 @@ class ClasePrueba:
          nombre_archivo = 'resultados_AFN_cedenas_aleatorias.txt'
          imprimir_pantalla = True
          print("Procesamiento AFN")
-         afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+         contador_si, contador_no = afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
          print("AFN a AFD")
          afn_afd = afn1.AFNtoAFD()
          nombre_archivo = 'resultados_AFNtoAFD_cedenas_aleatorias.txt'
+         print("Cantidad de cadenas aceptadas AFN :", contador_si)
+         print("Cantidad de cadenas rechazadas AFN:", contador_no)
          #afn_afd.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
 
 # Llamar a la función para probar el producto cartesiano
