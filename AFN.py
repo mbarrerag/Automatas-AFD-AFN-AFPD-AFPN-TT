@@ -363,6 +363,7 @@ class AFN:
             selfnodo.cadena = cadena
             selfnodo.next = []
             selfnodo.camino = camino
-#afn1 = AFN(nombreArchivo='testAFN.NFA')  
+afn1 = AFN(nombreArchivo='testAFN.NFA')  
 #cadena = 'aabb'
-#afd = afn1.AFNtoAFD(cadena)
+afd = afn1.AFNtoAFD()
+afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
