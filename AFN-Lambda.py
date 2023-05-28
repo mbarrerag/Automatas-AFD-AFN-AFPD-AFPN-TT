@@ -1,6 +1,7 @@
 from time import sleep
 from queue import LifoQueue
 
+
 class AFN_Lambda:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None,
                  nombreArchivo=None):
@@ -22,9 +23,7 @@ class AFN_Lambda:
         self.estados = []
         self.estadoInicial = None
         self.estadosAceptacion = []
-        # Guardaremos las transiciones desde cada estado en diccionarios,
-        # donde la clave es la letra, y el valor es el destino
-        self.delta: list[dict] = []
+        self.delta: {dict} = {}
         self.estadosInaccesibles = []
 
         with open(nombreArchivo, 'r') as f:
@@ -63,33 +62,34 @@ class AFN_Lambda:
 
                 if lines[i].strip() == '#transitions':
                     # Primero, llenaremos cada índice de delta con diccionarios
-                    for estado in range(0, len(self.estados)):
-                        self.delta.append({})
+                    for estado in self.estados:
+                        self.delta.update({estado: {}})
 
                     while i < len(lines) and lines[i + 1].strip() != '':
                         source, letter = lines[i + 1].strip().split(':')
                         letter, targets = letter.split('>')
-                        state = self.estados.index(source)
+
                         if ';' not in targets:
-                            self.delta[state][letter] = targets
+                            self.delta[source][letter] = targets
                         else:
                             targets = targets.split(';')
-                            self.delta[state][letter] = targets
+                            self.delta[source][letter] = targets
                         i += 1
 
-    def hallarEstadosInaccesibles(self):
-
-        isAccesible = [False] * len(self.estados)  # Lista donde registramos cuáles estados son accesibles y cuáles no
+    def hallarEstadosInaccesibles(self) -> list[str]:
+        isAccesible = {}
+        for estado in self.estados:
+            isAccesible.update({estado: False})
         stack = LifoQueue()
         currentState = self.estadoInicial
 
         allInaccesibleFound = False
         while not allInaccesibleFound:
-            currentStateIndex = self.estados.index(currentState)
 
-            isAccesible[currentStateIndex] = True
+            isAccesible[currentState] = True
             newAccesibleStates = []
-            targets = list(self.delta[currentStateIndex].values())  # Hallamos los estados a los que hay transiciones desde este estado
+            stateDelta = self.delta[currentState]
+            targets = list(stateDelta.values())  # Hallamos los estados a los que hay transiciones desde este estado
 
             for target in targets:
                 if type(target) == list:  # Si se trata de una lista de estados, se deben individualizar
@@ -99,26 +99,70 @@ class AFN_Lambda:
                     newAccesibleStates.append(target)
             newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
-            for state in range(0, len(newAccesibleStates)):
-                stateIndex = self.estados.index(newAccesibleStates[state])
-                if not isAccesible[stateIndex]:
-                    stack.put(newAccesibleStates[state])
+            for state in newAccesibleStates:
+                if not isAccesible[state]:
+                    stack.put(state)
 
             currentState = stack.get() if not stack.empty() else None  # Desapilamos
             allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
 
-        return isAccesible
+        inaccesibleStates = [state for state in isAccesible if not isAccesible[state]]
+        self.estadosInaccesibles = inaccesibleStates
+        return inaccesibleStates
+
+    def calcularLambdaClausura(self, state: str):
+        lambdaClosure = [state]  # el estado mismo pertenece a su lambda clausura
+        stack = LifoQueue()
+
+        currentState = state
+        allStatesFound = False
+        while not allStatesFound:
+            transitions = self.delta[currentState]
+            lambdaStates = transitions.get('$')
+
+            if lambdaStates is not None:
+                if type(lambdaStates) is not list:
+                    lambdaStates = [lambdaStates]
+                for state in lambdaStates:
+                    if not lambdaClosure.__contains__(state):
+                        lambdaClosure.append(state)
+                        stack.put(state)
+
+            currentState = stack.get() if not stack.empty() else None
+            allStatesFound = True if currentState is None else False
+
+        return lambdaClosure
 
 
+'''
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 print(firstAFNL.alfabeto)
 print(firstAFNL.estados)
 print(firstAFNL.estadoInicial)
 print(firstAFNL.estadosAceptacion)
 print(firstAFNL.delta)
-
-
 print(firstAFNL.hallarEstadosInaccesibles())
 
+secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+print(secondAFNL.alfabeto)
+print(secondAFNL.estados)
+print(secondAFNL.estadoInicial)
+print(secondAFNL.estadosAceptacion)
+print(secondAFNL.delta)
+print(secondAFNL.hallarEstadosInaccesibles())
+'''
 
+lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+'''
+print(lambdaClosureAFNL.alfabeto)
+print(lambdaClosureAFNL.estados)
+print(lambdaClosureAFNL.estadoInicial)
+print(lambdaClosureAFNL.estadosAceptacion)
+print(lambdaClosureAFNL.delta)
+print(lambdaClosureAFNL.hallarEstadosInaccesibles())
+'''
+
+for state in lambdaClosureAFNL.estados:
+    print(state + ":")
+    print(lambdaClosureAFNL.calcularLambdaClausura(state))
 
