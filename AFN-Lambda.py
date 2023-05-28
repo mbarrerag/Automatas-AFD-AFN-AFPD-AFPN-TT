@@ -80,9 +80,7 @@ class AFN_Lambda:
     def hallarEstadosInaccesibles(self):
 
         isAccesible = [False] * len(self.estados)  # Lista donde registramos cuáles estados son accesibles y cuáles no
-
         stack = LifoQueue()
-
         currentState = self.estadoInicial
         allInaccesibleFound = False
 
@@ -102,24 +100,18 @@ class AFN_Lambda:
                         newAccesibleStates.append(target)
                 newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
-                if len(newAccesibleStates) > 1:
+                if len(newAccesibleStates) >= 1:
                     for state in range(1, len(newAccesibleStates)):
                         stack.put(newAccesibleStates[state])
                     currentState = newAccesibleStates[0]
-                elif len(newAccesibleStates) == 1:
-                    currentState = newAccesibleStates[0]
                 else:
-                    if not stack.empty():
-                        currentState = stack.get()
-                    else:
-                        allInaccesibleFound = True
+                    currentState = stack.get() if not stack.empty() else None  # Desapilamos
+                    allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
             else:
-                if not stack.empty():
-                    currentState = stack.get()
-                else:
-                    allInaccesibleFound = True
+                currentState = stack.get() if not stack.empty() else None
+                allInaccesibleFound = True if currentState is None else False
 
-        return isAccesible
+        return isAccesibles
 
 
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
