@@ -82,37 +82,32 @@ class AFN_Lambda:
         isAccesible = [False] * len(self.estados)  # Lista donde registramos cuáles estados son accesibles y cuáles no
         stack = LifoQueue()
         currentState = self.estadoInicial
-        allInaccesibleFound = False
 
+        allInaccesibleFound = False
         while not allInaccesibleFound:
             currentStateIndex = self.estados.index(currentState)
 
-            if not isAccesible[currentStateIndex]:  # Es decir, el estado no lo habíamos recorrido antes
-                isAccesible[currentStateIndex] = True
-                newAccesibleStates = []
-                targets = list(self.delta[currentStateIndex].values())  # Hallamos los estados a los que hay transiciones desde este estado
+            isAccesible[currentStateIndex] = True
+            newAccesibleStates = []
+            targets = list(self.delta[currentStateIndex].values())  # Hallamos los estados a los que hay transiciones desde este estado
 
-                for target in targets:
-                    if type(target) == list:  # Si se trata de una lista de estados, se deben individualizar
-                        for individualState in target:
-                            newAccesibleStates.append(individualState)
-                    else:
-                        newAccesibleStates.append(target)
-                newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
-
-                if len(newAccesibleStates) >= 1:
-                    for state in range(1, len(newAccesibleStates)):
-                        stack.put(newAccesibleStates[state])
-                    currentState = newAccesibleStates[0]
+            for target in targets:
+                if type(target) == list:  # Si se trata de una lista de estados, se deben individualizar
+                    for individualState in target:
+                        newAccesibleStates.append(individualState)
                 else:
-                    currentState = stack.get() if not stack.empty() else None  # Desapilamos
-                    allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
+                    newAccesibleStates.append(target)
+            newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
-            else:  # El estado ya había sido explorado. Desapilamos los estados buscando uno nuevo
-                currentState = stack.get() if not stack.empty() else None
-                allInaccesibleFound = True if currentState is None else False
+            for state in range(0, len(newAccesibleStates)):
+                stateIndex = self.estados.index(newAccesibleStates[state])
+                if not isAccesible[stateIndex]:
+                    stack.put(newAccesibleStates[state])
 
-        return isAccesibles
+            currentState = stack.get() if not stack.empty() else None  # Desapilamos
+            allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
+
+        return isAccesible
 
 
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
