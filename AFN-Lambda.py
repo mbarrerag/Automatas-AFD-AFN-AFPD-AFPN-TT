@@ -17,6 +17,11 @@ class AFN_Lambda:
             self.estadosLimbo = []
             self.estadosInaccesibles = []
 
+            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
+            for estado in self.delta:
+                if len(self.delta.get(estado)) == 0:
+                    self.estadosLimbo.append(estado)
+
 
     def cargarDesdeArchivo(self, nombreArchivo):
         self.alfabeto = []
@@ -25,6 +30,7 @@ class AFN_Lambda:
         self.estadosAceptacion = []
         self.delta: {dict} = {}
         self.estadosInaccesibles = []
+        self.estadosLimbo = []
 
         with open(nombreArchivo, 'r') as f:
             lines = f.readlines()
@@ -75,6 +81,12 @@ class AFN_Lambda:
                             targets = targets.split(';')
                             self.delta[source][letter] = targets
                         i += 1
+
+            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
+            for estado in self.delta:
+                if len(self.delta.get(estado)) == 0:
+                    self.estadosLimbo.append(estado)
+
 
     def __str__(self):
         output = '#!nfe\n'
@@ -145,11 +157,11 @@ class AFN_Lambda:
             allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
 
         inaccesibleStates = [state for state in isAccesible if not isAccesible[state]]
-        self.estadosInaccesibles = inaccesibleStates
+        # self.estadosInaccesibles = inaccesibleStates
         return inaccesibleStates
 
     def calcularLambdaClausura(self, st: str = None, states: list[str] = None):
-        if st is None and states is None:
+        if st is not None and states is not None:
             print("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
         if st is not None:
@@ -178,6 +190,69 @@ class AFN_Lambda:
 
         return lambdaClosure
 
+    def procesarCadena(self, cadena: str):
+        for character in cadena:
+            if character not in self.alfabeto:
+                raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "  
+                                "carácter no existe en el alfabeto del autómata: " + self.alfabeto.__str__())
+
+        exploringStack = LifoQueue()
+        printStack = LifoQueue()
+
+        '''
+        currentPhase = {"currentState": self.estadoInicial,
+                        "targetState": "",  # El próximo estado al cual ir
+                        "charToTarget": "",  # El carácter que lleva a dicho estado
+                        "index": -1,  # El índice del carácter de la cadena ya procesado, restandole 1
+                        "transitionsDone": 0  # El número de transiciones del camino recorrido. Sirve para la pila de
+                        # transiciones para pintar
+                        }
+        '''
+        currentState = self.estadoInicial
+        targetState = ""
+        charToTarget = ""
+        index = -1
+        transitionsDone = 0
+
+        stringAccepted = False
+        searchFinished = False
+
+        comingFromStack = False
+        while not searchFinished:
+            stringIndex = index + 1
+            currentChar = cadena[stringIndex]
+
+            if not comingFromStack:
+                def pushIntoList(stateList, char):
+                    if stateList is not None:
+                        if type(stateList) is not list:
+                            stateList = [stateList]
+                        for st in stateList:
+                            exploringStack.put([currentState, st, char, index, transitionsDone])
+
+                transitions = self.delta.get(currentState)
+                lambdaStates = transitions.get('$')
+                charStates = transitions.get(currentChar)
+
+                pushIntoList(lambdaStates, '$')
+                pushIntoList(charStates, currentChar)
+                comingFromStack = True
+
+            searchFinished = True
+
+        while not exploringStack.empty():
+            print(exploringStack.get())
+
+
+
+
+
+
+
+
+
+
+
 
 '''
 firstAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/firstAFNLtest.NFE")
@@ -193,7 +268,9 @@ print('\n')
 print(firstAFNL.__str__())
 '''
 
-# secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
+secondAFNL.procesarCadena("0111012")
+
 
 '''
 print(secondAFNL.alfabeto)
@@ -202,9 +279,10 @@ print(secondAFNL.estadoInicial)
 print(secondAFNL.estadosAceptacion)
 print(secondAFNL.delta)
 print(secondAFNL.hallarEstadosInaccesibles())
-
-print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 '''
+
+# print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
+
 
 lambdaClosureAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/lambdaClausuraTest.NFE")
 '''
