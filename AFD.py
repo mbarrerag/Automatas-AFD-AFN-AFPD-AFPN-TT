@@ -157,33 +157,32 @@ class AFD:
 
     def procesar_cadena(self, cadena):
         estadoActual = self.estadoInicial
-        for simbolo in cadena:
-            estadoActual = tuple(estadoActual)  # convertir lista a tupla
+        for simbolo in cadena: # convertir lista a tupla
             if estadoActual not in self.delta:
                 return False
-            estadoActual = list(self.delta[estadoActual][simbolo])  # convertir tupla de vuelta a lista
-        return tuple(estadoActual) in self.estadosAceptacion  # convertir a tupla antes de chequear
+            estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
+        return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
 
     
     def procesar_cadena_con_detalles(self, cadena):
         estadoActual = self.estadoInicial
-
-        for simbolo in cadena:
+        for simbolo in cadena: # convertir lista a tupla
+            if estadoActual not in self.delta:
+                return False
             print(f"{estadoActual},{simbolo} --> {self.delta[estadoActual][simbolo]}")
-            estadoActual = self.delta[estadoActual][simbolo]
-
-        return estadoActual in self.estadosAceptacion
+            estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
+        return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
     
     def procesar_cadena_con_detalles_print(self, cadena):
         estadoActual = self.estadoInicial
         procesamiento = f"{estadoActual}"
         for simbolo in cadena:
+            if estadoActual not in self.delta:
+                return False
             procesamiento += f",{simbolo} --> {self.delta[estadoActual][simbolo]}"
             estadoActual = self.delta[estadoActual][simbolo]
         return procesamiento 
     
-
-
     def procesarListaCadenas(self, listaCadenas, nombreArchivo, imprimirPantalla):
         if not nombreArchivo or not nombreArchivo.strip():
             nombreArchivo = "resultados.txt"
@@ -194,7 +193,7 @@ class AFD:
         with open(nombreArchivo, 'w') as archivo:
             for cadena in listaCadenas:
                 detalles = self.procesar_cadena_con_detalles_print(cadena)  
-                resultado = "si" if detalles else "no"
+                resultado = "si" if self.procesar_cadena(cadena=cadena) else "no"
 
                 if resultado == "si":
                     contador_si += 1
@@ -206,32 +205,8 @@ class AFD:
 
                 if imprimirPantalla:
                     print(linea)
-        def procesarListaCadenas(self, listaCadenas, nombreArchivo, imprimirPantalla):
-            if not nombreArchivo or not nombreArchivo.strip():
-                nombreArchivo = "resultados.txt"
-
-            contador_si = 0  # Contador para los "si"
-            contador_no = 0  # Contador para los "no"
-
-            with open(nombreArchivo, 'w') as archivo:
-                for cadena in listaCadenas:
-                    detalles = self.procesar_cadena_con_detalles_print(cadena)  
-                    resultado = "si" if detalles else "no"
-
-                    if resultado == "si":
-                        contador_si += 1
-                    else:
-                        contador_no += 1
-
-                    linea = f"{cadena}\t{detalles}\t{resultado}"
-                    archivo.write(linea + '\n')
-
-                    if imprimirPantalla:
-                        print(linea)
-            print(f"Conteo 'si': {contador_si}")
-            print(f"Conteo 'no': {contador_no}")
-            
-
+        print(f"Conteo 'si': {contador_si}")
+        print(f"Conteo 'no': {contador_no}")
 
     def hallarComplemento(self):
         complemento = AFD()  
