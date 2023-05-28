@@ -153,8 +153,7 @@ class AFN:
                             strTransicion += elemento+','
                         strTransicion = strTransicion.rstrip(',')
                         deltaAFD[estado][caracter] = strTransicion
-                        if not strTransicion in estadosAFD:
-                            # if not strTransicion in estadosAFD and strTransicion != '':
+                        if not strTransicion in estadosAFD and strTransicion != '':
                             estadosAFD.append(strTransicion)
             if copiaEstadosAFD == estadosAFD:
                 break
@@ -295,7 +294,6 @@ class AFN:
             return caminos
 
     def procesarListaCadenas(self, listaCadenas=[], nombreArchivo='', imprimirPantalla=False):
-        # nombre invalido ??
         archivo = open(f'{nombreArchivo}.txt', 'w')
         contador_si = 0  # Contador para los "si"
         contador_no = 0
@@ -370,6 +368,3 @@ class AFN:
             selfnodo.cadena = cadena
             selfnodo.next = []
             selfnodo.camino = camino
-#afn1 = AFN(nombreArchivo='testAFN.NFA')  
-#cadena = 'aabb'
-#afd = afn1.AFNtoAFD(cadena)
