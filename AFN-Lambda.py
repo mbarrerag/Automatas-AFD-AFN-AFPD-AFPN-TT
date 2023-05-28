@@ -99,9 +99,9 @@ class AFN_Lambda:
                     newAccesibleStates.append(target)
             newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
-            for state in newAccesibleStates:
-                if not isAccesible[state]:
-                    stack.put(state)
+            for accesibleState in newAccesibleStates:
+                if not isAccesible[accesibleStatestate]:
+                    stack.put(accesibleState)
 
             currentState = stack.get() if not stack.empty() else None  # Desapilamos
             allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
@@ -110,26 +110,33 @@ class AFN_Lambda:
         self.estadosInaccesibles = inaccesibleStates
         return inaccesibleStates
 
-    def calcularLambdaClausura(self, state: str):
-        lambdaClosure = [state]  # el estado mismo pertenece a su lambda clausura
-        stack = LifoQueue()
+    def calcularLambdaClausura(self, st: str = None, states: list[str] = None):
+        if st is None and states is None:
+            print("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
-        currentState = state
-        allStatesFound = False
-        while not allStatesFound:
-            transitions = self.delta[currentState]
-            lambdaStates = transitions.get('$')
+        if st is not None:
+            states = [st]
 
-            if lambdaStates is not None:
-                if type(lambdaStates) is not list:
-                    lambdaStates = [lambdaStates]
-                for state in lambdaStates:
-                    if not lambdaClosure.__contains__(state):
-                        lambdaClosure.append(state)
-                        stack.put(state)
+        lambdaClosure = states.copy()  # Los estados mismos pertenecen a su lambda clausura
+        for sta in states:
+            stack = LifoQueue()
 
-            currentState = stack.get() if not stack.empty() else None
-            allStatesFound = True if currentState is None else False
+            currentState = sta
+            allStatesFound = False
+            while not allStatesFound:
+                transitions = self.delta.get(currentState)
+                lambdaStates = transitions.get('$')
+
+                if lambdaStates is not None:
+                    if type(lambdaStates) is not list:
+                        lambdaStates = [lambdaStates]
+                    for targetState in lambdaStates:
+                        if not lambdaClosure.__contains__(targetState):
+                            lambdaClosure.append(targetState)
+                            stack.put(targetState)
+
+                currentState = stack.get() if not stack.empty() else None
+                allStatesFound = True if currentState is None else False
 
         return lambdaClosure
 
@@ -142,8 +149,11 @@ print(firstAFNL.estadoInicial)
 print(firstAFNL.estadosAceptacion)
 print(firstAFNL.delta)
 print(firstAFNL.hallarEstadosInaccesibles())
+'''
 
 secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+
+'''
 print(secondAFNL.alfabeto)
 print(secondAFNL.estados)
 print(secondAFNL.estadoInicial)
@@ -151,6 +161,7 @@ print(secondAFNL.estadosAceptacion)
 print(secondAFNL.delta)
 print(secondAFNL.hallarEstadosInaccesibles())
 '''
+print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 '''
@@ -164,5 +175,8 @@ print(lambdaClosureAFNL.hallarEstadosInaccesibles())
 
 for state in lambdaClosureAFNL.estados:
     print(state + ":")
-    print(lambdaClosureAFNL.calcularLambdaClausura(state))
+    print(lambdaClosureAFNL.calcularLambdaClausura(st=state))
+
+print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
+print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 
