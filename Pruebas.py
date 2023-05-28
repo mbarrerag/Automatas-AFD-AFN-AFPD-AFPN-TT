@@ -60,12 +60,11 @@ class ClasePrueba:
          cadena = 'abb'  
          procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
-         print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento AFD: {procesar_cadena_afd1} \n Procesamiento AFN {procesar_cadena_afn1} \n")
          print("AFN a AFD")
          afn_afd = afn1.AFNtoAFD()
          afd_nuevo_procesamiento = afn_afd.procesar_cadena(cadena)
-         print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento nuevo AFD: {afd_nuevo_procesamiento} \n Procesamiento AFN {procesar_cadena_afn1}")
-         
+         print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento AFN {procesar_cadena_afn1} \n Procesamiento nuevo AFD: {afd_nuevo_procesamiento} ")        
+    
     def probarComplemento(self):
         afd1 = AFD(nombreArchivo='evenA.DFA')
         afd_complemento = afd1.hallarComplemento()
@@ -93,8 +92,8 @@ class ClasePrueba:
         print(diferencia)
 
         # Dibujar el AFD resultante del producto cartesiano con intersección (∩)
-        print("\n\nDiagrama del Producto Cartesiano con Intersección:")
-        producto_cartesiano = afd1.hallarProductoCartesiano(union, diferencia, 'interseccion')
+        print("\n\nDiagrama del Producto Cartesiano de la Diferencia simetrica con la Interseccion:")
+        producto_cartesiano = afd1.hallarProductoCartesiano(interseccion, diferencia, 'interseccion')
         print(producto_cartesiano)
 
     def probarSimplificacion(self):
@@ -120,16 +119,17 @@ class ClasePrueba:
          afn1 = AFN(nombreArchivo='testAFN.NFA') 
          afns =[afn1]
          lista_cadenas = clase_prueba.generar_cadenas_afn(afns)
-         nombre_archivo = 'resultados_AFN_cedenas_aleatorias.txt'
          imprimir_pantalla = True
          print("Procesamiento AFN")
-         contador_si, contador_no = afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+         contador_si_afn, contador_no_afn = afn1.procesarListaCadenas(lista_cadenas, 'resultados_AFN_cedenas_aleatorias.txt', imprimir_pantalla)
          print("AFN a AFD")
          afn_afd = afn1.AFNtoAFD()
-         nombre_archivo = 'resultados_AFNtoAFD_cedenas_aleatorias.txt'
-         print("Cantidad de cadenas aceptadas AFN :", contador_si)
-         print("Cantidad de cadenas rechazadas AFN:", contador_no)
-         #afn_afd.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+         contador_si_afd, contador_no_afd = afn_afd.procesarListaCadenas(lista_cadenas, 'resultados_AFNtoAFD_cedenas_aleatorias.txt', imprimir_pantalla)
+         print("Cantidad de cadenas aceptadas AFN :\n", contador_si_afn)
+         print("Cantidad de cadenas rechazadas AFN:\n", contador_no_afn)
+         print("Cantidad de cadenas aceptadas nuevo AFD :\n", contador_si_afd)
+         print("Cantidad de cadenas rechazadas nuevo AFD:\n", contador_no_afd)
+         
 
 # Llamar a la función para probar el producto cartesiano
 
