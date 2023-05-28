@@ -87,7 +87,7 @@ class AFN_Lambda:
         while not allInaccesibleFound:
             currentStateIndex = self.estados.index(currentState)
 
-            if not isAccesible[currentStateIndex]:
+            if not isAccesible[currentStateIndex]:  # Es decir, el estado no lo habíamos recorrido antes
                 isAccesible[currentStateIndex] = True
                 newAccesibleStates = []
                 targets = list(self.delta[currentStateIndex].values())  # Hallamos los estados a los que hay transiciones desde este estado
@@ -107,7 +107,8 @@ class AFN_Lambda:
                 else:
                     currentState = stack.get() if not stack.empty() else None  # Desapilamos
                     allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
-            else:
+
+            else:  # El estado ya había sido explorado. Desapilamos los estados buscando uno nuevo
                 currentState = stack.get() if not stack.empty() else None
                 allInaccesibleFound = True if currentState is None else False
 
