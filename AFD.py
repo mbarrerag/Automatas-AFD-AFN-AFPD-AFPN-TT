@@ -158,10 +158,12 @@ class AFD:
     def procesar_cadena(self, cadena):
         estadoActual = self.estadoInicial
         for simbolo in cadena:
+            estadoActual = tuple(estadoActual)  # convertir lista a tupla
             if estadoActual not in self.delta:
                 return False
-            estadoActual = self.delta[estadoActual][simbolo]
-        return estadoActual in self.estadosAceptacion
+            estadoActual = list(self.delta[estadoActual][simbolo])  # convertir tupla de vuelta a lista
+        return tuple(estadoActual) in self.estadosAceptacion  # convertir a tupla antes de chequear
+
     
     def procesar_cadena_con_detalles(self, cadena):
         estadoActual = self.estadoInicial
@@ -426,7 +428,7 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 afdmin = AFD(nombreArchivo='minTest.DFA')
 afdmin.simplificarAFD()
 print(afdmin)
-afdmin.draw().view()
+#afdmin.draw().view()
 
 
 

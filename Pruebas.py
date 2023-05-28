@@ -105,7 +105,8 @@ class ClasePrueba:
         afd1 = AFD(nombreArchivo='evenA.DFA')
         cadena = 'aaabbb'
         print(f"\nAFD original '{afd1}'\n\n")
-        afd1_simplificado = afd1.imprimirAFDSimplificado()
+        afd1.simplificarAFD()
+        afd1_simplificado = afd1
         print(f"\nSimplificacion '{afd1_simplificado}'\n")
         afd1_simplificado.procesar_cadena(cadena)
 

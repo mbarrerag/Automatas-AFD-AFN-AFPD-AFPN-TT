@@ -1,0 +1,3 @@
+aba	s0,a --> s1,b --> s1,a --> s0	si
+abbaa	s0,a --> s1,b --> s1,b --> s1,a --> s0,a --> s1	si
+abbabaabbbbb	s0,a --> s1,b --> s1,b --> s1,a --> s0,b --> s0,a --> s1,a --> s0,b --> s0,b --> s0,b --> s0,b --> s0,b --> s0	si
