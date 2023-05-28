@@ -1,7 +1,7 @@
 from AFD import AFD
 from AFN import AFN
-import random
 import ast
+import random
 
 class ClasePrueba:
     def __init__(self):
@@ -24,7 +24,7 @@ class ClasePrueba:
         nombre_archivo = 'resultados_lista_de_cadenas.txt'
         imprimir_pantalla = True
         afd1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
-
+        
         # Generar archivos
         nombre_archivo1 = 'resultado_con_detalles.txt'
         nombre_archivo2 = 'resultado_sin_detalles.txt'
@@ -105,7 +105,7 @@ class ClasePrueba:
         afd1_simplificado = afd1
         print(f"\nSimplificacion '{afd1_simplificado}'\n")
         afd1_simplificado.procesar_cadena(cadena)
-    
+
     def generar_cadenas_afn(self,afns):
         cadenas_generadas = []
         for afn in afns:
@@ -118,16 +118,17 @@ class ClasePrueba:
     
     def afn_to_afd_aleatorio(self):
          afn1 = AFN(nombreArchivo='testAFN.NFA') 
-         afns =[afn1,afn1]
+         afns =[afn1]
          lista_cadenas = clase_prueba.generar_cadenas_afn(afns)
          nombre_archivo = 'resultados_AFN_cedenas_aleatorias.txt'
          imprimir_pantalla = True
          print("Procesamiento AFN")
-         #afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+         afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
          print("AFN a AFD")
          afn_afd = afn1.AFNtoAFD()
-         #nombre_archivo = 'resultados_AFNtoAFD_cedenas_aleatorias.txt'
-         #afn_afd.procesarListaCadenas(['aba','abbaa'], nombre_archivo, imprimir_pantalla)
+         nombre_archivo = 'resultados_AFNtoAFD_cedenas_aleatorias.txt'
+         #afn_afd.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente

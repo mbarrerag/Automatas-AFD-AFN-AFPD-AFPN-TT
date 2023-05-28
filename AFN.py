@@ -297,6 +297,8 @@ class AFN:
     def procesarListaCadenas(self, listaCadenas=[], nombreArchivo='', imprimirPantalla=False):
         # nombre invalido ??
         archivo = open(f'{nombreArchivo}.txt', 'w')
+        contador_si = 0  # Contador para los "si"
+        contador_no = 0
         for cadena in listaCadenas:
             textoDeCadena = ''
             textoDeCadena += f'{cadena}\n'
@@ -336,12 +338,16 @@ class AFN:
 
             if numeroDeProcesamientosDeAceptacion == 0:
                 textoDeCadena += 'no\n'
+                contador_no += 1
             else:
                 textoDeCadena += 'si\n'
-
+                contador_si += 1
             archivo.write(textoDeCadena)
             if imprimirPantalla:
                 print(textoDeCadena)
+                print('------------------------')
+                print(f"Conteo 'si': {contador_si}")
+                print(f"Conteo 'no': {contador_no}")
         archivo.close()
 
     def procesarCadenaConversion(self, cadena=''):
@@ -363,7 +369,6 @@ class AFN:
             selfnodo.cadena = cadena
             selfnodo.next = []
             selfnodo.camino = camino
-afn1 = AFN(nombreArchivo='testAFN.NFA')  
+#afn1 = AFN(nombreArchivo='testAFN.NFA')  
 #cadena = 'aabb'
-afd = afn1.AFNtoAFD()
-afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
+#afd = afn1.AFNtoAFD(cadena)

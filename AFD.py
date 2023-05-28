@@ -185,20 +185,53 @@ class AFD:
 
 
     def procesarListaCadenas(self, listaCadenas, nombreArchivo, imprimirPantalla):
-
         if not nombreArchivo or not nombreArchivo.strip():
             nombreArchivo = "resultados.txt"
+
+        contador_si = 0  # Contador para los "si"
+        contador_no = 0  # Contador para los "no"
 
         with open(nombreArchivo, 'w') as archivo:
             for cadena in listaCadenas:
                 detalles = self.procesar_cadena_con_detalles_print(cadena)  
-                resultado = "si" if detalles else "no"  
-                linea = f"{cadena}\t{detalles}\t{resultado}"
+                resultado = "si" if detalles else "no"
 
+                if resultado == "si":
+                    contador_si += 1
+                else:
+                    contador_no += 1
+
+                linea = f"{cadena}\t{detalles}\t{resultado}"
                 archivo.write(linea + '\n')
 
                 if imprimirPantalla:
                     print(linea)
+        def procesarListaCadenas(self, listaCadenas, nombreArchivo, imprimirPantalla):
+            if not nombreArchivo or not nombreArchivo.strip():
+                nombreArchivo = "resultados.txt"
+
+            contador_si = 0  # Contador para los "si"
+            contador_no = 0  # Contador para los "no"
+
+            with open(nombreArchivo, 'w') as archivo:
+                for cadena in listaCadenas:
+                    detalles = self.procesar_cadena_con_detalles_print(cadena)  
+                    resultado = "si" if detalles else "no"
+
+                    if resultado == "si":
+                        contador_si += 1
+                    else:
+                        contador_no += 1
+
+                    linea = f"{cadena}\t{detalles}\t{resultado}"
+                    archivo.write(linea + '\n')
+
+                    if imprimirPantalla:
+                        print(linea)
+            print(f"Conteo 'si': {contador_si}")
+            print(f"Conteo 'no': {contador_no}")
+            
+
 
     def hallarComplemento(self):
         complemento = AFD()  
@@ -412,7 +445,7 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 # print(afd2.procesar_cadena_con_detalles('abbabaabbbbb'))
 # print(afd.procesar_cadena_con_detalles('aba'))
 
-afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
+# afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
 # print(afd.hallarComplemento())
 # print(afd.hallarProductoCartesianoY(afd1,afd2))
 # print(afd.hallarProductoCartesianoY(afd1,afd2).delta)
@@ -425,9 +458,9 @@ afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
 # print(cartesionD.procesar_cadena_con_detalles('aaabbbb'))
 # cartesiano1 = afd.hallarProductoCartesiano(afd1,afd2, 'interseccion')
 # print(cartesiano1.procesar_cadena_con_detalles('aabbabab'))
-#afdmin = AFD(nombreArchivo='minTest.DFA')
-#afdmin.simplificarAFD()
-#print(afdmin)
+afdmin = AFD(nombreArchivo='minTest.DFA')
+afdmin.simplificarAFD()
+print(afdmin)
 #afdmin.draw().view()
 
 
