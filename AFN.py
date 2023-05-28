@@ -130,7 +130,7 @@ class AFN:
 
     def AFNtoAFD(self, imprimirTabla=True):
         estadosAFD = []
-        estadoInicialAFD = ['{'+self.estadoInicial[0]+'}']
+        estadoInicialAFD = '{'+self.estadoInicial[0]+'}'
         deltaAFD = {}
         estadosAceptacionAFD = []
 
