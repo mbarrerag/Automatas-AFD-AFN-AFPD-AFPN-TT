@@ -97,7 +97,18 @@ class AFN_Lambda:
         output += '#transitions \n'
         for estado in self.delta:
             transitions = self.delta.get(estado)
-            print(transitions)
+            listOfTransitions = list(transitions.items())
+
+            for transition in listOfTransitions:
+                target = transition[1]
+                if type(target) == list:
+                    auxTarget = target.copy()
+                    target = ""
+                    for i in range(0, len(auxTarget)):
+                        target += auxTarget[i] + ";"
+                    target = target.removesuffix(';')
+
+                output += estado + ":" + transition[0] + ">" + target + "\n"
 
         return output
 
@@ -168,8 +179,8 @@ class AFN_Lambda:
         return lambdaClosure
 
 
-
-firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+'''
+firstAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/firstAFNLtest.NFE")
 
 print(firstAFNL.alfabeto)
 print(firstAFNL.estados)
@@ -180,8 +191,9 @@ print(firstAFNL.hallarEstadosInaccesibles())
 
 print('\n')
 print(firstAFNL.__str__())
+'''
 
-# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+# secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
 
 '''
 print(secondAFNL.alfabeto)
@@ -194,7 +206,7 @@ print(secondAFNL.hallarEstadosInaccesibles())
 print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 '''
 
-lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+lambdaClosureAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/lambdaClausuraTest.NFE")
 '''
 print(lambdaClosureAFNL.alfabeto)
 print(lambdaClosureAFNL.estados)
@@ -212,3 +224,6 @@ for state in lambdaClosureAFNL.estados:
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 '''
+
+#toStringTestAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/toStringTestAFNL")
+#print(toStringTestAFNL.__str__())
