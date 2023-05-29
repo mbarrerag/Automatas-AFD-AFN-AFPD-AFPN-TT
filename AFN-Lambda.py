@@ -207,7 +207,6 @@ class AFN_Lambda:
         stringAccepted = False
         searchFinished = False
 
-        comingFromStack = False
         while not searchFinished:
             if currentState in self.estadosAceptacion and index+1 == len(cadena):
                 stringAccepted = True
@@ -216,28 +215,45 @@ class AFN_Lambda:
                 stringAccepted = False
                 searchFinished = True
             elif currentState in self.estadosLimbo or index+1 > len(cadena):
-                pass
+                phase = exploringStack.get()
+                currentState = phase[2]
+                index = phase[3]
+                previousTransitionsDone = transitionsDone
+                transitionsDone -= phase[4]
+                for popTransition in range(0, previousTransitionsDone-transitionsDone):
+                    printStack.get()
             else:
                 currentChar = cadena[index+1]
+
+                def pushIntoList(stateList, char):
+                    if stateList is not None:
+                        if type(stateList) is not list:
+                            stateList = [stateList]
+                        for st in stateList:
+                            exploringStack.put([currentState, char, st, index, transitionsDone])
+
                 transitions = self.delta.get(currentState)
-                lambdaTransitions = transitions.get('$')
-                charTransitions = transitions.get(currentChar)
-            if current
+                lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
+                pushIntoList(lambdaStates, '$')
+                pushIntoList(charStates, currentChar)
 
-        searchFinished = True
+                phase = exploringStack.get()
+                previousState = phase[0]
+                charToCurrentState = phase[1]
+                currentState = phase[2]
+
+                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+
+                index = phase[3]+1 if charToCurrentState != '$' else phase[3]
+                transitionsDone = phase[4]+1
+
+        auxStack = LifoQueue()
+        while not printStack.empty():
+            auxStack.put(printStack.get())
+        while not auxStack.empty():
+            print(auxStack.get())
         return stringAccepted
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -256,7 +272,7 @@ print(firstAFNL.__str__())
 '''
 
 secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
-secondAFNL.procesarCadena("0111012")
+print(secondAFNL.procesarCadena("0111012"))
 
 
 '''
