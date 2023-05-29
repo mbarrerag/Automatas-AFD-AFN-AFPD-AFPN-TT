@@ -1,5 +1,7 @@
 from AFD import AFD
 from AFN import AFN
+from AFN_Lambda import AFN_Lambda
+from queue import LifoQueue
 import ast
 import random
 
@@ -130,6 +132,7 @@ class ClasePrueba:
          print("Cantidad de cadenas aceptadas nuevo AFD :\n", contador_si_afd)
          print("Cantidad de cadenas rechazadas nuevo AFD:\n", contador_no_afd)
          
+    
 
 # Llamar a la función para probar el producto cartesiano
 
@@ -141,4 +144,4 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarComplemento()
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
-clase_prueba.afn_to_afd_aleatorio()
+#clase_prueba.afn_to_afd_aleatorio()

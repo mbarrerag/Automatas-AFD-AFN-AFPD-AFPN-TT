@@ -27,7 +27,6 @@ class AFN_Lambda:
         self.estados = []
         self.estadoInicial = None
         self.estadosAceptacion = []
-        self.delta: {dict} = {}
         self.estadosInaccesibles = []
         self.estadosLimbo = []
 
