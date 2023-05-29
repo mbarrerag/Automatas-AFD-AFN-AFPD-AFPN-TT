@@ -199,20 +199,10 @@ class AFN_Lambda:
         exploringStack = LifoQueue()
         printStack = LifoQueue()
 
-        '''
-        currentPhase = {"currentState": self.estadoInicial,
-                        "targetState": "",  # El próximo estado al cual ir
-                        "charToTarget": "",  # El carácter que lleva a dicho estado
-                        "index": -1,  # El índice del carácter de la cadena ya procesado, restandole 1
-                        "transitionsDone": 0  # El número de transiciones del camino recorrido. Sirve para la pila de
-                        # transiciones para pintar
-                        }
-        '''
         currentState = self.estadoInicial
-        targetState = ""
-        charToTarget = ""
         index = -1
         transitionsDone = 0
+
 
         stringAccepted = False
         searchFinished = False
@@ -228,17 +218,36 @@ class AFN_Lambda:
                         if type(stateList) is not list:
                             stateList = [stateList]
                         for st in stateList:
-                            exploringStack.put([currentState, st, char, index, transitionsDone])
+                            exploringStack.put([currentState, char, st, index, transitionsDone])
 
                 transitions = self.delta.get(currentState)
-                lambdaStates = transitions.get('$')
-                charStates = transitions.get(currentChar)
+                lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
                 pushIntoList(lambdaStates, '$')
                 pushIntoList(charStates, currentChar)
                 comingFromStack = True
+            else:
+                if not exploringStack.empty():
+                    phase = exploringStack.get()
+                    previousState = phase[0]
+                    charToCurrent = phase[1]
+                    currentState = phase[2]
+                    index = phase[3]
+                    transitionsDone = phase[4]
 
-            searchFinished = True
+                    printStack.put("(" + previousState + "," + charToCurrent + ") --> " + currentState)
+                    # print(printStack.get())
+
+                    if charToCurrent != '$':
+                        index += 1
+                    transitionsDone += 1
+                    searchFinished = True
+
+
+
+
+
+            #searchFinished = True
 
         while not exploringStack.empty():
             print(exploringStack.get())
