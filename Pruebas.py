@@ -131,6 +131,47 @@ class ClasePrueba:
          print("Cantidad de cadenas rechazadas AFN:\n", contador_no_afn)
          print("Cantidad de cadenas aceptadas nuevo AFD :\n", contador_si_afd)
          print("Cantidad de cadenas rechazadas nuevo AFD:\n", contador_no_afd)
+
+    def probarAFNLambda(self):
+    # Crear autómatas AFN-λ
+        #firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+        secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+        lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+        #toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
+
+        # Calcular la λ-clausura de un estado
+        lambdaClosureState = lambdaClosureAFNL.calcularLambdaClausura(states=['s0'])
+        print("Lambda clausura de 's0':", lambdaClosureState)
+
+        # Calcular la λλ-clausura de un conjunto de estados
+        lambdaClosureStates = lambdaClosureAFNL.calcularLambdaClausura(states=["s0", "s3"])
+        print("Lambda clausura de ['s0', 's3']:", lambdaClosureStates)
+
+        # Procesar cadenas mostrando solo un procesamiento de aceptación
+        print("Procesamiento de '01112012' en secondAFNL:")
+        result = secondAFNL.procesarCadena("01112012", True)
+        print("Aceptada:", result)
+
+        # Procesar cadenas mostrando todos los procesamientos posibles
+        print("Procesamientos detallado de '102' en secondAFNL:")
+        result = secondAFNL.procesarCadenaConDetalles("102")
+        print("Aceptada:", result)
+
+        # # Consultar los procesamientos de aceptación, abortados y de rechazo
+        print("Procesamiento de '2' en secondAFNL:")
+        result = secondAFNL.procesarCadena("2")
+        print("Aceptada:", result)
+
+        # # Procesar listas de cadenas
+        # cadenas = ["0111012", "2", "11"]
+        # for cadena in cadenas:
+        #     print("Procesamiento de", cadena, "en secondAFNL:")
+        #     result = secondAFNL.procesarCadena(cadena, True)
+        #     print("Aceptada:", result)
+
+        # # Generar archivos
+        # with open("toStringTestAFNL.NFE", "w") as file:
+        #     file.write(toStringTestAFNL.__str__())
          
     
 
@@ -145,3 +186,4 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.afn_to_afd_aleatorio()
+clase_prueba.probarAFNLambda()
