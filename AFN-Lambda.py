@@ -268,6 +268,12 @@ class AFN_Lambda:
         return stringAccepted
 
 
+    def procesarCadenaConDetalles(self, cadena: str) -> bool:
+        return self.procesarCadena(cadena=cadena, toPrint=True)
+
+
+
+
 
 '''
 firstAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/firstAFNLtest.NFE")
@@ -288,11 +294,7 @@ secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 print(secondAFNL.procesarCadena("102", True))
-# print(secondAFNL.procesarCadena("0111012", True))
-# print(secondAFNL.procesarCadena("0111012", True))
-# print(secondAFNL.procesarCadena("0111012", True))
-# print(secondAFNL.procesarCadena("0111012", True))
-
+# print(secondAFNL.procesarCadenaConDetalles("102"))
 
 '''
 print(secondAFNL.alfabeto)
@@ -325,5 +327,5 @@ print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 '''
 
-#toStringTestAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/toStringTestAFNL")
-#print(toStringTestAFNL.__str__())
+# toStringTestAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/toStringTestAFNL")
+# print(toStringTestAFNL.__str__())
