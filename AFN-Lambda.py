@@ -196,6 +196,10 @@ class AFN_Lambda:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "  
                                 "carácter no existe en el alfabeto del autómata: " + self.alfabeto.__str__())
 
+        if toPrint:
+            print(cadena + ":")
+
+        noTransitionsFrom = self.estadosLimbo.copy()
 
         exploringStack = LifoQueue()
         printStack = LifoQueue()
@@ -211,18 +215,21 @@ class AFN_Lambda:
             if currentState in self.estadosAceptacion and index+1 == len(cadena):
                 stringAccepted = True
                 searchFinished = True
-            elif (currentState in self.estadosLimbo or index+1 > len(cadena)) and exploringStack.empty():
+            elif (currentState in noTransitionsFrom or index+1 == len(cadena)) and exploringStack.empty():
                 stringAccepted = False
                 searchFinished = True
-            elif currentState in self.estadosLimbo or index+1 > len(cadena):
+            elif currentState in noTransitionsFrom or index+1 == len(cadena):
                 phase = exploringStack.get()
                 currentState = phase[2]
                 index = phase[3]
                 previousTransitionsDone = transitionsDone
                 transitionsDone -= phase[4]
                 for popTransition in range(0, previousTransitionsDone-transitionsDone):
+                    # print(printStack.get())
                     printStack.get()
             else:
+                # print(index)
+                # print("Here we are")
                 currentChar = cadena[index+1]
 
                 def pushIntoList(stateList, char):
@@ -238,22 +245,28 @@ class AFN_Lambda:
                 pushIntoList(lambdaStates, '$')
                 pushIntoList(charStates, currentChar)
 
-                phase = exploringStack.get()
-                previousState = phase[0]
-                charToCurrentState = phase[1]
-                currentState = phase[2]
+                if exploringStack.empty():
+                    noTransitionsFrom.append(currentState)
+                else:
+                    phase = exploringStack.get()
+                    previousState = phase[0]
+                    charToCurrentState = phase[1]
+                    currentState = phase[2]
 
-                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+                    printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+                    # print("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
 
-                index = phase[3]+1 if charToCurrentState != '$' else phase[3]
-                transitionsDone = phase[4]+1
+                    index = phase[3]+1 if charToCurrentState != '$' else phase[3]
+                    transitionsDone = phase[4]+1
 
         if toPrint:
+
             auxStack = LifoQueue()
             while not printStack.empty():
                 auxStack.put(printStack.get())
             while not auxStack.empty():
                 print(auxStack.get())
+
         return stringAccepted
 
 
@@ -273,7 +286,14 @@ print(firstAFNL.__str__())
 '''
 
 secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
-print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("2", True))
+# print(secondAFNL.procesarCadena("11", True))
+print(secondAFNL.procesarCadena("102", True))
+# print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
 
 
 '''
