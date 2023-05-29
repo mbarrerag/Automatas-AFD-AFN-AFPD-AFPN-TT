@@ -209,25 +209,42 @@ class AFN_Lambda:
 
         comingFromStack = False
         while not searchFinished:
-            stringIndex = index + 1
-            currentChar = cadena[stringIndex]
+            # stringIndex = index + 1
+            # currentChar = cadena[stringIndex]
+
+            if comingFromStack:
+                phase = exploringStack.get()
+                previousState = phase[0]
+                charToCurrent = phase[1]
+                currentState = phase[2]
+                index = phase[3]
+                transitionsDone = phase[4]
+
+                printStack.put("(" + previousState + "," + charToCurrent + ") --> " + currentState)
+                # print(printStack.get())
+
+                if charToCurrent != '$':
+                    index += 1
+                transitionsDone += 1
 
             if not comingFromStack:
-                def pushIntoList(stateList, char):
-                    if stateList is not None:
-                        if type(stateList) is not list:
-                            stateList = [stateList]
-                        for st in stateList:
-                            exploringStack.put([currentState, char, st, index, transitionsDone])
+                if currentState not in self.estadosLimbo:
+                    def pushIntoList(stateList, char):
+                        if stateList is not None:
+                            if type(stateList) is not list:
+                                stateList = [stateList]
+                            for st in stateList:
+                                exploringStack.put([currentState, char, st, index, transitionsDone])
 
-                transitions = self.delta.get(currentState)
-                lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
+                    transitions = self.delta.get(currentState)
+                    lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
-                pushIntoList(lambdaStates, '$')
-                pushIntoList(charStates, currentChar)
-                comingFromStack = True
+                    pushIntoList(lambdaStates, '$')
+                    pushIntoList(charStates, currentChar)
+                    comingFromStack = True
             else:
                 if not exploringStack.empty():
+                    '''
                     phase = exploringStack.get()
                     previousState = phase[0]
                     charToCurrent = phase[1]
@@ -236,11 +253,12 @@ class AFN_Lambda:
                     transitionsDone = phase[4]
 
                     printStack.put("(" + previousState + "," + charToCurrent + ") --> " + currentState)
-                    # print(printStack.get())
+                    #print(printStack.get())
 
                     if charToCurrent != '$':
                         index += 1
                     transitionsDone += 1
+                    '''
                     searchFinished = True
 
 
