@@ -275,7 +275,7 @@ class AFN_Lambda:
 
 
 '''
-firstAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/firstAFNLtest.NFE")
+firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 
 print(firstAFNL.alfabeto)
 print(firstAFNL.estados)
@@ -288,7 +288,7 @@ print('\n')
 print(firstAFNL.__str__())
 '''
 
-secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
@@ -307,7 +307,7 @@ print(secondAFNL.hallarEstadosInaccesibles())
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 
-lambdaClosureAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/lambdaClausuraTest.NFE")
+lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 '''
 print(lambdaClosureAFNL.alfabeto)
 print(lambdaClosureAFNL.estados)
@@ -326,5 +326,5 @@ print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 '''
 
-# toStringTestAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/toStringTestAFNL")
+# toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
 # print(toStringTestAFNL.__str__())
