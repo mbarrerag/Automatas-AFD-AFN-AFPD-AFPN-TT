@@ -225,11 +225,11 @@ class AFN_Lambda:
                 previousTransitionsDone = transitionsDone
                 transitionsDone -= phase[4]
                 for popTransition in range(0, previousTransitionsDone-transitionsDone):
-                    # print(printStack.get())
                     printStack.get()
+                previousState = phase[0]
+                charToCurrentState = phase[1]
+                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
             else:
-                # print(index)
-                # print("Here we are")
                 currentChar = cadena[index+1]
 
                 def pushIntoList(stateList, char):
@@ -254,13 +254,11 @@ class AFN_Lambda:
                     currentState = phase[2]
 
                     printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
-                    # print("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
 
                     index = phase[3]+1 if charToCurrentState != '$' else phase[3]
                     transitionsDone = phase[4]+1
 
         if toPrint:
-
             auxStack = LifoQueue()
             while not printStack.empty():
                 auxStack.put(printStack.get())
