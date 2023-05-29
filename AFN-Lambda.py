@@ -190,7 +190,7 @@ class AFN_Lambda:
 
         return lambdaClosure
 
-    def procesarCadena(self, cadena: str) -> bool:
+    def procesarCadena(self, cadena: str, toPrint=False) -> bool:
         for character in cadena:
             if character not in self.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "  
@@ -248,11 +248,12 @@ class AFN_Lambda:
                 index = phase[3]+1 if charToCurrentState != '$' else phase[3]
                 transitionsDone = phase[4]+1
 
-        auxStack = LifoQueue()
-        while not printStack.empty():
-            auxStack.put(printStack.get())
-        while not auxStack.empty():
-            print(auxStack.get())
+        if toPrint:
+            auxStack = LifoQueue()
+            while not printStack.empty():
+                auxStack.put(printStack.get())
+            while not auxStack.empty():
+                print(auxStack.get())
         return stringAccepted
 
 
@@ -272,7 +273,7 @@ print(firstAFNL.__str__())
 '''
 
 secondAFNL = AFN_Lambda(nombreArchivo="AFNL Cesar Testing/secondAFNLtest.NFE")
-print(secondAFNL.procesarCadena("0111012"))
+print(secondAFNL.procesarCadena("0111012", True))
 
 
 '''
