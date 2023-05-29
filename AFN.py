@@ -344,8 +344,6 @@ class AFN:
             if imprimirPantalla:
                 print(textoDeCadena)
                 print('------------------------')
-                print(f"Conteo 'si': {contador_si}")
-                print(f"Conteo 'no': {contador_no}")
         archivo.close()
         return contador_si, contador_no
 

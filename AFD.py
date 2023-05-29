@@ -205,8 +205,8 @@ class AFD:
 
                 if imprimirPantalla:
                     print(linea)
-        print(f"Conteo 'si': {contador_si}")
-        print(f"Conteo 'no': {contador_no}")
+            return contador_si, contador_no 
+  
 
     def hallarComplemento(self):
         complemento = AFD()  
