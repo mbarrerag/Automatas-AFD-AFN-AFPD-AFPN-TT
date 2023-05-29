@@ -27,6 +27,7 @@ class AFN_Lambda:
         self.estados = []
         self.estadoInicial = None
         self.estadosAceptacion = []
+        self.delta = {}
         self.estadosInaccesibles = []
         self.estadosLimbo = []
 
@@ -87,22 +88,20 @@ class AFN_Lambda:
 
 
     def __str__(self):
+        output = self.imprimirAFNLSimplificado()
+
+        output += self._simplePrintIteration(self.estadosInaccesibles, '#inaccesible')
+        output += self._simplePrintIteration(self.estadosLimbo, '#limbo')
+
+        return output
+
+    def imprimirAFNLSimplificado(self):
         output = '#!nfe\n'
 
-        output += '#alphabet\n'
-        for character in self.alfabeto:
-            output += character + '\n'
-
-        output += '#states \n'
-        for estado in self.estados:
-            output += estado + '\n'
-
-        output += '#initial \n'
-        output += self.estadoInicial + '\n'
-
-        output += '#accepting \n'
-        for estado in self.estadosAceptacion:
-            output += estado + '\n'
+        output += self._simplePrintIteration(self.alfabeto, '#alphabet')
+        output += self._simplePrintIteration(self.estados, '#states')
+        output += '#initial \n' + self.estadoInicial + '\n'
+        output += self._simplePrintIteration(self.estadosAceptacion, '#accepting')
 
         output += '#transitions \n'
         for estado in self.delta:
@@ -123,6 +122,15 @@ class AFN_Lambda:
         return output
 
 
+    def _simplePrintIteration(self, listToPrint: list[str], title: str) -> bool:  # Para ahorrarnos unas líneas de código en los dos métodos anteriores
+        output = title + '\n'
+        for obj in listToPrint:
+            output += obj + '\n'
+        return output
+
+    def exportar(self, nombreArchivo):
+        with open(nombreArchivo, 'w') as f:
+            f.write(str(self))
 
     def hallarEstadosInaccesibles(self) -> list[str]:
         isAccesible = {}
@@ -292,7 +300,10 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 print(secondAFNL.procesarCadena("102", True))
-# print(secondAFNL.procesarCadenaConDetalles("102"))
+
+# print(secondAFNL.__str__())
+# print(secondAFNL.imprimirAFNLSimplificado())
+# secondAFNL.exportar("HolaMundo.nfe")
 
 '''
 print(secondAFNL.alfabeto)
