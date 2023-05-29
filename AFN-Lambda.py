@@ -190,11 +190,12 @@ class AFN_Lambda:
 
         return lambdaClosure
 
-    def procesarCadena(self, cadena: str):
+    def procesarCadena(self, cadena: str) -> bool:
         for character in cadena:
             if character not in self.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "  
                                 "carácter no existe en el alfabeto del autómata: " + self.alfabeto.__str__())
+
 
         exploringStack = LifoQueue()
         printStack = LifoQueue()
@@ -203,72 +204,31 @@ class AFN_Lambda:
         index = -1
         transitionsDone = 0
 
-
         stringAccepted = False
         searchFinished = False
 
         comingFromStack = False
         while not searchFinished:
-            # stringIndex = index + 1
-            # currentChar = cadena[stringIndex]
-
-            if comingFromStack:
-                phase = exploringStack.get()
-                previousState = phase[0]
-                charToCurrent = phase[1]
-                currentState = phase[2]
-                index = phase[3]
-                transitionsDone = phase[4]
-
-                printStack.put("(" + previousState + "," + charToCurrent + ") --> " + currentState)
-                # print(printStack.get())
-
-                if charToCurrent != '$':
-                    index += 1
-                transitionsDone += 1
-
-            if not comingFromStack:
-                if currentState not in self.estadosLimbo:
-                    def pushIntoList(stateList, char):
-                        if stateList is not None:
-                            if type(stateList) is not list:
-                                stateList = [stateList]
-                            for st in stateList:
-                                exploringStack.put([currentState, char, st, index, transitionsDone])
-
-                    transitions = self.delta.get(currentState)
-                    lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
-
-                    pushIntoList(lambdaStates, '$')
-                    pushIntoList(charStates, currentChar)
-                    comingFromStack = True
+            if currentState in self.estadosAceptacion and index+1 == len(cadena):
+                stringAccepted = True
+                searchFinished = True
+            elif (currentState in self.estadosLimbo or index+1 > len(cadena)) and exploringStack.empty():
+                stringAccepted = False
+                searchFinished = True
+            elif currentState in self.estadosLimbo or index+1 > len(cadena):
+                pass
             else:
-                if not exploringStack.empty():
-                    '''
-                    phase = exploringStack.get()
-                    previousState = phase[0]
-                    charToCurrent = phase[1]
-                    currentState = phase[2]
-                    index = phase[3]
-                    transitionsDone = phase[4]
-
-                    printStack.put("(" + previousState + "," + charToCurrent + ") --> " + currentState)
-                    #print(printStack.get())
-
-                    if charToCurrent != '$':
-                        index += 1
-                    transitionsDone += 1
-                    '''
-                    searchFinished = True
+                currentChar = cadena[index+1]
+                transitions = self.delta.get(currentState)
+                lambdaTransitions = transitions.get('$')
+                charTransitions = transitions.get(currentChar)
+            if current
 
 
+        searchFinished = True
+        return stringAccepted
 
 
-
-            #searchFinished = True
-
-        while not exploringStack.empty():
-            print(exploringStack.get())
 
 
 
