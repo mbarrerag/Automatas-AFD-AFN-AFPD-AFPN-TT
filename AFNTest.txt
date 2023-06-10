@@ -1,6 +1,7 @@
-!NFA
+#!nfe
 #alphabet
 a-c
+$
 #states
 s0
 s1
@@ -22,5 +23,3 @@ s2:a>s2;s3
 s2:$>s2
 s3:c>s1
 s3:$>s1;s2
-#inaccessible
-

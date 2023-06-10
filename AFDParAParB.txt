@@ -1,4 +1,3 @@
-!DFA
 #alphabet
 a-b
 #states
@@ -19,7 +18,4 @@ q3:a>q1
 q3:b>q4
 q4:a>q2
 q4:b>q3
-#inaccessible
-
-#limbo
 

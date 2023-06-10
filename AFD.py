@@ -15,6 +15,7 @@ class AFD:
             self.estadosInaccesibles = []
 
         #self.verificarCorregirCompletitud()
+        #self.hallarEstadosInaccesibles()
             
 
     def __str__(self):
@@ -121,7 +122,7 @@ class AFD:
         with open(nombreArchivo, 'r') as f:
             lines = f.readlines()
 
-            for i in range(len(lines)):
+            for i in range(len(lines)):  
                     if lines[i].strip() == '#alphabet':
                         letter_range = lines[i+1].strip()
                         start, end = letter_range.split('-')

@@ -2,6 +2,7 @@ from AFD import AFD
 from AFN import AFN
 from AFN_Lambda import AFN_Lambda
 from queue import LifoQueue
+from Alfabeto import Alfabeto
 import ast
 import random
 
@@ -11,8 +12,8 @@ class ClasePrueba:
     
     def probarAFD(self):
         # Crear autómatas AFD
-        afd1 = AFD(nombreArchivo='evenA.DFA')
-        
+        afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+        #afd1 = AFD(afd1.alfabeto,afd1.estados,afd1.estadoInicial,afd1.estadosAceptacion,afd1.delta)
         # Procesar cadenas con y sin detalles
         cadena = 'aba'
         resultado_sin_detalles = afd1.procesar_cadena(cadena)
@@ -32,20 +33,21 @@ class ClasePrueba:
         nombre_archivo2 = 'resultado_sin_detalles.txt'
         afd1.exportar(nombre_archivo1)
         afd1.exportar(nombre_archivo2)
-      
-        print(afd1.imprimirAFDSimplificado())
+        print(afd1)
    
 
     def ProbarAFN(self):
         
-        afn1 = AFN(nombreArchivo='testAFN.NFA')   
-
-        cadena = 'abbaa'
+        #afn1 = AFN(nombreArchivo='testAFN.NFA')   
+        afn1 = AFN(nombreArchivo='AFNTest.txt')
+        alfabeto = Alfabeto(afn1.alfabeto)
+        cadena = 'bbac'
         procesar_cadena = afn1.procesarCadena(cadena) 
         print(f"Procesamiento  de la cadena '{cadena}': {procesar_cadena}")
         procesar_cadena_detalle = afn1.procesar_cadena_con_detalles(cadena)
         procesamientos_posibles = afn1.computarTodosLosProcesamientos(cadena)
-        lista_cadenas = ['aba', 'abbaa', 'abbabaabbbbb']
+        #lista_cadenas = ['aba', 'abbaa', 'abbabaabbbbb']
+        lista_cadenas = [alfabeto.generar_cadena_aleatoria(3), alfabeto.generar_cadena_aleatoria(5), alfabeto.generar_cadena_aleatoria(10)]
         nombre_archivo = 'resultados_lista_de_cadenas.txt'
         imprimir_pantalla = True
         afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
@@ -57,13 +59,15 @@ class ClasePrueba:
 
     def probarAFNtoAFD(self):
          
-         afd1 = AFD(nombreArchivo='evenA.DFA')
-         afn1 = AFN(nombreArchivo='testAFN.NFA')   
-         cadena = 'abb'  
-         procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
+         #afd1 = AFD(nombreArchivo='evenA.DFA')
+         #afn1 = AFN(nombreArchivo='testAFN.NFA')  
+         afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
+         cadena = '000'  
+         #procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
          print("AFN a AFD")
          afn_afd = afn1.AFNtoAFD()
+         print(afn_afd)
          afd_nuevo_procesamiento = afn_afd.procesar_cadena(cadena)
          print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento AFN {procesar_cadena_afn1} \n Procesamiento nuevo AFD: {afd_nuevo_procesamiento} ")        
     
@@ -179,9 +183,9 @@ class ClasePrueba:
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-clase_prueba.probarAFD()
+#clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
-#clase_prueba.probarAFNtoAFD()
+clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()

@@ -9,7 +9,7 @@ class Alfabeto:
 
 
 
-simbolos = ['0','1']
+#simbolos = ['0','1']
 
-sigma = Alfabeto(simbolos)
-print(sigma.generar_cadena_aleatoria(10))
+#sigma = Alfabeto(simbolos)
+#print(sigma.generar_cadena_aleatoria(10))
