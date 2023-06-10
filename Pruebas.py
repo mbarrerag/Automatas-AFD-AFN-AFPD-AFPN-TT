@@ -33,7 +33,7 @@ class ClasePrueba:
         afd1.exportar(nombre_archivo1)
         afd1.exportar(nombre_archivo2)
       
-        
+        print(afd1.imprimirAFDSimplificado())
    
 
     def ProbarAFN(self):
@@ -179,11 +179,11 @@ class ClasePrueba:
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-#clase_prueba.probarAFD()
+clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.afn_to_afd_aleatorio()
-clase_prueba.probarAFNLambda()
+#clase_prueba.probarAFNLambda()

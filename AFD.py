@@ -402,9 +402,9 @@ class AFD:
 
 
        
-afd = AFD(nombreArchivo='testAFD.DFA')
-afd1 = AFD(nombreArchivo='evenA.DFA')
-afd2 = AFD(nombreArchivo='evenB.DFA')
+#afd = AFD(nombreArchivo='testAFD.DFA')
+#afd1 = AFD(nombreArchivo='evenA.DFA')
+#afd2 = AFD(nombreArchivo='evenB.DFA')
 #afd.verificarCorregirCompletitud()
 # afd.hallarEstadosInaccesibles()
 # afd.hallarEstadosLimbo()
@@ -433,9 +433,9 @@ afd2 = AFD(nombreArchivo='evenB.DFA')
 # print(cartesionD.procesar_cadena_con_detalles('aaabbbb'))
 # cartesiano1 = afd.hallarProductoCartesiano(afd1,afd2, 'interseccion')
 # print(cartesiano1.procesar_cadena_con_detalles('aabbabab'))
-afdmin = AFD(nombreArchivo='minTest.DFA')
-afdmin.simplificarAFD()
-print(afdmin)
+#afdmin = AFD(nombreArchivo='minTest.DFA')
+#afdmin.simplificarAFD()
+#print(afdmin)
 #afdmin.draw().view()
 
 

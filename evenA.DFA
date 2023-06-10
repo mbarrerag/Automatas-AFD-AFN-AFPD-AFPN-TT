@@ -3,6 +3,9 @@
 a-b
 #states
 s0
+#initial
+s0
+#states
 s1
 #initial
 s0

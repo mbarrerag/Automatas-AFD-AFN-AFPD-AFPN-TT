@@ -295,11 +295,11 @@ print('\n')
 print(firstAFNL.__str__())
 '''
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+#secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
-print(secondAFNL.procesarCadena("102", True))
+#print(secondAFNL.procesarCadena("102", True))
 
 # print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
@@ -317,7 +317,7 @@ print(secondAFNL.hallarEstadosInaccesibles())
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 
-lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+#lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 '''
 print(lambdaClosureAFNL.alfabeto)
 print(lambdaClosureAFNL.estados)
