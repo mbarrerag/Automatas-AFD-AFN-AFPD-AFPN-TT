@@ -64,8 +64,9 @@ class ClasePrueba:
          
          #afd1 = AFD(nombreArchivo='evenA.DFA')
          #afn1 = AFN(nombreArchivo='testAFN.NFA')  
-         afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
-         cadena = '000'  
+         #afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
+         afn1 = AFN(nombreArchivo='AFNTest - copia.txt') 
+         cadena = 'dba'  
          #procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
          print(f"AFN procesando cadena {cadena} \n")
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
@@ -191,7 +192,7 @@ class ClasePrueba:
 clase_prueba = ClasePrueba()
 #clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
-#clase_prueba.probarAFNtoAFD()
+clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
