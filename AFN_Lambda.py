@@ -22,7 +22,7 @@ class AFN_Lambda:
                     self.estadosLimbo.append(estado)
 
 
-    def cargarDesdeArchivo(self, nombreArchivo):
+    def cargarDesdeArchivo(self, nombreArchivo) -> None:
         self.alfabeto = []
         self.estados = []
         self.estadoInicial = None
@@ -75,9 +75,17 @@ class AFN_Lambda:
                         letter, targets = letter.split('>')
 
                         if ';' not in targets:
-                            self.delta[source][letter] = targets
+                            if targets == source and letter == '$':
+                                print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
+                            else:
+                                self.delta[source][letter] = targets
                         else:
-                            targets = targets.split(';')
+                            targets: list[str] = targets.split(';')
+
+                            if letter == '$' and source in targets:
+                                targets.remove(source)
+                                print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
+
                             self.delta[source][letter] = targets
                         i += 1
 
@@ -163,10 +171,9 @@ class AFN_Lambda:
             allInaccesibleFound = True if currentState is None else False  # No hay más estados por recorrer
 
         inaccesibleStates = [state for state in isAccesible if not isAccesible[state]]
-        # self.estadosInaccesibles = inaccesibleStates
         return inaccesibleStates
 
-    def calcularLambdaClausura(self, st: str = None, states: list[str] = None):
+    def calcularLambdaClausura(self, st: str = None, states: list[str] = None) -> list[str]:
         if st is not None and states is not None:
             print("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
@@ -279,7 +286,7 @@ class AFN_Lambda:
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
-    def AFN_LambdaToAFN(self):
+    def AFN_LambdaToAFN(self) -> AFN:
 
         def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
             listCommas = [elem + ',' for elem in listToString]
@@ -325,8 +332,6 @@ class AFN_Lambda:
                     if len(intermediateStates) != 0:
                         # Tercer paso: calcular la lambda clausura de ese conjunto de estados:
                         targets = self.calcularLambdaClausura(states=intermediateStates)
-                        targets = list(set(targets))  # Remover duplicados
-                        targets.sort()  # Para que aparezcan en orden
 
                         # Cuarto paso: unir este nuevo target al delta de este estado con este carácter.
                         if len(targets) > 0:
@@ -340,10 +345,6 @@ class AFN_Lambda:
             newDelta[estado] = deltaState
 
         print(newDelta)
-
-        pass
-
-
 
 '''
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
@@ -384,6 +385,8 @@ print(secondAFNL.hallarEstadosInaccesibles())
 
 
 lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+
+print(lambdaClosureAFNL.__str__())
 lambdaClosureAFNL.AFN_LambdaToAFN()
 '''
 print(lambdaClosureAFNL.alfabeto)
