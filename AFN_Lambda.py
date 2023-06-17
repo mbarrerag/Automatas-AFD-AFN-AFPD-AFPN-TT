@@ -281,16 +281,16 @@ class AFN_Lambda:
         # Primer paso: calcular las lambda clausuras:
 
         lambdaClosures = {}  # Aquí guardaremos la lambda clausura de cada estado
-        lClosuresString = {}
+        lambdaClosuresString = {}
 
         print("Lambda Clausuras:")
         for estado in self.estados:
             lambdaClosure = self.calcularLambdaClausura(estado)
             lambdaClosures[estado] = lambdaClosure
             lambdaClosure = [state + ',' for state in lambdaClosure]
-            sequenceOfStates = ''.join(lambdaClosure)
-            sequenceOfStates = sequenceOfStates[:-1]  # Quitar la coma del final
-            print('$[' + estado + '] = {' + sequenceOfStates + '}')
+            sequenceOfStates = ('{' + ''.join(lambdaClosure)[:-1]) + '}'
+            lambdaClosuresString[estado] = sequenceOfStates
+            print('$[' + estado + '] = ' + sequenceOfStates)
 
         newDelta = {}  # El delta del nuevo autómata
 
@@ -304,10 +304,6 @@ class AFN_Lambda:
 
             for character in self.alfabeto:
                 # Segundo paso: calcular el delta de cada estado de la lambda clausura con el carácter
-
-                lambdaClosureCommas = [state + ',' for state in lambdaClosure]
-                lambdaClosureCommasSet = '{' + ''.join(lambdaClosureCommas)
-                print('d\'(' + estado + ',' + character + ') = $[d($[' + estado + ',' + character + ']) = $[d(' + lambdaClosureCommasSet + ')')
 
                 if character != '$':
                     intermediateStates = []
@@ -329,6 +325,14 @@ class AFN_Lambda:
                         # Cuarto paso: unir este nuevo target al delta de este estado con este carácter.
                         if len(targets) > 0:
                             deltaState[character] = targets[0] if len(targets) == 1 else targets
+
+                        print('d\'(' + estado + ',' + character +
+                              ') = $[d($[' + estado + '],' + character +
+                              ') = $[d(' + lambdaClosuresString[estado] + ',' + character + ')' +
+                              '')
+
+
+
 
             newDelta[estado] = deltaState
 
@@ -355,6 +359,7 @@ print(firstAFNL.__str__())
 
 secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 secondAFNL.AFN_LambdaToAFN()
+# print(secondAFNL.calcularLambdaClausura('s0'))
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
