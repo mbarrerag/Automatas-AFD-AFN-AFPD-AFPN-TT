@@ -58,7 +58,7 @@ class AFN:
                             self.delta[source][letter] = []
                         self.delta[source][letter] += target
                         i += 1
-        print(self.delta)
+        #print(self.delta)
 
     def hallarEstadosInaccesibles(self):
 
