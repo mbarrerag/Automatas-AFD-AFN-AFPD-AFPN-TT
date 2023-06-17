@@ -283,14 +283,18 @@ class AFN_Lambda:
         lambdaClosures = {}  # Aquí guardaremos la lambda clausura de cada estado
         lambdaClosuresString = {}
 
+        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para imprimir una lista como un set
+            listCommas = [elem + ',' for elem in listToString]
+            return '{' + ''.join(listCommas)[:-1] + '}'
+
         print("Lambda Clausuras:")
         for estado in self.estados:
             lambdaClosure = self.calcularLambdaClausura(estado)
             lambdaClosures[estado] = lambdaClosure
-            lambdaClosure = [state + ',' for state in lambdaClosure]
-            sequenceOfStates = ('{' + ''.join(lambdaClosure)[:-1]) + '}'
-            lambdaClosuresString[estado] = sequenceOfStates
-            print('$[' + estado + '] = ' + sequenceOfStates)
+
+            lClosureStr = printInSetFlavor(lambdaClosure)
+            lambdaClosuresString[estado] = lClosureStr
+            print('$[' + estado + '] = ' + lClosureStr)  # Imprimimos la lambda clausura de cada estado
 
         newDelta = {}  # El delta del nuevo autómata
 
@@ -328,16 +332,12 @@ class AFN_Lambda:
 
                         print('d\'(' + estado + ',' + character +
                               ') = $[d($[' + estado + '],' + character +
-                              ') = $[d(' + lambdaClosuresString[estado] + ',' + character + ')' +
-                              '')
-
-
-
+                              ') = $[d(' + lambdaClosuresString[estado] + ',' + character +
+                              ') = ' + printInSetFlavor(targets))
 
             newDelta[estado] = deltaState
 
-        # print(self.delta)
-        # print(newDelta)
+        print(newDelta)
 
         pass
 
