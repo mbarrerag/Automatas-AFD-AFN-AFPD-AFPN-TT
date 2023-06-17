@@ -87,21 +87,28 @@ class AFN_Lambda:
                     self.estadosLimbo.append(estado)
 
 
+    def _simplePrintIteration(self, listToPrint: list[str], title: str) -> str:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
+        output = title + '\n'
+        for obj in listToPrint:
+            output += obj + '\n'
+        return output
+
+
     def __str__(self):
         output = self.imprimirAFNLSimplificado()
 
-        output += _simplePrintIteration(self.estadosInaccesibles, '#inaccesible')
-        output += _simplePrintIteration(self.estadosLimbo, '#limbo')
+        output += self._simplePrintIteration(self.estadosInaccesibles, '#inaccesible')
+        output += self._simplePrintIteration(self.estadosLimbo, '#limbo')
 
         return output
 
     def imprimirAFNLSimplificado(self):
         output = '#!nfe\n'
 
-        output += _simplePrintIteration(self.alfabeto, '#alphabet')
-        output += _simplePrintIteration(self.estados, '#states')
+        output += self._simplePrintIteration(self.alfabeto, '#alphabet')
+        output += self._simplePrintIteration(self.estados, '#states')
         output += '#initial \n' + self.estadoInicial + '\n'
-        output += _simplePrintIteration(self.estadosAceptacion, '#accepting')
+        output += self._simplePrintIteration(self.estadosAceptacion, '#accepting')
 
         output += '#transitions \n'
         for estado in self.delta:
@@ -119,12 +126,6 @@ class AFN_Lambda:
 
                 output += estado + ":" + transition[0] + ">" + target + "\n"
 
-        return output
-
-    def _simplePrintIteration(self, listToPrint: list[str], title: str) -> bool:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
-        output = title + '\n'
-        for obj in listToPrint:
-            output += obj + '\n'
         return output
 
     def exportar(self, nombreArchivo):
@@ -358,8 +359,8 @@ print('\n')
 print(firstAFNL.__str__())
 '''
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
-secondAFNL.AFN_LambdaToAFN()
+# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+# secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("2", True))
@@ -382,7 +383,8 @@ print(secondAFNL.hallarEstadosInaccesibles())
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 
-#lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+lambdaClosureAFNL.AFN_LambdaToAFN()
 '''
 print(lambdaClosureAFNL.alfabeto)
 print(lambdaClosureAFNL.estados)
