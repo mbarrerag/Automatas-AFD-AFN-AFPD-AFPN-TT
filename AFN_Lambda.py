@@ -193,7 +193,9 @@ class AFN_Lambda:
                 currentState = stack.get() if not stack.empty() else None
                 allStatesFound = True if currentState is None else False
 
-        return lambdaClosure
+        lambdaClosure = list(set(lambdaClosure))  # Remover duplicados
+        lambdaClosure.sort()  # Para que aparezcan en orden los estados
+        return lambdaClosure  # Set para remover duplicados
 
     def procesarCadena(self, cadena: str, toPrint=False) -> bool:
         for character in cadena:
@@ -278,23 +280,20 @@ class AFN_Lambda:
 
     def AFN_LambdaToAFN(self):
 
+        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
+            listCommas = [elem + ',' for elem in listToString]
+            return '{' + ''.join(listCommas)[:-1] + '}'
+
         # Primer paso: calcular las lambda clausuras:
 
         lambdaClosures = {}  # Aquí guardaremos la lambda clausura de cada estado
-        lambdaClosuresString = {}
-
-        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para imprimir una lista como un set
-            listCommas = [elem + ',' for elem in listToString]
-            return '{' + ''.join(listCommas)[:-1] + '}'
 
         print("Lambda Clausuras:")
         for estado in self.estados:
             lambdaClosure = self.calcularLambdaClausura(estado)
             lambdaClosures[estado] = lambdaClosure
 
-            lClosureStr = printInSetFlavor(lambdaClosure)
-            lambdaClosuresString[estado] = lClosureStr
-            print('$[' + estado + '] = ' + lClosureStr)  # Imprimimos la lambda clausura de cada estado
+            print('$[' + estado + '] = ' + printInSetFlavor(lambdaClosure))  # Imprimimos la lambda clausura de cada estado
 
         newDelta = {}  # El delta del nuevo autómata
 
@@ -325,6 +324,8 @@ class AFN_Lambda:
                     if len(intermediateStates) != 0:
                         # Tercer paso: calcular la lambda clausura de ese conjunto de estados:
                         targets = self.calcularLambdaClausura(states=intermediateStates)
+                        targets = list(set(targets))  # Remover duplicados
+                        targets.sort()  # Para que aparezcan en orden
 
                         # Cuarto paso: unir este nuevo target al delta de este estado con este carácter.
                         if len(targets) > 0:
@@ -332,7 +333,7 @@ class AFN_Lambda:
 
                         print('d\'(' + estado + ',' + character +
                               ') = $[d($[' + estado + '],' + character +
-                              ') = $[d(' + lambdaClosuresString[estado] + ',' + character +
+                              ') = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
                               ') = ' + printInSetFlavor(targets))
 
             newDelta[estado] = deltaState
