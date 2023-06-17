@@ -335,8 +335,8 @@ print('\n')
 print(firstAFNL.__str__())
 '''
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
-secondAFNL.AFN_LambdaToAFN()
+#secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+#secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
