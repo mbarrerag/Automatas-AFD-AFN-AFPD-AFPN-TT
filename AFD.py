@@ -111,7 +111,7 @@ class AFD:
         self.delta = {state: transitions for state, transitions in self.delta.items() if state not in inaccesibles}
 
 
-    def cargar_desde_archivo(self, nombreArchivo):
+    """ def cargar_desde_archivo(self, nombreArchivo):
         self.alfabeto = []
         self.estados = []
         self.estadoInicial = None
@@ -150,7 +150,54 @@ class AFD:
                             if source not in self.delta:
                                 self.delta[source] = {}
                             self.delta[source][letter] = target
-                            i += 1
+                            i += 1 """
+
+    def cargar_desde_archivo(self, nombreArchivo):
+        self.alfabeto = []
+        self.estados = []
+        self.estadoInicial = None
+        self.estadosAceptacion = []
+        self.delta = {}
+        self.estadosLimbo = []
+        self.estadosInaccesibles = []
+
+        secciones = {"#alphabet": [], "#states": [], "#initial": [], "#accepting": [], "#transitions": []}
+        seccion_actual = None
+
+        with open(nombreArchivo, 'r') as f:
+            lines = f.readlines()
+            
+            # Identificar las secciones
+            for line in lines:
+                line = line.strip()
+                if line in secciones:
+                    seccion_actual = line
+                elif seccion_actual and line:  # Aquí verificamos que la línea no esté vacía
+                    secciones[seccion_actual].append(line)
+
+            # Procesar cada sección
+            for line in secciones['#alphabet']:
+                start, end = line.split('-')
+                self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
+
+            for line in secciones['#states']:
+                self.estados.append(line)
+
+            for line in secciones['#initial']:
+                self.estadoInicial = line
+
+            for line in secciones['#accepting']:
+                self.estadosAceptacion.append(line)
+
+            for line in secciones['#transitions']:
+                if line:  # Aquí también verificamos que la línea no esté vacía antes de dividirla
+                    source, letter = line.split(':')
+                    letter, target = letter.split('>')
+                    if source not in self.delta:
+                        self.delta[source] = {}
+                    self.delta[source][letter] = target
+
+
 
     def exportar(self, nombreArchivo):
         with open(nombreArchivo, 'w') as f:
@@ -409,7 +456,7 @@ class AFD:
 #afd.verificarCorregirCompletitud()
 # afd.hallarEstadosInaccesibles()
 # afd.hallarEstadosLimbo()
-# print(afd)
+#print(afd)
 # afd.eliminar_estados_inaccesibles()
 
 # print(afd.imprimirAFDSimplificado())

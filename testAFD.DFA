@@ -1,4 +1,9 @@
 !DFA
+#transitions
+s0:b>s1
+s0:a>s1
+s1:a>s0
+s1:b>s0
 #alphabet
 a-d
 #states
@@ -12,10 +17,3 @@ s0
 #accepting
 s0
 s1
-#transitions
-s0:b>s1
-s0:a>s1
-s1:a>s0
-s1:b>s0
-
-
