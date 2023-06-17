@@ -111,47 +111,6 @@ class AFD:
         self.delta = {state: transitions for state, transitions in self.delta.items() if state not in inaccesibles}
 
 
-    """ def cargar_desde_archivo(self, nombreArchivo):
-        self.alfabeto = []
-        self.estados = []
-        self.estadoInicial = None
-        self.estadosAceptacion = []
-        self.delta = {}
-        self.estadosLimbo = []
-        self.estadosInaccesibles = []
-        with open(nombreArchivo, 'r') as f:
-            lines = f.readlines()
-
-            for i in range(len(lines)):  
-                    if lines[i].strip() == '#alphabet':
-                        letter_range = lines[i+1].strip()
-                        start, end = letter_range.split('-')
-                        self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
-                        i += 1
-
-                    if lines[i].strip() == '#states':
-                        while lines[i+1].strip() != '#initial':
-                            self.estados.append(lines[i+1].strip())
-                            i += 1
-                    
-                    if lines[i].strip() == '#initial':
-                        self.estadoInicial = lines[i+1].strip()
-                        i += 1 
-                    
-                    if lines[i].strip() == '#accepting':
-                        while lines[i+1].strip() != '#transitions':
-                            self.estadosAceptacion.append(lines[i+1].strip())
-                            i += 1
-
-                    if lines[i].strip() == '#transitions':
-                        while i < len(lines) and lines[i+1].strip() != '':
-                            source, letter = lines[i+1].strip().split(':')
-                            letter, target = letter.split('>')
-                            if source not in self.delta:
-                                self.delta[source] = {}
-                            self.delta[source][letter] = target
-                            i += 1 """
-
     def cargar_desde_archivo(self, nombreArchivo):
         self.alfabeto = []
         self.estados = []
@@ -177,8 +136,13 @@ class AFD:
 
             # Procesar cada sección
             for line in secciones['#alphabet']:
-                start, end = line.split('-')
-                self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
+                # Validar si es un rango o un caracter individual
+                if '-' in line and len(line.split('-')) == 2:  # Asegurarse de que la línea solo contenga dos partes
+                    start, end = line.split('-')
+                    self.alfabeto += [chr(x) for x in range(ord(start), ord(end) + 1) if chr(x) != '$']
+                else:
+                    if line != '$':
+                        self.alfabeto.append(line)
 
             for line in secciones['#states']:
                 self.estados.append(line)
@@ -196,7 +160,6 @@ class AFD:
                     if source not in self.delta:
                         self.delta[source] = {}
                     self.delta[source][letter] = target
-
 
 
     def exportar(self, nombreArchivo):
@@ -457,6 +420,7 @@ class AFD:
 # afd.hallarEstadosInaccesibles()
 # afd.hallarEstadosLimbo()
 #print(afd)
+#print(afd.alfabeto)
 # afd.eliminar_estados_inaccesibles()
 
 # print(afd.imprimirAFDSimplificado())
