@@ -22,9 +22,29 @@ class AFD:
         output = "!DFA\n"
 
         output += "#alphabet\n"
-        start = min(self.alfabeto)
-        end = max(self.alfabeto)
-        output += f"{start}-{end}\n"
+        
+        # Ordenar el alfabeto eliminando duplicados
+        sorted_alfabeto = sorted(set(self.alfabeto), key=ord)
+        
+        # Crear rangos
+        rangos = []
+        rango_actual = [sorted_alfabeto[0]]
+        
+        for i in range(1, len(sorted_alfabeto)):
+            if ord(sorted_alfabeto[i]) - ord(rango_actual[-1]) == 1:
+                rango_actual.append(sorted_alfabeto[i])
+            else:
+                rangos.append(rango_actual)
+                rango_actual = [sorted_alfabeto[i]]
+        rangos.append(rango_actual)
+
+        # Imprimir rangos
+        for rango in rangos:
+            if len(rango) > 1:
+                output += f"{rango[0]}-{rango[-1]}\n"
+            else:
+                output += f"{rango[0]}\n"
+
 
         output += "#states\n"
         estados_str = [str(estado) for estado in self.estados]
@@ -143,6 +163,9 @@ class AFD:
                 else:
                     if line != '$':
                         self.alfabeto.append(line)
+
+            # Convertir el alfabeto a un conjunto para eliminar duplicados, y luego volver a una lista
+            self.alfabeto = list(set(self.alfabeto))
 
             for line in secciones['#states']:
                 self.estados.append(line)
@@ -413,14 +436,14 @@ class AFD:
 
 
        
-#afd = AFD(nombreArchivo='testAFD.DFA')
+afd = AFD(nombreArchivo='testAFD.DFA')
 #afd1 = AFD(nombreArchivo='evenA.DFA')
 #afd2 = AFD(nombreArchivo='evenB.DFA')
 #afd.verificarCorregirCompletitud()
 # afd.hallarEstadosInaccesibles()
 # afd.hallarEstadosLimbo()
-#print(afd)
-#print(afd.alfabeto)
+print(afd)
+print(afd.alfabeto)
 # afd.eliminar_estados_inaccesibles()
 
 # print(afd.imprimirAFDSimplificado())
