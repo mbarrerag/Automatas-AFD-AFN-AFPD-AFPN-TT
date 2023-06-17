@@ -278,16 +278,37 @@ class AFN_Lambda:
 
     def AFN_LambdaToAFN(self):
 
+        # Primer paso: calcular las lambda clausuras:
+
+        lambdaClosures = {}  # Aquí guardaremos la lambda clausura de cada estado
+        lClosuresString = {}
+
+        print("Lambda Clausuras:")
+        for estado in self.estados:
+            lambdaClosure = self.calcularLambdaClausura(estado)
+            lambdaClosures[estado] = lambdaClosure
+            lambdaClosure = [state + ',' for state in lambdaClosure]
+            sequenceOfStates = ''.join(lambdaClosure)
+            sequenceOfStates = sequenceOfStates[:-1]  # Quitar la coma del final
+            print('$[' + estado + '] = {' + sequenceOfStates + '}')
+
         newDelta = {}  # El delta del nuevo autómata
 
+        print("\nTransiciones:")
+
         for estado in self.estados:
-            # Primer paso: calcular la lambda clausura
-            lambdaClosure = self.calcularLambdaClausura(estado)
+
+            lambdaClosure = lambdaClosures[estado]
 
             deltaState = {}  # Aquí guardaremos el delta del estado particular
 
             for character in self.alfabeto:
                 # Segundo paso: calcular el delta de cada estado de la lambda clausura con el carácter
+
+                lambdaClosureCommas = [state + ',' for state in lambdaClosure]
+                lambdaClosureCommasSet = '{' + ''.join(lambdaClosureCommas)
+                print('d\'(' + estado + ',' + character + ') = $[d($[' + estado + ',' + character + ']) = $[d(' + lambdaClosureCommasSet + ')')
+
                 if character != '$':
                     intermediateStates = []
 
@@ -315,9 +336,6 @@ class AFN_Lambda:
         # print(newDelta)
 
         pass
-
-
-
 
 
 
