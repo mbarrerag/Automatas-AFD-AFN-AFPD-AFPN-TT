@@ -57,35 +57,64 @@ class AFD:
                 if lines[i].strip() == '#transitions':
                     i += 1
                     while i < len(lines) and lines[i].strip() != '':
-                        source, consume, destiny, pushletter= lines[i].strip().split(':')
+                        source, consume, destiny, pushletter = lines[i].strip().split(':')
                         popletter, destiny = destiny.split('>')
                         if source not in self.delta:
                             self.delta[source] = {}
                         if consume not in self.delta[source]:
                             self.delta[source][consume] = ""
-                        self.delta[source][consume] = destiny
+                        self.delta[source][consume] = [destiny, pushletter, popletter]
                         i += 1
 
         #print(self.delta)   
     def modificarPila(self, operacion, parametro):
         def pop(self):
-            if (self.alfabetoPila[-1] != ""):
-                return -1
-            elif (self.alfabetoPila[-1] == parametro):
-                self.alfabetoPila.pop()
-            else: return -1 
-                
+            if (self.alfabetoPila == []):
+                return False
+            else: self.alfabetoPila.pop()
+               
         if operacion == 'push':
             self.alfabetoPila.append(parametro)
+            return True
         elif operacion == 'pop':
-            pop(self)     
+            pop(self)  
+            return True    
         elif operacion == 'remplazamiento':
-             if (self.alfabetoPila[-1] == ""):
-                return -1
+             if (self.alfabetoPila == []):
+                return False
              else: self.alfabetoPila.pop()
            
              self.alfabetoPila.append(parametro)
-             return 0
+             return True
+        
+
+    def procesarCadena (self, cadena):
+        estadoActual = self.estadoInicial
+        for simbolo in cadena: # convertir lista a tupla
+         
+            if estadoActual not in self.delta:
+
+                return False
+            destiny = estadoActual[0]
+            pushletter = estadoActual[1]
+            popletter = estadoActual[2]
+            def indetificacionOperacion(self):
+                
+                if pushletter != "$" and popletter != "$":
+                    return "remplazamiento"
+                elif pushletter != "$":
+                    return "push"
+                elif popletter != "$":
+                    return "pop"
+                else: return -1
+
+            operacionIdentificada = indetificacionOperacion()
+            if(operacionIdentificada == "remplzamiento" or operacionIdentificada == "pop"):
+               if(self.alfabetoPila[-1] != popletter):
+                   return False
+            if self.modificarPila(indetificacionOperacion(), pushletter):
+              estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
+        return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
 
 
 
