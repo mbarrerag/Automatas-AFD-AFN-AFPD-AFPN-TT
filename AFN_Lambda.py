@@ -287,7 +287,7 @@ class AFN_Lambda:
                     transitionsDone = step["transitionsDone"] + 1
 
         if toPrint:
-            print("Cadena '" + cadena + "':")
+            print("Cadena '" + cadena + "': " + stringAccepted.__str__())
             auxStack = LifoQueue()
             while not printStack.empty():
                 auxStack.put(printStack.get())
@@ -369,8 +369,8 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-print(secondAFNL.procesarCadena("0111012", True))
-# print(secondAFNL.procesarCadena("0", True))
+# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 # print(secondAFNL.procesarCadena("102", True))
