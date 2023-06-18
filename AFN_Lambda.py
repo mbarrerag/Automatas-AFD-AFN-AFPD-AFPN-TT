@@ -213,78 +213,82 @@ class AFN_Lambda:
         stringAccepted = False
         searchFinished = False
 
-        def possibleTransitionsFromHere(char: str):
-            deltaState = self.delta[currentState]
-            return True if '$' in deltaState or char in deltaState else False
+        def possibleTransitionsFromHere() -> bool:
+            if index+1 != len(cadena):
+                char = cadena[index+1]
+                deltaState = self.delta[currentState]
+                return True if '$' in deltaState or char in deltaState else False
+            else:
+                return False
 
         while not searchFinished:
-            if currentState in self.estadosAceptacion and index + 1 == len(cadena):
+            if currentState in self.estadosAceptacion and index+1 == len(cadena):
                 # Estamos en un estado de aceptación, y ya procesamos todos los caracteres
                 stringAccepted = True
                 searchFinished = True
-            # elif (currentState in noTransitionsFrom or index + 1 == len(cadena)) and exploringStack.empty():
-            elif (not possibleTransitionsFromHere(cadena[index+1]) or index + 1 == len(cadena)) and exploringStack.empty():
-                # Estamos en un estado de NO aceptación, desde este estado no hay transiciones a otros estados,
-                # y no tenemos transiciones pendientes por explorar en la pila. La cadena es rechazada
-                stringAccepted = False
-                searchFinished = True
-            # elif currentState in noTransitionsFrom or index + 1 == len(cadena):
-            elif (not possibleTransitionsFromHere(cadena[index+1])) or index + 1 == len(cadena):
-                # Como en el caso anterior, estamos en un estado de NO aceptación y desde este estado no hay
-                # forma de ir a otro estado. Sin embargo, sí hay transiciones pendientes por hacer
-                # Por tanto, tenemos que desapilar lo que esté en el tope de la pila, para volver allí.
-
-                step = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
-                currentState = step["state"]
-                transitionsUntilNow = transitionsDone
-                index = step["index"] + 1 if charToCurrentState != '$' else step["index"]
-                transitionsDone = step["transitionsDone"] + 1
-
-                for popTransition in range(0, transitionsUntilNow - transitionsDone + 1):
-                    printStack.get()
-                previousState = step["currentState"]
-                charToCurrentState = step["character"]
-                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
             else:
-                # En este caso vamos a hacer un paso computacional
-                currentChar = cadena[index + 1]  # Avanzamos al siguiente carácter de la cadena
+                # O no hemos terminado de procesar la cadena, o no estamos en un estado de aceptación, o ambas
+                if possibleTransitionsFromHere():
 
-                # Guardermos en la pila todos los pasos posibles que podríamos dar desde acá
-                # Esta función es útil para dicho propósito:
-                def pushIntoList(stateList, char):
-                    if stateList is not None:
-                        for st in stateList:
-                            pushStep = {
-                                "currentState": currentState,
-                                "character": char,
-                                "state": st,
-                                "index": index,
-                                "transitionsDone": transitionsDone
-                            }
-                            exploringStack.put(pushStep)
+                    currentChar = cadena[index + 1]  # Avanzamos al siguiente carácter de la cadena
 
-                transitions = self.delta.get(currentState)
-                lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
+                    # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
+                    def pushIntoList(stateList, char):
+                        if stateList is not None:
+                            for st in stateList:
+                                pushStep = {
+                                    "currentState": currentState,
+                                    "character": char,
+                                    "state": st,
+                                    "index": index,
+                                    "transitionsDone": transitionsDone
+                                }
+                                exploringStack.put(pushStep)
 
-                pushIntoList(lambdaStates, '$')
-                pushIntoList(charStates, currentChar)
+                    transitions = self.delta.get(currentState)
+                    lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
-                # Una vez hemos apilado todas las transiciones posibles, desapilamos la que acabamos de poner de última,
-                # y hacemos el paso computacional
-                if not exploringStack.empty():
-                    step = exploringStack.get()
+                    pushIntoList(lambdaStates, '$')
+                    pushIntoList(charStates, currentChar)
 
-                    # ------------- Primero hacemos esto para la pila de impresión de transiciones-------------------
-                    previousState = step["currentState"]
-                    charToCurrentState = step["character"]
-                    currentState = step["state"]
+                    # Una vez hemos apilado todas las transiciones posibles, desapilamos la que acabamos de poner de última,
+                    # y hacemos el paso computacional
+                    if not exploringStack.empty():
+                        step = exploringStack.get()
 
-                    printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
-                    # --------------------------------------------------------------------------------------------------
+                        # ------------- Primero hacemos esto para la pila de impresión de transiciones-------------------
+                        previousState = step["currentState"]
+                        charToCurrentState = step["character"]
+                        currentState = step["state"]
 
-                    # Ahora sí hacemos, como tal, el paso computacional:
-                    index = step["index"] + 1 if charToCurrentState != '$' else step["index"]
-                    transitionsDone = step["transitionsDone"] + 1
+                        printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+                        # --------------------------------------------------------------------------------------------------
+
+                        # Ahora sí hacemos, como tal, el paso computacional:
+                        index = step["index"] + 1 if charToCurrentState != '$' else step["index"]
+                        transitionsDone = step["transitionsDone"] + 1
+                else:
+                    # O no estamos en un estado de aceptación, o no hemos procesado toda la cadena, y no hay transiciones
+                    # posibles desde donde nos encontramos ahora mismo.
+                    if exploringStack.empty():
+                        # No tenemos transiciones pendientes por explorar en la pila. La cadena es rechazada porque no hay
+                        # más caminos que explorar
+                        stringAccepted = False
+                        searchFinished = True
+                    else:
+                        # Sí hay transiciones pendientes por hacer
+                        # Por tanto, desapilamos lo que esté en el tope de la pila, para volver allí.
+                        step = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
+                        currentState = step["state"]
+                        transitionsUntilNow = transitionsDone
+                        index = step["index"] + 1 if step["character"] != '$' else step["index"]
+                        transitionsDone = step["transitionsDone"] + 1
+
+                        for popTransition in range(0, transitionsUntilNow - transitionsDone + 1):
+                            printStack.get()
+                        previousState = step["currentState"]
+                        charToCurrentState = step["character"]
+                        printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
 
         if toPrint:
             print("Cadena '" + cadena + "': " + stringAccepted.__str__())
