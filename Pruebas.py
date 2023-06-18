@@ -1,6 +1,7 @@
 from AFD import AFD
 from AFN import AFN
 from AFN_Lambda import AFN_Lambda
+from AFPD import AFPD
 from queue import LifoQueue
 from Alfabeto import Alfabeto
 import ast
@@ -182,7 +183,11 @@ class ClasePrueba:
         # # Generar archivos
         # with open("toStringTestAFNL.NFE", "w") as file:
         #     file.write(toStringTestAFNL.__str__())
-         
+
+    def probarAFPD(self):
+        afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
+        print(afpd1.delta)
+        print(afpd1.procesarCadena('aabbb'))
     
 
 # Llamar a la función para probar el producto cartesiano
@@ -197,3 +202,4 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
 #clase_prueba.probarAFNLambda()
+clase_prueba.probarAFPD()

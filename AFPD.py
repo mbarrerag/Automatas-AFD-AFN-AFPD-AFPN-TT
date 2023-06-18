@@ -16,8 +16,8 @@ class AFPD:
 
     def cargar_desde_archivo(self, nombreArchivo):
         self.estados = []
-        self.estadoInicial = []
-        self.estadosAceptacion = None
+        self.estadoInicial = None
+        self.estadosAceptacion = []
         self.alfabetoCinta = []
         self.alfabetoPila = []
         self.delta = {}
@@ -93,11 +93,11 @@ class AFPD:
         for simbolo in cadena: # convertir lista a tupla
          
             if estadoActual not in self.delta:
-
                 return False
-            destiny = estadoActual[0]
-            pushletter = estadoActual[1]
-            popletter = estadoActual[2]
+            
+            destiny = self.delta[estadoActual][simbolo][0]
+            pushletter = self.delta[estadoActual][simbolo][1]
+            popletter = self.delta[estadoActual][simbolo][2]
             def indetificacionOperacion(self):
                 
                 if pushletter != "$" and popletter != "$":
@@ -108,12 +108,12 @@ class AFPD:
                     return "pop"
                 else: return -1
 
-            operacionIdentificada = indetificacionOperacion()
-            if(operacionIdentificada == "remplzamiento" or operacionIdentificada == "pop"):
-               if(self.alfabetoPila[-1] != popletter):
+            operacionIdentificada = indetificacionOperacion(self)
+            if(operacionIdentificada == "remplazamiento" or operacionIdentificada == "pop"):
+               if(self.alfabetoPila == [] or self.alfabetoPila[-1] != popletter):
                    return False
-            if self.modificarPila(indetificacionOperacion(), pushletter):
-              estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
+            if self.modificarPila(operacionIdentificada, pushletter):
+              estadoActual = destiny # convertir tupla de vuelta a lista
         return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
 
 
