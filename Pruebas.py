@@ -186,8 +186,10 @@ class ClasePrueba:
 
     def probarAFPD(self):
         afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
-        print(afpd1.delta)
-        print(afpd1.procesarCadena('aabbb'))
+        alfabeto = Alfabeto(afpd1.alfabeto)
+        cadena = alfabeto.generar_cadena_aleatoria(5)
+        print(cadena,end=" ")
+        print(afpd1.procesarCadena(cadena))
     
 
 # Llamar a la función para probar el producto cartesiano

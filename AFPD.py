@@ -94,10 +94,13 @@ class AFPD:
          
             if estadoActual not in self.delta:
                 return False
-            
-            destiny = self.delta[estadoActual][simbolo][0]
-            pushletter = self.delta[estadoActual][simbolo][1]
-            popletter = self.delta[estadoActual][simbolo][2]
+            try:
+                destiny = self.delta[estadoActual][simbolo][0]
+                pushletter = self.delta[estadoActual][simbolo][1]
+                popletter = self.delta[estadoActual][simbolo][2]
+            except:
+                #raise Exception("No way")
+                return False
             def indetificacionOperacion(self):
                 
                 if pushletter != "$" and popletter != "$":
