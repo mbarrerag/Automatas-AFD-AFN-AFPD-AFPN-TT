@@ -322,6 +322,7 @@ class MT:
         file.close()
 
 
+#prueba usando TM de palindromes pares
 
 #Turing = MT(nombreArchivo="MT.tm")  
 #print(Turing.procesarCadenaConDetalles("ababa"))
