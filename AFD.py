@@ -97,13 +97,22 @@ class AFD:
 
         
     def verificarCorregirCompletitud(self):
+        estadosLimbo = []  # Lista para mantener los estados que tienen transiciones al limbo
+
         for estado in self.estados:
             if estado not in self.delta:
                 self.delta[estado] = {}
-                for simbolo in self.alfabeto:
-                    self.delta[estado][simbolo] = 'limbo'
-                self.estadosLimbo.append(estado)
+
+            for simbolo in self.alfabeto:
+                if simbolo not in self.delta[estado]:  # Aquí verificamos si no hay transición definida para el símbolo
+                    self.delta[estado][simbolo] = 'limbo'  # Agregamos una transición al limbo para el símbolo
+                    if estado not in estadosLimbo:
+                        estadosLimbo.append(estado)  # Añadimos el estado a la lista de estados que tienen transiciones al limbo
+
+        self.estadosLimbo = estadosLimbo  # Actualizamos self.estadosLimbo con los estados que tienen transiciones al limbo
+
         return self.estadosLimbo
+
 
 
     def hallarEstadosLimbo(self):
@@ -436,14 +445,16 @@ class AFD:
 
 
        
-afd = AFD(nombreArchivo='testAFD.DFA')
+#afd = AFD(nombreArchivo='testAFD.DFA')
 #afd1 = AFD(nombreArchivo='evenA.DFA')
 #afd2 = AFD(nombreArchivo='evenB.DFA')
-#afd.verificarCorregirCompletitud()
+
 # afd.hallarEstadosInaccesibles()
 # afd.hallarEstadosLimbo()
-print(afd)
-print(afd.alfabeto)
+#print(afd)
+#print(afd.alfabeto)
+#afd.verificarCorregirCompletitud()
+#print(afd)
 # afd.eliminar_estados_inaccesibles()
 
 # print(afd.imprimirAFDSimplificado())
