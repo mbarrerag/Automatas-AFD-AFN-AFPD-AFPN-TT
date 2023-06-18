@@ -367,6 +367,7 @@ class AFN_Lambda:
 
         print(newDelta)
 
+
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 # print(firstAFNL.__str__())
 
