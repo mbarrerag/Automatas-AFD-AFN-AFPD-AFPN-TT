@@ -235,27 +235,16 @@ class AFN_Lambda:
                 # Por tanto, tenemos que desapilar lo que esté en el tope de la pila, para volver allí.
 
                 step = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
-                # currentState = step["state"]
-                currentState = step["currentState"]
-                index = step["index"]
-                # index = step["index"] + 1
+                currentState = step["state"]
                 transitionsUntilNow = transitionsDone
-                # transitionsDone -= step["transitionsDone"]
-                transitionsDone = step["transitionsDone"]
-                # transitionsDone = step["transitionsDone"] + 1
-                # for popTransition in range(0, transitionsUntilNow - transitionsDone):
-                for popTransition in range(0, transitionsUntilNow - step["transitionsDone"]):
+                index = step["index"] + 1 if charToCurrentState != '$' else step["index"]
+                transitionsDone = step["transitionsDone"] + 1
+
+                for popTransition in range(0, transitionsUntilNow - transitionsDone + 1):
                     printStack.get()
-                # if transitionsUntilNow - transitionsDone == 0:
-                #     while not printStack.empty():
-                #         printStack.get()
                 previousState = step["currentState"]
                 charToCurrentState = step["character"]
-                # printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
-                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + step["state"])
-                currentState = step["state"]
-                index += 1
-                transitionsDone += 1
+                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
             else:
                 # En este caso vamos a hacer un paso computacional
                 currentChar = cadena[index + 1]  # Avanzamos al siguiente carácter de la cadena
@@ -376,11 +365,11 @@ class AFN_Lambda:
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 # print(firstAFNL.__str__())
 
-# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
@@ -393,12 +382,12 @@ class AFN_Lambda:
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
-lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+# lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 
 # print(lambdaClosureAFNL.__str__())
 # print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
-print(lambdaClosureAFNL.procesarCadenaConDetalles('ba'))
+# print(lambdaClosureAFNL.procesarCadenaConDetalles('ba'))
 
 '''
 for state in lambdaClosureAFNL.estados:
