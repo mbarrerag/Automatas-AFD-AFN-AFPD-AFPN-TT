@@ -199,12 +199,9 @@ class AFN_Lambda:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
                                 "carácter no existe en el alfabeto del autómata: " + self.alfabeto.__str__())
 
-        noTransitionsFrom = self.estadosLimbo.copy()  # Esta es una variable util, porque nos permite guardar
-        # cuales estados no tienen transiciones desde ellos
-
-        exploringStack = LifoQueue()  # Cuando la unidad de control tiene varios caminos posibles, debe elegir uno.
-        # Los otros caminos que podría tomar
-        # desde acá se quedan guardados en la pila. Si más adelante llegamos a un punto en el que no se puede seguir
+        exploringStack = LifoQueue()  # Cuando la unidad de control tiene varios caminos posibles en un momento dado,
+        # debe elegir uno. Los otros caminos que podría tomar deben ser recordados de alguna forma. En este programa,
+        # esos caminos quedan guardados en esta pila. Si más adelante llegamos a un punto en el que no se puede seguir
         # procesando la cadena, iremos desapilando esta pila para poder optar por otro camino posible que esté apilado.
 
         printStack = LifoQueue()  # Una pila que recuerda las transiciones que llevamos, para poder luego imprimirlas
@@ -216,34 +213,49 @@ class AFN_Lambda:
         stringAccepted = False
         searchFinished = False
 
+        def possibleTransitionsFromHere(char: str):
+            deltaState = self.delta[currentState]
+            return True if '$' in deltaState or char in deltaState else False
+
         while not searchFinished:
             if currentState in self.estadosAceptacion and index + 1 == len(cadena):
                 # Estamos en un estado de aceptación, y ya procesamos todos los caracteres
                 stringAccepted = True
                 searchFinished = True
-            elif (currentState in noTransitionsFrom or index + 1 == len(cadena)) and exploringStack.empty():
+            # elif (currentState in noTransitionsFrom or index + 1 == len(cadena)) and exploringStack.empty():
+            elif (not possibleTransitionsFromHere(cadena[index+1]) or index + 1 == len(cadena)) and exploringStack.empty():
                 # Estamos en un estado de NO aceptación, desde este estado no hay transiciones a otros estados,
                 # y no tenemos transiciones pendientes por explorar en la pila. La cadena es rechazada
                 stringAccepted = False
                 searchFinished = True
-            elif currentState in noTransitionsFrom or index + 1 == len(cadena):
+            # elif currentState in noTransitionsFrom or index + 1 == len(cadena):
+            elif (not possibleTransitionsFromHere(cadena[index+1])) or index + 1 == len(cadena):
                 # Como en el caso anterior, estamos en un estado de NO aceptación y desde este estado no hay
                 # forma de ir a otro estado. Sin embargo, sí hay transiciones pendientes por hacer
                 # Por tanto, tenemos que desapilar lo que esté en el tope de la pila, para volver allí.
-                # phase = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
+
                 step = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
-                currentState = step["state"]
+                # currentState = step["state"]
+                currentState = step["currentState"]
                 index = step["index"]
+                # index = step["index"] + 1
                 transitionsUntilNow = transitionsDone
-                transitionsDone -= step["transitionsDone"]
-                for popTransition in range(0, transitionsUntilNow - transitionsDone):
+                # transitionsDone -= step["transitionsDone"]
+                transitionsDone = step["transitionsDone"]
+                # transitionsDone = step["transitionsDone"] + 1
+                # for popTransition in range(0, transitionsUntilNow - transitionsDone):
+                for popTransition in range(0, transitionsUntilNow - step["transitionsDone"]):
                     printStack.get()
-                if transitionsUntilNow - transitionsDone == 0:
-                    while not printStack.empty():
-                        printStack.get()
+                # if transitionsUntilNow - transitionsDone == 0:
+                #     while not printStack.empty():
+                #         printStack.get()
                 previousState = step["currentState"]
                 charToCurrentState = step["character"]
-                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+                # printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
+                printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + step["state"])
+                currentState = step["state"]
+                index += 1
+                transitionsDone += 1
             else:
                 # En este caso vamos a hacer un paso computacional
                 currentChar = cadena[index + 1]  # Avanzamos al siguiente carácter de la cadena
@@ -270,9 +282,7 @@ class AFN_Lambda:
 
                 # Una vez hemos apilado todas las transiciones posibles, desapilamos la que acabamos de poner de última,
                 # y hacemos el paso computacional
-                if exploringStack.empty():
-                    noTransitionsFrom.append(currentState)
-                else:
+                if not exploringStack.empty():
                     step = exploringStack.get()
 
                     # ------------- Primero hacemos esto para la pila de impresión de transiciones-------------------
@@ -388,7 +398,7 @@ lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 # print(lambdaClosureAFNL.__str__())
 # print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
-lambdaClosureAFNL.procesarCadenaConDetalles('ba')
+print(lambdaClosureAFNL.procesarCadenaConDetalles('ba'))
 
 '''
 for state in lambdaClosureAFNL.estados:
