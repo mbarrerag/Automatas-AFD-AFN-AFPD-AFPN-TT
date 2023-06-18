@@ -304,6 +304,117 @@ class AFN_Lambda:
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
+    def computarTodosLosProcesamientos(self, cadena) -> int:
+        for character in cadena:
+            if character not in self.alfabeto:
+                raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
+                                "carácter no existe en el alfabeto del autómata: " + self.alfabeto.__str__())
+
+        exploringStack = LifoQueue()
+        printStack = LifoQueue()
+        listOfProcessings = []  # Aquí guardamos todos los posibles procedimientos de esta cadena.
+
+        numberOfProcessings = 0
+
+        currentState = self.estadoInicial
+        index = -1  # El carácter que estamos procesando de la cadena
+        transitionsDone = 0
+
+        def calculateTransitionsFromHere() -> None:
+            currentChar = cadena[index + 1]  # Avanzamos al siguiente carácter de la cadena
+
+            # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
+            def pushIntoList(stateList, char):
+                if stateList is not None:
+                    for st in stateList:
+                        pushStep = {
+                            "currentState": currentState,
+                            "character": char,
+                            "state": st,
+                            "index": index,
+                            "transitionsDone": transitionsDone
+                        }
+                        exploringStack.put(pushStep)
+
+            transitions = self.delta.get(currentState)
+            lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
+
+            pushIntoList(lambdaStates, '$')
+            pushIntoList(charStates, currentChar)
+
+        def doStep(isComingBack: bool) -> None:
+            nonlocal currentState, index, transitionsDone
+
+            step = exploringStack.get()
+
+            previousState = step["currentState"]
+            charToCurrentState = step["character"]
+            currentState = step["state"]
+            # toStack = "(" + previousState + "," + charToCurrentState + ") --> " + currentState
+            toStack = previousState + "," + charToCurrentState + "-->"
+
+            transitionsUntilNow = transitionsDone
+            index = step["index"] + 1 if step["character"] != '$' else step["index"]
+            transitionsDone = step["transitionsDone"] + 1
+
+            if isComingBack:
+                for popTransition in range(0, transitionsUntilNow - transitionsDone + 1):
+                    printStack.get()
+
+            printStack.put(toStack)
+
+        def saveProcessingInfo(status: str) -> None:  # Para guardar los procesamientos y desplegarlos luego
+            nonlocal numberOfProcessings
+            processingString = ''
+            auxiliarStack = LifoQueue()
+            while not printStack.empty():
+                auxiliarStack.put(printStack.get())
+            while not auxiliarStack.empty():
+                subString = auxiliarStack.get()
+                processingString += subString
+                printStack.put(subString)
+            processingString += "," + currentState
+            processingString += ".  " + status
+            listOfProcessings.append(processingString)
+            numberOfProcessings += 1
+
+        def possibleTransitionsFromHere() -> bool:
+            if index+1 != len(cadena):
+                char = cadena[index+1]
+                deltaState = self.delta[currentState]
+                return True if '$' in deltaState or char in deltaState else False
+            else:
+                return False
+
+        searchFinished = False
+
+        while not searchFinished:
+            flag = True
+            if index+1 == len(cadena):
+                status = "Aceptada" if currentState in self.estadosAceptacion else "Rechazada"
+                saveProcessingInfo(status)
+            else:
+                if possibleTransitionsFromHere():
+                    calculateTransitionsFromHere()
+                    flag = False
+                else:
+                    saveProcessingInfo("Abortada")
+
+            if not exploringStack.empty():
+                doStep(isComingBack=flag)
+            else:
+                searchFinished = True
+
+        print("Cadena '" + cadena + "': ")
+        for processing in listOfProcessings:
+            print(processing)
+
+        return numberOfProcessings
+
+
+
+
+
     def AFN_LambdaToAFN(self) -> AFN:
 
         def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
@@ -366,8 +477,6 @@ class AFN_Lambda:
 
         print(newDelta)
 
-    def computarTodosLosProcesamientos(self) -> int:
-        return 1
 
 
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
@@ -377,7 +486,7 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.computarTodosLosProcesamientos("0111012"))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
@@ -408,3 +517,7 @@ print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 
 # toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
 # print(toStringTestAFNL.__str__())
+
+# bifucationANFL = AFN_Lambda(nombreArchivo="bifurcationTest.NFE")
+# print(bifucationANFL.__str__())
+# print(bifucationANFL.procesarCadenaConDetalles('b'))
