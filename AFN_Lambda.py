@@ -74,19 +74,14 @@ class AFN_Lambda:
                         source, letter = lines[i + 1].strip().split(':')
                         letter, targets = letter.split('>')
 
-                        if ';' not in targets:
-                            if targets == source and letter == '$':
-                                print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
-                            else:
-                                self.delta[source][letter] = targets
-                        else:
-                            targets: list[str] = targets.split(';')
+                        targets: list[str] = targets.split(';')
+                        if letter == '$' and source in targets:
+                            targets.remove(source)
+                            print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
 
-                            if letter == '$' and source in targets:
-                                targets.remove(source)
-                                print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
-
+                        if len(targets) != 0:
                             self.delta[source][letter] = targets
+
                         i += 1
 
             self.estadosInaccesibles = self.hallarEstadosInaccesibles()
@@ -124,12 +119,11 @@ class AFN_Lambda:
 
             for transition in listOfTransitions:
                 target = transition[1]
-                if type(target) == list:
-                    auxTarget = target.copy()
-                    target = ""
-                    for i in range(0, len(auxTarget)):
-                        target += auxTarget[i] + ";"
-                    target = target.removesuffix(';')
+                auxTarget = target.copy()
+                target = ""
+                for i in range(0, len(auxTarget)):
+                    target += auxTarget[i] + ";"
+                target = target.removesuffix(';')
 
                 output += estado + ":" + transition[0] + ">" + target + "\n"
 
@@ -155,11 +149,8 @@ class AFN_Lambda:
             targets = list(stateDelta.values())  # Hallamos los estados a los que hay transiciones desde este estado
 
             for target in targets:
-                if type(target) == list:  # Si se trata de una lista de estados, se deben individualizar
-                    for individualState in target:
-                        newAccesibleStates.append(individualState)
-                else:
-                    newAccesibleStates.append(target)
+                for individualState in target:
+                    newAccesibleStates.append(individualState)
             newAccesibleStates = list(dict.fromkeys(newAccesibleStates))
 
             for accesibleState in newAccesibleStates:
@@ -180,18 +171,16 @@ class AFN_Lambda:
             states = [st]
 
         lambdaClosure = states.copy()  # Los estados mismos pertenecen a su lambda clausura
-        for sta in states:
+        for state in states:
             stack = LifoQueue()
 
-            currentState = sta
+            currentState = state
             allStatesFound = False
             while not allStatesFound:
                 transitions = self.delta.get(currentState)
                 lambdaStates = transitions.get('$')
 
                 if lambdaStates is not None:
-                    if type(lambdaStates) is not list:
-                        lambdaStates = [lambdaStates]
                     for targetState in lambdaStates:
                         if not lambdaClosure.__contains__(targetState):
                             lambdaClosure.append(targetState)
@@ -215,11 +204,15 @@ class AFN_Lambda:
 
         noTransitionsFrom = self.estadosLimbo.copy()
 
-        exploringStack = LifoQueue()
-        printStack = LifoQueue()
+        exploringStack = LifoQueue()  # Cuando la unidad de control tiene varios caminos posibles, debe elegir uno.
+        # Los otros caminos que podría tomar
+        # desde acá se quedan guardados en la pila. Si más adelante llegamos a un punto en el que no se puede seguir
+        # procesando la cadena, iremos desapilando esta pila para poder optar por otro camino posible que esté apilado.
+
+        printStack = LifoQueue()  # Una pila que recuerda las transiciones que llevamos, para poder luego imprimirlas
 
         currentState = self.estadoInicial
-        index = -1
+        index = -1  # El carácter que estamos procesando de la cadena
         transitionsDone = 0
 
         stringAccepted = False
@@ -227,19 +220,28 @@ class AFN_Lambda:
 
         while not searchFinished:
             if currentState in self.estadosAceptacion and index + 1 == len(cadena):
+                # Estamos en un estado de aceptación, y ya procesamos todos los caracteres
                 stringAccepted = True
                 searchFinished = True
             elif (currentState in noTransitionsFrom or index + 1 == len(cadena)) and exploringStack.empty():
+                # Estamos en un estado de NO aceptación, desde este estado no hay transiciones a otros estados,
+                # y no tenemos transiciones pendientes por explorar en la pila. La cadena es rechazada
                 stringAccepted = False
                 searchFinished = True
             elif currentState in noTransitionsFrom or index + 1 == len(cadena):
-                phase = exploringStack.get()
+                # Como en el caso anterior, estamos en un estado de NO aceptación y desde este estado no hay
+                # forma de ir a otro estado. Sin embargo, sí hay transiciones pendientes por hacer
+                # Por tanto, tenemos que desapilar lo que esté en el tope de la pila, para volver allí.
+                phase = exploringStack.get()  # Nos devolvemos en el procesamiento y tomamos un nuevo camino
                 currentState = phase[2]
                 index = phase[3]
                 previousTransitionsDone = transitionsDone
                 transitionsDone -= phase[4]
                 for popTransition in range(0, previousTransitionsDone - transitionsDone):
                     printStack.get()
+                if previousTransitionsDone - transitionsDone == 0:
+                    while not printStack.empty():
+                        printStack.get()
                 previousState = phase[0]
                 charToCurrentState = phase[1]
                 printStack.put("(" + previousState + "," + charToCurrentState + ") --> " + currentState)
@@ -248,8 +250,6 @@ class AFN_Lambda:
 
                 def pushIntoList(stateList, char):
                     if stateList is not None:
-                        if type(stateList) is not list:
-                            stateList = [stateList]
                         for st in stateList:
                             exploringStack.put([currentState, char, st, index, transitionsDone])
 
@@ -347,30 +347,15 @@ class AFN_Lambda:
 
         print(newDelta)
 
+# firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+# print(firstAFNL.__str__())
 
-lambdaTest = AFN_Lambda(nombreArchivo="lambdaTest.NFE")
-print(lambdaTest.calcularLambdaClausura(states=lambdaTest.estados))
-lambdaTest.AFN_LambdaToAFN()
-
-'''
-firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
-
-print(firstAFNL.alfabeto)
-print(firstAFNL.estados)
-print(firstAFNL.estadoInicial)
-print(firstAFNL.estadosAceptacion)
-print(firstAFNL.delta)
-print(firstAFNL.hallarEstadosInaccesibles())
-
-print('\n')
-print(firstAFNL.__str__())
-'''
-
-# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 # print(secondAFNL.procesarCadena("102", True))
@@ -379,30 +364,15 @@ print(firstAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
 # secondAFNL.exportar("HolaMundo.nfe")
 
-'''
-print(secondAFNL.alfabeto)
-print(secondAFNL.estados)
-print(secondAFNL.estadoInicial)
-print(secondAFNL.estadosAceptacion)
-print(secondAFNL.delta)
-print(secondAFNL.hallarEstadosInaccesibles())
-'''
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
-
 
 # lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
 
 # print(lambdaClosureAFNL.__str__())
+# print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
-'''
-print(lambdaClosureAFNL.alfabeto)
-print(lambdaClosureAFNL.estados)
-print(lambdaClosureAFNL.estadoInicial)
-print(lambdaClosureAFNL.estadosAceptacion)
-print(lambdaClosureAFNL.delta)
-print(lambdaClosureAFNL.hallarEstadosInaccesibles())
-'''
+# lambdaClosureAFNL.procesarCadenaConDetalles('ba')
 
 '''
 for state in lambdaClosureAFNL.estados:
