@@ -1,10 +1,5 @@
 #alphabet
 a-b
-#states
-q1
-q2
-q3
-q4
 #initial
 q1
 #accepting
@@ -18,4 +13,8 @@ q3:a>q1
 q3:b>q4
 q4:a>q2
 q4:b>q3
-
+#states
+q1
+q2
+q3
+q4

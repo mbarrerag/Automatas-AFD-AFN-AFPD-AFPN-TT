@@ -1,3 +1,3 @@
-aba	q1,a --> q3,b --> q4,a --> q2	no
-abbaa	q1,a --> q3,b --> q4,b --> q3,a --> q1,a --> q3	no
-abbabaabbbbb	q1,a --> q3,b --> q4,b --> q3,a --> q1,b --> q2,a --> q4,a --> q2,b --> q1,b --> q2,b --> q1,b --> q2,b --> q1	si
+aba	False	no
+abbaa	False	no
+abbabaabbbbb	False	no
