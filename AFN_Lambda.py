@@ -22,6 +22,8 @@ class AFN_Lambda:
                 if len(self.delta.get(estado)) == 0:
                     self.estadosLimbo.append(estado)
 
+            print("¡Autómata creado!")
+
     def cargarDesdeArchivo(self, nombreArchivo) -> None:
         self.alfabeto = []
         self.estados = []
@@ -88,6 +90,8 @@ class AFN_Lambda:
             for estado in self.delta:
                 if len(self.delta.get(estado)) == 0:
                     self.estadosLimbo.append(estado)
+        print("¡Autómata creado!")
+
 
     def _simplePrintIteration(self, listToPrint: list[str],
                               title: str) -> str:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
@@ -276,7 +280,7 @@ class AFN_Lambda:
                     # las apilamos
 
                     if not exploringStack.empty():
-                        doStep(False)  # Hacemos un paso computacional
+                        doStep(isComingBack=False)  # Hacemos un paso computacional
                 else:
                     # No podemos seguir por este camino
                     if exploringStack.empty():
@@ -285,7 +289,7 @@ class AFN_Lambda:
                         stringAccepted = False
                         searchFinished = True
                     else:
-                        doStep(True)  # Hacemos un paso computacional, desapilando del stack de impresión las transiciones
+                        doStep(isComingBack=True)  # Hacemos un paso computacional, desapilando del stack de impresión las transiciones
                         # que no vamos a usar
 
         if toPrint:
@@ -303,8 +307,7 @@ class AFN_Lambda:
 
     def AFN_LambdaToAFN(self) -> AFN:
 
-        def printInSetFlavor(
-                listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
+        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
             listCommas = [elem + ',' for elem in listToString]
             return '{' + ''.join(listCommas)[:-1] + '}'
 
@@ -371,7 +374,7 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
@@ -385,7 +388,7 @@ print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 # lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-
+#
 # print(lambdaClosureAFNL.__str__())
 # print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
