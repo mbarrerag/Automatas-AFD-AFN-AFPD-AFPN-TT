@@ -80,10 +80,12 @@ class AFD:
         elif operacion == 'pop':
             pop(self)     
         elif operacion == 'remplazamiento':
-            pop(self)
-            self.alfabetoPila.append(parametro)
-            return 0
+             if (self.alfabetoPila[-1] == ""):
+                return -1
+             else: self.alfabetoPila.pop()
+           
+             self.alfabetoPila.append(parametro)
+             return 0
 
 
 
-   
