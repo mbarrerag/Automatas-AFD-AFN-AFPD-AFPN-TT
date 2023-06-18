@@ -1,7 +1,6 @@
 from queue import LifoQueue
 from AFN import AFN
 
-
 class AFN_Lambda:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None,
                  nombreArchivo=None):
@@ -366,6 +365,9 @@ class AFN_Lambda:
             newDelta[estado] = deltaState
 
         print(newDelta)
+
+    def computarTodosLosProcesamientos(self) -> int:
+        return 1
 
 
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
