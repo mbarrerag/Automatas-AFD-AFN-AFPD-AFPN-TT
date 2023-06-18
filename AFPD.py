@@ -99,7 +99,7 @@ class AFPD:
                 pushletter = self.delta[estadoActual][simbolo][1]
                 popletter = self.delta[estadoActual][simbolo][2]
             except:
-                #raise Exception("No way")
+                #raise Exception("No hay camino posible")
                 return False
             def indetificacionOperacion(self):
                 
@@ -118,6 +118,47 @@ class AFPD:
             if self.modificarPila(operacionIdentificada, pushletter):
               estadoActual = destiny # convertir tupla de vuelta a lista
         return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
-
-
+    
+    def isPilaEmpty(self):
+        if self.alfabetoPila == []:
+            return True
+        else:
+            return False
+    
+    def procesarCadenaConDetalles(self, cadena):
+        estadoActual = self.estadoInicial
+        procesamiento = f"{estadoActual}"
+        for simbolo in cadena: # convertir lista a tupla
+         
+            if estadoActual not in self.delta:
+                return False
+            
+            try:
+                destiny = self.delta[estadoActual][simbolo][0]
+                pushletter = self.delta[estadoActual][simbolo][1]
+                popletter = self.delta[estadoActual][simbolo][2]
+                
+            except:
+                #raise Exception("No hay camino posible")
+                return False
+            def indetificacionOperacion(self):
+                
+                if pushletter != "$" and popletter != "$":
+                    return "remplazamiento"
+                elif pushletter != "$":
+                    return "push"
+                elif popletter != "$":
+                    return "pop"
+                else: return -1
+            
+            
+            operacionIdentificada = indetificacionOperacion(self)
+            if(operacionIdentificada == "remplazamiento" or operacionIdentificada == "pop"):
+               if(self.isPilaEmpty() or self.alfabetoPila[-1] != popletter):
+                   return False
+            procesamiento += f",{simbolo},{self.alfabetoPila} --> {destiny}"            
+            if self.modificarPila(operacionIdentificada, pushletter):
+              estadoActual = destiny # convertir tupla de vuelta a lista
+        print(procesamiento)
+        return estadoActual in self.estadosAceptacion and self.isPilaEmpty()  # convertir a tupla antes de chequear
 

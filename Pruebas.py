@@ -190,6 +190,7 @@ class ClasePrueba:
         cadena = alfabeto.generar_cadena_aleatoria(5)
         print(cadena,end=" ")
         print(afpd1.procesarCadena(cadena))
+        afpd1.procesarCadenaConDetalles(cadena)
     
 
 # Llamar a la función para probar el producto cartesiano
