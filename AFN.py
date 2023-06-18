@@ -139,7 +139,6 @@ class AFN:
 
         for estado in self.estados:
             estadosAFD.append(estado)
-        print("comienza el while: ")
         while True:
             copiaEstadosAFD = estadosAFD.copy()
             for estado in estadosAFD:
