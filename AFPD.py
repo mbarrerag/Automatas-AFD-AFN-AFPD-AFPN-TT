@@ -1,6 +1,6 @@
 from AFD import AFD
 
-class AFD:
+class AFPD:
     def __init__(self, estados=None, estadoInicial=None, estadosAceptacion=None, alfabetoCinta=None, alfabetoPila = None, delta=None, nombreArchivo=None):
         if nombreArchivo:
             self.cargar_desde_archivo(nombreArchivo)
