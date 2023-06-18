@@ -187,7 +187,8 @@ class ClasePrueba:
     def probarAFPD(self):
         afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
         alfabeto = Alfabeto(afpd1.alfabeto)
-        cadena = alfabeto.generar_cadena_aleatoria(5)
+        #cadena = alfabeto.generar_cadena_aleatoria(5)
+        cadena = 'aaaab'
         print(cadena,end=" ")
         print(afpd1.procesarCadena(cadena))
         afpd1.procesarCadenaConDetalles(cadena)
