@@ -1,0 +1,10 @@
+baabaabbb	False	no
+bb	False	no
+bbabbaaa	False	no
+bababbbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbabbaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aabbaaabb	False	no
+aababaaa	False	no
