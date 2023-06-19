@@ -4,6 +4,7 @@ from AFN_Lambda import AFN_Lambda
 from AFPD import AFPD
 from queue import LifoQueue
 from Alfabeto import Alfabeto
+from MT import MT
 import ast
 import random
 
@@ -234,6 +235,16 @@ class ClasePrueba:
         #print(afpd2.delta)
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
+    def probarMT(self):
+        #prueba usando TM de palindromes pares
+
+        Turing = MT(nombreArchivo="MT.tm")  
+        print(Turing.procesarCadenaConDetalles("ababa"))
+        print(Turing.procesarCadena("ababa"))
+        print(Turing.procesarFuncion("aabbaa"))
+        Turing.procesarListaCadenas(["aaaa", "aabbaa", "ababa"], "resultadosTM.txt", True)
+        print(Turing)
+        
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
@@ -248,10 +259,31 @@ clase_prueba = ClasePrueba()
 #clase_prueba.simplificacionAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.validarAFNtoAFD() #validacion con mas de 5000 cadenas
+<<<<<<< Updated upstream
 #------------AFNL--------------
 
+=======
+<<<<<<< HEAD
+#------------
+#clase_prueba.probarProductoCartesiano()
+#clase_prueba.probarSimplificacion()
+=======
+#------------AFNL--------------
+
+>>>>>>> d9d067194e04a1ff05b2f68403d06e6c8d123088
+>>>>>>> Stashed changes
 
 #clase_prueba.probarAFNLambda()
 #-------------AFPD-----------------
 #clase_prueba.probarAFPD()
+<<<<<<< Updated upstream
 clase_prueba.probarAFPDProductoCartesianoAFD()
+=======
+<<<<<<< HEAD
+#clase_prueba.probarAFPDProductoCartesianoAFD()
+#--------------MT------------------
+clase_prueba.probarMT()
+=======
+clase_prueba.probarAFPDProductoCartesianoAFD()
+>>>>>>> d9d067194e04a1ff05b2f68403d06e6c8d123088
+>>>>>>> Stashed changes

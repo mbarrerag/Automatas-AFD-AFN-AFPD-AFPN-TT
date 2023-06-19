@@ -480,9 +480,9 @@ class AFD:
 #print(afd.hallarComplemento())
 #print(afd.hallarProductoCartesianoY(afd,afd3))
 #print(afd.hallarProductoCartesianoO(afd,afd3))
-afd4 = AFD(nombreArchivo='minTest.DFA')
-afd4.simplificarAFD()
-print(afd4)
+#afd4 = AFD(nombreArchivo='minTest.DFA')
+#afd4.simplificarAFD()
+#print(afd4)
 
 
 
