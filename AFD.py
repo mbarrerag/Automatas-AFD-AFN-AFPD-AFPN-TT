@@ -4,6 +4,7 @@ class AFD:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
         if nombreArchivo:
             self.cargar_desde_archivo(nombreArchivo)
+            self.verificarCorregirCompletitud()
             
         else:
             self.alfabeto = alfabeto
@@ -14,17 +15,34 @@ class AFD:
             self.estadosLimbo = []
             self.estadosInaccesibles = []
 
-        #self.verificarCorregirCompletitud()
-        #self.hallarEstadosInaccesibles()
             
-
     def __str__(self):
         output = "!DFA\n"
 
         output += "#alphabet\n"
-        start = min(self.alfabeto)
-        end = max(self.alfabeto)
-        output += f"{start}-{end}\n"
+        
+        # Ordenar el alfabeto eliminando duplicados
+        sorted_alfabeto = sorted(set(self.alfabeto), key=ord)
+        
+        # Crear rangos
+        rangos = []
+        rango_actual = [sorted_alfabeto[0]]
+        
+        for i in range(1, len(sorted_alfabeto)):
+            if ord(sorted_alfabeto[i]) - ord(rango_actual[-1]) == 1:
+                rango_actual.append(sorted_alfabeto[i])
+            else:
+                rangos.append(rango_actual)
+                rango_actual = [sorted_alfabeto[i]]
+        rangos.append(rango_actual)
+
+        # Imprimir rangos
+        for rango in rangos:
+            if len(rango) > 1:
+                output += f"{rango[0]}-{rango[-1]}\n"
+            else:
+                output += f"{rango[0]}\n"
+
 
         output += "#states\n"
         estados_str = [str(estado) for estado in self.estados]
@@ -46,6 +64,7 @@ class AFD:
         
         output += "#inaccessible\n"
         output += "\n".join(sorted(self.estadosInaccesibles)) + "\n"
+
         output += "#limbo\n"
         output += "\n".join(sorted(self.estadosLimbo)) + "\n"
 
@@ -74,23 +93,37 @@ class AFD:
         
         return output
 
-
         
     def verificarCorregirCompletitud(self):
+        limbo_transitions_added = False  # Marcador para rastrear si se han agregado transiciones al estado de limbo
+
         for estado in self.estados:
             if estado not in self.delta:
                 self.delta[estado] = {}
-                for simbolo in self.alfabeto:
-                    self.delta[estado][simbolo] = 'limbo'
-                self.estadosLimbo.append(estado)
+
+            for simbolo in self.alfabeto:
+                if simbolo not in self.delta[estado]:  # Verificamos si no hay transición definida para el símbolo
+                    self.delta[estado][simbolo] = 'limbo'  # Agregamos una transición al limbo para el símbolo
+                    limbo_transitions_added = True
+
+        # Agregar el estado de limbo a la lista de estados si es necesario
+        if 'limbo' not in self.estados and limbo_transitions_added:
+            self.estados.append('limbo')
+
         return self.estadosLimbo
+
 
 
     def hallarEstadosLimbo(self):
         for estado in self.estados:
             if estado not in self.delta:
-                self.estadosLimbo.append(estado)
+                self.delta[estado] = {}
+                        # Verificar si todas las transiciones de un estado apuntan al limbo
+            if all(value == 'limbo' for value in self.delta[estado].values()):
+                if estado not in self.estadosLimbo and estado not in self.estadosAceptacion:
+                    self.estadosLimbo.append(estado)
         return self.estadosLimbo
+
     
     
     def hallarEstadosInaccesibles(self):
@@ -119,38 +152,58 @@ class AFD:
         self.delta = {}
         self.estadosLimbo = []
         self.estadosInaccesibles = []
+
+        secciones = {"#alphabet": [], "#states": [], "#initial": [], "#accepting": [], "#transitions": [], "#limbo": [], "#inaccessible": []}
+        seccion_actual = None
+
         with open(nombreArchivo, 'r') as f:
             lines = f.readlines()
+            
+            # Identificar las secciones
+            for line in lines:
+                line = line.strip()
+                if line in secciones:
+                    seccion_actual = line
+                elif seccion_actual and line:  # Aquí verificamos que la línea no esté vacía
+                    secciones[seccion_actual].append(line)
 
-            for i in range(len(lines)):  
-                    if lines[i].strip() == '#alphabet':
-                        letter_range = lines[i+1].strip()
-                        start, end = letter_range.split('-')
-                        self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
-                        i += 1
+            # Procesar cada sección
+            for line in secciones['#alphabet']:
+                # Validar si es un rango o un caracter individual
+                if '-' in line and len(line.split('-')) == 2:  # Asegurarse de que la línea solo contenga dos partes
+                    start, end = line.split('-')
+                    self.alfabeto += [chr(x) for x in range(ord(start), ord(end) + 1) if chr(x) != '$']
+                else:
+                    if line != '$':
+                        self.alfabeto.append(line)
 
-                    if lines[i].strip() == '#states':
-                        while lines[i+1].strip() != '#initial':
-                            self.estados.append(lines[i+1].strip())
-                            i += 1
-                    
-                    if lines[i].strip() == '#initial':
-                        self.estadoInicial = lines[i+1].strip()
-                        i += 1 
-                    
-                    if lines[i].strip() == '#accepting':
-                        while lines[i+1].strip() != '#transitions':
-                            self.estadosAceptacion.append(lines[i+1].strip())
-                            i += 1
+            # Convertir el alfabeto a un conjunto para eliminar duplicados, y luego volver a una lista
+            self.alfabeto = list(set(self.alfabeto))
 
-                    if lines[i].strip() == '#transitions':
-                        while i < len(lines) and lines[i+1].strip() != '':
-                            source, letter = lines[i+1].strip().split(':')
-                            letter, target = letter.split('>')
-                            if source not in self.delta:
-                                self.delta[source] = {}
-                            self.delta[source][letter] = target
-                            i += 1
+            for line in secciones['#states']:
+                self.estados.append(line)
+
+            for line in secciones['#initial']:
+                self.estadoInicial = line
+
+            for line in secciones['#accepting']:
+                self.estadosAceptacion.append(line)
+
+            for line in secciones['#transitions']:
+                if line:  # Aquí también verificamos que la línea no esté vacía antes de dividirla
+                    source, letter = line.split(':')
+                    letter, target = letter.split('>')
+                    if source not in self.delta:
+                        self.delta[source] = {}
+                    self.delta[source][letter] = target
+
+            for line in secciones['#limbo']:
+                self.estadosLimbo.append(line)
+
+            for line in secciones['#inaccessible']:
+                self.estadosInaccesibles.append(line)
+
+
 
     def exportar(self, nombreArchivo):
         with open(nombreArchivo, 'w') as f:
@@ -167,12 +220,20 @@ class AFD:
     
     def procesar_cadena_con_detalles(self, cadena):
         estadoActual = self.estadoInicial
-        for simbolo in cadena: # convertir lista a tupla
+        procesamiento = f"[{estadoActual},{cadena}]"
+        for i, simbolo in enumerate(cadena):
             if estadoActual not in self.delta:
                 return False
-            print(f"{estadoActual},{simbolo} --> {self.delta[estadoActual][simbolo]}")
-            estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
-        return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
+            estadoActual = self.delta[estadoActual][simbolo]
+            if cadena[i+1:]:  # Solo agregue la siguiente transición si la cadena que se procesará a continuación no está vacía
+                procesamiento += f"->[{estadoActual},{cadena[i+1:]}]"
+        if estadoActual in self.estadosAceptacion:
+            procesamiento += "-> Aceptación"
+        else:
+            procesamiento += "-> No Aceptación"
+        return procesamiento
+
+
     
     def procesar_cadena_con_detalles_print(self, cadena):
         estadoActual = self.estadoInicial
@@ -239,7 +300,7 @@ class AFD:
             for estado2 in afd2.estados:
                 producto_cartesiano.delta[(estado1, estado2)] = {}
                 for simbolo in producto_cartesiano.alfabeto:
-                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo], afd2.delta[estado2][simbolo])
+                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo],afd2.delta[estado2][simbolo])
 
         return producto_cartesiano
 
@@ -262,7 +323,7 @@ class AFD:
             for estado2 in afd2.estados:
                 producto_cartesiano.delta[(estado1, estado2)] = {}
                 for simbolo in producto_cartesiano.alfabeto:
-                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo], afd2.delta[estado2][simbolo])
+                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo],afd2.delta[estado2][simbolo])
 
         return producto_cartesiano
     
@@ -285,7 +346,7 @@ class AFD:
             for estado2 in afd2.estados:
                 producto_cartesiano.delta[(estado1, estado2)] = {}
                 for simbolo in producto_cartesiano.alfabeto:
-                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo], afd2.delta[estado2][simbolo])
+                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo],afd2.delta[estado2][simbolo])
 
         return producto_cartesiano
     
@@ -403,41 +464,26 @@ class AFD:
 
 
        
-#afd = AFD(nombreArchivo='testAFD.DFA')
-#afd1 = AFD(nombreArchivo='evenA.DFA')
-#afd2 = AFD(nombreArchivo='evenB.DFA')
+#afd = AFD(nombreArchivo='evenA.DFA')
 #afd.verificarCorregirCompletitud()
-# afd.hallarEstadosInaccesibles()
-# afd.hallarEstadosLimbo()
-# print(afd)
-# afd.eliminar_estados_inaccesibles()
+#afd.hallarEstadosLimbo()
+#afd.hallarEstadosInaccesibles()
+#print(afd.imprimirAFDSimplificado())
+#afd.exportar('testAFDexport.DFA')
+#afd2 = AFD(nombreArchivo='testAFDexport.DFA')
+#afd3 = AFD(nombreArchivo='evenB.DFA')
+#print(afd2)
+#print(afd.procesar_cadena('aabb'))
+#print(afd.procesar_cadena_con_detalles('aaabb'))
+#afd.procesarListaCadenas(['aabb','aaabb','aaabbb'], 'resultados.txt', True)
+#print(afd)
+#print(afd.hallarComplemento())
+#print(afd.hallarProductoCartesianoY(afd,afd3))
+#print(afd.hallarProductoCartesianoO(afd,afd3))
+#afd4 = AFD(nombreArchivo='minTest.DFA')
+#afd4.simplificarAFD()
+#print(afd4)
 
-# print(afd.imprimirAFDSimplificado())
-# afd.exportar('testAFD3.DFA')
-#graph = afd2.draw()
-#graph.view()
-#print(afd1.procesar_cadena('abaa'))
-#print(afd1.procesar_cadena_con_detalles('abbaaa'))
-# print(afd2.procesar_cadena_con_detalles('abbabaabbbbb'))
-# print(afd.procesar_cadena_con_detalles('aba'))
-
-# afd.procesarListaCadenas(['aba','abbaa'], 'resultados.txt', True)
-# print(afd.hallarComplemento())
-# print(afd.hallarProductoCartesianoY(afd1,afd2))
-# print(afd.hallarProductoCartesianoY(afd1,afd2).delta)
-# cartesianoY = afd.hallarProductoCartesianoY(afd1,afd2)
-
-#cartesianoO = afd.hallarProductoCartesianoDiferencia(afd1,afd2)
-# cartesionD = afd.hallarProductoCartesianoDiferenciaSimetrica(afd1,afd2)
-# print(cartesianoY.procesar_cadena_con_detalles('baababab'))
-# print(cartesianoO.procesar_cadena_con_detalles('aabbab'))
-# print(cartesionD.procesar_cadena_con_detalles('aaabbbb'))
-# cartesiano1 = afd.hallarProductoCartesiano(afd1,afd2, 'interseccion')
-# print(cartesiano1.procesar_cadena_con_detalles('aabbabab'))
-#afdmin = AFD(nombreArchivo='minTest.DFA')
-#afdmin.simplificarAFD()
-#print(afdmin)
-#afdmin.draw().view()
 
 
 

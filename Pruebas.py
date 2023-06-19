@@ -13,7 +13,8 @@ class ClasePrueba:
     
     def probarAFD(self):
         # Crear autómatas AFD
-        afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+        afd1 = AFD(nombreArchivo='resultado_con_detalles.txt')
+        afd1.verificarCorregirCompletitud()
         #afd1 = AFD(afd1.alfabeto,afd1.estados,afd1.estadoInicial,afd1.estadosAceptacion,afd1.delta)
         # Procesar cadenas con y sin detalles
         cadena = 'aba'
@@ -65,8 +66,9 @@ class ClasePrueba:
          
          #afd1 = AFD(nombreArchivo='evenA.DFA')
          #afn1 = AFN(nombreArchivo='testAFN.NFA')  
-         afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
-         cadena = '000'  
+         #afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
+         afn1 = AFN(nombreArchivo='AFNTest - copia.txt') 
+         cadena = 'dba'  
          #procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
          print(f"AFN procesando cadena {cadena} \n")
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
@@ -119,9 +121,10 @@ class ClasePrueba:
         afd1_simplificado.procesar_cadena(cadena)
 
     def generar_cadenas_afn(self,afns):
+        #Me gustaría que se generaran cadenas dependiendo del lenguaje de los afns (no todos tienen de lenguaje {a,b}) para poder hacer más pruebas
         cadenas_generadas = []
         for afn in afns:
-            for _ in range(5000):
+            for _ in range(2):
                 tamano = random.randint(1, 10)  # Choose the size randomly
                 cadena = ''.join(random.choices(['a', 'b'], k=tamano))  # Generate a random string
                 print(cadena)
@@ -130,7 +133,11 @@ class ClasePrueba:
     
     def validarAFNtoAFD(self):
          afn1 = AFN(nombreArchivo='testAFN.NFA') 
-         afns =[afn1]
+         afd2 = AFD(nombreArchivo='evenA.DFA')
+         afn3 = AFN(nombreArchivo='testAFN.NFA')  
+         afn4 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
+         afn5 = AFN(nombreArchivo='AFNTest - copia.txt') 
+         afns =[afn1,afd2,afn3,afn4,afn5]
          lista_cadenas = clase_prueba.generar_cadenas_afn(afns)
          imprimir_pantalla = True
          print("Procesamiento AFN")
@@ -205,7 +212,7 @@ class ClasePrueba:
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-#clase_prueba.probarAFD()
+clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()

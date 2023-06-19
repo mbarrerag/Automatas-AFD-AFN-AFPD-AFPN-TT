@@ -139,7 +139,6 @@ class AFN:
 
         for estado in self.estados:
             estadosAFD.append(estado)
-
         while True:
             copiaEstadosAFD = estadosAFD.copy()
             for estado in estadosAFD:
@@ -150,7 +149,10 @@ class AFN:
                         for subEstado in estado.split(','):
                             if subEstado in self.delta:
                                 if caracter in self.delta[subEstado]:
-                                    transicion += self.delta[subEstado][caracter]
+                                    for estadoPasado in self.delta[subEstado][caracter]:
+                                        if estadoPasado not in transicion:
+                                            transicion.append(estadoPasado)
+                        transicion.sort()            
                         strTransicion = ''
                         for elemento in transicion:
                             strTransicion += elemento+','
@@ -158,6 +160,7 @@ class AFN:
                         deltaAFD[estado][caracter] = strTransicion
                         if not strTransicion in estadosAFD and strTransicion != '':
                             estadosAFD.append(strTransicion)
+
             if copiaEstadosAFD == estadosAFD:
                 break
 
@@ -179,8 +182,7 @@ class AFN:
 
         afd = AFD.AFD(alfabeto=self.alfabeto, estados=estadosAFD, estadoInicial=estadoInicialAFD,
                       estadosAceptacion=estadosAceptacionAFD, delta=deltaAFD)
-        afd.hallarEstadosInaccesibles()
-        afd.hallarEstadosLimbo()
+        
         if imprimirTabla:
             nuemeroDeEspacios = 5
             for estado in afd.estados:
@@ -199,7 +201,7 @@ class AFN:
                     print(afd.delta[estado][caracter].center(
                         nuemeroDeEspacios, " ")+'|', end='')
                 print('')
-
+        afd.eliminar_estados_inaccesibles()
         return afd
 
     def procesarCadena(self, cadena=''):
