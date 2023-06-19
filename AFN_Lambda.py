@@ -354,6 +354,7 @@ class Iterator:  # Clase que sirve para recorrer el autómata
         self.AFNL: AFN_Lambda = AFNL
         self.cadena: str = cadena
 
+
         for character in cadena:
             if character not in self.AFNL.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "

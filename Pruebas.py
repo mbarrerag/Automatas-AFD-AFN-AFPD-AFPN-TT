@@ -1,6 +1,7 @@
 from AFD import AFD
 from AFN import AFN
 from AFN_Lambda import AFN_Lambda
+from AFPD import AFPD
 from queue import LifoQueue
 from Alfabeto import Alfabeto
 import ast
@@ -189,14 +190,28 @@ class ClasePrueba:
         # # Generar archivos
         # with open("toStringTestAFNL.NFE", "w") as file:
         #     file.write(toStringTestAFNL.__str__())
-         
-    
 
+    def probarAFPD(self):
+        afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
+        alfabeto = Alfabeto(afpd1.alfabetoCinta)
+        cadena = alfabeto.generar_cadena_aleatoria(5)
+        cadena = 'aaaabbba'
+        afpd1.procesarCadenaConDetalles(cadena)
+        afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
+    
+    def probarAFPDProductoCartesianoAFD(self):
+        afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+        afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
+        
+        #print(afd1.alfabeto,afpd2.alfabetoCinta)
+        #print(afpd2.delta)
+        afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
+        print(afd_resultado)
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-clase_prueba.probarAFD()
+#clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
@@ -204,3 +219,5 @@ clase_prueba.probarAFD()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
 #clase_prueba.probarAFNLambda()
+clase_prueba.probarAFPD()
+#clase_prueba.probarAFPDProductoCartesianoAFD()
