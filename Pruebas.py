@@ -4,6 +4,7 @@ from AFN_Lambda import AFN_Lambda
 from AFPD import AFPD
 from queue import LifoQueue
 from Alfabeto import Alfabeto
+from MT import MT
 import ast
 import random
 
@@ -56,8 +57,9 @@ class ClasePrueba:
         afn1 = AFN(nombreArchivo='AFNTest.txt')
         alfabeto = Alfabeto(afn1.alfabeto)
         cadena = 'bbac'
-        procesar_cadena = afn1.procesarCadena(cadena) 
-        print(f"\nProcesamiento  de la cadena '{cadena}': {procesar_cadena}\n")
+        procesar_cadena_con_detalle = afn1.procesar_cadena_con_detalles(cadena) 
+        print(f"\nProcesamiento  de la cadena '{cadena}' con detalle \n")
+        print(procesar_cadena_con_detalle)
         print("\nProcesamiento un proesamiento de aceptacion \n")
         procesar_cadena_detalle = afn1.procesar_cadena_con_detalles(cadena)
         
@@ -74,25 +76,39 @@ class ClasePrueba:
         nombre_archivo2 = 'procesamientos_posibles.txt'
         afn1.exportar(nombre_archivo1)
         afn1.exportar(nombre_archivo2)
+        print("\n--AFN estados inaccesibles\n")
+        afn1.estadosInaccesibles
+
+    def simplificacionAFN(self):
+        afn1 = AFN(nombreArchivo='AFNTest.txt')
+        print("\n--AFN Simplificado\n")
+        afn1.imprimirAFNSimplificado()
 
     def probarAFNtoAFD(self):
          
          #afd1 = AFD(nombreArchivo='evenA.DFA')
          #afn1 = AFN(nombreArchivo='testAFN.NFA')  
          #afn1 = AFN(nombreArchivo='conversionAFNtoAFDTest.txt')
+         print("--AFN\n")
          afn1 = AFN(nombreArchivo='AFNTest - copia.txt') 
          cadena = 'dba'  
          #procesar_cadena_afd1 = afd1.procesar_cadena(cadena)
          print(f"AFN procesando cadena {cadena} \n")
          procesar_cadena_afn1 = afn1.procesarCadena(cadena)
          print(procesar_cadena_afn1)
-         print("\nAFN a AFD\n")
+         print("\n--AFN a AFD\n")
          afn_afd = afn1.AFNtoAFD()
          print(afn_afd)
-         print("\nNuevo AFD procesando cadena\n")
-         afd_nuevo_procesamiento = afn_afd.procesar_cadena(cadena)
-         print(f"\nProcesamiento  de la cadena '{cadena}':\n Procesamiento AFN {procesar_cadena_afn1} \n Procesamiento nuevo AFD: {afd_nuevo_procesamiento} ")        
-    
+         print("\n--Nuevo AFD procesando cadena con detalle\n")
+         afd_nuevo_procesamiento = afn_afd.procesar_cadena_con_detalles(cadena)
+         print(f"\n--Procesamiento  de la cadena '{cadena}':\n Procesamiento AFN {procesar_cadena_afn1} \n Procesamiento nuevo AFD con detalle: {afd_nuevo_procesamiento} ")        
+         print("\n--Procesamiento de lista de cadenas del nuevo AFD\n")
+         lista_cadenas = ['aba', 'abbaa', 'abbabaabbbbb']
+         nombre_archivo = 'resultados_lista_de_cadenas.txt'
+         imprimir_pantalla = True
+         afn_afd.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+
+
     def probarComplemento(self):
         afd1 = AFD(nombreArchivo='evenA.DFA')
         afd_complemento = afd1.hallarComplemento()
@@ -125,19 +141,17 @@ class ClasePrueba:
         print(producto_cartesiano)
 
     def probarSimplificacion(self):
-        afd1 = AFD(nombreArchivo='evenA.DFA')
-        cadena = 'aaabbb'
-        print(f"\nAFD original '{afd1}'\n\n")
-        afd1.simplificarAFD()
-        afd1_simplificado = afd1
-        print(f"\nSimplificacion '{afd1_simplificado}'\n")
-        afd1_simplificado.procesar_cadena(cadena)
-
+        afd4 = AFD(nombreArchivo='minTest.DFA')
+        print(f"\nAFD original \n")
+        print(afd4)
+        afd4.simplificarAFD()
+        print(f"\nSimplificacion\n")
+        print(afd4)
     def generar_cadenas_afn(self,afns):
         #Me gustaría que se generaran cadenas dependiendo del lenguaje de los afns (no todos tienen de lenguaje {a,b}) para poder hacer más pruebas
         cadenas_generadas = []
         for afn in afns:
-            for _ in range(2):
+            for _ in range(1000):
                 tamano = random.randint(1, 10)  # Choose the size randomly
                 cadena = ''.join(random.choices(['a', 'b'], k=tamano))  # Generate a random string
                 print(cadena)
@@ -208,8 +222,9 @@ class ClasePrueba:
         afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
         alfabeto = Alfabeto(afpd1.alfabetoCinta)
         cadena = alfabeto.generar_cadena_aleatoria(5)
-        cadena = 'aaaabbba'
+        print("Procesamiento con detalle\n")
         afpd1.procesarCadenaConDetalles(cadena)
+        print("Procesamiento de lista de cadenas\n")
         afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
     
     def probarAFPDProductoCartesianoAFD(self):
@@ -220,17 +235,55 @@ class ClasePrueba:
         #print(afpd2.delta)
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
+    def probarMT(self):
+        #prueba usando TM de palindromes pares
+
+        Turing = MT(nombreArchivo="MT.tm")  
+        print(Turing.procesarCadenaConDetalles("ababa"))
+        print(Turing.procesarCadena("ababa"))
+        print(Turing.procesarFuncion("aabbaa"))
+        Turing.procesarListaCadenas(["aaaa", "aabbaa", "ababa"], "resultadosTM.txt", True)
+        print(Turing)
+        
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-clase_prueba.probarAFD()
-#clase_prueba.ProbarAFN()
-#clase_prueba.probarAFNtoAFD()
+#-------------AFD-----------------
+#clase_prueba.probarAFD()
 #clase_prueba.probarComplemento()
+#clase_prueba.probarSimplificacion()
+#clase_prueba.probarProductoCartesiano()
+#-------------AFN-----------------
+#clase_prueba.ProbarAFN()
+#clase_prueba.simplificacionAFN()
+#clase_prueba.probarAFNtoAFD()
+#clase_prueba.validarAFNtoAFD() #validacion con mas de 5000 cadenas
+<<<<<<< Updated upstream
+#------------AFNL--------------
+
+=======
+<<<<<<< HEAD
+#------------
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
-#clase_prueba.validarAFNtoAFD()
+=======
+#------------AFNL--------------
+
+>>>>>>> d9d067194e04a1ff05b2f68403d06e6c8d123088
+>>>>>>> Stashed changes
+
 #clase_prueba.probarAFNLambda()
+#-------------AFPD-----------------
 #clase_prueba.probarAFPD()
+<<<<<<< Updated upstream
+clase_prueba.probarAFPDProductoCartesianoAFD()
+=======
+<<<<<<< HEAD
 #clase_prueba.probarAFPDProductoCartesianoAFD()
+#--------------MT------------------
+clase_prueba.probarMT()
+=======
+clase_prueba.probarAFPDProductoCartesianoAFD()
+>>>>>>> d9d067194e04a1ff05b2f68403d06e6c8d123088
+>>>>>>> Stashed changes
