@@ -17,12 +17,12 @@ class AFN_Lambda:
             self.estadosLimbo = []
             self.estadosInaccesibles = []
 
-            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
-            for estado in self.delta:
-                if len(self.delta.get(estado)) == 0:
-                    self.estadosLimbo.append(estado)
+        self.estadosInaccesibles = self.hallarEstadosInaccesibles()
+        for estado in self.delta:
+            if len(self.delta.get(estado)) == 0:
+                self.estadosLimbo.append(estado)
 
-            print("¡Autómata creado!")
+        print("¡Autómata creado!")
 
     def cargarDesdeArchivo(self, nombreArchivo) -> None:
         self.alfabeto = []
@@ -85,12 +85,6 @@ class AFN_Lambda:
                             self.delta[source][letter] = targets
 
                         i += 1
-
-            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
-            for estado in self.delta:
-                if len(self.delta.get(estado)) == 0:
-                    self.estadosLimbo.append(estado)
-        print("¡Autómata creado!")
 
 
     def _simplePrintIteration(self, listToPrint: list[str],
@@ -169,7 +163,7 @@ class AFN_Lambda:
 
     def calcularLambdaClausura(self, st: str = None, states: list[str] = None) -> list[str]:
         if st is not None and states is not None:
-            print("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
+            raise Exception("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
         if st is not None:
             states = [st]
@@ -349,6 +343,7 @@ class AFN_Lambda:
         AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial, estadosAceptacion=self.estadosAceptacion, delta=newDelta)
         return AFNtoReturn
 
+
 class Iterator:  # Clase que sirve para recorrer el autómata
     def __init__(self, AFNL, cadena):
         self.AFNL: AFN_Lambda = AFNL
@@ -430,7 +425,7 @@ class Iterator:  # Clase que sirve para recorrer el autómata
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 # print(firstAFNL.__str__())
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
@@ -453,34 +448,34 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 #
 # print("----------------")
 #
-afnFrom = secondAFNL.AFN_LambdaToAFN()
+# afnFrom = secondAFNL.AFN_LambdaToAFN()
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
 # print(afnFrom.procesarCadena("2"))
 # print(afnFrom.procesarCadena("11"))
 # print(afnFrom.procesarCadena("102"))
 
-alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
 
-for i in range(0, 10):
-    cadena = alphabet.generar_cadena_aleatoria(5)
-    strLambda = secondAFNL.procesarCadena(cadena)
-    strAFNNl = afnFrom.procesarCadena(cadena)
-    if strLambda != strAFNNl:
-        print("Discrepancia:")
-        print("Cadena: " + cadena)
-        print(strLambda)
-        print(strAFNNl)
-        print("---------------------------")
-    print(i)
+# for i in range(0, 10):
+#     cadena = alphabet.generar_cadena_aleatoria(5)
+#     strLambda = secondAFNL.procesarCadena(cadena)
+#     strAFNNl = afnFrom.procesarCadena(cadena)
+#     if strLambda != strAFNNl:
+#         print("Discrepancia:")
+#         print("Cadena: " + cadena)
+#         print(strLambda)
+#         print(strAFNNl)
+#         print("---------------------------")
+#     print(i)
 
 
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
-# lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-#
-# print(lambdaClosureAFNL.__str__())
+lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+
+print(lambdaClosureAFNL.__str__())
 # print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
 # print(lambdaClosureAFNL.procesarCadenaConDetalles('ba'))
