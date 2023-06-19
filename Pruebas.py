@@ -274,10 +274,10 @@ clase_prueba = ClasePrueba()
 #-------------AFPD-----------------
 #clase_prueba.probarAFPD()
 
-clase_prueba.probarAFPDProductoCartesianoAFD()
+#clase_prueba.probarAFPDProductoCartesianoAFD()
 
 #clase_prueba.probarAFPDProductoCartesianoAFD()
 #--------------MT------------------
-clase_prueba.probarMT()
+#clase_prueba.probarMT()
 
-clase_prueba.probarAFPDProductoCartesianoAFD()
+#clase_prueba.probarAFPDProductoCartesianoAFD()

@@ -1,6 +1,6 @@
 from AFD import AFD
-
-
+from AFPD import AFPD
+from Alfabeto import Alfabeto
 
 def main():
     print("Pruebas\n")
@@ -93,6 +93,28 @@ def main():
     # automata = AFD(nombreArchivo='./Automatas_AFD/Min_Test.DFA')
     # automata.simplificarAFD()
     # print(automata)
+    
+    # print('\nPruebas de la clase AFPD\n') 
+    #  
+    """""
+    print("Veriificar Determinimo\n")
 
+    print("Construir a partir de archivo\n") 
 
+    afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
+    afpd2 = AFPD(nombreArchivo='AFPD_Test2.txt')
+    alfabeto = Alfabeto(afpd1.alfabetoCinta)
+    cadena = alfabeto.generar_cadena_aleatoria(5)
+    print("Imprimir automata\n")
+    print(afpd1)
+    print(afpd2)
+
+    print("Procesamiento con detalle\n")
+
+    afpd1.procesarCadenaConDetalles(cadena)
+    
+    print("Procesamiento de lista de cadenas\n")
+    
+    afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
+    """
 main()
