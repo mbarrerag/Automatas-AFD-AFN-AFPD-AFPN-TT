@@ -3,7 +3,7 @@ from AFPD import AFPD
 from Alfabeto import Alfabeto
 
 def main():
-    print("Pruebas\n")
+    # print("Pruebas\n")
     # print('\nPruebas de la clase AFD\n')
 
     # print("Revisar si el AFD esta completo y corregirlo")
@@ -20,20 +20,25 @@ def main():
     #            estadosAceptacion=estadosAceptacion, 
     #            delta=delta)
     
+    # automata.draw().render('automata Incompleto', view=True,format='png')
     # automata.verificarCorregirCompletitud()
     # print(automata) 
+    # automata.draw().render('automata Completo', view=True, format='png')
 
     # print('Construir a partir de archivo\n')
     # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
     # print(automata)
+    # automata.draw().render('automata Incompleto2', view=True, format='png')
 
     # print('Hallar estados limbo\n')
     # automata = AFD(nombreArchivo='./Automatas_AFD/Estados_Limbo.DFA')
     # print("Estados limbo: ", automata.hallarEstadosLimbo())
+    # print(automata)
 
     # print('Hallar estados inaccesibles\n')
     # automata = AFD(nombreArchivo='./Automatas_AFD/Estados_Inaccesibles.DFA')
     # print("Estados inaccesibles: ", automata.hallarEstadosInaccesibles())
+    # print(automata)
 
     # print('Imprimir automata simplificado y completo\n')
     # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
@@ -55,7 +60,9 @@ def main():
 
     # print('Hallar complemento\n')
     # automata = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # automata.draw().render('automata original', view=True, format='png')
     # print(automata.hallarComplemento())
+    # automata.hallarComplemento().draw().render('automata complemento', view=True, format='png')
 
     # print("Hallar ProductorCartesianoY\n")
     # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
@@ -64,22 +71,25 @@ def main():
     # cadena = "baabbaab"
     # print(CartesianoY)
     # print(CartesianoY.procesar_cadena_con_detalles(cadena))
+    # CartesianoY.draw().render('automata CartesianoY', view=True, format='png')
 
     # print("Hallar ProductoCartesianoO\n")
     # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
     # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
     # CartesianoO = automata1.hallarProductoCartesianoO(automata1, automata2)
-    # cadena = "aabbab"
+    # cadena = "aabbbaab"
     # print(CartesianoO)
     # print(CartesianoO.procesar_cadena_con_detalles(cadena))
+    # CartesianoO.draw().render('automata CartesianoO', view=True, format='png')
 
     # print("Hallar ProductoCartesianoDiferencia\n")
     # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
     # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
     # CartesianoDif = automata1.hallarProductoCartesianoDiferencia(automata1, automata2)
-    # cadena = "aaabbbab"
+    # cadena = "aaabbab"
     # print(CartesianoDif)
     # print(CartesianoDif.procesar_cadena_con_detalles(cadena))
+    # CartesianoDif.draw().render('automata CartesianoDif', view=True, format='png')
 
     # print("Hallar ProductoCartesianoDiferenciaSimetrica\n")
     # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
@@ -88,9 +98,11 @@ def main():
     # cadena = "aaabbbb"
     # print(CartesianoDifSim)
     # print(CartesianoDifSim.procesar_cadena_con_detalles(cadena))
+    # CartesianoDifSim.draw().render('automata CartesianoDifSim', view=True, format='png')
 
     # print("Simplificar\n")
     # automata = AFD(nombreArchivo='./Automatas_AFD/Min_Test.DFA')
+    # automata.draw().render('automata originalMin', view=True, format='png')
     # automata.simplificarAFD()
     # print(automata)
     
