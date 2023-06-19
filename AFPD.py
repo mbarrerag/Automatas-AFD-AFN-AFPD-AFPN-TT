@@ -94,7 +94,7 @@ class AFPD:
             else:
                 output += f"{rango[0]}\n"
 
-        output += "#Stackalphabet\n"
+        output += "#stackAlphabet\n"
         
         # Ordenar el alfabeto eliminando duplicados
         sorted_alfabeto = sorted(set(self.alfabetoPila), key=ord)
