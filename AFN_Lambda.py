@@ -17,12 +17,12 @@ class AFN_Lambda:
             self.estadosLimbo = []
             self.estadosInaccesibles = []
 
-            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
-            for estado in self.delta:
-                if len(self.delta.get(estado)) == 0:
-                    self.estadosLimbo.append(estado)
+        self.estadosInaccesibles = self.hallarEstadosInaccesibles()
+        for estado in self.delta:
+            if len(self.delta.get(estado)) == 0:
+                self.estadosLimbo.append(estado)
 
-            print("¡Autómata creado!")
+        print("¡Autómata creado!")
 
     def cargarDesdeArchivo(self, nombreArchivo) -> None:
         self.alfabeto = []
@@ -85,12 +85,6 @@ class AFN_Lambda:
                             self.delta[source][letter] = targets
 
                         i += 1
-
-            self.estadosInaccesibles = self.hallarEstadosInaccesibles()
-            for estado in self.delta:
-                if len(self.delta.get(estado)) == 0:
-                    self.estadosLimbo.append(estado)
-        print("¡Autómata creado!")
 
 
     def _simplePrintIteration(self, listToPrint: list[str],
@@ -169,7 +163,7 @@ class AFN_Lambda:
 
     def calcularLambdaClausura(self, st: str = None, states: list[str] = None) -> list[str]:
         if st is not None and states is not None:
-            print("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
+            raise Exception("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
         if st is not None:
             states = [st]
@@ -200,69 +194,64 @@ class AFN_Lambda:
 
     def procesarCadena(self, cadena: str, toPrint=False) -> bool:
 
-        iterator = Iterator(self, cadena)
+        """
+        ProcesarCadena. Toma la cadena, evalúa si es aceptada o no.
+        El argumento toPrint sirve para determinar si se quiere imprimir el procesamiento de la cadena (en caso de ser
+        aceptada)
+        """
 
-        stringAccepted = False
-        searchFinished = False
-
-        while not searchFinished:
-            goBack = False
-            if iterator.cadenaFullyCovered():
-                if iterator.currentStateIsAcceptable():
-                    stringAccepted = True
-                    searchFinished = True
-            else:
-                if iterator.possibleTransitionsFromHere():
-                    iterator.calculateTransitionsFromHere()
-                else:
-                    goBack = True
-
-            if not stringAccepted:
-                if iterator.exploringStack.empty():
-                    if not goBack:
-                        stringAccepted = False
-                        searchFinished = True
-                else:
-                    iterator.doStep(isComingBack=goBack)
-
+        completeProcessing = self.computarTodosLosProcesamientos(cadena, simpleProcessing=True)
+        processing: list = completeProcessing[0]  # El procesamiento de la cadena
+        isAccepted: bool = completeProcessing[1]
 
         if toPrint:
-            print("Procesando Cadena '" + cadena + "': " + stringAccepted.__str__())
-            auxStack = LifoQueue()
-            while not iterator.printStack.empty():
-                auxStack.put(iterator.printStack.get())
-            while not auxStack.empty():
-                transition = auxStack.get()
-                print("(" + transition[0] + "," + transition[1] + ") --> " + transition[2])
+            if isAccepted:
+                print("Cadena " + cadena + " Aceptada")
+                for transition in processing:
+                    print("(" + transition[0] + "," + transition[1] + ") --> " + transition[2])
+            else:
+                print("Cadena " + cadena + "Rechazada")
 
+        return isAccepted
 
-        return stringAccepted
 
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
-    def computarTodosLosProcesamientos(self, cadena) -> int:
+    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False) -> int or [str, bool]:
+        """
+            Argumentos:
+                cadena: La cadena para ser procesada
+                simpleProcessing: Si está activada como cierto, hará el algoritmo de la función procesarCadena.
+                                  Eso significa que, apenas encuentre un procesamiento en el que se acepte la cadena,
+                                  la función parará.
+                                  Si está en falso, la función buscará todos los cómputos posibles, sea cual sea el
+                                  resultado de cada uno de esos cómputos
+        """
 
-        iterator = Iterator(self, cadena)
-        listOfProcessings = []  # Aquí guardamos todos los posibles procedimientos de esta cadena.
+        iterator = Iterator(self, cadena)  # Por legibilidad, creamos un iterador para la cadena
+        listOfProcessings = []  # Aquí guardamos todos los posibles procedimientos de esta cadena, para poder imprimirlos
+                                # en pantalla luego.
         numberOfProcessings = 0
 
-        def saveProcessingInfo(statusOfProcessing: str) -> None:  # Para guardar los procesamientos y desplegarlos luego
-            nonlocal numberOfProcessings
-            processingString = ''
-            auxiliarStack = LifoQueue()
+        def saveProcessingInfo(statusOfProcessing: str) -> None:  #
+            """
+            Esta función guarda los procesamientos en la lista de procesamientos (listOfProcessings)
+            statusOfProcessing = Aceptada, Rechazada o abortada
+            """
+            if not simpleProcessing:
+                nonlocal numberOfProcessings
+                processingString = ''
 
-            while not iterator.printStack.empty():
-                auxiliarStack.put(iterator.printStack.get())
-            while not auxiliarStack.empty():
-                transitionData = auxiliarStack.get()
-                subString = transitionData[0] + "," + transitionData[1] + "-->"
-                processingString += subString
-                iterator.printStack.put(transitionData)
-            processingString += "," + iterator.currentState
-            processingString += ".  " + statusOfProcessing
-            listOfProcessings.append(processingString)
-            numberOfProcessings += 1
+                processings = list(iterator.printStack.queue)
+                for step in processings:
+                    stepString = step[0] + "," + step[1] + "-->"
+                    processingString += stepString
+                processingString += iterator.currentState + '. ' + statusOfProcessing
+
+                listOfProcessings.append(processingString)
+
+                numberOfProcessings += 1
 
         searchFinished = False
 
@@ -271,6 +260,8 @@ class AFN_Lambda:
             if iterator.cadenaFullyCovered():
                 status = "Aceptada" if iterator.currentStateIsAcceptable() else "Rechazada"
                 saveProcessingInfo(status)
+                if status == "Aceptada" and simpleProcessing:
+                    return [list(iterator.printStack.queue), True]
             else:
                 if iterator.possibleTransitionsFromHere():
                     iterator.calculateTransitionsFromHere()
@@ -283,11 +274,14 @@ class AFN_Lambda:
             else:
                 searchFinished = True
 
-        print("Procesando cadena '" + cadena + "': ")
-        for processing in listOfProcessings:
-            print(processing)
+        if simpleProcessing:
+            return False, None
+        else:
+            print("Procesando cadena '" + cadena + "': ")
+            for processing in listOfProcessings:
+                print(processing)
 
-        return numberOfProcessings
+            return numberOfProcessings
 
     def AFN_LambdaToAFN(self) -> AFN:
 
@@ -349,7 +343,11 @@ class AFN_Lambda:
         AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial, estadosAceptacion=self.estadosAceptacion, delta=newDelta)
         return AFNtoReturn
 
-class Iterator:  # Clase que sirve para recorrer el autómata
+
+class Iterator:
+    """
+    Clase que sirve para recorrer el autómata. Se usa en computarTodosLosProcesamientos.
+    """
     def __init__(self, AFNL, cadena):
         self.AFNL: AFN_Lambda = AFNL
         self.cadena: str = cadena
@@ -360,19 +358,27 @@ class Iterator:  # Clase que sirve para recorrer el autómata
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
                                 "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
 
+        # El estado actual del autómata se puede determinar por dos cosas: El estado actual, y el índice del carácter
+        # que acabamos de leer.
+
+        # Ahora bien, otra variable que necesitamos es la cantidad transiciones, sean o no lambda, que hemos hecho hasta
+        # el momento. Más adelante se explica por qué
+
         self.currentState = self.AFNL.estadoInicial
-        self.index = -1
+        self.index = 0
         self.transitionsDone = 0
 
         self.exploringStack = LifoQueue()  # Pila de caminos. Cuando se hace un paso computacional, es muy probable que haya otros
         # caminos posibles. Esos otros caminos hay que guardarlos porque puede ser necesario volver a ellos. Por eso,
-        # se guardan en esta cola.
+        # se guardan en esta pila, para volver a ellos cuando haga falta.
         self.printStack = LifoQueue()  # Pila de impresión. Guarda la información de los procesamientos que
-        # se han hecho en el camino que se está recorriendo ahora mismo.
+        # se han hecho en el camino que se está recorriendo ahora mismo. Hace falta para poder imprimir en la consola
+        # y en los .txt los procesamientos por los que pasa la cadena. Es una pila porque, cuando nos devolvamos en la pila
+        # de caminos, también tendremos que desapilar transiciones guardadas acá.
 
-    def calculateTransitionsFromHere(self) -> None:  # Averiguar los posibles procsamientos desde el estado y el carácter
+    def calculateTransitionsFromHere(self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
         # actual, y guardarlos en la pila exploringStack (la de los caminos posibles)
-        currentChar = self.cadena[self.index + 1]  # Avanzamos al siguiente carácter de la cadena
+        currentChar = self.cadena[self.index]  # Avanzamos al siguiente carácter de la cadena
 
         # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
         def pushIntoList(stateList, char):
@@ -381,7 +387,7 @@ class Iterator:  # Clase que sirve para recorrer el autómata
                     pushStep = {
                         "currentState": self.currentState,
                         "character": char,
-                        "state": st,
+                        "targetState": st,
                         "index": self.index,
                         "transitionsDone": self.transitionsDone
                     }
@@ -396,27 +402,33 @@ class Iterator:  # Clase que sirve para recorrer el autómata
 
     def doStep(self, isComingBack: bool) -> None:  # Dar el paso computacional.
 
+        """
+        isComingBack: Este booleano sirve para saber si nos estamos devolviendo.
+        Devolvernos no significa que nos vamos a quedar en el estado en el que estábamos cuando apilamos esta transición,
+        si no que vamos a hacer la transición que estaba apilada
+        """
+
         step = self.exploringStack.get()
+
+        self.currentState = step["targetState"]
+        self.index = step["index"] + 1 if step["character"] != '$' else step["index"]
+        transitionsUntilNow = self.transitionsDone
+        self.transitionsDone = step["transitionsDone"] + 1
 
         previousState = step["currentState"]
         charToCurrentState = step["character"]
-        self.currentState = step["state"]
-        toStack = [previousState, charToCurrentState, self.currentState]
-
-        transitionsUntilNow = self.transitionsDone
-        self.index = step["index"] + 1 if step["character"] != '$' else step["index"]
-        self.transitionsDone = step["transitionsDone"] + 1
+        toPrintStack = [previousState, charToCurrentState, self.currentState]
 
         if isComingBack:  # Esto significa que nos estamos devolviendo a un camino que antes no se había tomado.
             # La pila que de impresión debe actualizarse:
             for popTransition in range(0, transitionsUntilNow - self.transitionsDone + 1):
                 self.printStack.get()
 
-        self.printStack.put(toStack)
+        self.printStack.put(toPrintStack)
 
     def possibleTransitionsFromHere(self) -> bool:  # Averiguar si, desde el estado en que estamos, se pueden hacer
         # transiciones con el carácter actual que está siendo procesado
-        char = self.cadena[self.index + 1]
+        char = self.cadena[self.index]
         deltaState = self.AFNL.delta[self.currentState]
         return True if '$' in deltaState or char in deltaState else False
 
@@ -424,7 +436,7 @@ class Iterator:  # Clase que sirve para recorrer el autómata
         return True if self.currentState in self.AFNL.estadosAceptacion else False
 
     def cadenaFullyCovered(self) -> bool:
-        return True if self.index+1 == len(self.cadena) else False
+        return True if self.index == len(self.cadena) else False
 
 
 
@@ -435,8 +447,9 @@ class Iterator:  # Clase que sirve para recorrer el autómata
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-# print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
-# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
+# print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
+print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
@@ -454,12 +467,15 @@ class Iterator:  # Clase que sirve para recorrer el autómata
 #
 # print("----------------")
 #
+
 #afnFrom = secondAFNL.AFN_LambdaToAFN()
+
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
 # print(afnFrom.procesarCadena("2"))
 # print(afnFrom.procesarCadena("11"))
 # print(afnFrom.procesarCadena("102"))
+
 
 #alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
 """""
@@ -479,7 +495,7 @@ for i in range(0, 10):
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
 # lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-#
+
 # print(lambdaClosureAFNL.__str__())
 # print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
 # lambdaClosureAFNL.AFN_LambdaToAFN()
