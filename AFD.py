@@ -1,5 +1,5 @@
 from graphviz import Digraph
-
+#aaa
 class AFD:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
         if nombreArchivo:
@@ -70,11 +70,21 @@ class AFD:
 
         return output
     
+    def eliminar_limbo(self):
+        self.estados.remove('limbo')
+        self.estadosLimbo = []
+
+
+
     def imprimirAFDSimplificado(self):
+        self.eliminar_estados_inaccesibles()
+        self.eliminar_estados_limbo()
+        self.eliminar_limbo()
         output = "!DFA\n"  
         output += "#states\n"
-        
+    
         estados_no_limbo = [estado for estado in self.estados if estado not in self.estadosLimbo]
+
         output += "\n".join(sorted(estados_no_limbo)) + "\n" 
 
         output += "#initial\n"
@@ -142,6 +152,11 @@ class AFD:
         self.estados = [state for state in self.estados if state not in inaccesibles]
         self.estadosAceptacion = [state for state in self.estadosAceptacion if state not in inaccesibles]
         self.delta = {state: transitions for state, transitions in self.delta.items() if state not in inaccesibles}
+
+    def eliminar_estados_limbo(self):
+        self.estados = [state for state in self.estados if state not in self.estadosLimbo]
+        self.estadosAceptacion = [state for state in self.estadosAceptacion if state not in self.estadosLimbo]
+        self.delta = {state: transitions for state, transitions in self.delta.items() if state not in self.estadosLimbo}
 
 
     def cargar_desde_archivo(self, nombreArchivo):
@@ -327,18 +342,16 @@ class AFD:
 
         return producto_cartesiano
     
-    def hallarProductoCartesianoDiferenciaSimetrica(self, afd1, afd2):
+    def hallarProductoCartesianoDiferencia(self, afd1, afd2):
         producto_cartesiano = AFD()  
 
         producto_cartesiano.alfabeto = afd1.alfabeto
 
-
         producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
-
 
         producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
 
-
+        # Cambia aquí para calcular la diferencia en vez de la diferencia simétrica
         producto_cartesiano.estadosAceptacion = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados if estado1 in afd1.estadosAceptacion and estado2 not in afd2.estadosAceptacion}
 
         producto_cartesiano.delta = {}
@@ -349,6 +362,29 @@ class AFD:
                     producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo],afd2.delta[estado2][simbolo])
 
         return producto_cartesiano
+
+    
+    def hallarProductoCartesianoDiferenciaSimetrica(self, afd1, afd2):
+        producto_cartesiano = AFD()  
+
+        producto_cartesiano.alfabeto = afd1.alfabeto
+
+        producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
+
+        producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
+
+        # Diferencia simétrica de los estados de aceptación
+        producto_cartesiano.estadosAceptacion = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados if (estado1 in afd1.estadosAceptacion and estado2 not in afd2.estadosAceptacion) or (estado1 not in afd1.estadosAceptacion and estado2 in afd2.estadosAceptacion)}
+
+        producto_cartesiano.delta = {}
+        for estado1 in afd1.estados:
+            for estado2 in afd2.estados:
+                producto_cartesiano.delta[(estado1, estado2)] = {}
+                for simbolo in producto_cartesiano.alfabeto:
+                    producto_cartesiano.delta[(estado1, estado2)][simbolo] = (afd1.delta[estado1][simbolo],afd2.delta[estado2][simbolo])
+
+        return producto_cartesiano
+
     
     def hallarProductoCartesiano(self,afd1,afd2, operacion):
         if operacion == 'interseccion':
@@ -461,28 +497,100 @@ class AFD:
                 self.estadosAceptacion = [self.combinar_estados(cluster) for cluster in clusters if any(estado in self.estadosAceptacion for estado in cluster)]
 
 
+def main():
+    print('\nPruebas de la clase AFD\n')
+
+    # print("Revisar si el AFD esta completo y corregirlo")
+
+    # alfabeto = ['a', 'b']
+    # estados = ['s0', 's1']
+    # estadoInicial = 's0'
+    # estadosAceptacion = ['s0']
+    # delta = {'s0': {'a': 's1'}, 's1': {'a': 's0', 'b': 's1'}}
+
+    # automata = AFD(alfabeto=alfabeto, 
+    #            estados=estados, 
+    #            estadoInicial=estadoInicial, 
+    #            estadosAceptacion=estadosAceptacion, 
+    #            delta=delta)
+    
+    # automata.verificarCorregirCompletitud()
+    # print(automata) 
+
+    # print('Construir a partir de archivo\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
+    # print(automata)
+
+    # print('Hallar estados limbo\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Estados_Limbo.DFA')
+    # print("Estados limbo: ", automata.hallarEstadosLimbo())
+
+    # print('Hallar estados inaccesibles\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Estados_Inaccesibles.DFA')
+    # print("Estados inaccesibles: ", automata.hallarEstadosInaccesibles())
+
+    # print('Imprimir automata simplificado y completo\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
+    # print(automata.imprimirAFDSimplificado())
+
+    # print('Exportar a archivo\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
+    # automata.exportar('./Automatas_AFD/testAFDexport.DFA')
+
+    # print('Procesar en detalle\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # cadena = 'aabbaab'
+    # print("\n", automata.procesar_cadena_con_detalles(cadena), "\n")
+
+    # print('Procesar Lista de Cadenas\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # listaCadenas = ['aabbaab', 'aabbaa', 'aabbaaba']
+    # print("\n", automata.procesarListaCadenas(listaCadenas, None, True), "\n")
+
+    # print('Hallar complemento\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # print(automata.hallarComplemento())
+
+    # print("Hallar ProductorCartesianoY\n")
+    # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
+    # CartesianoY = automata1.hallarProductoCartesianoY(automata1, automata2)
+    # cadena = "baabbaab"
+    # print(CartesianoY)
+    # print(CartesianoY.procesar_cadena_con_detalles(cadena))
+
+    # print("Hallar ProductoCartesianoO\n")
+    # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
+    # CartesianoO = automata1.hallarProductoCartesianoO(automata1, automata2)
+    # cadena = "aabbab"
+    # print(CartesianoO)
+    # print(CartesianoO.procesar_cadena_con_detalles(cadena))
+
+    # print("Hallar ProductoCartesianoDiferencia\n")
+    # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
+    # CartesianoDif = automata1.hallarProductoCartesianoDiferencia(automata1, automata2)
+    # cadena = "aaabbbab"
+    # print(CartesianoDif)
+    # print(CartesianoDif.procesar_cadena_con_detalles(cadena))
+
+    # print("Hallar ProductoCartesianoDiferenciaSimetrica\n")
+    # automata1 = AFD(nombreArchivo='./Automatas_AFD/EvenAs.DFA')
+    # automata2 = AFD(nombreArchivo='./Automatas_AFD/EvenBs.DFA')
+    # CartesianoDifSim = automata1.hallarProductoCartesianoDiferenciaSimetrica(automata1, automata2)
+    # cadena = "aaabbbb"
+    # print(CartesianoDifSim)
+    # print(CartesianoDifSim.procesar_cadena_con_detalles(cadena))
+
+    # print("Simplificar\n")
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Min_Test.DFA')
+    # automata.simplificarAFD()
+    # print(automata)
 
 
+main()
        
-#afd = AFD(nombreArchivo='evenA.DFA')
-#afd.verificarCorregirCompletitud()
-#afd.hallarEstadosLimbo()
-#afd.hallarEstadosInaccesibles()
-#print(afd.imprimirAFDSimplificado())
-#afd.exportar('testAFDexport.DFA')
-#afd2 = AFD(nombreArchivo='testAFDexport.DFA')
-#afd3 = AFD(nombreArchivo='evenB.DFA')
-#print(afd2)
-#print(afd.procesar_cadena('aabb'))
-#print(afd.procesar_cadena_con_detalles('aaabb'))
-#afd.procesarListaCadenas(['aabb','aaabb','aaabbb'], 'resultados.txt', True)
-#print(afd)
-#print(afd.hallarComplemento())
-#print(afd.hallarProductoCartesianoY(afd,afd3))
-#print(afd.hallarProductoCartesianoO(afd,afd3))
-#afd4 = AFD(nombreArchivo='minTest.DFA')
-#afd4.simplificarAFD()
-#print(afd4)
 
 
 

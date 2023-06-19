@@ -352,6 +352,7 @@ class Iterator:
         self.AFNL: AFN_Lambda = AFNL
         self.cadena: str = cadena
 
+
         for character in cadena:
             if character not in self.AFNL.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
@@ -442,7 +443,7 @@ class Iterator:
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 # print(firstAFNL.__str__())
 
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+#secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
@@ -466,28 +467,30 @@ print(secondAFNL.procesarCadena("0111012", True))
 #
 # print("----------------")
 #
-# afnFrom = secondAFNL.AFN_LambdaToAFN()
+
+#afnFrom = secondAFNL.AFN_LambdaToAFN()
+
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
 # print(afnFrom.procesarCadena("2"))
 # print(afnFrom.procesarCadena("11"))
 # print(afnFrom.procesarCadena("102"))
 
-# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
 
-# for i in range(0, 10):
-#     cadena = alphabet.generar_cadena_aleatoria(5)
-#     strLambda = secondAFNL.procesarCadena(cadena)
-#     strAFNNl = afnFrom.procesarCadena(cadena)
-#     if strLambda != strAFNNl:
-#         print("Discrepancia:")
-#         print("Cadena: " + cadena)
-#         print(strLambda)
-#         print(strAFNNl)
-#         print("---------------------------")
-#     print(i)
-
-
+#alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+"""""
+for i in range(0, 10):
+    cadena = alphabet.generar_cadena_aleatoria(5)
+    strLambda = secondAFNL.procesarCadena(cadena)
+    strAFNNl = afnFrom.procesarCadena(cadena)
+    if strLambda != strAFNNl:
+        print("Discrepancia:")
+        print("Cadena: " + cadena)
+        print(strLambda)
+        print(strAFNNl)
+        print("---------------------------")
+    print(i)
+"""
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 

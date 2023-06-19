@@ -1,0 +1,3 @@
+bbaabaa	s0	no
+ba	s0	no
+aaa	s0,a,[] --> s0,a,['A'] --> s0,a,['A', 'A'] --> s0	no
