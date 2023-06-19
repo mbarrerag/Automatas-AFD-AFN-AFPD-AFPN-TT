@@ -1,5 +1,6 @@
 from queue import LifoQueue
 from AFN import AFN
+from Alfabeto import Alfabeto
 
 class AFN_Lambda:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None,
@@ -326,11 +327,8 @@ class AFN_Lambda:
                         targets = self.delta[state]
                         if character in targets:
                             target = targets[character]
-                            if type(target) is list:
-                                for subTarget in target:
-                                    intermediateStates.append(subTarget)
-                            else:
-                                intermediateStates.append(target)
+                            for subTarget in target:
+                                intermediateStates.append(subTarget)
 
                     targets = []
                     if len(intermediateStates) != 0:
@@ -339,7 +337,7 @@ class AFN_Lambda:
 
                         # Cuarto paso: unir este nuevo target al delta de este estado con este carácter.
                         if len(targets) > 0:
-                            deltaState[character] = targets[0] if len(targets) == 1 else targets
+                            deltaState[character] = targets
 
                     print('d\'(' + estado + ',' + character +
                           ') = $[d($[' + estado + '],' + character +
@@ -348,8 +346,8 @@ class AFN_Lambda:
 
             newDelta[estado] = deltaState
 
-        print(newDelta)
-
+        AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial, estadosAceptacion=self.estadosAceptacion, delta=newDelta)
+        return AFNtoReturn
 
 class Iterator:  # Clase que sirve para recorrer el autómata
     def __init__(self, AFNL, cadena):
@@ -421,10 +419,10 @@ class Iterator:  # Clase que sirve para recorrer el autómata
         deltaState = self.AFNL.delta[self.currentState]
         return True if '$' in deltaState or char in deltaState else False
 
-    def currentStateIsAcceptable(self):
+    def currentStateIsAcceptable(self) -> bool:
         return True if self.currentState in self.AFNL.estadosAceptacion else False
 
-    def cadenaFullyCovered(self):
+    def cadenaFullyCovered(self) -> bool:
         return True if self.index+1 == len(self.cadena) else False
 
 
@@ -436,7 +434,7 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
+# print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
@@ -446,6 +444,36 @@ print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesa
 # print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
 # secondAFNL.exportar("HolaMundo.nfe")
+
+# print(secondAFNL.procesarCadena("0111012"))
+# print(secondAFNL.procesarCadena("0"))
+# print(secondAFNL.procesarCadena("2"))
+# print(secondAFNL.procesarCadena("11"))
+# print(secondAFNL.procesarCadena("102"))
+#
+# print("----------------")
+#
+afnFrom = secondAFNL.AFN_LambdaToAFN()
+# print(afnFrom.procesarCadena("0111012"))
+# print(afnFrom.procesarCadena("0"))
+# print(afnFrom.procesarCadena("2"))
+# print(afnFrom.procesarCadena("11"))
+# print(afnFrom.procesarCadena("102"))
+
+alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+
+for i in range(0, 10):
+    cadena = alphabet.generar_cadena_aleatoria(5)
+    strLambda = secondAFNL.procesarCadena(cadena)
+    strAFNNl = afnFrom.procesarCadena(cadena)
+    if strLambda != strAFNNl:
+        print("Discrepancia:")
+        print("Cadena: " + cadena)
+        print(strLambda)
+        print(strAFNNl)
+        print("---------------------------")
+    print(i)
+
 
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
