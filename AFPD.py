@@ -100,14 +100,18 @@ class AFPD:
         for simbolo in cadena: # convertir lista a tupla
          
             if estadoActual not in self.delta:
-                return False
+                if(detalles):
+                    print(cadena,procesamiento, 'Abortado')
+                return (procesamiento,False) if detalles else False
             try:
                 destiny = self.delta[estadoActual][simbolo][0]
                 pushletter = self.delta[estadoActual][simbolo][1]
                 popletter = self.delta[estadoActual][simbolo][2]
             except:
                 #raise Exception("No hay camino posible")
-                return False
+                if(detalles):
+                    print(cadena,procesamiento, 'Abortado')
+                return (procesamiento,False) if detalles else False
             def indetificacionOperacion(self):
                 
                 if pushletter != "$" and popletter != "$":
@@ -121,7 +125,9 @@ class AFPD:
             operacionIdentificada = indetificacionOperacion(self)
             if(operacionIdentificada == "remplazamiento" or operacionIdentificada == "pop"):
                if(self.alfabetoPila == [] or self.alfabetoPila[-1] != popletter):
-                   return False
+                   if(detalles):
+                       print(cadena,procesamiento, 'Abortado')
+                   return (procesamiento,False) if detalles else False
             procesamiento += f",{simbolo},{self.alfabetoPila} --> {destiny}"   
             if self.modificarPila(operacionIdentificada, pushletter):
               estadoActual = destiny # convertir tupla de vuelta a lista
@@ -129,10 +135,21 @@ class AFPD:
         if(detalles):
             print(cadena,procesamiento, 'Aceptacion' if resultado else 'Rechazado')
         
-        return resultado  # convertir a tupla antes de chequear
+        return (procesamiento,resultado) if detalles else resultado  # convertir a tupla antes de chequear
     
 
     
     def procesarCadenaConDetalles(self, cadena):
           return self.procesarCadena(cadena,True)
+      
+    def procesarListaCadenas(self,listaCadenas,nombreArchivo,imprimirPantalla):
+        if not nombreArchivo or not nombreArchivo.strip():
+            nombreArchivo = "resultados.txt"
+        with open(nombreArchivo, 'w') as archivo:
+             for cadena in listaCadenas:
+                 detalles = self.procesarCadenaConDetalles(cadena)  
+                 resultado = "si" if self.procesarCadena(cadena=cadena) else "no"
+                 linea = f"{cadena}\t{detalles[0]}\t{resultado}"
+                 archivo.write(linea + '\n')
+             
 
