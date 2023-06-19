@@ -12,6 +12,7 @@ class AFPD:
             self.alfabetoCinta = alfabetoCinta
             self.alfabetoPila = alfabetoPila
             self.delta = delta  
+        self.pila = []
         self.verificarCorregirCompletitud()
 
     def cargar_desde_archivo(self, nombreArchivo):
@@ -167,32 +168,32 @@ class AFPD:
     
     def modificarPila(self, operacion, parametro):
         def pop(self):
-            if (self.alfabetoPila == []):
+            if (self.pila == []):
                 return False
-            else: self.alfabetoPila.pop()
+            else: self.pila.pop()
                
         if operacion == 'push':
-            self.alfabetoPila.append(parametro)
+            self.pila.append(parametro)
             return True
         elif operacion == 'pop':
             pop(self)  
             return True    
         elif operacion == 'remplazamiento':
-             if (self.alfabetoPila == []):
+             if (self.pila == []):
                 return False
-             else: self.alfabetoPila.pop()
+             else: self.pila.pop()
            
-             self.alfabetoPila.append(parametro)
+             self.pila.append(parametro)
              return True
         
     def isPilaEmpty(self):
-        if self.alfabetoPila == []:
+        if self.pila == []:
             return True
         else:
             return False
         
     def procesarCadena (self, cadena,detalles=False):
-        self.alfabetoPila=[]
+        self.pila=[]
         estadoActual = self.estadoInicial
         procesamiento = f"{estadoActual}"
         for simbolo in cadena: # convertir lista a tupla
@@ -222,13 +223,17 @@ class AFPD:
 
             operacionIdentificada = indetificacionOperacion(self)
             if(operacionIdentificada == "remplazamiento" or operacionIdentificada == "pop"):
-               if(self.alfabetoPila == [] or self.alfabetoPila[-1] != popletter):
+               if(self.pila == [] or self.pila[-1] != popletter):
                    if(detalles):
                        print(cadena,procesamiento, 'Abortado')
                    return (procesamiento,False) if detalles else False
-            procesamiento += f",{simbolo},{self.alfabetoPila} --> {destiny}"   
+            procesamiento += f",{simbolo},{self.pila} --> {destiny}"   
             if self.modificarPila(operacionIdentificada, pushletter):
-              estadoActual = destiny # convertir tupla de vuelta a lista
+                estadoActual = destiny # convertir tupla de vuelta a lista
+            else:
+                 if(detalles):
+                     print(cadena,procesamiento, 'Abortado')
+                 return (procesamiento,False) if detalles else False
         resultado = ((estadoActual in self.estadosAceptacion) and (self.isPilaEmpty()))
         if(detalles):
             print(cadena,procesamiento, 'Aceptacion' if resultado else 'Rechazado')

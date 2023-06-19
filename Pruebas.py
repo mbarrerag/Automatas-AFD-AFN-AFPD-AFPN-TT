@@ -193,12 +193,13 @@ class ClasePrueba:
 
     def probarAFPD(self):
         afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
-        alfabeto = Alfabeto(afpd1.alfabeto)
+        alfabeto = Alfabeto(afpd1.alfabetoCinta)
         cadena = alfabeto.generar_cadena_aleatoria(5)
-        #cadena = 'aaaab'
+        cadena = 'aaaabbba'
         #print(cadena,end=" ")
         #print(afpd1.procesarCadena(cadena))
-        #afpd1.procesarCadenaConDetalles(cadena)
+        afpd1.procesarCadenaConDetalles(cadena)
+        #print(afpd1)
         afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
     
     def probarAFPDProductoCartesianoAFD(self):
@@ -221,5 +222,5 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
 #clase_prueba.probarAFNLambda()
-#clase_prueba.probarAFPD()
-clase_prueba.probarAFPDProductoCartesianoAFD()
+clase_prueba.probarAFPD()
+#clase_prueba.probarAFPDProductoCartesianoAFD()
