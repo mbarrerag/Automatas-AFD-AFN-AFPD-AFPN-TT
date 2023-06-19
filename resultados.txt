@@ -1,0 +1,3 @@
+aabbaab	s0,a --> s1,a --> s0,b --> s0,b --> s0,a --> s1,a --> s0,b --> s0	si
+aabbaa	s0,a --> s1,a --> s0,b --> s0,b --> s0,a --> s1,a --> s0	si
+aabbaaba	s0,a --> s1,a --> s0,b --> s0,b --> s0,a --> s1,a --> s0,b --> s0,a --> s1	no
