@@ -218,7 +218,7 @@ class AFN_Lambda:
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
-    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False) -> int or [str, bool]:
+    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False, variousCadenas: bool = False) -> int or [str, bool] or [str]:
         """
             Argumentos:
                 cadena: La cadena para ser procesada
@@ -276,12 +276,33 @@ class AFN_Lambda:
 
         if simpleProcessing:
             return False, None
-        else:
+        elif not variousCadenas:
             print("Procesando cadena '" + cadena + "': ")
             for processing in listOfProcessings:
                 print(processing)
-
             return numberOfProcessings
+        else:
+            return listOfProcessings
+
+    def procesarListaCadenas(self, listaCadenas:list[str], nombreArchivo: str, imprimirPantalla: bool):
+        for cadena in listaCadenas:
+            allProcessings: list[str] = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
+            acceptations = []
+            rejections = []
+            abortions = []
+            for processing in allProcessings:
+                acceptations.append(processing) if processing.__contains__("Aceptada") else None
+                rejections.append(processing) if processing.__contains__("Rechazada") else None
+                abortions.append(processing) if processing.__contains__("Abortada") else None
+            print("Cadena: " + cadena)
+
+            # Revisar min.
+
+            print(min(acceptations)) if len(acceptations) > 0 else None
+            print(min(rejections)) if len(rejections) > 0 else None
+            print(min(abortions)) if len(abortions) > 0 else None
+
+
 
     def AFN_LambdaToAFN(self) -> AFN:
 
@@ -443,17 +464,19 @@ class Iterator:
 # firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 # print(firstAFNL.__str__())
 
-#secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 # print(secondAFNL.calcularLambdaClausura('s0'))
 
-print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
+# print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
 # print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
-print(secondAFNL.procesarCadena("0111012", True))
+#print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 # print(secondAFNL.procesarCadena("102", True))
+
+secondAFNL.procesarListaCadenas(["0111012", "102", "0"], False, False)
 
 # print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
