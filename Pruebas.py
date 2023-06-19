@@ -196,10 +196,7 @@ class ClasePrueba:
         alfabeto = Alfabeto(afpd1.alfabetoCinta)
         cadena = alfabeto.generar_cadena_aleatoria(5)
         cadena = 'aaaabbba'
-        #print(cadena,end=" ")
-        #print(afpd1.procesarCadena(cadena))
         afpd1.procesarCadenaConDetalles(cadena)
-        #print(afpd1)
         afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
     
     def probarAFPDProductoCartesianoAFD(self):
