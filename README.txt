@@ -2,6 +2,7 @@
 Dylan Rivero Esteves
 Miller Estiven Barrera Gonzalez
 Cesar Arthuro Lemos Silva
+Juan David Tique Triana
 Cristian Camilo García Palacios
 
 ## Installation
