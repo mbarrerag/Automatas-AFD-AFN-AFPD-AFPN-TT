@@ -358,21 +358,26 @@ class Iterator:
                                 "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
 
         # El estado actual del autómata se puede determinar por dos cosas: El estado actual, y el índice del carácter
-        # de la cadena que acabamos de leer. El índice lo manejaremos como el índice - 1, por facilidad
+        # que acabamos de leer.
+
+        # Ahora bien, otra variable que necesitamos es la cantidad transiciones, sean o no lambda, que hemos hecho hasta
+        # el momento. Más adelante se explica por qué
 
         self.currentState = self.AFNL.estadoInicial
-        self.index = -1
+        self.index = 0
         self.transitionsDone = 0
 
         self.exploringStack = LifoQueue()  # Pila de caminos. Cuando se hace un paso computacional, es muy probable que haya otros
         # caminos posibles. Esos otros caminos hay que guardarlos porque puede ser necesario volver a ellos. Por eso,
-        # se guardan en esta cola.
+        # se guardan en esta pila, para volver a ellos cuando haga falta.
         self.printStack = LifoQueue()  # Pila de impresión. Guarda la información de los procesamientos que
-        # se han hecho en el camino que se está recorriendo ahora mismo.
+        # se han hecho en el camino que se está recorriendo ahora mismo. Hace falta para poder imprimir en la consola
+        # y en los .txt los procesamientos por los que pasa la cadena. Es una pila porque, cuando nos devolvamos en la pila
+        # de caminos, también tendremos que desapilar transiciones guardadas acá.
 
     def calculateTransitionsFromHere(self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
         # actual, y guardarlos en la pila exploringStack (la de los caminos posibles)
-        currentChar = self.cadena[self.index + 1]  # Avanzamos al siguiente carácter de la cadena
+        currentChar = self.cadena[self.index]  # Avanzamos al siguiente carácter de la cadena
 
         # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
         def pushIntoList(stateList, char):
@@ -381,7 +386,7 @@ class Iterator:
                     pushStep = {
                         "currentState": self.currentState,
                         "character": char,
-                        "state": st,
+                        "targetState": st,
                         "index": self.index,
                         "transitionsDone": self.transitionsDone
                     }
@@ -396,27 +401,33 @@ class Iterator:
 
     def doStep(self, isComingBack: bool) -> None:  # Dar el paso computacional.
 
+        """
+        isComingBack: Este booleano sirve para saber si nos estamos devolviendo.
+        Devolvernos no significa que nos vamos a quedar en el estado en el que estábamos cuando apilamos esta transición,
+        si no que vamos a hacer la transición que estaba apilada
+        """
+
         step = self.exploringStack.get()
+
+        self.currentState = step["targetState"]
+        self.index = step["index"] + 1 if step["character"] != '$' else step["index"]
+        transitionsUntilNow = self.transitionsDone
+        self.transitionsDone = step["transitionsDone"] + 1
 
         previousState = step["currentState"]
         charToCurrentState = step["character"]
-        self.currentState = step["state"]
-        toStack = [previousState, charToCurrentState, self.currentState]
-
-        transitionsUntilNow = self.transitionsDone
-        self.index = step["index"] + 1 if step["character"] != '$' else step["index"]
-        self.transitionsDone = step["transitionsDone"] + 1
+        toPrintStack = [previousState, charToCurrentState, self.currentState]
 
         if isComingBack:  # Esto significa que nos estamos devolviendo a un camino que antes no se había tomado.
             # La pila que de impresión debe actualizarse:
             for popTransition in range(0, transitionsUntilNow - self.transitionsDone + 1):
                 self.printStack.get()
 
-        self.printStack.put(toStack)
+        self.printStack.put(toPrintStack)
 
     def possibleTransitionsFromHere(self) -> bool:  # Averiguar si, desde el estado en que estamos, se pueden hacer
         # transiciones con el carácter actual que está siendo procesado
-        char = self.cadena[self.index + 1]
+        char = self.cadena[self.index]
         deltaState = self.AFNL.delta[self.currentState]
         return True if '$' in deltaState or char in deltaState else False
 
@@ -424,7 +435,7 @@ class Iterator:
         return True if self.currentState in self.AFNL.estadosAceptacion else False
 
     def cadenaFullyCovered(self) -> bool:
-        return True if self.index+1 == len(self.cadena) else False
+        return True if self.index == len(self.cadena) else False
 
 
 
@@ -437,7 +448,7 @@ secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 
 print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
 # print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
-# print(secondAFNL.procesarCadena("0111012", True))
+print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
