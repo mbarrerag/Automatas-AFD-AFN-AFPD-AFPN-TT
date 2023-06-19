@@ -69,22 +69,22 @@ class AFPD:
         #print(self.delta)   
     
     def verificarCorregirCompletitud(self):
-        islimbo = False
+        islimboAdded = False
         for estado in self.estados:
             if estado not in self.delta:
                 self.delta[estado] = {}
-                for simbolo in self.alfabeto:
+            
+            for simbolo in self.alfabetoCinta:
+                if simbolo not in self.delta[estado]:
                     self.delta[estado][simbolo] = ['limbo','$','$']
                 #Se añadió este if para manejo de errores de doc con transiciones incompletas para el AFPD
-                if 'limbo' not in self.estados:
-                    estadosParalelos = self.estados
-                    estadosParalelos.append('limbo')                    
-                    self.delta['limbo'] = {}
-                    for simbolo in self.alfabeto:
-                        self.delta['limbo'][simbolo] = ['limbo','$','$']
-                    islimbo = True
-        if islimbo:
-            self.estados = estadosParalelos
+                    if 'limbo' not in self.delta:                   
+                        self.delta['limbo'] = {}
+                        for simbolo in self.alfabetoCinta:
+                            self.delta['limbo'][simbolo] = ['limbo','$','$']
+                        islimboAdded = True
+        if islimboAdded:            
+            self.estados.append('limbo')
     
     def modificarPila(self, operacion, parametro):
         def pop(self):
