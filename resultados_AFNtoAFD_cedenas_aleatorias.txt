@@ -1,10 +1,5000 @@
-baabaabbb	False	no
-bb	False	no
-bbabbaaa	False	no
-bababbbba	False	no
+babbbbb	False	no
+ba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
 aa	{s0},a --> {s1},a --> {s1,s3}	si
-bbbabbaa	False	no
+b	{s0},b --> {}	no
+bab	False	no
+bbbbba	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+baababbab	False	no
+babbab	False	no
+bbbb	False	no
+bbbbbba	False	no
+babaaaaa	False	no
+abaaaba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaaabaa	False	no
+bbaa	False	no
+bbaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bb	False	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbaa	False	no
+b	{s0},b --> {}	no
+abbabbabaa	False	no
+aababbbaa	False	no
+babaa	False	no
+bbabbb	False	no
+baababb	False	no
+aabbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+babaa	False	no
+a	{s0},a --> {s1}	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbba	False	no
+b	{s0},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aabababb	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abaabaaaab	False	no
+bbaabab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+bbaab	False	no
+ba	False	no
+babb	False	no
+aababa	False	no
+baababaa	False	no
+abbaaabb	False	no
+bbbaabbabb	False	no
+bbba	False	no
+bbbabaaa	False	no
+babbababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+babba	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baab	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+ba	False	no
+bbba	False	no
+bbaababa	False	no
+bbb	False	no
+abaab	False	no
+bb	False	no
+bababa	False	no
+aabaaabbb	False	no
+baba	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+baaa	False	no
+ababbaabaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbabbabbaa	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bb	False	no
+abaababbaa	False	no
+aaabbbaab	False	no
+bbbabbaaab	False	no
+bbbbbabaaa	False	no
+abaabb	False	no
+ba	False	no
+baaaba	False	no
+baaa	False	no
+aabaaba	False	no
+bbaa	False	no
+bbaaba	False	no
+bbb	False	no
+bbbbbb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aabbaba	False	no
+bbaaabaab	False	no
+a	{s0},a --> {s1}	no
+baaaab	False	no
+aabbaaa	False	no
+aabbbababa	False	no
+babaaaaa	False	no
+aaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bb	False	no
+aababa	False	no
+babbbaaaa	False	no
+abbbabaab	False	no
+ababaaa	False	no
+ba	False	no
+ababaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbaaabbba	False	no
+bbaab	False	no
+babbb	False	no
+aaabaab	False	no
+a	{s0},a --> {s1}	no
+baaaabba	False	no
+aaabaaaaab	False	no
+babba	False	no
+aabaabba	False	no
+ababa	False	no
+babaaba	False	no
+babaaabbba	False	no
+bab	False	no
+a	{s0},a --> {s1}	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abababbb	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+bbbbbabbba	False	no
+baabbaaaaa	False	no
+aababa	False	no
+a	{s0},a --> {s1}	no
+babaaa	False	no
+aaaaababb	False	no
+abbabb	False	no
+baabbaab	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
 a	{s0},a --> {s1}	no
 b	{s0},b --> {}	no
-aabbaaabb	False	no
+babaabaab	False	no
+aaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abababab	False	no
+abbbbaabab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+ba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+abaaaa	False	no
+baa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+babbaaabab	False	no
+babb	False	no
+abaabb	False	no
+abbababab	False	no
+a	{s0},a --> {s1}	no
+aaaababb	False	no
+baabaaa	False	no
+a	{s0},a --> {s1}	no
+abaaaaa	False	no
+ba	False	no
+ababab	False	no
+aababb	False	no
+abababb	False	no
+baa	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+aabbbabb	False	no
+b	{s0},b --> {}	no
+ababaa	False	no
+bbbbbaab	False	no
+ababababba	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bababaab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abaaba	False	no
+aababbba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+abaaab	False	no
+baabbababb	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaabbbbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbabbbb	False	no
+baaa	False	no
+bbaaaaaa	False	no
+abaaabbbab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabbaabab	False	no
+babbaaa	False	no
+babba	False	no
+baabb	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bba	False	no
+aabbbabb	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baabaabba	False	no
+bbabaabaa	False	no
+bbaabb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+abbbabbabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ba	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bb	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaaaab	False	no
+aabaaba	False	no
+aababa	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbbb	False	no
+aabbaba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abbabba	False	no
+aaaababab	False	no
+a	{s0},a --> {s1}	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+babbaab	False	no
+abbbbabb	False	no
+baababb	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbaabbb	False	no
+baaaa	False	no
+bbaaabb	False	no
+bbbb	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babaabab	False	no
+baaaaa	False	no
+baa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaaaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baababb	False	no
+bbababa	False	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+bbbbbbabba	False	no
+bbaaaaaab	False	no
+baaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaababba	False	no
+a	{s0},a --> {s1}	no
+bbaaaa	False	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbbabbba	False	no
+bababbabaa	False	no
+abaabbb	False	no
+b	{s0},b --> {}	no
+bab	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbbbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbab	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbbaaabbb	False	no
+aaaaaaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+baabab	False	no
+bbb	False	no
+bbabbabbba	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbbabba	False	no
+bbab	False	no
+bbabababba	False	no
+aaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+baaababa	False	no
+bbbaa	False	no
+ababbb	False	no
+abaababaa	False	no
+a	{s0},a --> {s1}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aababba	False	no
+baaaaabb	False	no
+bb	False	no
+abababbbb	False	no
+aaaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+aabbabab	False	no
+a	{s0},a --> {s1}	no
+bbbaaabbba	False	no
+ababbab	False	no
+baabbbbaab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbbbaba	False	no
+ababbaba	False	no
+babba	False	no
+abaabbbbb	False	no
+abbbaab	False	no
+babbaab	False	no
+bbbbbb	False	no
+ba	False	no
+a	{s0},a --> {s1}	no
+baaababaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaaaa	False	no
+bbbaab	False	no
+bbbababbb	False	no
+aabaababbb	False	no
+ababbbaa	False	no
+a	{s0},a --> {s1}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbbaabbbb	False	no
+bbbbbaaab	False	no
+bbabaabaa	False	no
+aabaaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaaababa	False	no
+bbbbbbbaba	False	no
+bbabba	False	no
+aaabbbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aabaaa	False	no
+a	{s0},a --> {s1}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babaabb	False	no
+baabbaaab	False	no
+b	{s0},b --> {}	no
+bbaabb	False	no
+bbaabba	False	no
+abbabb	False	no
+abbbaaaabb	False	no
+bbbabbaaab	False	no
+abbaab	False	no
+a	{s0},a --> {s1}	no
+bb	False	no
+aaabaab	False	no
+babbabb	False	no
+baa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+a	{s0},a --> {s1}	no
+bbbaabb	False	no
+bbaba	False	no
+aabaaba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bba	False	no
+bbbbaabba	False	no
+babbb	False	no
+baaab	False	no
+baaaaaaaaa	False	no
+aabaaa	False	no
+bbbaba	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+abbaaaabb	False	no
+aabaabaab	False	no
+abaaba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+baabbab	False	no
+aaabbaba	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbbababb	False	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaabbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+baba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbbbaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bbb	False	no
+abbabbb	False	no
+b	{s0},b --> {}	no
+baaabbab	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaabaaba	False	no
+babb	False	no
+bbabba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbaaba	False	no
+babbaabb	False	no
+aabaabaaab	False	no
+babaabaa	False	no
+baabab	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+bbaa	False	no
+ba	False	no
+aaaaaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abbabbab	False	no
+babaaa	False	no
+bbabbbaaab	False	no
+baabaa	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+ababbbbb	False	no
+bbabb	False	no
+ba	False	no
+babbbbabb	False	no
+aababaaba	False	no
+bbab	False	no
+babbaaab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbabbaab	False	no
+b	{s0},b --> {}	no
+bbabbaba	False	no
+babb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+aabbbabbaa	False	no
+ababa	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+baaabb	False	no
+bbbbb	False	no
+a	{s0},a --> {s1}	no
+bbabaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaabbbb	False	no
+babbaabbaa	False	no
+abbabbba	False	no
+bbbbbbbba	False	no
+bb	False	no
+baaba	False	no
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ababbaa	False	no
+baabbbbbb	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bba	False	no
+aaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aabaabba	False	no
+baabaa	False	no
+babb	False	no
+baabbaaaab	False	no
+abbabb	False	no
+aaabaaa	False	no
+abababa	False	no
+a	{s0},a --> {s1}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ababbabbb	False	no
+baaabaaaa	False	no
+aaaabbbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbaaababb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaaab	False	no
+baaa	False	no
+abbbaba	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aaabaaabb	False	no
+bba	False	no
+abbaaba	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbaaababa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abbbaaba	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaababa	False	no
+bbbbbbbbb	False	no
+a	{s0},a --> {s1}	no
+abbabba	False	no
+bbbbbbba	False	no
+bbaaaabb	False	no
+bb	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbb	False	no
+babbabaabb	False	no
+baaab	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baab	False	no
+bbabab	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baaaa	False	no
+abbaabbab	False	no
+bbbbb	False	no
+ababaaaa	False	no
+bbaaaaabab	False	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbaabaaa	False	no
+baabb	False	no
+ba	False	no
+aabaababaa	False	no
+abbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+b	{s0},b --> {}	no
+bbabbb	False	no
+abbbbaab	False	no
+bbaaabb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbababba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bababbbbaa	False	no
+b	{s0},b --> {}	no
+bbba	False	no
+babb	False	no
+b	{s0},b --> {}	no
+bb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+abbbbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abbaaaba	False	no
+aabaaabba	False	no
+bba	False	no
+ba	False	no
+ababb	False	no
+bab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+babaaabaa	False	no
+babbaaaa	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+babbbabab	False	no
+baaaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabaabbaaa	False	no
+bbaababbbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baab	False	no
+bbbbb	False	no
+bbba	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbbbaaaaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaabbaabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+a	{s0},a --> {s1}	no
+abaaaabaab	False	no
+bbb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbaabb	False	no
+bbbbbbabb	False	no
+baabaabba	False	no
+abbaababb	False	no
+bb	False	no
+bbabaaab	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+abaabaa	False	no
+abaaa	False	no
+bbaa	False	no
+aaaabbbaaa	False	no
+bbbaaab	False	no
+aabaaaaba	False	no
+a	{s0},a --> {s1}	no
+aabaaabba	False	no
+baaabbbbaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bababbbaab	False	no
+bb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+aabababa	False	no
+bbbb	False	no
+aaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abaaaa	False	no
+ababab	False	no
+bbaaba	False	no
+a	{s0},a --> {s1}	no
+babb	False	no
+abbaaabab	False	no
+baaaabaaab	False	no
+bbabab	False	no
+babbbbba	False	no
+abaaba	False	no
+babbbaaabb	False	no
+ababaabb	False	no
+bbbbbbaab	False	no
+aaaababb	False	no
+abbababb	False	no
+bbbabbbbb	False	no
+b	{s0},b --> {}	no
+baa	False	no
+aabbbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+baabaa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaaa	False	no
+bbbbbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaabb	False	no
+bbbbbab	False	no
+babbbaaab	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbbabb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+bba	False	no
+ba	False	no
+baabaa	False	no
+aaababa	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbba	False	no
+a	{s0},a --> {s1}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+babaabaaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaabaababb	False	no
+aaaaaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+babbaabaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbabbabab	False	no
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabbbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abaab	False	no
+a	{s0},a --> {s1}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaaabbaba	False	no
+bbabaa	False	no
+b	{s0},b --> {}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abbabb	False	no
+bbab	False	no
+baaaabab	False	no
+b	{s0},b --> {}	no
+ababbaa	False	no
+bab	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+aabbabbb	False	no
+baaabbbbbb	False	no
+bbbbababab	False	no
+baaba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+ababbba	False	no
+baaab	False	no
+aaabaabaa	False	no
+aabaaaabab	False	no
+bbbabaaabb	False	no
+babaa	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+abbbbbaab	False	no
+bbabbbbab	False	no
+baaaba	False	no
+bba	False	no
+abaaabbb	False	no
+aaabbabaaa	False	no
+aaaaaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaaaababaa	False	no
+babbabaa	False	no
+b	{s0},b --> {}	no
+bb	False	no
+bbbab	False	no
+bbaaaab	False	no
+abaab	False	no
+bbaaaab	False	no
+bb	False	no
+bbbbaabab	False	no
+abbabab	False	no
+abaaba	False	no
+aababb	False	no
+aaabbbaba	False	no
+b	{s0},b --> {}	no
+bbaaaabaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbababb	False	no
+bbb	False	no
+bbbaaabab	False	no
+b	{s0},b --> {}	no
+baabab	False	no
+babbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabbaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baabaaa	False	no
+bbb	False	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbba	False	no
+baaaaaa	False	no
+aabbbabb	False	no
+babbb	False	no
+baab	False	no
+b	{s0},b --> {}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbabaaaa	False	no
+a	{s0},a --> {s1}	no
+babbaba	False	no
+bba	False	no
+bb	False	no
+ababbb	False	no
+abaabb	False	no
+baaaaabbb	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaba	False	no
+aaabbabb	False	no
+ba	False	no
+bababb	False	no
+abaaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bababbbaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbba	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bb	False	no
+aaabababba	False	no
+baabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbba	False	no
+baabbbaa	False	no
+baabbbaaba	False	no
+abbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbaabaabb	False	no
+aabbaababb	False	no
+a	{s0},a --> {s1}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baaabaaa	False	no
+bbbbba	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+ababbb	False	no
+b	{s0},b --> {}	no
+ababab	False	no
+abbaaaabb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbaa	False	no
+b	{s0},b --> {}	no
+ababbbaab	False	no
+bba	False	no
+bbbbabbab	False	no
+abbaaaa	False	no
+abbaaabb	False	no
+babaaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aabaabbb	False	no
+bbbabab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbbaa	False	no
+bbbbb	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+ababb	False	no
+bbabaabaab	False	no
+a	{s0},a --> {s1}	no
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aabbbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbbbbaba	False	no
+babababaaa	False	no
+babbbbbbab	False	no
+bbabbaab	False	no
+bbbabab	False	no
+bbaba	False	no
+abbbaab	False	no
+bba	False	no
+bbbaba	False	no
+bbbabb	False	no
+abbaaaaa	False	no
+babb	False	no
+abaabbbbba	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ababbaaba	False	no
+aaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+babb	False	no
+b	{s0},b --> {}	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+a	{s0},a --> {s1}	no
+abbbaaab	False	no
+bab	False	no
+abbaab	False	no
+aabbbabbba	False	no
+abaababba	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abbabbb	False	no
+bb	False	no
+bbaaabbb	False	no
+bbab	False	no
+baaabbbbaa	False	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abaaa	False	no
+baa	False	no
+ababaaaab	False	no
+bab	False	no
+bb	False	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+ababbabaa	False	no
+a	{s0},a --> {s1}	no
+bbababb	False	no
+ba	False	no
+aabaaaaba	False	no
+abaaa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbabba	False	no
+babbbb	False	no
+b	{s0},b --> {}	no
+bbb	False	no
+babab	False	no
+abaabba	False	no
+bbaabbb	False	no
+bbaba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+ba	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbaaa	False	no
+aaaabbabb	False	no
+baaaaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbaa	False	no
+bba	False	no
+aaabbbabb	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aabaaaba	False	no
+a	{s0},a --> {s1}	no
+aabbabaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aabbabaabb	False	no
+bb	False	no
+aababb	False	no
+babaa	False	no
+bbbbbbaaba	False	no
+baabbbb	False	no
+bbabaababa	False	no
+babaaaaab	False	no
+aabbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbaaabbab	False	no
+b	{s0},b --> {}	no
+babbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bb	False	no
+abaabbaba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aaababa	False	no
+bbb	False	no
+babaaababa	False	no
+bb	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aabbbabb	False	no
+aabaabbb	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbbabaaab	False	no
+aaabbaaaba	False	no
+baababaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaaaaaba	False	no
+bbbb	False	no
+abbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aabaabbb	False	no
+bab	False	no
+babbbaabaa	False	no
+bbbbbba	False	no
+bbbbbba	False	no
+bbbaaababa	False	no
+bbbab	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bababab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbab	False	no
+bbbbbbab	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+abbaababa	False	no
+bbab	False	no
+bbabbbaab	False	no
+abbabaa	False	no
+bbaaa	False	no
+a	{s0},a --> {s1}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ababb	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+ba	False	no
+aabbaaaa	False	no
+bbbaaaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbaaa	False	no
+bbaaab	False	no
+babbbabb	False	no
+babbbaaaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaaab	False	no
+a	{s0},a --> {s1}	no
+abbaab	False	no
+abaabbabaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bb	False	no
+ababa	False	no
+ababa	False	no
+bbbbbba	False	no
+b	{s0},b --> {}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+bbbaaaa	False	no
+bbaaab	False	no
+ababaabbbb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+baababa	False	no
+bba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+ba	False	no
+bbbbab	False	no
+bbbaabba	False	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbbb	False	no
+b	{s0},b --> {}	no
+bbabbab	False	no
+bbaababaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+baababb	False	no
+a	{s0},a --> {s1}	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+a	{s0},a --> {s1}	no
+abababbb	False	no
+abaabaabaa	False	no
+babbabaaa	False	no
+bbabaaa	False	no
+aaabbbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbab	False	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+abaabaaabb	False	no
+b	{s0},b --> {}	no
+bbabbabb	False	no
+aabbaaba	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ababba	False	no
+baaa	False	no
+babba	False	no
+a	{s0},a --> {s1}	no
+bbaab	False	no
+bbbbaaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bba	False	no
+aaababb	False	no
+ababbaa	False	no
+aaabaaaa	False	no
+bbaaaab	False	no
+bbbaaa	False	no
+bbaabbaa	False	no
+bbaba	False	no
+abaaaaaab	False	no
+abbaaa	False	no
+bbaabba	False	no
+baa	False	no
+a	{s0},a --> {s1}	no
+ababaaaa	False	no
+babbabaaba	False	no
+babbaa	False	no
+baabaaab	False	no
+ababbbbb	False	no
+aababbaa	False	no
+abaaaabbbb	False	no
+bbabbbbab	False	no
+abaaabb	False	no
+bbaabbb	False	no
+abbbaaa	False	no
+bbbbb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbabaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baa	False	no
+abbabaaba	False	no
+bbabaaabaa	False	no
+babb	False	no
+b	{s0},b --> {}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaabbbbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbaba	False	no
+aaaaaaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+abaabb	False	no
+baaa	False	no
+baaabaaaba	False	no
+bbabaaa	False	no
+abaaa	False	no
+b	{s0},b --> {}	no
+baaaabbabb	False	no
+bbbaaa	False	no
+bbaabbbb	False	no
+b	{s0},b --> {}	no
+bbbaabb	False	no
+bbaaaaab	False	no
+abaaabbba	False	no
+bababb	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+bbab	False	no
+ba	False	no
+abbabbbb	False	no
+aaaaaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aaababbaa	False	no
+abaababa	False	no
+aabaaaa	False	no
+b	{s0},b --> {}	no
+bbbabaabaa	False	no
+baaaab	False	no
+aaababb	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+ba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbababa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abaaa	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbbabba	False	no
+a	{s0},a --> {s1}	no
+abbbabaa	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbababaaa	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+baaabba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbb	False	no
+babaaaabab	False	no
+ba	False	no
+bbbbbba	False	no
+ba	False	no
+baabbbbbb	False	no
+aabaabbbb	False	no
+babaabbaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbb	False	no
+babbbb	False	no
+a	{s0},a --> {s1}	no
+abaab	False	no
+babbaa	False	no
+abaaab	False	no
+aaabaaabba	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+bbab	False	no
+bbbbab	False	no
+bbabababba	False	no
+abbaaab	False	no
+bbbb	False	no
+baababab	False	no
+bbabba	False	no
+babbbaba	False	no
+baabab	False	no
+babbaaba	False	no
+bbbbabbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbaaa	False	no
+bbabbab	False	no
+abbaaabaaa	False	no
+aaaababaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+aabaabb	False	no
+bbb	False	no
+babaababb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbaa	False	no
+bbabaaaabb	False	no
+bbbbb	False	no
+bbaaabbbab	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabaaaabbb	False	no
+bbabababab	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbbbbaabaa	False	no
+baabbabab	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbbb	False	no
+bbbaabaaaa	False	no
+baababa	False	no
+ababaa	False	no
+baaabab	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+baaabab	False	no
+bbbabbaaaa	False	no
+baaaabbbbb	False	no
+bbbabbabb	False	no
+baababbaab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abaaa	False	no
+bba	False	no
+abbaabb	False	no
+abbbaabba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabbabba	False	no
+abaabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+ababa	False	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ababaab	False	no
+bbba	False	no
+baabb	False	no
+bba	False	no
+bbbba	False	no
+bbbbabbab	False	no
+baaabbbbaa	False	no
+bbababbab	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+aaaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+babab	False	no
+aabbababa	False	no
+ababbbaabb	False	no
+ababaabbaa	False	no
+b	{s0},b --> {}	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbabbbaba	False	no
+ababab	False	no
+bb	False	no
+babb	False	no
+bbbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaabbaab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbabbbaa	False	no
+ba	False	no
+bbbabbaaa	False	no
+aaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+babbbaa	False	no
+baabbaab	False	no
+bbaaa	False	no
+bbaaa	False	no
+bbbbb	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aabababbbb	False	no
+aabbaaba	False	no
+bbbbaa	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbbbababa	False	no
+babaabbab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+bb	False	no
+baaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbaab	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbbbba	False	no
+aaaaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baaababbb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+aabaaabaaa	False	no
+bbaa	False	no
+b	{s0},b --> {}	no
+abaab	False	no
+babaa	False	no
+aaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bababababb	False	no
+bbbbba	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbbbbaab	False	no
+bbaaaaaa	False	no
+bbabaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+abbbbaaabb	False	no
+a	{s0},a --> {s1}	no
+bbbab	False	no
+bbaaababba	False	no
+a	{s0},a --> {s1}	no
+babaabbab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+ababaaaaa	False	no
+bbabaabb	False	no
+a	{s0},a --> {s1}	no
+bbbba	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bb	False	no
+a	{s0},a --> {s1}	no
+baba	False	no
+baabaa	False	no
+baaaabba	False	no
+baaabaaa	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abaaba	False	no
+abaab	False	no
+abaaabaaa	False	no
+abbbababb	False	no
+babbbbbb	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baab	False	no
+b	{s0},b --> {}	no
+aababbbbb	False	no
+ababaab	False	no
+bbaba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbabbaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+baaab	False	no
+ababbb	False	no
+aaabaaba	False	no
+aaaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbbbbab	False	no
+abbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbbbabbb	False	no
+bbaabbaba	False	no
+aabaabbabb	False	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bb	False	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+baab	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbabbaaab	False	no
+bba	False	no
+aabaabab	False	no
+bbbaaab	False	no
+abbaaabaaa	False	no
+bbabaa	False	no
+ba	False	no
+aabbabaaba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaabaabaa	False	no
+bbbaab	False	no
+babbbbaaab	False	no
+baaa	False	no
+aababb	False	no
+a	{s0},a --> {s1}	no
+baaabaab	False	no
+babbbaabab	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+bab	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+ababa	False	no
+bbabbaabaa	False	no
+aabbbabbaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbaaab	False	no
+bbbbaabaa	False	no
+bbbaabb	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babbbbbbab	False	no
+b	{s0},b --> {}	no
+baaabbabb	False	no
+abaabbbb	False	no
+aababab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbbbaabaa	False	no
+bbbbba	False	no
+bbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbabbabb	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbaaabaab	False	no
+baabb	False	no
+baaabab	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbbbbba	False	no
+b	{s0},b --> {}	no
+bbabbbaa	False	no
+bbbbbb	False	no
+baaaaaab	False	no
+bab	False	no
+b	{s0},b --> {}	no
+bbabab	False	no
+bbbbbbbab	False	no
+baaaa	False	no
+babbbb	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbabb	False	no
+ababaaabab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+aaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abbbbaaaaa	False	no
+bbbbab	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaabaa	False	no
+ba	False	no
+bababa	False	no
+bb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabbabaaab	False	no
+baaaa	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+abaaabaaaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+baaabbaaba	False	no
+ababbb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+abaaa	False	no
+b	{s0},b --> {}	no
+bbaaaab	False	no
+bbbbbabbb	False	no
+aaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babbaba	False	no
+abbbaabbbb	False	no
+abaaaaaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbbababa	False	no
+baaabbaabb	False	no
+b	{s0},b --> {}	no
+bbbaabb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baab	False	no
+babab	False	no
+b	{s0},b --> {}	no
+ba	False	no
+abbbbabbb	False	no
+aabbaaaba	False	no
+abbaab	False	no
+bbaaaaaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+bbabb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbaaba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbaaabbbb	False	no
+bababba	False	no
+aaaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bababbaabb	False	no
+bbababbbaa	False	no
+a	{s0},a --> {s1}	no
+bab	False	no
+abaabbaba	False	no
+ababbba	False	no
+baabbb	False	no
+aabbabb	False	no
+aababb	False	no
+bababb	False	no
+aaaabbabba	False	no
+baab	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbab	False	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aababab	False	no
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ababaab	False	no
+babbbbaab	False	no
+aaaabaaaaa	False	no
+bbaabaaaa	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+abbabbba	False	no
+baabab	False	no
+bba	False	no
+aababbaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabaaaabba	False	no
+bbbaaaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ba	False	no
+aabaaababa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+babb	False	no
+babbbbab	False	no
+bbaababab	False	no
+bbbabba	False	no
+ba	False	no
+ba	False	no
+bab	False	no
+abababb	False	no
+abbbabaaab	False	no
+babbbaaabb	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ababa	False	no
+aabbbbbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abbabbbbbb	False	no
+aababb	False	no
+bba	False	no
+baabaa	False	no
+ababbbbb	False	no
+abbaaabaa	False	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
 aababaaa	False	no
+aaabaaaabb	False	no
+bba	False	no
+baabba	False	no
+bbaabaab	False	no
+bbbbbaaaba	False	no
+abbaaa	False	no
+a	{s0},a --> {s1}	no
+baabbaabb	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+bbabbbab	False	no
+aabbabb	False	no
+abbbabb	False	no
+aaaaababb	False	no
+bbbb	False	no
+b	{s0},b --> {}	no
+abbaabbbb	False	no
+aaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bababb	False	no
+bbbbabb	False	no
+aababab	False	no
+bbaabbaa	False	no
+abaab	False	no
+bbbbbbbab	False	no
+aabaaaabab	False	no
+babaaa	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+babbaabb	False	no
+abaaaaaaab	False	no
+bba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabbbaaaa	False	no
+b	{s0},b --> {}	no
+abbabaaaab	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbaaba	False	no
+b	{s0},b --> {}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbba	False	no
+babbbaab	False	no
+baababab	False	no
+baab	False	no
+abaabbaaa	False	no
+bbbbbabab	False	no
+bbaaabaa	False	no
+aababa	False	no
+abbaab	False	no
+babaabab	False	no
+abaabbbabb	False	no
+baaaa	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bb	False	no
+bbabbbabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ba	False	no
+bbaaaaaabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaaa	False	no
+bbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbba	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+baabaaa	False	no
+ababbab	False	no
+baaaa	False	no
+baaaa	False	no
+baabbaa	False	no
+bbababa	False	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aaaabaaa	False	no
+baabbbbba	False	no
+bbaaaaaab	False	no
+babb	False	no
+baabaaabba	False	no
+abbbbabbaa	False	no
+abbbabbaa	False	no
+baabab	False	no
+bbabababaa	False	no
+bbab	False	no
+babbbab	False	no
+babbaab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbaa	False	no
+babbbba	False	no
+bb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+babaa	False	no
+baa	False	no
+bbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbbbaaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbba	False	no
+bb	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbabbbbb	False	no
+babaabbaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbabbab	False	no
+baaabbaabb	False	no
+ababbbaa	False	no
+bbbaa	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+a	{s0},a --> {s1}	no
+abaabaaaaa	False	no
+bba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abaaa	False	no
+babbba	False	no
+abbaaa	False	no
+bbabbbbaaa	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+bbbb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbaaaaab	False	no
+babbabbbb	False	no
+b	{s0},b --> {}	no
+bababaaaba	False	no
+aabaab	False	no
+aababaaaab	False	no
+bbaaaaabb	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaababbbb	False	no
+baabaaa	False	no
+aababbbbbb	False	no
+bba	False	no
+baabbaa	False	no
+bbbabbba	False	no
+aaabbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+bbba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baaa	False	no
+baabbbab	False	no
+a	{s0},a --> {s1}	no
+bb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+babbbabba	False	no
+b	{s0},b --> {}	no
+bbabababaa	False	no
+bbbbabbabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+babbab	False	no
+a	{s0},a --> {s1}	no
+aabbabbb	False	no
+aaaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bab	False	no
+bbbbabb	False	no
+bba	False	no
+ababbaabb	False	no
+baab	False	no
+babaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbaa	False	no
+bbbaaab	False	no
+babab	False	no
+baaaab	False	no
+ba	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abaaba	False	no
+bbbbaaab	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbabbb	False	no
+bbb	False	no
+abaababbba	False	no
+bbbaaaaaa	False	no
+bbb	False	no
+ababbbbab	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbbaaabab	False	no
+aabaaabbb	False	no
+ababbbbaaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaaab	False	no
+bab	False	no
+bbabababbb	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbaababb	False	no
+babaaaabab	False	no
+bbbba	False	no
+aaabbaabba	False	no
+abaaaaabab	False	no
+ba	False	no
+abaaa	False	no
+babaa	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+abbbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+babbaabab	False	no
+abaabb	False	no
+babbbaba	False	no
+baabbaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbbab	False	no
+baaa	False	no
+babbbbb	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbb	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+babbbbbbb	False	no
+baabababb	False	no
+bba	False	no
+bbbbababaa	False	no
+aababbaaaa	False	no
+abbbabaa	False	no
+ba	False	no
+bbaaba	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaaba	False	no
+b	{s0},b --> {}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+babbbbba	False	no
+aabaab	False	no
+abaaaabb	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+abbbaba	False	no
+bbabaabb	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbbabba	False	no
+baababbab	False	no
+bbabaaa	False	no
+babaabaaaa	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+aabbaaaabb	False	no
+baabbb	False	no
+bbaaa	False	no
+babab	False	no
+aaabbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bb	False	no
+baabbbabb	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aaaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aabaaa	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abaabaaab	False	no
+bbbaaa	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+abbbbbaaa	False	no
+a	{s0},a --> {s1}	no
+bbabb	False	no
+bbaabba	False	no
+b	{s0},b --> {}	no
+bbbb	False	no
+bbbbbaaaab	False	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aaabbabab	False	no
+babbabbbbb	False	no
+bbbbb	False	no
+abbbaaabaa	False	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabaaba	False	no
+baaaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+abaababaab	False	no
+ababbb	False	no
+babaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbabbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+baabba	False	no
+b	{s0},b --> {}	no
+bbaaabbb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abaaabb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+abbbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+babab	False	no
+bbaabbaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbaabbb	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+ba	False	no
+abbbaabaa	False	no
+bbbbaaa	False	no
+baababa	False	no
+baaabaa	False	no
+bbb	False	no
+b	{s0},b --> {}	no
+baaabb	False	no
+ababaabbba	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+ababbbb	False	no
+baaa	False	no
+bbab	False	no
+aabaababbb	False	no
+bb	False	no
+b	{s0},b --> {}	no
+baaba	False	no
+bbbbaabb	False	no
+bb	False	no
+ba	False	no
+aaababaa	False	no
+abaabaabaa	False	no
+a	{s0},a --> {s1}	no
+bbaabbaab	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bababbabbb	False	no
+babbabbbba	False	no
+abaaaab	False	no
+baabb	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+babbbbaabb	False	no
+bbabbabbbb	False	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaa	False	no
+baab	False	no
+bbaabb	False	no
+aabaaaab	False	no
+bbbbaaabbb	False	no
+babba	False	no
+aababbaa	False	no
+bbbbabaa	False	no
+a	{s0},a --> {s1}	no
+baaa	False	no
+bbbbb	False	no
+abababab	False	no
+babaab	False	no
+bbbbba	False	no
+baababbabb	False	no
+bbaab	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abaaabba	False	no
+ba	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bbaa	False	no
+bbabaabb	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+ababa	False	no
+aaabaabbbb	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+bbba	False	no
+aaababb	False	no
+abaaabbbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bb	False	no
+bbbbaaa	False	no
+aaaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbab	False	no
+aaabbbaba	False	no
+baabaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbab	False	no
+b	{s0},b --> {}	no
+babbbab	False	no
+babaabba	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+ababbb	False	no
+aabaaaabaa	False	no
+baabaabb	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbab	False	no
+bbaaaa	False	no
+a	{s0},a --> {s1}	no
+bbabababab	False	no
+bbabaab	False	no
+baabab	False	no
+bbab	False	no
+bbabab	False	no
+baabbaba	False	no
+bbbbb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aaaaabbabb	False	no
+babbbaab	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbabaaabb	False	no
+aabbabbb	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaab	False	no
+aabbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+ababbbba	False	no
+aaaaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbbabab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaabaab	False	no
+bbabbaaaab	False	no
+aaaaabbbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbabbb	False	no
+bbaaba	False	no
+bbbaaaaaaa	False	no
+bab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+baaaab	False	no
+a	{s0},a --> {s1}	no
+aabababa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+babbaabaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bbb	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbab	False	no
+baababba	False	no
+bbaaaaaab	False	no
+aabbbabaa	False	no
+abaaabbba	False	no
+bbabaabab	False	no
+bbabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+abaaabbba	False	no
+baaab	False	no
+baaabaabb	False	no
+b	{s0},b --> {}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaaababa	False	no
+bbbba	False	no
+ababb	False	no
+abbaaaaa	False	no
+baa	False	no
+baabbb	False	no
+baabbab	False	no
+ba	False	no
+babbbaa	False	no
+aabaabba	False	no
+abbaabaaab	False	no
+aababa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaabbba	False	no
+abaaaa	False	no
+baaaab	False	no
+a	{s0},a --> {s1}	no
+baab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbba	False	no
+bababbb	False	no
+aabbaabbab	False	no
+abbbbaaaa	False	no
+babaab	False	no
+baa	False	no
+baabaabbb	False	no
+baaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaababaaaa	False	no
+baaababab	False	no
+bbb	False	no
+bb	False	no
+abaabbb	False	no
+bbaab	False	no
+babbbaaaa	False	no
+abaabaaab	False	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbabaaaaa	False	no
+bbaabaab	False	no
+bbaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbaabaaaa	False	no
+babbb	False	no
+abbaab	False	no
+aaabaabbbb	False	no
+aabaaabbaa	False	no
+baaaaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+baabbbaaaa	False	no
+bb	False	no
+bbbab	False	no
+a	{s0},a --> {s1}	no
+ababbaa	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbb	False	no
+abbaaababb	False	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+babbaab	False	no
+bababababb	False	no
+bbaaaa	False	no
+aaabbaba	False	no
+bab	False	no
+a	{s0},a --> {s1}	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+babbbbb	False	no
+bba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baabba	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbbab	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aabbaaaba	False	no
+aababbab	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+ba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbabbaba	False	no
+bbaababb	False	no
+b	{s0},b --> {}	no
+aaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baaba	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbab	False	no
+bbab	False	no
+baba	False	no
+bbbaab	False	no
+bbaa	False	no
+abbbabab	False	no
+b	{s0},b --> {}	no
+aabbbabbbb	False	no
+a	{s0},a --> {s1}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaaaabba	False	no
+bbbabab	False	no
+baaba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+baba	False	no
+abbabaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaaa	False	no
+aabaaa	False	no
+bbbbabbab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baabababab	False	no
+bb	False	no
+bbab	False	no
+bbbbba	False	no
+aabbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+bbabaaab	False	no
+abaaaaabbb	False	no
+bbb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbb	False	no
+ababbb	False	no
+b	{s0},b --> {}	no
+aabbbaaaba	False	no
+aabbababaa	False	no
+abbbaabbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baababbaba	False	no
+abaaaaaa	False	no
+bbbabba	False	no
+ababaaba	False	no
+bbabbb	False	no
+b	{s0},b --> {}	no
+bbaaabaaa	False	no
+bbaaba	False	no
+a	{s0},a --> {s1}	no
+aababb	False	no
+ababbaaaa	False	no
+a	{s0},a --> {s1}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baababaabb	False	no
+baaabbbabb	False	no
+aaabaab	False	no
+aabababb	False	no
+baabaabaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abbababb	False	no
+babaa	False	no
+baaba	False	no
+aaaabbabab	False	no
+aaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbaabab	False	no
+aabbabaaaa	False	no
+baaaaaa	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaabbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaaabbbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abbaaaa	False	no
+aabaabaabb	False	no
+ababaabbb	False	no
+ababaa	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+bbbbaaaba	False	no
+abbbbbaab	False	no
+bbbbabbbaa	False	no
+abbbbbbabb	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baabaaaab	False	no
+baaaaab	False	no
+ababaaab	False	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abbbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+babb	False	no
+ba	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baabbbbb	False	no
+babaaabbb	False	no
+b	{s0},b --> {}	no
+aabbbbaaaa	False	no
+bbb	False	no
+bbb	False	no
+bbbbb	False	no
+bbabb	False	no
+abaababbaa	False	no
+ba	False	no
+ababb	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbabb	False	no
+b	{s0},b --> {}	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbaa	False	no
+bababba	False	no
+baabaaaaab	False	no
+abbbaabbaa	False	no
+a	{s0},a --> {s1}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaaabab	False	no
+bbabaaaab	False	no
+bba	False	no
+aababaaaaa	False	no
+bbbbaa	False	no
+ba	False	no
+bbabbabaaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+babaaaa	False	no
+bababab	False	no
+bbbabab	False	no
+abbabbbba	False	no
+abbaabaaaa	False	no
+bbaab	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aaaaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baabaab	False	no
+abaab	False	no
+abbabaaaab	False	no
+aaabaaba	False	no
+bababaa	False	no
+bbbbaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbbbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+ba	False	no
+b	{s0},b --> {}	no
+baa	False	no
+baababa	False	no
+baa	False	no
+abaabaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bb	False	no
+bbbba	False	no
+baabbabbbb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+ababb	False	no
+baaaba	False	no
+bababaabb	False	no
+abbbaabaa	False	no
+bbabbbaaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bababbbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbb	False	no
+bbababbb	False	no
+b	{s0},b --> {}	no
+ababbaabbb	False	no
+babbbaaaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aabbaaaab	False	no
+baa	False	no
+babbba	False	no
+aababbba	False	no
+abaabbbb	False	no
+bab	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+abbbabbabb	False	no
+abababab	False	no
+aabbbaabb	False	no
+b	{s0},b --> {}	no
+bbbabbaaa	False	no
+bba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabbaabba	False	no
+bbaabbbba	False	no
+ba	False	no
+bab	False	no
+b	{s0},b --> {}	no
+bbb	False	no
+ababaaaa	False	no
+bba	False	no
+baababa	False	no
+abbbbbabaa	False	no
+bbbbabaabb	False	no
+baaba	False	no
+b	{s0},b --> {}	no
+babab	False	no
+bbaababab	False	no
+abbbbabb	False	no
+bbbbbbbbbb	False	no
+bbb	False	no
+aabbabbaaa	False	no
+babbaaba	False	no
+bb	False	no
+bbaab	False	no
+abaab	False	no
+b	{s0},b --> {}	no
+abaabbbbaa	False	no
+ababaaaba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+abaabb	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbaaaa	False	no
+bbaaaabbab	False	no
+bb	False	no
+aababb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbabaabaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbbbb	False	no
+babaabb	False	no
+bbbaaababb	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aabababa	False	no
+bb	False	no
+baab	False	no
+aabbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaaaaaa	False	no
+aababaabbb	False	no
+bbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbbba	False	no
+aababababb	False	no
+a	{s0},a --> {s1}	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbababbbbb	False	no
+aaabbbaaaa	False	no
+aaabbbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+ababbabaaa	False	no
+bbbb	False	no
+ababbaaaab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+babab	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbaaababa	False	no
+bbba	False	no
+b	{s0},b --> {}	no
+bab	False	no
+aabbaaaa	False	no
+bbbbaab	False	no
+baaaabb	False	no
+bbbbaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaaaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abababaaa	False	no
+bbb	False	no
+baaaabbb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aababbbba	False	no
+aababaa	False	no
+bbbabbb	False	no
+babaaaaaba	False	no
+baa	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabaaa	False	no
+abbaba	False	no
+bbbabab	False	no
+bbbb	False	no
+bbaaa	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbaabaa	False	no
+babaabbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+bb	False	no
+bbabaabab	False	no
+bababa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+babaaaba	False	no
+aabbaaaaaa	False	no
+babaabba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+babbababa	False	no
+bbab	False	no
+bbbaabaaaa	False	no
+b	{s0},b --> {}	no
+bab	False	no
+a	{s0},a --> {s1}	no
+abaabbbb	False	no
+b	{s0},b --> {}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+babbbb	False	no
+bbaab	False	no
+babaaabba	False	no
+bab	False	no
+abaaabaaa	False	no
+bbaba	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+aaabaaa	False	no
+aababaaaa	False	no
+bbabbbbbbb	False	no
+baaabaaab	False	no
+abaab	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+baab	False	no
+babbbba	False	no
+bb	False	no
+babbabaa	False	no
+bbbbaabbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabbaaba	False	no
+bbbbbbbbb	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+ba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abaaaba	False	no
+bbbabb	False	no
+aaaaaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baabbbbabb	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaabab	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbbabbbaa	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abaababa	False	no
+abbbaabbbb	False	no
+bbbbaaa	False	no
+bb	False	no
+abbaaa	False	no
+bbba	False	no
+a	{s0},a --> {s1}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+babbbbbb	False	no
+bbab	False	no
+babababa	False	no
+ababaababa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bab	False	no
+a	{s0},a --> {s1}	no
+abaab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabbbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+babaab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbbbaabb	False	no
+bbbbbaaaa	False	no
+ba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbabbbaa	False	no
+baaaaba	False	no
+bbbaabaabb	False	no
+bab	False	no
+baa	False	no
+aababaabbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaabaaba	False	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbaabaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbbabab	False	no
+bba	False	no
+bbbaabaabb	False	no
+ba	False	no
+baaaaabbbb	False	no
+abbaab	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+baabaaba	False	no
+b	{s0},b --> {}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baabababa	False	no
+bbbaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+ababba	False	no
+abbaaaabaa	False	no
+aaabbaab	False	no
+babba	False	no
+ababbbbbb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbaa	False	no
+bbababbaaa	False	no
+bbabab	False	no
+aabbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+babababbab	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbabab	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+baaaaa	False	no
+abababbbab	False	no
+bab	False	no
+bbabbbbb	False	no
+a	{s0},a --> {s1}	no
+babaa	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+babbbab	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+abaabaaa	False	no
+b	{s0},b --> {}	no
+abbabbab	False	no
+aabbaaba	False	no
+baababb	False	no
+bbaabbbb	False	no
+bba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bab	False	no
+abaaabba	False	no
+aabaabbb	False	no
+bbbabba	False	no
+bb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ababbaaa	False	no
+aabaaaabb	False	no
+ba	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+bba	False	no
+aabbbbaabb	False	no
+abaabaaa	False	no
+aabbbaaaba	False	no
+bb	False	no
+abaaaabbbb	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabaabb	False	no
+aaaabbbaba	False	no
+baabab	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bba	False	no
+a	{s0},a --> {s1}	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbbaaba	False	no
+bbaa	False	no
+babb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+ababaa	False	no
+baaaaabb	False	no
+a	{s0},a --> {s1}	no
+bbbab	False	no
+babbab	False	no
+bbbabb	False	no
+abbaaabb	False	no
+aaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+bbbbb	False	no
+baaaabbb	False	no
+bababbbaa	False	no
+babaabaaab	False	no
+b	{s0},b --> {}	no
+abaabaab	False	no
+aabababbaa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+baa	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baababab	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aababbb	False	no
+aaabbaaa	False	no
+bbbaaaaa	False	no
+bbb	False	no
+bba	False	no
+babb	False	no
+bbaaabbb	False	no
+bab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbaa	False	no
+aaaabaaaa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+ba	False	no
+baa	False	no
+bbbbbb	False	no
+bbbaaaa	False	no
+b	{s0},b --> {}	no
+bbaabab	False	no
+baabbbab	False	no
+aababbaab	False	no
+bbbaa	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bababbaba	False	no
+babb	False	no
+abbbababba	False	no
+baa	False	no
+baabaaaa	False	no
+a	{s0},a --> {s1}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+abaab	False	no
+baab	False	no
+bb	False	no
+bbbbabaaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abbbabbaba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+baaba	False	no
+ababb	False	no
+aaaaaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+baaaababab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaaabbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabbaaaab	False	no
+bbabb	False	no
+b	{s0},b --> {}	no
+abbbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abaaaabbab	False	no
+ababbbbb	False	no
+abbabbaa	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaaaababaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+baaabba	False	no
+aaabbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbab	False	no
+bba	False	no
+baaa	False	no
+abaaa	False	no
+bbaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbabbabb	False	no
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baabbaba	False	no
+abbbbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bb	False	no
+baaabb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bab	False	no
+bbbbaabab	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+babb	False	no
+abaabba	False	no
+b	{s0},b --> {}	no
+aababa	False	no
+b	{s0},b --> {}	no
+bab	False	no
+bbaabaaba	False	no
+bbbbbbaaa	False	no
+bbababba	False	no
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aaaabbbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+a	{s0},a --> {s1}	no
+aaabbaabaa	False	no
+bbababa	False	no
+bbbbab	False	no
+aabaabbbab	False	no
+aabbabaaaa	False	no
+aabbbbaab	False	no
+baaaabbaab	False	no
+bbbb	False	no
+abbabaaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabaababa	False	no
+baaba	False	no
+abaaba	False	no
+bababb	False	no
+baaabb	False	no
+bbba	False	no
+aaaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+a	{s0},a --> {s1}	no
+babaaabbb	False	no
+bababbaabb	False	no
+bb	False	no
+abbaababb	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+abababb	False	no
+baa	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbaabaaaa	False	no
+ba	False	no
+baa	False	no
+a	{s0},a --> {s1}	no
+baaabba	False	no
+aabaaaabaa	False	no
+bbbbabab	False	no
+bbabb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbbaaabb	False	no
+bab	False	no
+babab	False	no
+bb	False	no
+b	{s0},b --> {}	no
+abaabaabba	False	no
+ba	False	no
+babaabaa	False	no
+bbbab	False	no
+abbaaa	False	no
+abbbaabbab	False	no
+abbababab	False	no
+bab	False	no
+bbb	False	no
+ba	False	no
+bbababaaaa	False	no
+bab	False	no
+baa	False	no
+aaababbbab	False	no
+bbaa	False	no
+aaabbaab	False	no
+a	{s0},a --> {s1}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babbba	False	no
+baabaaa	False	no
+aababba	False	no
+baaabaaab	False	no
+ababba	False	no
+bbb	False	no
+bb	False	no
+bbbabbbab	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbba	False	no
+ababbaba	False	no
+aaaababa	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbaa	False	no
+babbbbbaa	False	no
+abbbabaa	False	no
+baba	False	no
+bbbaa	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abbaabba	False	no
+abbbbaab	False	no
+abaaab	False	no
+b	{s0},b --> {}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aabbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbaaaba	False	no
+abaaa	False	no
+bb	False	no
+b	{s0},b --> {}	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+ababbaba	False	no
+babba	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+babb	False	no
+baa	False	no
+bbababba	False	no
+a	{s0},a --> {s1}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbaaaaa	False	no
+bb	False	no
+b	{s0},b --> {}	no
+aaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaaababa	False	no
+bbbbaa	False	no
+babbababbb	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaaaa	False	no
+aaababb	False	no
+aaaaabbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baaaaa	False	no
+baba	False	no
+bbbbaababb	False	no
+babbbaaaab	False	no
+baab	False	no
+babaabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babaaabb	False	no
+bb	False	no
+babbbb	False	no
+aababa	False	no
+baaaaba	False	no
+aabbbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbbbaaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+aabbaba	False	no
+bbaabbaaaa	False	no
+babbaabaa	False	no
+aababaaa	False	no
+bbabaa	False	no
+abbaabbbb	False	no
+abbabbbba	False	no
+bbaa	False	no
+abbabababa	False	no
+aaabbabb	False	no
+aaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+baa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaabb	False	no
+aaaababba	False	no
+bbbbabb	False	no
+b	{s0},b --> {}	no
+bbaabaa	False	no
+aabbabaa	False	no
+bb	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbaabaaa	False	no
+aabaaaaaab	False	no
+bbbbbb	False	no
+baaababbb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbaabaaaaa	False	no
+bbaaaab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbaabbabab	False	no
+bab	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbaabbbb	False	no
+baa	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbaaaabb	False	no
+baaab	False	no
+bababba	False	no
+babbb	False	no
+babbbbbaa	False	no
+a	{s0},a --> {s1}	no
+babab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbb	False	no
+aabbabba	False	no
+bbaab	False	no
+b	{s0},b --> {}	no
+baaaaaaabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+baa	False	no
+ababbbbbaa	False	no
+abaaabb	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaa	False	no
+baababbbb	False	no
+bbaabba	False	no
+bbbabbaaba	False	no
+b	{s0},b --> {}	no
+baaabaab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+babaabaaab	False	no
+aaaababa	False	no
+a	{s0},a --> {s1}	no
+aabbaabbba	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+ba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+baab	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbba	False	no
+abbaba	False	no
+bbbaabbbbb	False	no
+baabb	False	no
+abbabab	False	no
+ba	False	no
+baba	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aababaa	False	no
+bbaaaab	False	no
+a	{s0},a --> {s1}	no
+ababbbbb	False	no
+aaabaaba	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbaabaab	False	no
+baaabbab	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+babbbbbbab	False	no
+bbbbabbaa	False	no
+a	{s0},a --> {s1}	no
+bbbbaaab	False	no
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abababbab	False	no
+aabababa	False	no
+bbaab	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaaabaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbbbbaaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+aabaaa	False	no
+abbbaab	False	no
+aabaaaaab	False	no
+a	{s0},a --> {s1}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+baaabab	False	no
+bbaaaa	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aababbab	False	no
+baaab	False	no
+abaabab	False	no
+bb	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaaaaabab	False	no
+bbbbabbb	False	no
+ababa	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baabbaba	False	no
+aababb	False	no
+baababbb	False	no
+a	{s0},a --> {s1}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ababaabb	False	no
+bbaa	False	no
+bbbaaaab	False	no
+aabbbaaa	False	no
+b	{s0},b --> {}	no
+ba	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bab	False	no
+bbbbaa	False	no
+a	{s0},a --> {s1}	no
+bbaa	False	no
+aabaaabaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbbaba	False	no
+babaaaba	False	no
+aabaabb	False	no
+b	{s0},b --> {}	no
+aababaab	False	no
+abaaaaaa	False	no
+abbabbaa	False	no
+b	{s0},b --> {}	no
+aabaabb	False	no
+aabaaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbaabaa	False	no
+a	{s0},a --> {s1}	no
+aaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+baaaaaaba	False	no
+bb	False	no
+baababa	False	no
+b	{s0},b --> {}	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+babbaa	False	no
+abbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+a	{s0},a --> {s1}	no
+aaabbaaaa	False	no
+baaa	False	no
+bbaaaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbbababb	False	no
+baa	False	no
+abaaaba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aababb	False	no
+bbbabaaab	False	no
+baaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbaaabaab	False	no
+abbabbbba	False	no
+bbbbbaaab	False	no
+bbab	False	no
+aabababbbb	False	no
+bbaababb	False	no
+baba	False	no
+babaa	False	no
+babababbbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbbbaa	False	no
+abbbbbbaba	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+bba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbbbbbaba	False	no
+a	{s0},a --> {s1}	no
+bab	False	no
+baaa	False	no
+b	{s0},b --> {}	no
+bbb	False	no
+bbbbbb	False	no
+baabba	False	no
+babaaaaabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaabaabaa	False	no
+bba	False	no
+bbbaaabbb	False	no
+baaabbb	False	no
+abbaab	False	no
+aaaababa	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+baaabab	False	no
+baaaab	False	no
+baaa	False	no
+bbbababba	False	no
+baabbbaa	False	no
+baab	False	no
+baab	False	no
+aaabbbbaab	False	no
+a	{s0},a --> {s1}	no
+aabaaaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaaaabbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbbaa	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+baaaa	False	no
+babaaaab	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aaaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabbaabb	False	no
+abbaabaa	False	no
+a	{s0},a --> {s1}	no
+bababb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbbbaa	False	no
+abbaba	False	no
+bababbbab	False	no
+baababbaab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+abbbbbabaa	False	no
+baaabbba	False	no
+bbbbbaa	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+baaabbaa	False	no
+baaaaba	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbbaabbb	False	no
+bbbaba	False	no
+bbbaaa	False	no
+bba	False	no
+bbbbab	False	no
+b	{s0},b --> {}	no
+aaabbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aabbabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaaabbba	False	no
+babbaaabb	False	no
+bbababb	False	no
+bba	False	no
+abbaaaa	False	no
+aaaabaab	False	no
+bbbbba	False	no
+abbaaaabb	False	no
+bbabababb	False	no
+baa	False	no
+baaaaab	False	no
+baaabb	False	no
+bbbabaaa	False	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+baaaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baaba	False	no
+bba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbaa	False	no
+abbbaabb	False	no
+aaaabaabab	False	no
+baab	False	no
+baaaababa	False	no
+aaabbbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+babaaba	False	no
+baba	False	no
+aaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbbaaaab	False	no
+b	{s0},b --> {}	no
+aaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+aaababb	False	no
+abaaababab	False	no
+abbbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+b	{s0},b --> {}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+baababb	False	no
+bbabaa	False	no
+babababb	False	no
+baaaaaaba	False	no
+babbaabba	False	no
+bbaaaaab	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaa	False	no
+baaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ba	False	no
+abbabbaa	False	no
+abaaba	False	no
+baba	False	no
+aabbbbaab	False	no
+abaaa	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+ababa	False	no
+abbaaba	False	no
+bbb	False	no
+aabbbbbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aaabbbaaa	False	no
+ababbabaa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabbaabab	False	no
+baa	False	no
+bbb	False	no
+bbaba	False	no
+bbaaabbb	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+baabb	False	no
+baabbba	False	no
+ba	False	no
+aaabababba	False	no
+bbaababaaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbaabb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+babababa	False	no
+ba	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+ba	False	no
+b	{s0},b --> {}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbb	False	no
+bbaa	False	no
+a	{s0},a --> {s1}	no
+bbaaaabbba	False	no
+baaab	False	no
+aabbbaaab	False	no
+aaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+babababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baaaa	False	no
+bb	False	no
+b	{s0},b --> {}	no
+aaabbaba	False	no
+b	{s0},b --> {}	no
+bbaaaab	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+baab	False	no
+baaabaabaa	False	no
+abaabaab	False	no
+aaaaababa	False	no
+baaaaabaab	False	no
+aaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+ababbbabba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaaa	False	no
+babb	False	no
+bbabbaabb	False	no
+aababab	False	no
+bbbbbbbbbb	False	no
+bbaa	False	no
+ababbbb	False	no
+aaabbbaaa	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babbab	False	no
+babbaaaa	False	no
+baba	False	no
+b	{s0},b --> {}	no
+bbbaaaa	False	no
+bababbbb	False	no
+ba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baaabb	False	no
+abababbb	False	no
+aaaaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baababb	False	no
+bbb	False	no
+bb	False	no
+babaaabab	False	no
+bbbba	False	no
+bbbbbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabaaabaaa	False	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+abbbabab	False	no
+abababa	False	no
+baaabba	False	no
+a	{s0},a --> {s1}	no
+ababb	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+bbbbabba	False	no
+aaaaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbabbbabbb	False	no
+babbaab	False	no
+bb	False	no
+b	{s0},b --> {}	no
+aaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aabbbbaabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbbbaaaab	False	no
+baabb	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+abaababbb	False	no
+a	{s0},a --> {s1}	no
+babaaaaa	False	no
+baaabab	False	no
+bbab	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbaaabaaab	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bba	False	no
+bbabbbabbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ababb	False	no
+babaaaa	False	no
+bbaabaa	False	no
+babaa	False	no
+abbababb	False	no
+aaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abbaabba	False	no
+bbababbbaa	False	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbaababbb	False	no
+babaabaaa	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bababbaaab	False	no
+baaa	False	no
+bbbabba	False	no
+abbbbbbaab	False	no
+baabb	False	no
+b	{s0},b --> {}	no
+baab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baa	False	no
+abbbbaab	False	no
+ba	False	no
+baa	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+baabaaabb	False	no
+aababba	False	no
+babbabbaab	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabaaaba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baaabbbaab	False	no
+abbaaaa	False	no
+bbb	False	no
+b	{s0},b --> {}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+bab	False	no
+babb	False	no
+bb	False	no
+aababaa	False	no
+bbbb	False	no
+bbab	False	no
+babbbbbbb	False	no
+babbbaaaba	False	no
+babbaabaa	False	no
+bbaba	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+babaa	False	no
+bbbba	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aaababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ababbaaaba	False	no
+b	{s0},b --> {}	no
+bbbaaaaaba	False	no
+abbabbbaaa	False	no
+bbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+a	{s0},a --> {s1}	no
+baabba	False	no
+bbbaaaaabb	False	no
+bababba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aabbaaba	False	no
+bbbababb	False	no
+babbaabb	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbbaabb	False	no
+babaabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+baaababaaa	False	no
+a	{s0},a --> {s1}	no
+baaa	False	no
+aaabaab	False	no
+aababbbaa	False	no
+aaabaab	False	no
+aababaaa	False	no
+bb	False	no
+baab	False	no
+ba	False	no
+baaaba	False	no
+bb	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+babababba	False	no
+a	{s0},a --> {s1}	no
+bbabaabb	False	no
+aabbbbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baaaaabab	False	no
+aaabaaab	False	no
+bbbbbbbba	False	no
+bbb	False	no
+a	{s0},a --> {s1}	no
+baba	False	no
+aabbbbbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaabbbba	False	no
+abbaaabb	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aababb	False	no
+bbaba	False	no
+babbbaaba	False	no
+babbaa	False	no
+a	{s0},a --> {s1}	no
+baa	False	no
+b	{s0},b --> {}	no
+aaaaababba	False	no
+bbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bab	False	no
+a	{s0},a --> {s1}	no
+bbbbbabab	False	no
+bbbaaabbab	False	no
+abbbbbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbaa	False	no
+babbbababa	False	no
+baabb	False	no
+ababbababa	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+bbbbbbbabb	False	no
+abaaaabab	False	no
+bba	False	no
+abaabbabbb	False	no
+aaababaaab	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+babba	False	no
+aabbbaaa	False	no
+abbabba	False	no
+abaaaaabba	False	no
+b	{s0},b --> {}	no
+ba	False	no
+abbaabbba	False	no
+bbaababa	False	no
+ba	False	no
+b	{s0},b --> {}	no
+bbbaaba	False	no
+b	{s0},b --> {}	no
+bbabaab	False	no
+b	{s0},b --> {}	no
+abaaaab	False	no
+bbaba	False	no
+bbabbba	False	no
+bbbaba	False	no
+bbbaaabb	False	no
+bba	False	no
+bbabb	False	no
+bbabaaba	False	no
+baaabba	False	no
+bbaab	False	no
+bababababa	False	no
+bbbabba	False	no
+bbb	False	no
+baabab	False	no
+aabababab	False	no
+b	{s0},b --> {}	no
+bbbbbaaab	False	no
+aaabaab	False	no
+b	{s0},b --> {}	no
+babb	False	no
+abbaaab	False	no
+babab	False	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+ba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbbbbb	False	no
+bb	False	no
+aaaabaaab	False	no
+a	{s0},a --> {s1}	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abaababbbb	False	no
+bb	False	no
+bbbabbbab	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aabbababab	False	no
+bbbbbabb	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaa	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbabaa	False	no
+babba	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbabbaba	False	no
+babbaaaaba	False	no
+a	{s0},a --> {s1}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+baabab	False	no
+bbab	False	no
+bbaabbbaa	False	no
+bab	False	no
+bbbbaabbaa	False	no
+bbbabaa	False	no
+abaaaabaa	False	no
+baaaa	False	no
+bbabaabbbb	False	no
+bbababa	False	no
+abbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbbabaaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbabbaaab	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbabbaa	False	no
+bbbab	False	no
+babaaba	False	no
+bbaabb	False	no
+baaaaaaaa	False	no
+bab	False	no
+abaabaaaba	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbbbabbba	False	no
+bbabbabab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abbaaaaaba	False	no
+babaa	False	no
+bb	False	no
+bbbaaaaa	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bb	False	no
+bababbaa	False	no
+bbbaab	False	no
+baaaaaab	False	no
+bbbbb	False	no
+ba	False	no
+aaabbaab	False	no
+bbabbbbaa	False	no
+aababb	False	no
+bbaba	False	no
+babaabaab	False	no
+aaabbababb	False	no
+baaab	False	no
+bbbabba	False	no
+bababaa	False	no
+aaabbaba	False	no
+babbbb	False	no
+bab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aababab	False	no
+baba	False	no
+abbaaab	False	no
+a	{s0},a --> {s1}	no
+baab	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+aaabaaabba	False	no
+bbaba	False	no
+aabaab	False	no
+b	{s0},b --> {}	no
+aaabbbaaa	False	no
+babbbaa	False	no
+aaabaaaaaa	False	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baa	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+abaab	False	no
+bbb	False	no
+aaababab	False	no
+babbbaaab	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+abaab	False	no
+aabbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbabaaaab	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aaaaaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abbabbbb	False	no
+bababbaa	False	no
+bbbb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bba	False	no
+aabaaabba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bab	False	no
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ababb	False	no
+ba	False	no
+aabbbaaa	False	no
+baabb	False	no
+abaababbb	False	no
+bbbaaab	False	no
+babaaab	False	no
+abbbaaaabb	False	no
+aababab	False	no
+aabaaa	False	no
+babbbb	False	no
+bbabaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abaabaaa	False	no
+b	{s0},b --> {}	no
+aabbaaaa	False	no
+abbbbaabaa	False	no
+aababbb	False	no
+aabaaabaa	False	no
+a	{s0},a --> {s1}	no
+baa	False	no
+b	{s0},b --> {}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbbab	False	no
+bab	False	no
+bb	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aababbaabb	False	no
+bbb	False	no
+abbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abaababba	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+baabbbbbb	False	no
+abbbbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbbabbbaa	False	no
+abaaabab	False	no
+abbbbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aababaa	False	no
+baaa	False	no
+bbbbba	False	no
+baabbbbbb	False	no
+baabababb	False	no
+a	{s0},a --> {s1}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+ababbbbbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+babaababab	False	no
+bababb	False	no
+baababab	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaaaab	False	no
+baaaaabb	False	no
+abbabaaa	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbbab	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+aabbbaab	False	no
+bbaaaaaab	False	no
+baaaaaaabb	False	no
+bababbbbab	False	no
+abbaabaaaa	False	no
+bbbaaa	False	no
+aabaaabbab	False	no
+aabaaa	False	no
+baaabbabaa	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbabbab	False	no
+bbaabba	False	no
+babbb	False	no
+b	{s0},b --> {}	no
+baaabb	False	no
+aababa	False	no
+bbab	False	no
+aabaaa	False	no
+b	{s0},b --> {}	no
+aabbabaab	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+babbbbbaa	False	no
+a	{s0},a --> {s1}	no
+aaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+babaaba	False	no
+bbbbab	False	no
+abbabaaa	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbbbabb	False	no
+bbbba	False	no
+bbbabbabba	False	no
+bbaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+baabba	False	no
+babbaaaa	False	no
+bbabbb	False	no
+abaaaba	False	no
+bababaaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abababbbba	False	no
+baabbab	False	no
+bbbabb	False	no
+aabbabb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+baab	False	no
+bbba	False	no
+abbaab	False	no
+bbabbbbbaa	False	no
+ababbbbb	False	no
+bbbabababa	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaababaa	False	no
+bbabaaabab	False	no
+bbbabba	False	no
+a	{s0},a --> {s1}	no
+bbaba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bab	False	no
+bbaaabbb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbaabab	False	no
+bbabab	False	no
+bbabbba	False	no
+babbbab	False	no
+bab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbaabbbb	False	no
+bbbaaabbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbbb	False	no
+bbabb	False	no
+baa	False	no
+bbbbbaa	False	no
+abbbbbbbab	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+babaaa	False	no
+ababaaa	False	no
+bbab	False	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabaaababb	False	no
+b	{s0},b --> {}	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbbabababa	False	no
+bbabab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbaabbbab	False	no
+a	{s0},a --> {s1}	no
+baaab	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbaababaa	False	no
+a	{s0},a --> {s1}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abbaaaa	False	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbbaba	False	no
+abaabbba	False	no
+bbabbbb	False	no
+ababbba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+aaaaabaaab	False	no
+bb	False	no
+babaaaa	False	no
+b	{s0},b --> {}	no
+aabbbaba	False	no
+abbbaaa	False	no
+baba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aababa	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbb	False	no
+baabbaabb	False	no
+bab	False	no
+ababaab	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaabbbbaaa	False	no
+bababba	False	no
+bbabaa	False	no
+bbbabab	False	no
+ababa	False	no
+aabaaaba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baaab	False	no
+ba	False	no
+b	{s0},b --> {}	no
+bbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabaabbaba	False	no
+b	{s0},b --> {}	no
+a	{s0},a --> {s1}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aaababbaa	False	no
+b	{s0},b --> {}	no
+abbbaaba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbb	False	no
+babbaab	False	no
+b	{s0},b --> {}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbbbaa	False	no
+babbba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abababbaa	False	no
+baba	False	no
+babaaba	False	no
+aaabbabb	False	no
+abaaa	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+abababbb	False	no
+bab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+babbbbb	False	no
+a	{s0},a --> {s1}	no
+baaabbaa	False	no
+babbab	False	no
+a	{s0},a --> {s1}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+babba	False	no
+bbaababaa	False	no
+babbabaaa	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+baabb	False	no
+a	{s0},a --> {s1}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aaababbaa	False	no
+bbabbbbb	False	no
+aaabbbaba	False	no
+abaaab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+ab	{s0},a --> {s1},b --> {s2}	no
+bbaabbbbaa	False	no
+aabbaaaaaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abbabbbaa	False	no
+baaaaaa	False	no
+bbba	False	no
+bba	False	no
+bbabb	False	no
+aababaa	False	no
+baabbabaaa	False	no
+bbaaaaaa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+baaaabb	False	no
+aabaabb	False	no
+bbaaaaba	False	no
+bbbaabaa	False	no
+bbbb	False	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+babaaa	False	no
+abaaabbaa	False	no
+a	{s0},a --> {s1}	no
+bbbab	False	no
+bbb	False	no
+a	{s0},a --> {s1}	no
+bbbbbba	False	no
+baaaaa	False	no
+babaabaa	False	no
+baaaabbaa	False	no
+abbbaa	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bb	False	no
+bab	False	no
+abaaabb	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbabbbbaaa	False	no
+babb	False	no
+bbabaabba	False	no
+b	{s0},b --> {}	no
+bb	False	no
+bbba	False	no
+abbabbba	False	no
+abbbbbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabaab	False	no
+bbaaaab	False	no
+bbbb	False	no
+b	{s0},b --> {}	no
+bab	False	no
+bbabaaa	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+babbaabaab	False	no
+bbbbbaaab	False	no
+b	{s0},b --> {}	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+abbbabb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+baabbabbb	False	no
+bbbababaa	False	no
+ababbaaaa	False	no
+a	{s0},a --> {s1}	no
+bbabaa	False	no
+bbbababa	False	no
+bb	False	no
+aaaababb	False	no
+abbaababaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bb	False	no
+bb	False	no
+babaaab	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbaabb	False	no
+bba	False	no
+ba	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+a	{s0},a --> {s1}	no
+bbbb	False	no
+bbb	False	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baab	False	no
+aaababbaaa	False	no
+ababb	False	no
+aaababb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bababaa	False	no
+a	{s0},a --> {s1}	no
+abaabaabaa	False	no
+bbbaaababa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babaa	False	no
+bababbba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+baaba	False	no
+a	{s0},a --> {s1}	no
+aababaaab	False	no
+bbbb	False	no
+a	{s0},a --> {s1}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babbbabb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baabba	False	no
+bbabb	False	no
+bbababb	False	no
+baaaaa	False	no
+babb	False	no
+a	{s0},a --> {s1}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaabbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abbaaabb	False	no
+abaaaaaaa	False	no
+bababaabbb	False	no
+aabbbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbaab	False	no
+ababbbaaba	False	no
+abbabbbaa	False	no
+abbbabab	False	no
+bba	False	no
+babba	False	no
+b	{s0},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+baabab	False	no
+abbaabbbb	False	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbbb	False	no
+ba	False	no
+baaabba	False	no
+baab	False	no
+bbbababa	False	no
+baaa	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbaabbab	False	no
+babbabbb	False	no
+bbaaababa	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbab	False	no
+babbbbbb	False	no
+abaaaaab	False	no
+bbaababb	False	no
+a	{s0},a --> {s1}	no
+bbbabbbbbb	False	no
+abaaaabaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+baaaaba	False	no
+a	{s0},a --> {s1}	no
+bbbaaaba	False	no
+babaabbbb	False	no
+bababbab	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baaabaabba	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+bba	False	no
+a	{s0},a --> {s1}	no
+babbbbaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baaaaba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abbbbabb	False	no
+aabaaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+b	{s0},b --> {}	no
+bbbabbbaba	False	no
+baaaaaabba	False	no
+aaaaabbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bbbabbaab	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+bbaa	False	no
+bababaab	False	no
+ba	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abbbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baa	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+ababaabbbb	False	no
+bbbaabbaba	False	no
+bb	False	no
+baaabaabbb	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbbaba	False	no
+a	{s0},a --> {s1}	no
+bbaa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+a	{s0},a --> {s1}	no
+baabb	False	no
+bb	False	no
+abaabbaa	False	no
+abbabbaaaa	False	no
+bbbbbbabaa	False	no
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbbbb	False	no
+baaababa	False	no
+babaaba	False	no
+ababaaaa	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaaababbaa	False	no
+aabaabbaaa	False	no
+bbaa	False	no
+aabaaaa	False	no
+abbaab	False	no
+bbaaaabbbb	False	no
+baaabbaba	False	no
+bbab	False	no
+b	{s0},b --> {}	no
+aaaabbabb	False	no
+a	{s0},a --> {s1}	no
+ba	False	no
+bbaaa	False	no
+baaba	False	no
+bbbababbb	False	no
+bbbbaabb	False	no
+baaba	False	no
+a	{s0},a --> {s1}	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+babaaaaba	False	no
+abaaabbaba	False	no
+aabbbababa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bababbbbb	False	no
+abbabaaaaa	False	no
+baaaa	False	no
+babb	False	no
+aabbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abbaaaba	False	no
+b	{s0},b --> {}	no
+aababb	False	no
+aabbaaa	False	no
+baaabbba	False	no
+aaaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaabbbbbba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abbbbaaaaa	False	no
+babbbaabb	False	no
+abbababbbb	False	no
+babaaabaaa	False	no
+bbb	False	no
+babbbbb	False	no
+bbbbabbabb	False	no
+bbababaa	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbabab	False	no
+bab	False	no
+aaabaaa	False	no
+aababaaaa	False	no
+abbbababba	False	no
+aaabbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+babbbabbaa	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bb	False	no
+bababaaaaa	False	no
+a	{s0},a --> {s1}	no
+bbaa	False	no
+bbbabbbab	False	no
+baabbaab	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbababaaa	False	no
+aaabbbaab	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+aabaaaa	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+aabaababb	False	no
+a	{s0},a --> {s1}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+bbabbbaaa	False	no
+bbbb	False	no
+babbb	False	no
+bbbbaaaaa	False	no
+abbaaab	False	no
+b	{s0},b --> {}	no
+ababbabab	False	no
+abbbabaabb	False	no
+bba	False	no
+bbba	False	no
+bababaa	False	no
+bbaabb	False	no
+baaaabaa	False	no
+b	{s0},b --> {}	no
+abbabbbbb	False	no
+aabbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+baabbaab	False	no
+bb	False	no
+bbb	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbabbbaba	False	no
+ba	False	no
+baaaab	False	no
+bbabbb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+b	{s0},b --> {}	no
+baaabbaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+b	{s0},b --> {}	no
+baaabbabb	False	no
+abaaabaaab	False	no
+bbaaa	False	no
+aabbabaaab	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bbabb	False	no
+b	{s0},b --> {}	no
+baaaaaabaa	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbbaaabab	False	no
+bababaa	False	no
+babab	False	no
+abbaba	False	no
+babbab	False	no
+baab	False	no
+abaaabbb	False	no
+bbaba	False	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abaaabbbb	False	no
+aaabaaabb	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbabb	False	no
+baabaabb	False	no
+b	{s0},b --> {}	no
+aabaaba	False	no
+bbaabab	False	no
+abbaaa	False	no
+baaaba	False	no
+bbabbaaaa	False	no
+bb	False	no
+bbaaabbab	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abaabaaaaa	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+ba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbaaababb	False	no
+ababbbaa	False	no
+bb	False	no
+a	{s0},a --> {s1}	no
+abbaabb	False	no
+babb	False	no
+babbbab	False	no
+abbbaba	False	no
+bbababbbaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+abbbabb	False	no
+bbbba	False	no
+babbb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaabaaab	False	no
+bba	False	no
+bbba	False	no
+b	{s0},b --> {}	no
+bb	False	no
+baaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abbabaa	False	no
+bbbbabbbb	False	no
+bbbbaabbb	False	no
+a	{s0},a --> {s1}	no
+aaaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+bbba	False	no
+babba	False	no
+abbaaa	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baaba	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+bbbbbb	False	no
+baaaba	False	no
+ba	False	no
+aaabbbbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+babaaababa	False	no
+baaa	False	no
+a	{s0},a --> {s1}	no
+aaaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbba	False	no
+ba	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+baaaabbb	False	no
+abbabbabba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+babbbabbbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaabbbabab	False	no
+bbabaaba	False	no
+babbb	False	no
+babbaaaba	False	no
+bbaa	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aaaabbaab	False	no
+babba	False	no
+bbbbbaaab	False	no
+babbab	False	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+abaabbb	False	no
+baababbb	False	no
+ababbaaba	False	no
+baaaaabaaa	False	no
+babbaaa	False	no
+a	{s0},a --> {s1}	no
+bababbbab	False	no
+baab	False	no
+a	{s0},a --> {s1}	no
+babaaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+baaaaa	False	no
+ababbaaab	False	no
+bbbbba	False	no
+bbaab	False	no
+babba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aababaabba	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+aababba	False	no
+abbbaab	False	no
+aabbabbba	False	no
+ababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabbaabba	False	no
+babaaba	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aabaabb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbbbb	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baabaab	False	no
+bbbbbb	False	no
+bbbaaaabb	False	no
+abaabba	False	no
+babaaaaaba	False	no
+b	{s0},b --> {}	no
+abbbbabb	False	no
+ba	False	no
+a	{s0},a --> {s1}	no
+bab	False	no
+babaaabb	False	no
+ba	False	no
+ba	False	no
+abbbabab	False	no
+bbaaaaaaa	False	no
+a	{s0},a --> {s1}	no
+baa	False	no
+bbaba	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+bbbbb	False	no
+b	{s0},b --> {}	no
+bba	False	no
+ba	False	no
+babba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babababa	False	no
+abaabab	False	no
+babaaaaaa	False	no
+a	{s0},a --> {s1}	no
+bbababaabb	False	no
+b	{s0},b --> {}	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+abaaba	False	no
+b	{s0},b --> {}	no
+aabbaabbbb	False	no
+bbbbaaaaba	False	no
+bbab	False	no
+bbbaabbbbb	False	no
+a	{s0},a --> {s1}	no
+aababaa	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baaa	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+abbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+babaabbaab	False	no
+b	{s0},b --> {}	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+baabba	False	no
+bbbb	False	no
+babaaaab	False	no
+baaaaab	False	no
+bbbbbba	False	no
+abbabaaaa	False	no
+bab	False	no
+b	{s0},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabaab	False	no
+abbabbbba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+ba	False	no
+abbbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbbabba	False	no
+aaababbbbb	False	no
+bbabbbbb	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bbbbbaaab	False	no
+abbabb	False	no
+babbabab	False	no
+ababaaaa	False	no
+bab	False	no
+b	{s0},b --> {}	no
+bb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babbabbaa	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+baaa	False	no
+b	{s0},b --> {}	no
+aabaaaba	False	no
+bbab	False	no
+aaabbbbabb	False	no
+baa	False	no
+ababa	False	no
+aabaab	False	no
+aababababa	False	no
+baabbaa	False	no
+bbbabab	False	no
+ababaa	False	no
+babaaaa	False	no
+abababab	False	no
+baabaab	False	no
+b	{s0},b --> {}	no
+aababbaab	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+babbbba	False	no
+baaabbbbb	False	no
+bbabaabaa	False	no
+abababb	False	no
+abaaa	False	no
+bababbabbb	False	no
+ababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bb	False	no
+babbaaba	False	no
+aaaaabbaba	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bb	False	no
+bbabaaaa	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bababaabba	False	no
+aababbabba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+baba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abaaaaabb	False	no
+baa	False	no
+baabbab	False	no
+abbaa	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+babbbbba	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baa	False	no
+a	{s0},a --> {s1}	no
+abbabbabb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbab	False	no
+baaa	False	no
+ba	False	no
+abaabbb	False	no
+bbbbabbbba	False	no
+bbbbbbbaa	False	no
+aaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baabbaab	False	no
+bbabab	False	no
+b	{s0},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+bbb	False	no
+aabbbbaabb	False	no
+bbbaab	False	no
+bbbbaababa	False	no
+bbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbbabba	False	no
+abbaabb	False	no
+aaababaabb	False	no
+baba	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+ba	False	no
+bbabbabb	False	no
+abbbbaab	False	no
+babab	False	no
+bbbbaab	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+b	{s0},b --> {}	no
+abaaababba	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+baabab	False	no
+ababbabaa	False	no
+bbbbbbabb	False	no
+baa	False	no
+bbbabbabbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baa	False	no
+baba	False	no
+bb	False	no
+abaabba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bababb	False	no
+baaab	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aaabbaaaaa	False	no
+aaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+ba	False	no
+bbaaaba	False	no
+bbabbaaaaa	False	no
+bbbbabaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babaaba	False	no
+aaaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbabaaa	False	no
+abbabababa	False	no
+abbabbbb	False	no
+abbbaaa	False	no
+bbbbaaa	False	no
+abbabb	False	no
+bbbaaaaba	False	no
+b	{s0},b --> {}	no
+abaabba	False	no
+bbb	False	no
+aaababbb	False	no
+b	{s0},b --> {}	no
+aaabaababb	False	no
+ba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abaaaaa	False	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aababab	False	no
+abbbababb	False	no
+babaaaabba	False	no
+aaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbabbabba	False	no
+bbbbbbbaa	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbbbaa	False	no
+baaabaaa	False	no
+bbaa	False	no
+b	{s0},b --> {}	no
+abbabbbbba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bb	False	no
+baaabbb	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baabbbaab	False	no
+babaab	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+abbbaba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+aabababb	False	no
+a	{s0},a --> {s1}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+aababaaba	False	no
+bb	False	no
+aaababbbab	False	no
+babb	False	no
+bbaaaab	False	no
+b	{s0},b --> {}	no
+bbaaabbba	False	no
+ababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbaa	False	no
+baabb	False	no
+bbabbbaaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babb	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abbbaaaaa	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+baabab	False	no
+a	{s0},a --> {s1}	no
+a	{s0},a --> {s1}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aabaaa	False	no
+bbabbb	False	no
+aaabbbab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bbbabbbbb	False	no
+baa	False	no
+baaa	False	no
+aabbbbbaaa	False	no
+babbab	False	no
+b	{s0},b --> {}	no
+aaaaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baa	False	no
+a	{s0},a --> {s1}	no
+baa	False	no
+aaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbbbabbbab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabaabaab	False	no
+aabbaaaaa	False	no
+b	{s0},b --> {}	no
+bbbaa	False	no
+aababbbaba	False	no
+ababba	False	no
+ababbaa	False	no
+b	{s0},b --> {}	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabaabaab	False	no
+a	{s0},a --> {s1}	no
+abbabababa	False	no
+babaaaaabb	False	no
+bbaba	False	no
+ababaaaab	False	no
+ba	False	no
+abbbbbaab	False	no
+babbaabaab	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aabbaabbb	False	no
+bbab	False	no
+babababbbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbababbba	False	no
+bbbabb	False	no
+bba	False	no
+baba	False	no
+bbaaaabab	False	no
+bbbabbaa	False	no
+aabababb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+baa	False	no
+baabbbaba	False	no
+baaababb	False	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+aaababb	False	no
+babbabb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ba	False	no
+aaabba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+baabbbbba	False	no
+a	{s0},a --> {s1}	no
+abbbaababa	False	no
+ababaabbb	False	no
+abbabbbbb	False	no
+baabbbaa	False	no
+ababa	False	no
+bbaabbbab	False	no
+baaabbaaaa	False	no
+aabbababa	False	no
+baa	False	no
+bba	False	no
+ababbab	False	no
+aaaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+a	{s0},a --> {s1}	no
+b	{s0},b --> {}	no
+abaabb	False	no
+baaabababb	False	no
+aaabbbbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+ababaab	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbbaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbb	False	no
+babbabbba	False	no
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+bbbb	False	no
+bbba	False	no
+bbbbbababa	False	no
+bba	False	no
+babbab	False	no
+a	{s0},a --> {s1}	no
+aaaaaaaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+baaabaabb	False	no
+baababaab	False	no
+bbaaa	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbb	False	no
+aaabaaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbbaaabbb	False	no
+aababbaba	False	no
+ababba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+baaa	False	no
+abaababa	False	no
+abbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+bbaaa	False	no
+ababba	False	no
+aababbb	False	no
+bbbaaaaaa	False	no
+abbaabb	False	no
+aababaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+baaaa	False	no
+bababbab	False	no
+babbabba	False	no
+aabaaababb	False	no
+bbbab	False	no
+abaaab	False	no
+baabbb	False	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+bbabaabb	False	no
+babb	False	no
+abaaaba	False	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+aabbaaa	False	no
+a	{s0},a --> {s1}	no
+abbbabaabb	False	no
+baaabbaaba	False	no
+baba	False	no
+baabaabba	False	no
+aababa	False	no
+a	{s0},a --> {s1}	no
+aababbb	False	no
+aabbbabbb	False	no
+bbaa	False	no
+baaaababab	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+bb	False	no
+aabab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+bbbbabb	False	no
+abaaabbaba	False	no
+aabbbabbbb	False	no
+a	{s0},a --> {s1}	no
+bbaaaaaa	False	no
+abbbbaabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbabbba	False	no
+aaabbaba	False	no
+aabba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3}	si
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+a	{s0},a --> {s1}	no
+bbbaaaa	False	no
+bbbbba	False	no
+abbbbaaa	False	no
+babaaaab	False	no
+aabaab	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+baabbbaaba	False	no
+abbabbab	False	no
+abbbbbabb	False	no
+bb	False	no
+babbbaaa	False	no
+bababb	False	no
+aaaabbbabb	False	no
+bbaba	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+bbbaabb	False	no
+abbaabaabb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+abab	{s0},a --> {s1},b --> {s2},a --> {s3},b --> {}	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+bab	False	no
+baabbbbaa	False	no
+bab	False	no
+ababbabbba	False	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+bbbaabab	False	no
+abbababa	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbbaaaab	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+b	{s0},b --> {}	no
+baabba	False	no
+abaaabbaa	False	no
+bbbaabbba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bba	False	no
+baaa	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+baaa	False	no
+aaabaabbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abaab	False	no
+bbbbabbab	False	no
+bbbbb	False	no
+bbbbab	False	no
+ba	False	no
+abaabba	False	no
+aababaa	False	no
+abaaaabba	False	no
+babb	False	no
+aababbbb	False	no
+baaa	False	no
+aabaaaaabb	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bbab	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+baaaa	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbab	False	no
+aaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+bbaaa	False	no
+a	{s0},a --> {s1}	no
+aabbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bababbbaba	False	no
+bbabb	False	no
+bbababba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+bbababbba	False	no
+aaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+babbbbbba	False	no
+baa	False	no
+abbaabb	False	no
+abaaaab	False	no
+baaaabaaa	False	no
+b	{s0},b --> {}	no
+bbbbbbb	False	no
+aaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbbbbabbb	False	no
+a	{s0},a --> {s1}	no
+aaaaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baab	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+aabaab	False	no
+baabaab	False	no
+bbaaa	False	no
+bbbaabaa	False	no
+abbab	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aabaaaa	False	no
+bb	False	no
+bbb	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbabbbaba	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bb	False	no
+ababbb	False	no
+bbbbabab	False	no
+bbaabba	False	no
+baabbb	False	no
+baababbaa	False	no
+aaabbaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+abbabaaab	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+aabbaab	False	no
+bb	False	no
+bababbaa	False	no
+baaaaa	False	no
+abaaabb	False	no
+a	{s0},a --> {s1}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aabb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2}	no
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+abaababb	False	no
+aababbbba	False	no
+aabaaabaaa	False	no
+aaababaaa	False	no
+baabbbaab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+bbbbbbaabb	False	no
+babbaaabaa	False	no
+aabbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+ba	False	no
+a	{s0},a --> {s1}	no
+babb	False	no
+babaaab	False	no
+a	{s0},a --> {s1}	no
+ababb	False	no
+bbbbabaa	False	no
+a	{s0},a --> {s1}	no
+baab	False	no
+bbabbbba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baaaab	False	no
+bbbabb	False	no
+abbbbbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ababb	False	no
+babaabaaa	False	no
+abaabaa	False	no
+aababbbba	False	no
+aaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+baa	False	no
+aaabaaab	False	no
+bbbbabaa	False	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+b	{s0},b --> {}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbbbbaab	False	no
+bb	False	no
+babb	False	no
+b	{s0},b --> {}	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bbbbaabbab	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+bababba	False	no
+aaaab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2}	no
+bba	False	no
+ababbabb	False	no
+bbababbbab	False	no
+baabbab	False	no
+abbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2}	no
+baabababb	False	no
+bb	False	no
+aabbbbaaa	False	no
+bab	False	no
+aabaab	False	no
+abbabaa	False	no
+aabbba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+aaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbabb	False	no
+babbab	False	no
+abaabbb	False	no
+bababababa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaababa	False	no
+ba	False	no
+abbaaabbb	False	no
+aaaaabaaaa	False	no
+ababbabb	False	no
+abaaba	False	no
+bbaaaba	False	no
+a	{s0},a --> {s1}	no
+aababbbbb	False	no
+bbaababba	False	no
+a	{s0},a --> {s1}	no
+bbb	False	no
+aaaabbabab	False	no
+b	{s0},b --> {}	no
+babbabaaa	False	no
+baa	False	no
+bba	False	no
+ba	False	no
+ababaa	False	no
+baaaabbba	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baabaabba	False	no
+babbbbbbb	False	no
+ababb	False	no
+baa	False	no
+aabaabaab	False	no
+bbabbaaa	False	no
+aabbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+abbbbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abaabaaa	False	no
+bbb	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbbaa	False	no
+abababaabb	False	no
+a	{s0},a --> {s1}	no
+ababaa	False	no
+aaabaaba	False	no
+b	{s0},b --> {}	no
+baaba	False	no
+abaaaabab	False	no
+bababa	False	no
+bbaaaa	False	no
+bababab	False	no
+baa	False	no
+bbaabbbbaa	False	no
+bbbb	False	no
+abbabaaa	False	no
+bbaab	False	no
+aabbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+bba	False	no
+aba	{s0},a --> {s1},b --> {s2},a --> {s3}	si
+abaaaa	False	no
+b	{s0},b --> {}	no
+abababab	False	no
+bb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bab	False	no
+ababbbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+babbb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abaaab	False	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+bbaba	False	no
+abaabba	False	no
+baab	False	no
+ababbbaa	False	no
+baaa	False	no
+aaabbaba	False	no
+bbaba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+abbbb	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+aabaaba	False	no
+babaababa	False	no
+baaabbaaaa	False	no
+bababb	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+aabbbaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},a --> {}	no
+baaaabbb	False	no
+aaaabbaaa	False	no
+bababbabba	False	no
+bbbabbab	False	no
+abaab	False	no
+bbbababb	False	no
+aabbbbb	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+ababab	False	no
+baaaabaaa	False	no
+babaaaaaaa	False	no
+bbabbbaaab	False	no
+bbbababbaa	False	no
+b	{s0},b --> {}	no
+aabbabbaa	False	no
+abbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+baba	False	no
+aabbaba	False	no
+bbabbab	False	no
+ba	False	no
+aabbabaab	False	no
+baba	False	no
+baa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaababbb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bb	False	no
+bbabbbaaba	False	no
+abbbabb	False	no
+aaabaaab	False	no
+babaabbba	False	no
+bbbaba	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abaabaaa	False	no
+abaaaaa	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aabbbaaaab	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbaaaa	False	no
+aaabbabbb	False	no
+b	{s0},b --> {}	no
+ab	{s0},a --> {s1},b --> {s2}	no
+baaaa	False	no
+babbab	False	no
+bbba	False	no
+bab	False	no
+abababb	False	no
+a	{s0},a --> {s1}	no
+bbaaaabb	False	no
+baaabaabab	False	no
+bbbbaa	False	no
+aaaababbb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbb	False	no
+aababbb	False	no
+abbbba	{s0},a --> {s1},b --> {s2},b --> {s2},b --> {s2},b --> {s2},a --> {s3}	si
+abababbaba	False	no
+bbaabbbbb	False	no
+abbaababb	False	no
+aaba	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3}	si
+ababbbbba	False	no
+baab	False	no
+a	{s0},a --> {s1}	no
+bab	False	no
+bbabaabb	False	no
+baababa	False	no
+aaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+aaaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+bab	False	no
+bbababaab	False	no
+baab	False	no
+ababbbb	False	no
+a	{s0},a --> {s1}	no
+aaaabab	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},b --> {}	no
+baa	False	no
+aabbbab	{s0},a --> {s1},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},a --> {s3},b --> {}	no
+aababaaba	False	no
+aaaabbbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2},b --> {s2}	no
+baaba	False	no
+bbbbba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+aaaaaaba	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3}	si
+bbbb	False	no
+b	{s0},b --> {}	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+babbba	False	no
+bbababbbbb	False	no
+babaa	False	no
+abaaa	False	no
+bbbbaab	False	no
+abaa	{s0},a --> {s1},b --> {s2},a --> {s3},a --> {}	no
+bbbbbba	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbbaaabaaa	False	no
+babbabaa	False	no
+aaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3}	si
+bbb	False	no
+babababb	False	no
+bbbaabba	False	no
+aabaa	{s0},a --> {s1},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+babb	False	no
+a	{s0},a --> {s1}	no
+bbbbaa	False	no
+aaaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3}	si
+ba	False	no
+aaaaabaa	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},a --> {s3},a --> {}	no
+bbbbbbaaba	False	no
+aab	{s0},a --> {s1},a --> {s1,s3},b --> {s2}	no
+b	{s0},b --> {}	no
+aaaaabbb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2},b --> {s2}	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+baba	False	no
+ba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+aaabb	{s0},a --> {s1},a --> {s1,s3},a --> {s1,s3},b --> {s2},b --> {s2}	no
+a	{s0},a --> {s1}	no
+aaababbb	False	no
+baba	False	no
+aabbabbbab	False	no
+bb	False	no
+bb	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbbbaabbaa	False	no
+abb	{s0},a --> {s1},b --> {s2},b --> {s2}	no
+abba	{s0},a --> {s1},b --> {s2},b --> {s2},a --> {s3}	si
+abbbabbb	False	no
+aabbaba	False	no
+aabbabbbba	False	no
+ab	{s0},a --> {s1},b --> {s2}	no
+bbaabbbb	False	no
+bbbbab	False	no
+ababbb	False	no
+bbabba	False	no
+aa	{s0},a --> {s1},a --> {s1,s3}	si
+ababbb	False	no
