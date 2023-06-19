@@ -13,18 +13,22 @@ class ClasePrueba:
     
     def probarAFD(self):
         # Crear autómatas AFD
-        afd1 = AFD(nombreArchivo='resultado_con_detalles.txt')
-        afd1.verificarCorregirCompletitud()
+        #afd1 = AFD(nombreArchivo='evenA.DFA')
+        #afd1 = AFD(nombreArchivo='evenB.DFA')
+        #afd1 = AFD(nombreArchivo='testAFD.DFA')
+        afd1 = AFD(nombreArchivo='testAFD2.DFA')
+
         #afd1 = AFD(afd1.alfabeto,afd1.estados,afd1.estadoInicial,afd1.estadosAceptacion,afd1.delta)
         # Procesar cadenas con y sin detalles
+    
         cadena = 'aba'
         resultado_sin_detalles = afd1.procesar_cadena(cadena)
         resultado_con_detalles = afd1.procesar_cadena_con_detalles(cadena)
   
-        print(f"Procesamiento sin detalles de la cadena '{cadena}': {resultado_sin_detalles}")
-        print(f"Procesamiento sin detalles de la cadena '{cadena}': {resultado_con_detalles}")
-        
+        print(f"\n--Procesamiento sin detalles de la cadena '{cadena}': {resultado_sin_detalles}")
+        print(f"\n--Procesamiento con detalles de la cadena '{cadena}': {resultado_con_detalles}")
         # Procesar listas de cadenas
+        print("\n--Procesamiento de lista de cadenas\n")
         lista_cadenas = ['aba', 'abbaa', 'abbabaabbbbb']
         nombre_archivo = 'resultados_lista_de_cadenas.txt'
         imprimir_pantalla = True
@@ -35,7 +39,16 @@ class ClasePrueba:
         nombre_archivo2 = 'resultado_sin_detalles.txt'
         afd1.exportar(nombre_archivo1)
         afd1.exportar(nombre_archivo2)
+        print("\n--AFD\n")
         print(afd1)
+        print("\n--AFD Completitud\n")
+        print(afd1.verificarCorregirCompletitud())
+        print("\n--AFD Imprimir simplificado\n")
+        print(afd1.imprimirAFDSimplificado())
+        print("\n--AFD Simplificado\n")
+        print(afd1.simplificarAFD())
+        
+        
    
 
     def ProbarAFN(self):
@@ -211,7 +224,7 @@ class ClasePrueba:
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-#clase_prueba.probarAFD()
+clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()
@@ -219,5 +232,5 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
 #clase_prueba.probarAFNLambda()
-clase_prueba.probarAFPD()
+#clase_prueba.probarAFPD()
 #clase_prueba.probarAFPDProductoCartesianoAFD()
