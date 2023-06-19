@@ -194,7 +194,13 @@ class ClasePrueba:
         #afpd1.procesarCadenaConDetalles(cadena)
         afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
     
-
+    def probarAFPDProductoCartesianoAFD(self):
+        afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+        afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
+        
+        print(afd1.alfabeto,afpd2.alfabetoCinta)
+        print(afpd2.delta)
+        afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
@@ -207,4 +213,5 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
 #clase_prueba.probarAFNLambda()
-clase_prueba.probarAFPD()
+#clase_prueba.probarAFPD()
+clase_prueba.probarAFPDProductoCartesianoAFD()

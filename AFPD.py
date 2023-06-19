@@ -12,7 +12,7 @@ class AFPD:
             self.alfabetoCinta = alfabetoCinta
             self.alfabetoPila = alfabetoPila
             self.delta = delta  
-
+        self.verificarCorregirCompletitud()
 
     def cargar_desde_archivo(self, nombreArchivo):
         self.estados = []
@@ -44,13 +44,13 @@ class AFPD:
                 if lines[i].strip() == '#tapeAlphabet':
                     letter_range = lines[i+1].strip()
                     start, end = letter_range.split('-')
-                    self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
+                    self.alfabetoCinta = [chr(x) for x in range(ord(start), ord(end) + 1)]
                     i += 1
 
                 if lines[i].strip() == '#Stackalphabet':
                     letter_range = lines[i+1].strip()
                     start, end = letter_range.split('-')
-                    self.alfabeto = [chr(x) for x in range(ord(start), ord(end) + 1)]
+                    self.alfabetoPila = [chr(x) for x in range(ord(start), ord(end) + 1)]
                     i += 1
 
 
@@ -67,6 +67,25 @@ class AFPD:
                         i += 1
 
         #print(self.delta)   
+    
+    def verificarCorregirCompletitud(self):
+        islimbo = False
+        for estado in self.estados:
+            if estado not in self.delta:
+                self.delta[estado] = {}
+                for simbolo in self.alfabeto:
+                    self.delta[estado][simbolo] = ['limbo','$','$']
+                #Se añadió este if para manejo de errores de doc con transiciones incompletas para el AFPD
+                if 'limbo' not in self.estados:
+                    estadosParalelos = self.estados
+                    estadosParalelos.append('limbo')                    
+                    self.delta['limbo'] = {}
+                    for simbolo in self.alfabeto:
+                        self.delta['limbo'][simbolo] = ['limbo','$','$']
+                    islimbo = True
+        if islimbo:
+            self.estados = estadosParalelos
+    
     def modificarPila(self, operacion, parametro):
         def pop(self):
             if (self.alfabetoPila == []):
@@ -153,3 +172,50 @@ class AFPD:
                  archivo.write(linea + '\n')
              
 
+    def operacion(self,AFD,state1, state2, operador):
+        if operador == "Y":
+            if(state1 in AFD.estadosAceptacion and state2 in self.estadosAceptacion):
+                return True
+            else:
+                return False
+        elif operador == "O":
+            if(state1 in AFD.estadosAceptacion or state2 in self.estadosAceptacion):
+                return True
+            else:
+                return False
+        elif operador == "diferencia":
+            if(state1 in AFD.estadosAceptacion and not state2 in self.estadosAceptacion):
+                return True
+            else:
+                return False
+        elif operador == "difSimetrica":
+            if(not state1 in AFD.estadosAceptacion and not state2 in self.estadosAceptacion):
+                return True
+            else:
+                return False
+
+    def hallarProductoCartesiano(self,afd1, afpd2, operacion):
+        estados_Final = []
+        delta_Final = {}
+        aceptados = []
+        #afd1 son el conjunto de estados del AFD
+        #afpd2 son el conjunto de estados del AFPD
+        for estado1 in afd1.estados:
+            for estado2 in afpd2.estados:
+                nombramiento = f"{ '{estado1}' , '{estado2}' }"
+                estados_Final.append(nombramiento)
+                #estado1 corresponde al estado del afd y estado2 al del afpd (self)
+                if self.operacion(afd1,estado1, estado2, operacion):
+                    aceptados.append(nombramiento)
+                if afd1.alfabeto == afpd2.alfabetoCinta:
+                    for letter in afd1.alfabeto:
+                        trans1 = afd1.delta[estado1][letter]
+                        #el delta AFPD retorna una lista de 3 direcciones [destiny,pushletter,popletter]
+                        trans2 = afpd2.delta[estado2][letter]
+                        delta_Final[nombramiento] = {}
+                        delta_Final[nombramiento][letter] = [f"{ '{trans1}' , '{trans2[0]}' }",trans2[1],trans2[2]]
+                else:
+                    raise Exception(
+                        "Los automatas tienen distintos lenguajes en la operacion hallarProductoCartesiano")
+        inicial = f"{ '{afd1.estadoInicial}' , '{afpd2.estadoInicial}' }"
+        return AFPD(estados=estados_Final,estadoInicial=inicial,  estadosAceptacion=aceptados,alfabetoCinta=afpd2.alfabetoCinta,alfabetoPila=afpd2.alfabetoPila,delta=delta_Final)
