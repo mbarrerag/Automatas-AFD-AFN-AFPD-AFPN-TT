@@ -74,6 +74,8 @@ class ClasePrueba:
         nombre_archivo2 = 'procesamientos_posibles.txt'
         afn1.exportar(nombre_archivo1)
         afn1.exportar(nombre_archivo2)
+        print("\n--AFN estados inaccesibles\n")
+        afn1.estadosInaccesibles
 
     def probarAFNtoAFD(self):
          
@@ -125,14 +127,12 @@ class ClasePrueba:
         print(producto_cartesiano)
 
     def probarSimplificacion(self):
-        afd1 = AFD(nombreArchivo='evenA.DFA')
-        cadena = 'aaabbb'
-        print(f"\nAFD original '{afd1}'\n\n")
-        afd1.simplificarAFD()
-        afd1_simplificado = afd1
-        print(f"\nSimplificacion '{afd1_simplificado}'\n")
-        afd1_simplificado.procesar_cadena(cadena)
-
+        afd4 = AFD(nombreArchivo='minTest.DFA')
+        print(f"\nAFD original \n")
+        print(afd4)
+        afd4.simplificarAFD()
+        print(f"\nSimplificacion\n")
+        print(afd4)
     def generar_cadenas_afn(self,afns):
         #Me gustaría que se generaran cadenas dependiendo del lenguaje de los afns (no todos tienen de lenguaje {a,b}) para poder hacer más pruebas
         cadenas_generadas = []
@@ -224,10 +224,12 @@ class ClasePrueba:
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-clase_prueba.probarAFD()
-#clase_prueba.ProbarAFN()
-#clase_prueba.probarAFNtoAFD()
+#clase_prueba.probarAFD()
 #clase_prueba.probarComplemento()
+#clase_prueba.probarSimplificacion()
+clase_prueba.ProbarAFN()
+#clase_prueba.probarAFNtoAFD()
+
 #clase_prueba.probarProductoCartesiano()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.validarAFNtoAFD()
