@@ -205,14 +205,15 @@ class ClasePrueba:
         afd1 = AFD(nombreArchivo='AFDParAParB.txt')
         afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
         
-        print(afd1.alfabeto,afpd2.alfabetoCinta)
-        print(afpd2.delta)
+        #print(afd1.alfabeto,afpd2.alfabetoCinta)
+        #print(afpd2.delta)
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
+        print(afd_resultado)
 # Llamar a la función para probar el producto cartesiano
 
 # Crear instancia de la clase ClasePrueba y ejecutar los método correspondiente
 clase_prueba = ClasePrueba()
-clase_prueba.probarAFD()
+#clase_prueba.probarAFD()
 #clase_prueba.ProbarAFN()
 #clase_prueba.probarAFNtoAFD()
 #clase_prueba.probarComplemento()

@@ -44,13 +44,13 @@ class AFPD:
                 if lines[i].strip() == '#tapeAlphabet':
                     letter_range = lines[i+1].strip()
                     start, end = letter_range.split('-')
-                    self.alfabetoCinta = [chr(x) for x in range(ord(start), ord(end) + 1)]
+                    self.alfabetoCinta += [chr(x) for x in range(ord(start), ord(end) + 1)]
                     i += 1
 
-                if lines[i].strip() == '#Stackalphabet':
+                if lines[i].strip() == '#stackAlphabet':
                     letter_range = lines[i+1].strip()
                     start, end = letter_range.split('-')
-                    self.alfabetoPila = [chr(x) for x in range(ord(start), ord(end) + 1)]
+                    self.alfabetoPila += [chr(x) for x in range(ord(start), ord(end) + 1)]
                     i += 1
 
 
@@ -67,7 +67,86 @@ class AFPD:
                         i += 1
 
         #print(self.delta)   
-    
+    def __str__(self):
+        output = "!DFA\n"
+
+        output += "#tapeAlphabet\n"
+        
+        # Ordenar el alfabeto eliminando duplicados
+        sorted_alfabeto = sorted(set(self.alfabetoCinta), key=ord)
+        
+        # Crear rangos
+        rangos = []
+        rango_actual = [sorted_alfabeto[0]]
+        
+        for i in range(1, len(sorted_alfabeto)):
+            if ord(sorted_alfabeto[i]) - ord(rango_actual[-1]) == 1:
+                rango_actual.append(sorted_alfabeto[i])
+            else:
+                rangos.append(rango_actual)
+                rango_actual = [sorted_alfabeto[i]]
+        rangos.append(rango_actual)
+
+        # Imprimir rangos
+        for rango in rangos:
+            if len(rango) > 1:
+                output += f"{rango[0]}-{rango[-1]}\n"
+            else:
+                output += f"{rango[0]}\n"
+
+        output += "#Stackalphabet\n"
+        
+        # Ordenar el alfabeto eliminando duplicados
+        sorted_alfabeto = sorted(set(self.alfabetoPila), key=ord)
+        
+        # Crear rangos
+        rangos = []
+        rango_actual = [sorted_alfabeto[0]]
+        print(sorted_alfabeto)
+        print(self.alfabetoPila)
+        for i in range(1, len(sorted_alfabeto)):
+            if ord(sorted_alfabeto[i]) - ord(rango_actual[-1]) == 1:
+                rango_actual.append(sorted_alfabeto[i])
+            else:
+                rangos.append(rango_actual)
+                rango_actual = [sorted_alfabeto[i]]
+        rangos.append(rango_actual)
+
+        # Imprimir rangos
+        for rango in rangos:
+            if len(rango) > 1:
+                output += f"{rango[0]}-{rango[-1]}\n"
+            else:
+                output += f"{rango[0]}\n"
+
+        output += "#states\n"
+        estados_str = [str(estado) for estado in self.estados]
+        output += "\n".join(estados_str) + "\n"
+        
+
+        output += "#initial\n"
+        output += str(self.estadoInicial) + "\n"
+
+
+        output += "#accepting\n"
+        estadosAceptacion_str = [str(estado) for estado in self.estadosAceptacion]  
+        output += "\n".join(estadosAceptacion_str) + "\n"
+
+        output += "#transitions\n"
+        for source, transitions in self.delta.items():
+            for letter, target in transitions.items():
+                destiny = target[0]
+                pushletter = target[1]
+                popletter = target[2]
+                output += f"{source}:{letter}:{popletter}>{destiny}:{pushletter}\n"
+        
+        #output += "#inaccessible\n"
+        #output += "\n".join(sorted(self.estadosInaccesibles)) + "\n"
+
+        #output += "#limbo\n"
+        #output += "\n".join(sorted(self.estadosLimbo)) + "\n"
+
+        return output
     def verificarCorregirCompletitud(self):
         islimboAdded = False
         for estado in self.estados:
@@ -202,7 +281,7 @@ class AFPD:
         #afpd2 son el conjunto de estados del AFPD
         for estado1 in afd1.estados:
             for estado2 in afpd2.estados:
-                nombramiento = f"{ '{estado1}' , '{estado2}' }"
+                nombramiento = f"{ '{}' , '{}' }".format(estado1, estado2)
                 estados_Final.append(nombramiento)
                 #estado1 corresponde al estado del afd y estado2 al del afpd (self)
                 if self.operacion(afd1,estado1, estado2, operacion):
@@ -213,9 +292,9 @@ class AFPD:
                         #el delta AFPD retorna una lista de 3 direcciones [destiny,pushletter,popletter]
                         trans2 = afpd2.delta[estado2][letter]
                         delta_Final[nombramiento] = {}
-                        delta_Final[nombramiento][letter] = [f"{ '{trans1}' , '{trans2[0]}' }",trans2[1],trans2[2]]
+                        delta_Final[nombramiento][letter] = [f"{ '{}' , '{}' }".format(trans1, trans2[0]),trans2[1],trans2[2]]
                 else:
                     raise Exception(
                         "Los automatas tienen distintos lenguajes en la operacion hallarProductoCartesiano")
-        inicial = f"{ '{afd1.estadoInicial}' , '{afpd2.estadoInicial}' }"
+        inicial = f"{ '{}' , '{}' }".format(afd1.estadoInicial, afpd2.estadoInicial)
         return AFPD(estados=estados_Final,estadoInicial=inicial,  estadosAceptacion=aceptados,alfabetoCinta=afpd2.alfabetoCinta,alfabetoPila=afpd2.alfabetoPila,delta=delta_Final)

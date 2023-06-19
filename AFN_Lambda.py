@@ -347,11 +347,11 @@ class AFN_Lambda:
 
         print(newDelta)
 
-
+'''
 lambdaTest = AFN_Lambda(nombreArchivo="lambdaTest.NFE")
 print(lambdaTest.calcularLambdaClausura(states=lambdaTest.estados))
 lambdaTest.AFN_LambdaToAFN()
-
+'''
 '''
 firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
 
