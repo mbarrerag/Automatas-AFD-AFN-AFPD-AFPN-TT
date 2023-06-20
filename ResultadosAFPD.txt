@@ -1,3 +1,3 @@
-abbbbba	s0,a,[] --> s0,b,['A'] --> s1	no
-bb	s0	no
-abb	s0,a,[] --> s0,b,['A'] --> s1	no
+ababbba	s0,a,[] --> s0,b,['A'] --> s1,a,[] --> limbo	no
+ba	s0	no
+bba	s0	no

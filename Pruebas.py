@@ -1,6 +1,6 @@
 from AFD import AFD
 from AFN import AFN
-from AFN_Lambda import AFN_Lambda
+#from AFN_Lambda import AFN_Lambda
 from AFPD import AFPD
 from queue import LifoQueue
 from Alfabeto import Alfabeto
@@ -235,6 +235,7 @@ class ClasePrueba:
         #print(afpd2.delta)
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
+
     def probarMT(self):
         #prueba usando TM de palindromes pares
 
@@ -276,7 +277,7 @@ clase_prueba = ClasePrueba()
 
 #clase_prueba.probarAFPDProductoCartesianoAFD()
 
-#clase_prueba.probarAFPDProductoCartesianoAFD()
+clase_prueba.probarAFPDProductoCartesianoAFD()
 #--------------MT------------------
 #clase_prueba.probarMT()
 

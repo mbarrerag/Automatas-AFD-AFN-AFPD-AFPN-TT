@@ -108,25 +108,29 @@ def main():
     
     # print('\nPruebas de la clase AFPD\n') 
     #  
-    """""
+    
     print("Veriificar Determinimo\n")
 
     print("Construir a partir de archivo\n") 
 
-    afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
-    afpd2 = AFPD(nombreArchivo='AFPD_Test2.txt')
-    alfabeto = Alfabeto(afpd1.alfabetoCinta)
+    afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+    afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
+    alfabeto = Alfabeto(afpd2.alfabetoCinta)
     cadena = alfabeto.generar_cadena_aleatoria(5)
     print("Imprimir automata\n")
-    print(afpd1)
     print(afpd2)
 
-    print("Procesamiento con detalle\n")
+    print("\nProcesamiento con detalle\n")
 
-    afpd1.procesarCadenaConDetalles(cadena)
+    afpd2.procesarCadenaConDetalles(cadena)
     
-    print("Procesamiento de lista de cadenas\n")
+    print("\nProcesamiento de lista de cadenas\n")
     
-    afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
-    """
+    afpd2.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
+    
+    print("\nProducto cartesiano\n")
+
+    afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
+    print(afd_resultado)
+
 main()
