@@ -2,6 +2,7 @@ from queue import LifoQueue
 from AFN import AFN
 from Alfabeto import Alfabeto
 
+
 class AFN_Lambda:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None,
                  nombreArchivo=None):
@@ -85,7 +86,6 @@ class AFN_Lambda:
                             self.delta[source][letter] = targets
 
                         i += 1
-
 
     def _simplePrintIteration(self, listToPrint: list[str],
                               title: str) -> str:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
@@ -191,7 +191,6 @@ class AFN_Lambda:
         lambdaClosure.sort()  # Para que aparezcan en orden los estados
         return lambdaClosure
 
-
     def procesarCadena(self, cadena: str, toPrint=False) -> bool:
 
         """
@@ -206,19 +205,19 @@ class AFN_Lambda:
 
         if toPrint:
             if isAccepted:
-                print("Cadena " + cadena + " Aceptada")
+                print("Cadena '" + cadena + "' Aceptada")
                 for transition in processing:
                     print("(" + transition[0] + "," + transition[1] + ") --> " + transition[2])
             else:
-                print("Cadena " + cadena + "Rechazada")
+                print("Cadena '" + cadena + "' Rechazada")
 
         return isAccepted
-
 
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
-    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False, variousCadenas: bool = False) -> int or [str, bool] or [str]:
+    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False,
+                                       variousCadenas: bool = False) -> int or [str, bool] or [str]:
         """
             Argumentos:
                 cadena: La cadena para ser procesada
@@ -231,7 +230,7 @@ class AFN_Lambda:
 
         iterator = Iterator(self, cadena)  # Por legibilidad, creamos un iterador para la cadena
         listOfProcessings = []  # Aquí guardamos todos los posibles procedimientos de esta cadena, para poder imprimirlos
-                                # en pantalla luego.
+        # en pantalla luego.
         numberOfProcessings = 0
 
         def saveProcessingInfo(statusOfProcessing: str) -> None:  #
@@ -241,15 +240,19 @@ class AFN_Lambda:
             """
             if not simpleProcessing:
                 nonlocal numberOfProcessings
-                processingString = ''
 
                 processings = list(iterator.printStack.queue)
+                processingString = ''
                 for step in processings:
                     stepString = step[0] + "," + step[1] + "-->"
                     processingString += stepString
-                processingString += iterator.currentState + '. ' + statusOfProcessing
 
-                listOfProcessings.append(processingString)
+                if not variousCadenas:
+                    processingString += iterator.currentState + '. ' + statusOfProcessing
+                    listOfProcessings.append(processingString)
+                else:
+                    processingString += iterator.currentState
+                    listOfProcessings.append([processingString, statusOfProcessing])
 
                 numberOfProcessings += 1
 
@@ -275,38 +278,71 @@ class AFN_Lambda:
                 searchFinished = True
 
         if simpleProcessing:
-            return False, None
+            return None, False
         elif not variousCadenas:
             print("Procesando cadena '" + cadena + "': ")
             for processing in listOfProcessings:
                 print(processing)
             return numberOfProcessings
         else:
-            return listOfProcessings
+            return [listOfProcessings, numberOfProcessings]
 
-    def procesarListaCadenas(self, listaCadenas:list[str], nombreArchivo: str, imprimirPantalla: bool):
+    def procesarListaCadenas(self, listaCadenas: list[str], nombreArchivo: str, imprimirPantalla: bool):
+
+        archivo = open(f"{nombreArchivo}.txt", 'w')
+        output: str = ''
+
         for cadena in listaCadenas:
-            allProcessings: list[str] = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
-            acceptations = []
+
+            cadenaProcessed: [list[str], int] = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
+            allProcessings = cadenaProcessed[0]
+            numProcessings = cadenaProcessed[1]
+            acceptances = []
             rejections = []
             abortions = []
+
             for processing in allProcessings:
-                acceptations.append(processing) if processing.__contains__("Aceptada") else None
-                rejections.append(processing) if processing.__contains__("Rechazada") else None
-                abortions.append(processing) if processing.__contains__("Abortada") else None
-            print("Cadena: " + cadena)
+                acceptances.append(processing[0]) if processing[1] == "Aceptada" else None
+                rejections.append(processing[0]) if processing[1] == "Rechazada" else None
+                abortions.append(processing[0]) if processing[1] == "Abortada" else None
 
-            # Revisar min.
+            numAcceptances = len(acceptances)
+            numRejections = len(rejections)
+            numAbortions = len(abortions)
 
-            print(min(acceptations)) if len(acceptations) > 0 else None
-            print(min(rejections)) if len(rejections) > 0 else None
-            print(min(abortions)) if len(abortions) > 0 else None
+            if len(acceptances) > 0:
+                processingToPrint = min(acceptances, key=len) + '   Aceptada'
+            elif len(rejections) > 0:
+                processingToPrint = min(rejections, key=len) + '    Rechazada'
+            elif len(abortions) > 0:
+                processingToPrint = min(abortions, key=len) + '    Abortada'
+            else:
+                processingToPrint = "No hay procesamientos posibles"
 
+            status = 'Sí' if len(acceptances) > 0 else 'No'
 
+            reportString = (f"Cadena:                         {cadena} \n" +
+                            f"Procesamiento:                  {processingToPrint} \n" +
+                            f"Número de procesamientos:       {numProcessings.__str__()} \n" +
+                            f"Procesamientos de aceptación    {numAcceptances.__str__()} \n" +
+                            f"Procesamientos de rechazo       {numRejections.__str__()} \n" +
+                            f"Procesamientos abortados        {numAbortions.__str__()} \n" +
+                            f"¿Aceptada?                      {status}  \n" +
+                            "----------------------------------------------\n"
+                            )
+
+            output += reportString
+
+        if imprimirPantalla:
+            print(output)
+
+        archivo.write(output)
+        archivo.close()
 
     def AFN_LambdaToAFN(self) -> AFN:
 
-        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
+        def printInSetFlavor(
+                listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
             listCommas = [elem + ',' for elem in listToString]
             return '{' + ''.join(listCommas)[:-1] + '}'
 
@@ -361,7 +397,8 @@ class AFN_Lambda:
 
             newDelta[estado] = deltaState
 
-        AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial, estadosAceptacion=self.estadosAceptacion, delta=newDelta)
+        AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial,
+                          estadosAceptacion=self.estadosAceptacion, delta=newDelta)
         return AFNtoReturn
 
 
@@ -369,15 +406,15 @@ class Iterator:
     """
     Clase que sirve para recorrer el autómata. Se usa en computarTodosLosProcesamientos.
     """
+
     def __init__(self, AFNL, cadena):
         self.AFNL: AFN_Lambda = AFNL
         self.cadena: str = cadena
 
-
         for character in cadena:
             if character not in self.AFNL.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
-                                "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
+                                                                                       "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
 
         # El estado actual del autómata se puede determinar por dos cosas: El estado actual, y el índice del carácter
         # que acabamos de leer.
@@ -397,7 +434,8 @@ class Iterator:
         # y en los .txt los procesamientos por los que pasa la cadena. Es una pila porque, cuando nos devolvamos en la pila
         # de caminos, también tendremos que desapilar transiciones guardadas acá.
 
-    def calculateTransitionsFromHere(self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
+    def calculateTransitionsFromHere(
+            self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
         # actual, y guardarlos en la pila exploringStack (la de los caminos posibles)
         currentChar = self.cadena[self.index]  # Avanzamos al siguiente carácter de la cadena
 
@@ -419,7 +457,6 @@ class Iterator:
 
         pushIntoList(lambdaStates, '$')
         pushIntoList(charStates, currentChar)
-
 
     def doStep(self, isComingBack: bool) -> None:  # Dar el paso computacional.
 
@@ -460,23 +497,26 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
+firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+print(firstAFNL.__str__())
 
-# firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
-# print(firstAFNL.__str__())
-
-secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
-# print(secondAFNL.calcularLambdaClausura('s0'))
+#   print(secondAFNL.calcularLambdaClausura('s0'))
 
 # print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
 # print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
-#print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 # print(secondAFNL.procesarCadena("102", True))
 
-secondAFNL.procesarListaCadenas(["0111012", "102", "0"], False, False)
+
+# secondAFNL.procesarListaCadenas(["0111012", "0", "2", "102", "11"], nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
+
+# afnTest = AFN(nombreArchivo="testAFN.NFA")
+# afnTest.procesarListaCadenas(listaCadenas=['abbab', 'bababb', 'bbabb', 'aba'], nombreArchivo="cesarAFNTest", imprimirPantalla=True)
 
 # print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
@@ -491,7 +531,7 @@ secondAFNL.procesarListaCadenas(["0111012", "102", "0"], False, False)
 # print("----------------")
 #
 
-#afnFrom = secondAFNL.AFN_LambdaToAFN()
+# afnFrom = secondAFNL.AFN_LambdaToAFN()
 
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
@@ -500,7 +540,7 @@ secondAFNL.procesarListaCadenas(["0111012", "102", "0"], False, False)
 # print(afnFrom.procesarCadena("102"))
 
 
-#alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
 """""
 for i in range(0, 10):
     cadena = alphabet.generar_cadena_aleatoria(5)
