@@ -393,7 +393,8 @@ class AFN_Lambda:
                     print('d\'(' + estado + ',' + character +
                           ') = $[d($[' + estado + '],' + character +
                           ')] = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
-                          ')] = ' + printInSetFlavor(targets))
+                          ')] = $[' + printInSetFlavor(intermediateStates) +
+                          '] = ' + printInSetFlavor(targets))
 
             newDelta[estado] = deltaState
 
