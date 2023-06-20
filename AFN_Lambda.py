@@ -545,84 +545,97 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
-firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
-# print(firstAFNL.__str__())
-# AFde = firstAFNL.AFN_LambdaToAFD()
-alph = Alfabeto(firstAFNL.alfabeto)
-# print(firstAFNL.procesarCadenaConDetallesConversion(alph.generar_cadena_aleatoria(4)))
-
+# firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 
 secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
-# print(secondAFNL.__str__())
-# secondAFNL.AFN_LambdaToAFN()
-#   print(secondAFNL.calcularLambdaClausura('s0'))
+testingAlphabet = Alfabeto(secondAFNL.alfabeto)
+print("Creado desde archivo")
 
-print(secondAFNL.computarTodosLosProcesamientos("0111012", nombreArchivo="segundoAFNL").__str__() + " procesamientos")
-# print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
-# print(secondAFNL.procesarCadena("0111012", True))
-# print(secondAFNL.procesarCadena("0", True))
-# print(secondAFNL.procesarCadena("2", True))
-# print(secondAFNL.procesarCadena("11", True))
-# print(secondAFNL.procesarCadena("102", True))
+print("\n-----------------------------------")
+
+print("Lambda Clausuras")
+for estado in secondAFNL.estados:
+    print(f"{estado}: {secondAFNL.calcularLambdaClausura(individualState=estado)}")
+
+print("\n-----------------------------------")
+
+print("Lambda Clausuras de Conjuntos de estados")
+listsOfTesting = [['s0', 's3', 's6'], ['s1', 's2', 's3'], ['s0', 's1', 's6', 's7']]
+for test in listsOfTesting:
+    print(f"{test}:  {secondAFNL.calcularLambdaClausura(states=test)}")
+
+print("\n-----------------------------------")
+
+print("Hallas estados inaccesibles")
+print(secondAFNL.hallarEstadosInaccesibles())
+
+print("\n-----------------------------------")
+
+print("Imprimir autómata simplificado y completo")
+print("Simplificado:")
+print(secondAFNL.imprimirAFNLSimplificado())
+print("Completo:")
+print(secondAFNL.__str__())
+
+print("\n-----------------------------------")
+
+print("Exportar a archivo")
+secondAFNL.exportar(nombreArchivo="ExportedTest.txt")
+
+print("\n-----------------------------------")
+print("Procesar en detalle")
+secondAFNL.procesarCadenaConDetalles("0111012")
+print('\n')
+secondAFNL.procesarCadenaConDetalles(testingAlphabet.generar_cadena_aleatoria(5))
+
+print("\n-----------------------------------")
+print("Computar todos los procesamientos")
+
+randomString = testingAlphabet.generar_cadena_aleatoria(5)
+isAccepted = secondAFNL.computarTodosLosProcesamientos(randomString, nombreArchivo="allProcessings2")
+print(f"{isAccepted.__str__()} Procesamientos")
+
+print("\n-----------------------------------")
+print("Procesar lista de cadenas")
+listOfStrings = []
+for i in range(0,5):
+    listOfStrings.append(testingAlphabet.generar_cadena_aleatoria(n=5))
+secondAFNL.procesarListaCadenas(listOfStrings, nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
+
+print("-----------------------------------")
+print("Convertir a AFN:")
+AFNFrom = secondAFNL.AFN_LambdaToAFN()
+
+print("\n-----------------------------------")
+print("Convertir a AFD:")
+AFDFrom = secondAFNL.AFN_LambdaToAFD()
+
+print("\n-----------------------------------")
+print("Procesar con detalles a AFD:")
+print(secondAFNL.procesarCadenaConDetallesConversion(cadena=testingAlphabet.generar_cadena_aleatoria(n=5)))
+
+def testingAutomatas(afn: AFN_Lambda):
+    alphabet = Alfabeto(afn.alfabeto)
+    counterSuccess = 0
+    trueFalsePairs = []
+
+    archivo = open(f"AFNL-AFD-Results.txt", 'w')
+
+    for i in range(0, 5000):
+        cadena = alphabet.generar_cadena_aleatoria(i % 12)
+        boolLambda = afn.procesarCadena(cadena)
+        boolAfd = afn.procesarCadenaConversion(cadena)
+        if boolAfd == boolLambda:
+            counterSuccess += 1
+        trueFalsePairs.append([boolLambda, boolAfd, cadena])
+    archivo.write(f"Número de éxitos: {counterSuccess}\n")
+    archivo.write(f"Número de fracasos: {5000-counterSuccess}\n\n")
+    for pair in trueFalsePairs:
+        archivo.write(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2] + '\n')
 
 
-# secondAFNL.procesarListaCadenas(["0111012", "0", "2", "102", "11"], nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
-
-# afnTest = AFN(nombreArchivo="testAFN.NFA")
-# afnTest.procesarListaCadenas(listaCadenas=['abbab', 'bababb', 'bbabb', 'aba'], nombreArchivo="cesarAFNTest", imprimirPantalla=True)
-
-# print(secondAFNL.__str__())
-# print(secondAFNL.imprimirAFNLSimplificado())
-# secondAFNL.exportar("HolaMundo.nfe")
-
-# afnFrom = secondAFNL.AFN_LambdaToAFN()
-# afnFrom = firstAFNL.AFN_LambdaToAFN()
-# print(afnFrom.__str__())
-# afnFrom = firstAFNL.AFN_LambdaToAFN()
-
-# print(afnFrom.procesarCadena("0111012"))
-# print(afnFrom.procesarCadena("0"))
-# print(afnFrom.procesarCadena("2"))
-# print(afnFrom.procesarCadena("11"))
-# print(afnFrom.procesarCadena("102"))
-
-# def testingAutomatas(afn: AFN_Lambda):
-#     alphabet = Alfabeto(afn.alfabeto)
-#     trueFalsePairs = []
-#     for i in range(1, 100):
-#         cadena = alphabet.generar_cadena_aleatoria(i % 8)
-#         boolLambda = afn.procesarCadena(cadena)
-#         boolAfd = afn.procesarCadenaConversion(cadena)
-#         trueFalsePairs.append([boolLambda, boolAfd, cadena])
-#     for pair in trueFalsePairs:
-#         print(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2])
-#
-#
-# lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
-# testingAutomatas(lTest)
+lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+testingAutomatas(secondAFNL)
 
 
-# print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
-# lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-
-# print(lambdaClosureAFNL.__str__())
-# print(lambdaClosureAFNL.calcularLambdaClausura(st='s0'))
-# lambdaClosureAFNL.AFN_LambdaToAFN()
-# print(lambdaClosureAFNL.procesarCadenaConDetalles('ba'))
-
-'''
-for state in lambdaClosureAFNL.estados:
-    print(state + ":")
-    print(lambdaClosureAFNL.calcularLambdaClausura(st=state))
-
-print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
-print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
-'''
-
-# LambdaToStringTest = AFN_Lambda(nombreArchivo="LambdaToStringTest")
-# print(LambdaToStringTest.__str__())
-
-# bifucationANFL = AFN_Lambda(nombreArchivo="LambdaBifurcationTest.NFE")
-# print(bifucationANFL.__str__())
-# print(bifucationANFL.procesarCadenaConDetalles('b'))
