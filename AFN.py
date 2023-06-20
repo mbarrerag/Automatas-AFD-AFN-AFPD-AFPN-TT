@@ -4,7 +4,6 @@ class AFN:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
         if nombreArchivo:
             self.cargar_desde_archivo(nombreArchivo)
-
         else:
             self.alfabeto = alfabeto
             self.estados = estados
@@ -26,11 +25,17 @@ class AFN:
 
             for i in range(len(lines)):
                 if lines[i].strip() == '#alphabet':
-                    letter_range = lines[i+1].strip()
-                    start, end = letter_range.split('-')
-                    self.alfabeto = [chr(x)
-                                     for x in range(ord(start), ord(end) + 1)]
-                    i += 1
+                    while lines[i+1].strip() != '#states':
+                        if '-' in lines[i+1].strip():
+                            start, end = lines[i+1].strip().split('-')
+                            for x in range(ord(start), ord(end) + 1):
+                                if chr(x) not in self.alfabeto:
+                                    self.alfabeto.append(chr(x))
+                        else:
+                            x = chr(ord(lines[i+1].strip()))
+                            if x not in self.alfabeto:
+                                self.alfabeto.append(x)
+                        i += 1
 
                 if lines[i].strip() == '#states':
                     while lines[i+1].strip() != '#initial':
@@ -58,10 +63,8 @@ class AFN:
                             self.delta[source][letter] = []
                         self.delta[source][letter] += target
                         i += 1
-        #print(self.delta)
 
     def hallarEstadosInaccesibles(self):
-
         estadosAccesibles = []
         estadosAccesibles.append(self.estadoInicial)
         while True:
@@ -82,7 +85,21 @@ class AFN:
     def __str__(self):
         output = "!NFA\n"
         output += "#alphabet\n"
-        output += f"{min(self.alfabeto)}-{max(self.alfabeto)}\n"
+        i = 0
+        while i in range(self.alfabeto.__len__()):
+            if i != self.alfabeto.__len__()-1:
+                if ord(self.alfabeto[i+1]) == ord(self.alfabeto[i])+1:
+                    output += self.alfabeto[i]+"-"
+                    while True:
+                        if i+1 < self.alfabeto.__len__():
+                            if ord(self.alfabeto[i+1]) == ord(self.alfabeto[i])+1:
+                                i+=1
+                            else:
+                                break
+                        else:
+                            break
+            output += self.alfabeto[i]+"\n"
+            i += 1
         output += "#states\n"
         output += "\n".join(sorted(self.estados)) + "\n"
         output += "#initial\n"
@@ -195,7 +212,7 @@ class AFN:
             for caracter in afd.alfabeto:
                 print(caracter.center(nuemeroDeEspacios, " ")+'|', end='')
             print('')
-            for estado in afd.delta:
+            for estado in afd.estados:
                 print('|'+estado.center(nuemeroDeEspacios, " ")+'|', end='')
                 for caracter in afd.delta[estado]:
                     print(afd.delta[estado][caracter].center(
@@ -227,26 +244,18 @@ class AFN:
         self.generarCaminos(nodoActual=inicio)
 
         caminos = self.obtenerCaminos(nodoActual=inicio)
-        aceptacion = False
         for camino in caminos:
             if camino[0] == 'ac':
-                aceptacion = True
                 print(camino[1])
-                break
-        if aceptacion == False:
-            caminoAImprimir = caminos[0][1]
-            for camino in caminos:
-                if camino[1].__len__() < caminoAImprimir.__len__():
-                    caminoAImprimir = camino[1]
-            print(caminoAImprimir)
-        return aceptacion
+                return True
+        return False
 
     def computarTodosLosProcesamientos(self, cadena='', nombreArchivo=''):
         inicio = self.nodo(
             estado=self.estadoInicial, cadena=cadena, camino=self.estadoInicial)
         self.generarCaminos(nodoActual=inicio)
 
-        caminos = self.obtenerCaminos(nodoActual=inicio, imprimir=True)
+        caminos = self.obtenerCaminos(nodoActual=inicio)
         archivoAceptadas = open(f'{nombreArchivo}Aceptadas.txt', 'w')
         archivoRechazadas = open(f'{nombreArchivo}Rechazadas.txt', 'w')
         archivoAbortadas = open(f'{nombreArchivo}Abortadas.txt', 'w')
@@ -257,6 +266,7 @@ class AFN:
                 archivoRechazadas.write(f"{camino[1]} \n")
             elif camino[0] == 'ab':
                 archivoAbortadas.write(f"{camino[1]} \n")
+            print(camino[1])
         archivoAceptadas.close()
         archivoRechazadas.close()
         archivoAbortadas.close()
@@ -268,34 +278,32 @@ class AFN:
                 if nodoActual.cadena[0] in self.delta[nodoActual.estado]:
                     for estadoTransicionado in self.delta[nodoActual.estado][nodoActual.cadena[0]]:
                         nodoActual.next.append(self.nodo(
-                            estado=estadoTransicionado, cadena=nodoActual.cadena[1:], camino=nodoActual.camino+f'--{nodoActual.cadena[0]}-->{estadoTransicionado}'))
+                            estado=estadoTransicionado, cadena=nodoActual.cadena[1:], camino=nodoActual.camino+f'[{nodoActual.estado},{nodoActual.cadena}]->'))
                     for nodoSiguiente in nodoActual.next:
                         self.generarCaminos(nodoSiguiente)
                 else:
-                    nodoActual.camino += f'--{nodoActual.cadena[0]}-->//'
+                    nodoActual.camino += f'[{nodoActual.estado},{nodoActual.cadena}]-> Abortado'
             else:
-                nodoActual.camino += f'--{nodoActual.cadena[0]}-->//'
+                nodoActual.camino += f'[{nodoActual.estado},{nodoActual.cadena}]-> Abortado'
+        else:
+            if nodoActual.estado in self.estadosAceptacion:
+                nodoActual.camino += f'[{nodoActual.estado},{nodoActual.cadena}]-> Aceptación'
+            else:
+                nodoActual.camino += f'[{nodoActual.estado},{nodoActual.cadena}]-> No aceptación'
 
-    def obtenerCaminos(self, nodoActual=None, imprimir=False):
+    def obtenerCaminos(self, nodoActual=None):
         if nodoActual.next == []:
-            if '//' in nodoActual.camino:
-                if imprimir:
-                    print(f'{nodoActual.camino} : abortado')
+            if nodoActual.cadena != '':
                 return [['ab', nodoActual.camino]]
             else:
                 if nodoActual.estado in self.estadosAceptacion:
-                    if imprimir:
-                        print(f'{nodoActual.camino} : aceptacion')
                     return [['ac', nodoActual.camino]]
                 else:
-                    if imprimir:
-                        print(f'{nodoActual.camino} : rechazo')
                     return [['re', nodoActual.camino]]
         else:
             caminos = []
             for siguienteNodo in nodoActual.next:
-                caminos += self.obtenerCaminos(
-                    nodoActual=siguienteNodo, imprimir=imprimir)
+                caminos += self.obtenerCaminos(nodoActual=siguienteNodo)
             return caminos
 
     def procesarListaCadenas(self, listaCadenas=[], nombreArchivo='', imprimirPantalla=False):
@@ -371,3 +379,4 @@ class AFN:
             selfnodo.cadena = cadena
             selfnodo.next = []
             selfnodo.camino = camino
+# afn = AFN(nombreArchivo='testAFN.NFA')
