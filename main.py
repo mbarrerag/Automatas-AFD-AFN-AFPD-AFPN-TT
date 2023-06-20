@@ -106,29 +106,41 @@ def main():
     # automata.simplificarAFD()
     # print(automata)
     
+
+    #AFPD
     # print('\nPruebas de la clase AFPD\n') 
-    #  
+
     
-    print("Veriificar Determinimo\n")
+    # estados = ['s0', 's1']
+    # estadoInicial = 's0'
+    # estadosAceptacion = ['s1']
+    # tapeAlphabet = ['a', 'b']
+    # transitions 
+    # s0:a:$>s0:A
+    # s0:b:A>s1:$
+    # s1:b:A>s1:$
+    
+    #print("Veriificar Determinimo\n")
+   
 
-    print("Construir a partir de archivo\n") 
-
+    #print("Construir a partir de archivo\n") 
+   
     afd1 = AFD(nombreArchivo='AFDParAParB.txt')
     afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
     alfabeto = Alfabeto(afpd2.alfabetoCinta)
     cadena = alfabeto.generar_cadena_aleatoria(5)
-    print("Imprimir automata\n")
+    #print("Imprimir automata\n")
     print(afpd2)
 
-    print("\nProcesamiento con detalle\n")
+    #print("\nProcesamiento con detalle\n")
 
-    afpd2.procesarCadenaConDetalles(cadena)
+    #afpd2.procesarCadenaConDetalles(cadena)
     
-    print("\nProcesamiento de lista de cadenas\n")
+    #print("\nProcesamiento de lista de cadenas\n")
     
-    afpd2.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
+    #afpd2.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
     
-    print("\nProducto cartesiano\n")
+    #print("\nProducto cartesiano\n")
 
     afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
     print(afd_resultado)
