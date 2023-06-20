@@ -219,7 +219,7 @@ class AFN_Lambda:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
     def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False,
-                                       variousCadenas: bool = False) -> int or [str, bool] or [str]:
+                                       variousCadenas: bool = False, nombreArchivo: str = "AFNL") -> int or [str, bool] or [str]:
         """
             Argumentos:
                 cadena: La cadena para ser procesada
@@ -250,8 +250,8 @@ class AFN_Lambda:
                     processingString += stepString
 
                 if not variousCadenas:
-                    processingString += iterator.currentState + '. ' + statusOfProcessing
-                    listOfProcessings.append(processingString)
+                    processingString += iterator.currentState  #  + '. ' + statusOfProcessing
+                    listOfProcessings.append([processingString, statusOfProcessing])
                 else:
                     processingString += iterator.currentState
                     listOfProcessings.append([processingString, statusOfProcessing])
@@ -284,9 +284,33 @@ class AFN_Lambda:
         if simpleProcessing:
             return None, False
         elif not variousCadenas:
+            accepted = []
+            rejected = []
+            aborted = []
+
             print("Procesando cadena '" + cadena + "': ")
             for processing in listOfProcessings:
-                print(processing)
+                string = processing[0] + ". " + processing[1]
+                accepted.append(string) if processing[1] == "Aceptada" else None
+                rejected.append(string) if processing[1] == "Rechazada" else None
+                aborted.append(string) if processing[1] == "Abortada" else None
+                print(string)
+
+            archivoAceptadas = open(f"{nombreArchivo}Aceptadas.txt", 'w')
+            archivoRechazadas = open(f"{nombreArchivo}Rechazadas.txt", 'w')
+            archivoAbortadas = open(f"{nombreArchivo}Abortadas.txt", 'w')
+
+            accepted = [proc + '\n' for proc in accepted]
+            rejected = [proc + '\n' for proc in rejected]
+            aborted = [proc + '\n' for proc in aborted]
+            accepted = ''.join(accepted)
+            rejected = ''.join(rejected)
+            aborted = ''.join(aborted)
+
+            archivoAceptadas.write(accepted)
+            archivoRechazadas.write(rejected)
+            archivoAbortadas.write(aborted)
+
             return numberOfProcessings
         else:
             return [listOfProcessings, numberOfProcessings]
@@ -416,6 +440,11 @@ class AFN_Lambda:
         AFDe = self.AFN_LambdaToAFD()
         return AFDe.procesar_cadena(cadena)
 
+    def procesarCadenaConDetallesConversion(self, cadena:str) -> bool:
+        AFDe = self.AFN_LambdaToAFD()
+        print(AFDe.__str__())
+        return AFDe.procesar_cadena_con_detalles(cadena)
+
 
 class Iterator:
     """
@@ -518,14 +547,17 @@ class Iterator:
 
 firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 # print(firstAFNL.__str__())
-AFde = firstAFNL.AFN_LambdaToAFD()
+# AFde = firstAFNL.AFN_LambdaToAFD()
+alph = Alfabeto(firstAFNL.alfabeto)
+# print(firstAFNL.procesarCadenaConDetallesConversion(alph.generar_cadena_aleatoria(4)))
 
-# secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+
+secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
 # print(secondAFNL.__str__())
 # secondAFNL.AFN_LambdaToAFN()
 #   print(secondAFNL.calcularLambdaClausura('s0'))
 
-# print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
+print(secondAFNL.computarTodosLosProcesamientos("0111012", nombreArchivo="segundoAFNL").__str__() + " procesamientos")
 # print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
 # print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
@@ -554,70 +586,20 @@ AFde = firstAFNL.AFN_LambdaToAFD()
 # print(afnFrom.procesarCadena("11"))
 # print(afnFrom.procesarCadena("102"))
 
-
-# alphabet: Alfabeto = Alfabeto(firstAFNL.alfabeto)
-# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
-
-# for i in range(1, 100):
-#     cadena = alphabet.generar_cadena_aleatoria(i % 7)
-#     strLambda = firstAFNL.procesarCadena(cadena)
-#     # strLambda = secondAFNL.procesarCadena(cadena)
-#     strAFN = afnFrom.procesarCadena(cadena)
-#     if strLambda != strAFN:
-#         print("---------------------------")
-#         print(i)
-#         print("Discrepancia:")
-#         print("Cadena: '" + cadena + "'")
-#         print("Lambda " + strLambda.__str__())
-#         print("AFN:   " + strAFN.__str__())
+# def testingAutomatas(afn: AFN_Lambda):
+#     alphabet = Alfabeto(afn.alfabeto)
+#     trueFalsePairs = []
+#     for i in range(1, 100):
+#         cadena = alphabet.generar_cadena_aleatoria(i % 8)
+#         boolLambda = afn.procesarCadena(cadena)
+#         boolAfd = afn.procesarCadenaConversion(cadena)
+#         trueFalsePairs.append([boolLambda, boolAfd, cadena])
+#     for pair in trueFalsePairs:
+#         print(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2])
 #
-#         # print("AFN con detalles: ")
-#         print("*******************************")
-#         # afnFrom.procesar_cadena_con_detalles(cadena)
-#         # if i < 15:
-#         secondAFNL.computarTodosLosProcesamientos(cadena)
-#         print("+++++++++++++++++++++++++++++++++")
-#         afnFrom.computarTodosLosProcesamientos(cadena)
 #
-#         print("---------------------------")
-#     print(i)
-
-# alphabet = Alfabeto(firstAFNL.alfabeto)
-
-# trueFalsePairs = []
-# for i in range(1, 100):
-#     cadena = alphabet.generar_cadena_aleatoria(i % 7)
-#     strLambda = firstAFNL.procesarCadena(cadena)
-#     # strLambda = secondAFNL.procesarCadena(cadena)
-#     # strAFN = afnFrom.procesarCadena(cadena)
-#     # afdLambda = AFde.procesar_cadena(cadena)
-#     afdConversion = firstAFNL.procesarCadenaConversion(cadena)
-#     trueFalsePairs.append([strLambda, afdConversion])
-#     # if strLambda != afdConversion:
-#     #     print("---------------------------")
-#     #     print(i)
-#     #     print("Discrepancia:")
-#     #     print("Cadena: '" + cadena + "'")
-#     #     print("Lambda " + strLambda.__str__())
-#     #     print("AFD:   " + afdConversion.__str__())
-#     # print(i)
-# for i in trueFalsePairs:
-#     print(i[0].__str__() + '  ' + i[1].__str__())
-
-def testingAutomatas(afn: AFN_Lambda):
-    alphabet = Alfabeto(afn.alfabeto)
-    trueFalsePairs = []
-    for i in range(1, 100):
-        cadena = alphabet.generar_cadena_aleatoria(i % 8)
-        boolLambda = afn.procesarCadena(cadena)
-        boolAfd = afn.procesarCadenaConversion(cadena)
-        trueFalsePairs.append([boolLambda, boolAfd, cadena])
-    for pair in trueFalsePairs:
-        print(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2])
-
-
-lTest = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-testingAutomatas(lTest)
+# lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+# testingAutomatas(lTest)
 
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
