@@ -193,8 +193,45 @@ class AFPN:
         archivoRechazadas.close()
         return cadenasProcesamientos.__len__()
 
-    def procesarListaCadenas(self, listaCadenas = [], nombreArchivo = '', imprimirPantalla = False):
-        print()
+    def procesarListaCadenas(self, listaCadenas = [], nombreArchivo = 'procesamientoListaDeCadenasAFPN', imprimirPantalla = True):
+        archivoListaCadenas = open(f'{nombreArchivo}.txt', 'w')
+        # cadena
+        # un procesamiento de aceptacion(si no, uno de rechazo)
+        # numero de posibles procesamientos
+        # numero de procesamientos de aceptacion
+        # numero de procesamientos de rechazo
+        # "yes" o "no" dependiendo de si la cadena es aceptada o rechazada
+        texto = ''
+        for cadena in listaCadenas:
+            texto += f'{cadena}    '
+            nodoInicial = self.nodo(estado = self.estadoInicial, cadena = cadena, pila = [])
+            self.procesamiento(nodoInicial)
+            cadenasProcesamientos = self.cadenasProcesamientos(node=nodoInicial)
+            camino = ''
+            for procesamiento in cadenasProcesamientos:
+                camino = procesamiento
+                if (procesamiento[-1:-9:-1])[::-1] == 'accepted':
+                    break
+            texto += f'{camino}    '
+            texto += f'{cadenasProcesamientos.__len__()}    '
+            numeroAceptacion = 0
+            numeroRechazo = 0
+            for procesamiento in cadenasProcesamientos:
+                if (procesamiento[-1:-9:-1])[::-1] == 'accepted':
+                    numeroAceptacion += 1
+                else:
+                    numeroRechazo += 1
+            texto += f'{numeroAceptacion}    '
+            texto += f'{numeroRechazo}    '
+            if numeroAceptacion > 0:
+                texto += 'yes    '
+            else:
+                texto += 'no    '
+            texto += '\n'
+        if imprimirPantalla:
+            print(texto)
+        archivoListaCadenas.write(texto)
+        archivoListaCadenas.close()
     
     def cadenasProcesamientos(self, node = None, cadenaProcesamiento = ''):
         cadenasAImprimir = []
