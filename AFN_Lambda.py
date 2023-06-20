@@ -15,8 +15,9 @@ class AFN_Lambda:
             self.estadoInicial = estadoInicial
             self.estadosAceptacion = estadosAceptacion
             self.delta = delta
-            self.estadosLimbo = []
-            self.estadosInaccesibles = []
+
+        self.estadosLimbo = []
+        self.estadosInaccesibles = []
 
         self.estadosInaccesibles = self.hallarEstadosInaccesibles()
         for estado in self.delta:
@@ -26,66 +27,67 @@ class AFN_Lambda:
         print("¡Autómata creado!")
 
     def cargarDesdeArchivo(self, nombreArchivo) -> None:
+
         self.alfabeto = []
         self.estados = []
         self.estadoInicial = None
         self.estadosAceptacion = []
         self.delta = {}
-        self.estadosInaccesibles = []
-        self.estadosLimbo = []
+
+        secciones = {"#alphabet": [], "#states": [], "#initial": [], "#accepting": [], "#transitions": [], "#limbo": [],
+                     "#inaccessible": []}
+        seccion_actual = None
 
         with open(nombreArchivo, 'r') as f:
             lines = f.readlines()
 
-            for i in range(len(lines)):
-                if lines[i].strip() == '#alphabet':
-                    current = lines[i + 1]
-                    j = i + 1
-                    while current.strip() != "#states":
-                        if current.strip().__contains__("-"):
-                            start, end = current.split('-')
-                            start = start.strip()
-                            end = end.strip()
-                            lettersRange = [chr(x) for x in range(ord(start), ord(end) + 1)]
-                            for letter in lettersRange:
-                                self.alfabeto.append(letter)
-                        else:
-                            self.alfabeto.append(current.strip())
-                        j += 1
-                        current = lines[j].strip()
+            # Identificar las secciones
+            for line in lines:
+                line = line.strip()
+                if line in secciones:
+                    seccion_actual = line
+                elif seccion_actual and line:  # Aquí verificamos que la línea no esté vacía
+                    secciones[seccion_actual].append(line)
 
-                if lines[i].strip() == '#states':
-                    while lines[i + 1].strip() != '#initial':
-                        self.estados.append(lines[i + 1].strip())
-                        i += 1
+            # Procesar cada sección
+            for line in secciones['#alphabet']:
+                # Validar si es un rango o un caracter individual
+                if '-' in line and len(line.split('-')) == 2:  # Asegurarse de que la línea solo contenga dos partes
+                    start, end = line.split('-')
+                    self.alfabeto += [chr(x) for x in range(ord(start), ord(end) + 1) if chr(x) != '$']
+                else:
+                    if line != '$':
+                        self.alfabeto.append(line)
 
-                if lines[i].strip() == '#initial':
-                    self.estadoInicial = lines[i + 1].strip()
-                    i += 1
+            # Convertir el alfabeto a un conjunto para eliminar duplicados, y luego volver a una lista
+            self.alfabeto = list(set(self.alfabeto))
+            self.alfabeto.sort()  # Por comodidad, para que estén ordenados lexicográficamente los caracteres
 
-                if lines[i].strip() == '#accepting':
-                    while lines[i + 1].strip() != '#transitions':
-                        self.estadosAceptacion.append(lines[i + 1].strip())
-                        i += 1
+            for line in secciones['#states']:
+                self.estados.append(line)
 
-                if lines[i].strip() == '#transitions':
-                    # Primero, llenaremos cada índice de delta con diccionarios
-                    for estado in self.estados:
-                        self.delta.update({estado: {}})
+            for line in secciones['#initial']:
+                self.estadoInicial = line
 
-                    while i < len(lines) and lines[i + 1].strip() != '':
-                        source, letter = lines[i + 1].strip().split(':')
-                        letter, targets = letter.split('>')
+            for line in secciones['#accepting']:
+                self.estadosAceptacion.append(line)
 
-                        targets: list[str] = targets.split(';')
-                        if letter == '$' and source in targets:
-                            targets.remove(source)
-                            print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
+            for line in secciones['#transitions']:
+                source, letter = line.strip().split(':')
+                letter, targets = letter.split('>')
 
-                        if len(targets) != 0:
-                            self.delta[source][letter] = targets
+                targets: list[str] = targets.split(';')
+                if letter == '$' and source in targets:
+                    targets.remove(source)
+                    print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
 
-                        i += 1
+                if source not in self.delta:
+                    self.delta[source] = {}
+                if len(targets) != 0:
+                    self.delta[source][letter] = targets
+
+            for estado in self.estados:
+                self.delta.update({estado: {}}) if estado not in self.delta else None
 
     def _simplePrintIteration(self, listToPrint: list[str],
                               title: str) -> str:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
@@ -161,12 +163,12 @@ class AFN_Lambda:
         inaccesibleStates = [state for state in isAccesible if not isAccesible[state]]
         return inaccesibleStates
 
-    def calcularLambdaClausura(self, st: str = None, states: list[str] = None) -> list[str]:
-        if st is not None and states is not None:
+    def calcularLambdaClausura(self, individualState: str = None, states: list[str] = None) -> list[str]:
+        if individualState is not None and states is not None:
             raise Exception("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
-        if st is not None:
-            states = [st]
+        if individualState is not None:
+            states = [individualState]
 
         lambdaClosure = states.copy()  # Los estados mismos pertenecen a su lambda clausura
         for state in states:
@@ -404,6 +406,16 @@ class AFN_Lambda:
                           estadosAceptacion=self.estadosAceptacion, delta=newDelta)
         return AFNtoReturn
 
+    def AFN_LambdaToAFD(self):
+        AFNo = self.AFN_LambdaToAFN()
+        print("\nPaso a AFD:")
+        AFDe = AFNo.AFNtoAFD()
+        return AFDe
+
+    def procesarCadenaConversion(self, cadena: str) -> bool:
+        AFDe = self.AFN_LambdaToAFD()
+        return AFDe.procesar_cadena(cadena)
+
 
 class Iterator:
     """
@@ -506,6 +518,7 @@ class Iterator:
 
 firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 # print(firstAFNL.__str__())
+AFde = firstAFNL.AFN_LambdaToAFD()
 
 # secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
 # print(secondAFNL.__str__())
@@ -531,9 +544,9 @@ firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 # secondAFNL.exportar("HolaMundo.nfe")
 
 # afnFrom = secondAFNL.AFN_LambdaToAFN()
-afnFrom = firstAFNL.AFN_LambdaToAFN()
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
 # print(afnFrom.__str__())
-afnFrom = firstAFNL.AFN_LambdaToAFN()
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
 
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
@@ -568,6 +581,43 @@ afnFrom = firstAFNL.AFN_LambdaToAFN()
 #
 #         print("---------------------------")
 #     print(i)
+
+# alphabet = Alfabeto(firstAFNL.alfabeto)
+
+# trueFalsePairs = []
+# for i in range(1, 100):
+#     cadena = alphabet.generar_cadena_aleatoria(i % 7)
+#     strLambda = firstAFNL.procesarCadena(cadena)
+#     # strLambda = secondAFNL.procesarCadena(cadena)
+#     # strAFN = afnFrom.procesarCadena(cadena)
+#     # afdLambda = AFde.procesar_cadena(cadena)
+#     afdConversion = firstAFNL.procesarCadenaConversion(cadena)
+#     trueFalsePairs.append([strLambda, afdConversion])
+#     # if strLambda != afdConversion:
+#     #     print("---------------------------")
+#     #     print(i)
+#     #     print("Discrepancia:")
+#     #     print("Cadena: '" + cadena + "'")
+#     #     print("Lambda " + strLambda.__str__())
+#     #     print("AFD:   " + afdConversion.__str__())
+#     # print(i)
+# for i in trueFalsePairs:
+#     print(i[0].__str__() + '  ' + i[1].__str__())
+
+def testingAutomatas(afn: AFN_Lambda):
+    alphabet = Alfabeto(afn.alfabeto)
+    trueFalsePairs = []
+    for i in range(1, 100):
+        cadena = alphabet.generar_cadena_aleatoria(i % 8)
+        boolLambda = afn.procesarCadena(cadena)
+        boolAfd = afn.procesarCadenaConversion(cadena)
+        trueFalsePairs.append([boolLambda, boolAfd, cadena])
+    for pair in trueFalsePairs:
+        print(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2])
+
+
+lTest = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
+testingAutomatas(lTest)
 
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
