@@ -392,8 +392,8 @@ class AFN_Lambda:
 
                     print('d\'(' + estado + ',' + character +
                           ') = $[d($[' + estado + '],' + character +
-                          ') = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
-                          ') = ' + printInSetFlavor(targets))
+                          ')] = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
+                          ')] = ' + printInSetFlavor(targets))
 
             newDelta[estado] = deltaState
 
@@ -497,10 +497,11 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
-firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
-print(firstAFNL.__str__())
+# firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+# print(firstAFNL.__str__())
 
-# secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+print(secondAFNL.__str__())
 # secondAFNL.AFN_LambdaToAFN()
 #   print(secondAFNL.calcularLambdaClausura('s0'))
 
@@ -522,16 +523,10 @@ print(firstAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
 # secondAFNL.exportar("HolaMundo.nfe")
 
-# print(secondAFNL.procesarCadena("0111012"))
-# print(secondAFNL.procesarCadena("0"))
-# print(secondAFNL.procesarCadena("2"))
-# print(secondAFNL.procesarCadena("11"))
-# print(secondAFNL.procesarCadena("102"))
-#
-# print("----------------")
-#
-
-# afnFrom = secondAFNL.AFN_LambdaToAFN()
+afnFrom = secondAFNL.AFN_LambdaToAFN()
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
+print(afnFrom.__str__())
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
 
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
@@ -540,20 +535,33 @@ print(firstAFNL.__str__())
 # print(afnFrom.procesarCadena("102"))
 
 
-# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
-"""""
-for i in range(0, 10):
-    cadena = alphabet.generar_cadena_aleatoria(5)
+# alphabet: Alfabeto = Alfabeto(firstAFNL.alfabeto)
+alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+
+for i in range(1, 100):
+    cadena = alphabet.generar_cadena_aleatoria(i % 7)
+    # strLambda = firstAFNL.procesarCadena(cadena)
     strLambda = secondAFNL.procesarCadena(cadena)
-    strAFNNl = afnFrom.procesarCadena(cadena)
-    if strLambda != strAFNNl:
+    strAFN = afnFrom.procesarCadena(cadena)
+    if strLambda != strAFN:
+        print("---------------------------")
+        print(i)
         print("Discrepancia:")
-        print("Cadena: " + cadena)
-        print(strLambda)
-        print(strAFNNl)
+        print("Cadena: '" + cadena + "'")
+        print("Lambda " + strLambda.__str__())
+        print("AFN:   " + strAFN.__str__())
+
+        # print("AFN con detalles: ")
+        print("*******************************")
+        # afnFrom.procesar_cadena_con_detalles(cadena)
+        # if i < 15:
+        secondAFNL.computarTodosLosProcesamientos(cadena)
+        print("+++++++++++++++++++++++++++++++++")
+        afnFrom.computarTodosLosProcesamientos(cadena)
+
         print("---------------------------")
     print(i)
-"""
+
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
