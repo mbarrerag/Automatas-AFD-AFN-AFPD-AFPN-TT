@@ -263,6 +263,8 @@ class AFN_Lambda:
             if iterator.cadenaFullyCovered():
                 status = "Aceptada" if iterator.currentStateIsAcceptable() else "Rechazada"
                 saveProcessingInfo(status)
+
+                iterator.calculateTransitionsFromHere(weAreInLastCharacter=True)
                 if status == "Aceptada" and simpleProcessing:
                     return [list(iterator.printStack.queue), True]
             else:
@@ -435,10 +437,10 @@ class Iterator:
         # y en los .txt los procesamientos por los que pasa la cadena. Es una pila porque, cuando nos devolvamos en la pila
         # de caminos, también tendremos que desapilar transiciones guardadas acá.
 
-    def calculateTransitionsFromHere(
-            self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
+    def calculateTransitionsFromHere(self, weAreInLastCharacter: bool = False) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
         # actual, y guardarlos en la pila exploringStack (la de los caminos posibles)
-        currentChar = self.cadena[self.index]  # Avanzamos al siguiente carácter de la cadena
+
+        currentChar = self.cadena[self.index] if not weAreInLastCharacter else None # Avanzamos al siguiente carácter de la cadena
 
         # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
         def pushIntoList(stateList, char):
@@ -454,10 +456,14 @@ class Iterator:
                     self.exploringStack.put(pushStep)
 
         transitions = self.AFNL.delta.get(self.currentState)
-        lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
+        if not weAreInLastCharacter:
+            charStates = transitions.get(currentChar)
+            pushIntoList(charStates, currentChar)
+
+        lambdaStates = transitions.get('$')
         pushIntoList(lambdaStates, '$')
-        pushIntoList(charStates, currentChar)
+
 
     def doStep(self, isComingBack: bool) -> None:  # Dar el paso computacional.
 
@@ -498,11 +504,11 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
-# firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 # print(firstAFNL.__str__())
 
-secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
-print(secondAFNL.__str__())
+# secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+# print(secondAFNL.__str__())
 # secondAFNL.AFN_LambdaToAFN()
 #   print(secondAFNL.calcularLambdaClausura('s0'))
 
@@ -524,10 +530,10 @@ print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
 # secondAFNL.exportar("HolaMundo.nfe")
 
-afnFrom = secondAFNL.AFN_LambdaToAFN()
-# afnFrom = firstAFNL.AFN_LambdaToAFN()
-print(afnFrom.__str__())
-# afnFrom = firstAFNL.AFN_LambdaToAFN()
+# afnFrom = secondAFNL.AFN_LambdaToAFN()
+afnFrom = firstAFNL.AFN_LambdaToAFN()
+# print(afnFrom.__str__())
+afnFrom = firstAFNL.AFN_LambdaToAFN()
 
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
@@ -537,31 +543,31 @@ print(afnFrom.__str__())
 
 
 # alphabet: Alfabeto = Alfabeto(firstAFNL.alfabeto)
-alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
+# alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
 
-for i in range(1, 100):
-    cadena = alphabet.generar_cadena_aleatoria(i % 7)
-    # strLambda = firstAFNL.procesarCadena(cadena)
-    strLambda = secondAFNL.procesarCadena(cadena)
-    strAFN = afnFrom.procesarCadena(cadena)
-    if strLambda != strAFN:
-        print("---------------------------")
-        print(i)
-        print("Discrepancia:")
-        print("Cadena: '" + cadena + "'")
-        print("Lambda " + strLambda.__str__())
-        print("AFN:   " + strAFN.__str__())
-
-        # print("AFN con detalles: ")
-        print("*******************************")
-        # afnFrom.procesar_cadena_con_detalles(cadena)
-        # if i < 15:
-        secondAFNL.computarTodosLosProcesamientos(cadena)
-        print("+++++++++++++++++++++++++++++++++")
-        afnFrom.computarTodosLosProcesamientos(cadena)
-
-        print("---------------------------")
-    print(i)
+# for i in range(1, 100):
+#     cadena = alphabet.generar_cadena_aleatoria(i % 7)
+#     strLambda = firstAFNL.procesarCadena(cadena)
+#     # strLambda = secondAFNL.procesarCadena(cadena)
+#     strAFN = afnFrom.procesarCadena(cadena)
+#     if strLambda != strAFN:
+#         print("---------------------------")
+#         print(i)
+#         print("Discrepancia:")
+#         print("Cadena: '" + cadena + "'")
+#         print("Lambda " + strLambda.__str__())
+#         print("AFN:   " + strAFN.__str__())
+#
+#         # print("AFN con detalles: ")
+#         print("*******************************")
+#         # afnFrom.procesar_cadena_con_detalles(cadena)
+#         # if i < 15:
+#         secondAFNL.computarTodosLosProcesamientos(cadena)
+#         print("+++++++++++++++++++++++++++++++++")
+#         afnFrom.computarTodosLosProcesamientos(cadena)
+#
+#         print("---------------------------")
+#     print(i)
 
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
