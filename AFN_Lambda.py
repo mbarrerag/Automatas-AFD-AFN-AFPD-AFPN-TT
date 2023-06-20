@@ -497,10 +497,10 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
-firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 print(firstAFNL.__str__())
 
-# secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+# secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
 # secondAFNL.AFN_LambdaToAFN()
 #   print(secondAFNL.calcularLambdaClausura('s0'))
 
@@ -573,9 +573,9 @@ print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 '''
 
-# toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
-# print(toStringTestAFNL.__str__())
+# LambdaToStringTest = AFN_Lambda(nombreArchivo="LambdaToStringTest")
+# print(LambdaToStringTest.__str__())
 
-# bifucationANFL = AFN_Lambda(nombreArchivo="bifurcationTest.NFE")
+# bifucationANFL = AFN_Lambda(nombreArchivo="LambdaBifurcationTest.NFE")
 # print(bifucationANFL.__str__())
 # print(bifucationANFL.procesarCadenaConDetalles('b'))
