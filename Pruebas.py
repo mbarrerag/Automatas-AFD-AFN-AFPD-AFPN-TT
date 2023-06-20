@@ -179,10 +179,10 @@ class ClasePrueba:
 
     def probarAFNLambda(self):
     # Crear autómatas AFN-λ
-        #firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
-        secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+        #firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+        secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
         lambdaClosureAFNL = AFN_Lambda(nombreArchivo="lambdaClausuraTest.NFE")
-        #toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
+        #LambdaToStringTest = AFN_Lambda(nombreArchivo="LambdaToStringTest")
 
         # Calcular la λ-clausura de un estado
         lambdaClosureState = lambdaClosureAFNL.calcularLambdaClausura(states=['s0'])
@@ -215,8 +215,8 @@ class ClasePrueba:
         #     print("Aceptada:", result)
 
         # # Generar archivos
-        # with open("toStringTestAFNL.NFE", "w") as file:
-        #     file.write(toStringTestAFNL.__str__())
+        # with open("LambdaToStringTest.NFE", "w") as file:
+        #     file.write(LambdaToStringTest.__str__())
 
     def probarAFPD(self):
         afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')

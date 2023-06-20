@@ -2,6 +2,7 @@ from queue import LifoQueue
 from AFN import AFN
 from Alfabeto import Alfabeto
 
+
 class AFN_Lambda:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None,
                  nombreArchivo=None):
@@ -14,8 +15,9 @@ class AFN_Lambda:
             self.estadoInicial = estadoInicial
             self.estadosAceptacion = estadosAceptacion
             self.delta = delta
-            self.estadosLimbo = []
-            self.estadosInaccesibles = []
+
+        self.estadosLimbo = []
+        self.estadosInaccesibles = []
 
         self.estadosInaccesibles = self.hallarEstadosInaccesibles()
         for estado in self.delta:
@@ -25,67 +27,67 @@ class AFN_Lambda:
         print("¡Autómata creado!")
 
     def cargarDesdeArchivo(self, nombreArchivo) -> None:
+
         self.alfabeto = []
         self.estados = []
         self.estadoInicial = None
         self.estadosAceptacion = []
         self.delta = {}
-        self.estadosInaccesibles = []
-        self.estadosLimbo = []
+
+        secciones = {"#alphabet": [], "#states": [], "#initial": [], "#accepting": [], "#transitions": [], "#limbo": [],
+                     "#inaccessible": []}
+        seccion_actual = None
 
         with open(nombreArchivo, 'r') as f:
             lines = f.readlines()
 
-            for i in range(len(lines)):
-                if lines[i].strip() == '#alphabet':
-                    current = lines[i + 1]
-                    j = i + 1
-                    while current.strip() != "#states":
-                        if current.strip().__contains__("-"):
-                            start, end = current.split('-')
-                            start = start.strip()
-                            end = end.strip()
-                            lettersRange = [chr(x) for x in range(ord(start), ord(end) + 1)]
-                            for letter in lettersRange:
-                                self.alfabeto.append(letter)
-                        else:
-                            self.alfabeto.append(current.strip())
-                        j += 1
-                        current = lines[j].strip()
+            # Identificar las secciones
+            for line in lines:
+                line = line.strip()
+                if line in secciones:
+                    seccion_actual = line
+                elif seccion_actual and line:  # Aquí verificamos que la línea no esté vacía
+                    secciones[seccion_actual].append(line)
 
-                if lines[i].strip() == '#states':
-                    while lines[i + 1].strip() != '#initial':
-                        self.estados.append(lines[i + 1].strip())
-                        i += 1
+            # Procesar cada sección
+            for line in secciones['#alphabet']:
+                # Validar si es un rango o un caracter individual
+                if '-' in line and len(line.split('-')) == 2:  # Asegurarse de que la línea solo contenga dos partes
+                    start, end = line.split('-')
+                    self.alfabeto += [chr(x) for x in range(ord(start), ord(end) + 1) if chr(x) != '$']
+                else:
+                    if line != '$':
+                        self.alfabeto.append(line)
 
-                if lines[i].strip() == '#initial':
-                    self.estadoInicial = lines[i + 1].strip()
-                    i += 1
+            # Convertir el alfabeto a un conjunto para eliminar duplicados, y luego volver a una lista
+            self.alfabeto = list(set(self.alfabeto))
+            self.alfabeto.sort()  # Por comodidad, para que estén ordenados lexicográficamente los caracteres
 
-                if lines[i].strip() == '#accepting':
-                    while lines[i + 1].strip() != '#transitions':
-                        self.estadosAceptacion.append(lines[i + 1].strip())
-                        i += 1
+            for line in secciones['#states']:
+                self.estados.append(line)
 
-                if lines[i].strip() == '#transitions':
-                    # Primero, llenaremos cada índice de delta con diccionarios
-                    for estado in self.estados:
-                        self.delta.update({estado: {}})
+            for line in secciones['#initial']:
+                self.estadoInicial = line
 
-                    while i < len(lines) and lines[i + 1].strip() != '':
-                        source, letter = lines[i + 1].strip().split(':')
-                        letter, targets = letter.split('>')
+            for line in secciones['#accepting']:
+                self.estadosAceptacion.append(line)
 
-                        targets: list[str] = targets.split(';')
-                        if letter == '$' and source in targets:
-                            targets.remove(source)
-                            print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
+            for line in secciones['#transitions']:
+                source, letter = line.strip().split(':')
+                letter, targets = letter.split('>')
 
-                        if len(targets) != 0:
-                            self.delta[source][letter] = targets
+                targets: list[str] = targets.split(';')
+                if letter == '$' and source in targets:
+                    targets.remove(source)
+                    print("Transición lambda del estado " + source + " a sí mismo. ¡Ignorada!")
 
-                        i += 1
+                if source not in self.delta:
+                    self.delta[source] = {}
+                if len(targets) != 0:
+                    self.delta[source][letter] = targets
 
+            for estado in self.estados:
+                self.delta.update({estado: {}}) if estado not in self.delta else None
 
     def _simplePrintIteration(self, listToPrint: list[str],
                               title: str) -> str:  # Para ahorrarnos unas líneas de código en los métodos de imprimir el autómata
@@ -161,12 +163,12 @@ class AFN_Lambda:
         inaccesibleStates = [state for state in isAccesible if not isAccesible[state]]
         return inaccesibleStates
 
-    def calcularLambdaClausura(self, st: str = None, states: list[str] = None) -> list[str]:
-        if st is not None and states is not None:
+    def calcularLambdaClausura(self, individualState: str = None, states: list[str] = None) -> list[str]:
+        if individualState is not None and states is not None:
             raise Exception("Para calcular la lambda clausura, pasar, o solo un estado, o solo un conjunto de estados")
 
-        if st is not None:
-            states = [st]
+        if individualState is not None:
+            states = [individualState]
 
         lambdaClosure = states.copy()  # Los estados mismos pertenecen a su lambda clausura
         for state in states:
@@ -191,7 +193,6 @@ class AFN_Lambda:
         lambdaClosure.sort()  # Para que aparezcan en orden los estados
         return lambdaClosure
 
-
     def procesarCadena(self, cadena: str, toPrint=False) -> bool:
 
         """
@@ -206,19 +207,19 @@ class AFN_Lambda:
 
         if toPrint:
             if isAccepted:
-                print("Cadena " + cadena + " Aceptada")
+                print("Cadena '" + cadena + "' Aceptada")
                 for transition in processing:
                     print("(" + transition[0] + "," + transition[1] + ") --> " + transition[2])
             else:
-                print("Cadena " + cadena + "Rechazada")
+                print("Cadena '" + cadena + "' Rechazada")
 
         return isAccepted
-
 
     def procesarCadenaConDetalles(self, cadena: str) -> bool:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
-    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False) -> int or [str, bool]:
+    def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False,
+                                       variousCadenas: bool = False, nombreArchivo: str = "AFNL") -> int or [str, bool] or [str]:
         """
             Argumentos:
                 cadena: La cadena para ser procesada
@@ -231,7 +232,7 @@ class AFN_Lambda:
 
         iterator = Iterator(self, cadena)  # Por legibilidad, creamos un iterador para la cadena
         listOfProcessings = []  # Aquí guardamos todos los posibles procedimientos de esta cadena, para poder imprimirlos
-                                # en pantalla luego.
+        # en pantalla luego.
         numberOfProcessings = 0
 
         def saveProcessingInfo(statusOfProcessing: str) -> None:  #
@@ -241,15 +242,19 @@ class AFN_Lambda:
             """
             if not simpleProcessing:
                 nonlocal numberOfProcessings
-                processingString = ''
 
                 processings = list(iterator.printStack.queue)
+                processingString = ''
                 for step in processings:
                     stepString = step[0] + "," + step[1] + "-->"
                     processingString += stepString
-                processingString += iterator.currentState + '. ' + statusOfProcessing
 
-                listOfProcessings.append(processingString)
+                if not variousCadenas:
+                    processingString += iterator.currentState  #  + '. ' + statusOfProcessing
+                    listOfProcessings.append([processingString, statusOfProcessing])
+                else:
+                    processingString += iterator.currentState
+                    listOfProcessings.append([processingString, statusOfProcessing])
 
                 numberOfProcessings += 1
 
@@ -260,6 +265,8 @@ class AFN_Lambda:
             if iterator.cadenaFullyCovered():
                 status = "Aceptada" if iterator.currentStateIsAcceptable() else "Rechazada"
                 saveProcessingInfo(status)
+
+                iterator.calculateTransitionsFromHere(weAreInLastCharacter=True)
                 if status == "Aceptada" and simpleProcessing:
                     return [list(iterator.printStack.queue), True]
             else:
@@ -275,17 +282,95 @@ class AFN_Lambda:
                 searchFinished = True
 
         if simpleProcessing:
-            return False, None
-        else:
+            return None, False
+        elif not variousCadenas:
+            accepted = []
+            rejected = []
+            aborted = []
+
             print("Procesando cadena '" + cadena + "': ")
             for processing in listOfProcessings:
-                print(processing)
+                string = processing[0] + ". " + processing[1]
+                accepted.append(string) if processing[1] == "Aceptada" else None
+                rejected.append(string) if processing[1] == "Rechazada" else None
+                aborted.append(string) if processing[1] == "Abortada" else None
+                print(string)
+
+            archivoAceptadas = open(f"{nombreArchivo}Aceptadas.txt", 'w')
+            archivoRechazadas = open(f"{nombreArchivo}Rechazadas.txt", 'w')
+            archivoAbortadas = open(f"{nombreArchivo}Abortadas.txt", 'w')
+
+            accepted = [proc + '\n' for proc in accepted]
+            rejected = [proc + '\n' for proc in rejected]
+            aborted = [proc + '\n' for proc in aborted]
+            accepted = ''.join(accepted)
+            rejected = ''.join(rejected)
+            aborted = ''.join(aborted)
+
+            archivoAceptadas.write(accepted)
+            archivoRechazadas.write(rejected)
+            archivoAbortadas.write(aborted)
 
             return numberOfProcessings
+        else:
+            return [listOfProcessings, numberOfProcessings]
+
+    def procesarListaCadenas(self, listaCadenas: list[str], nombreArchivo: str, imprimirPantalla: bool):
+
+        archivo = open(f"{nombreArchivo}.txt", 'w')
+        output: str = ''
+
+        for cadena in listaCadenas:
+
+            cadenaProcessed: [list[str], int] = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
+            allProcessings = cadenaProcessed[0]
+            numProcessings = cadenaProcessed[1]
+            acceptances = []
+            rejections = []
+            abortions = []
+
+            for processing in allProcessings:
+                acceptances.append(processing[0]) if processing[1] == "Aceptada" else None
+                rejections.append(processing[0]) if processing[1] == "Rechazada" else None
+                abortions.append(processing[0]) if processing[1] == "Abortada" else None
+
+            numAcceptances = len(acceptances)
+            numRejections = len(rejections)
+            numAbortions = len(abortions)
+
+            if len(acceptances) > 0:
+                processingToPrint = min(acceptances, key=len) + '   Aceptada'
+            elif len(rejections) > 0:
+                processingToPrint = min(rejections, key=len) + '    Rechazada'
+            elif len(abortions) > 0:
+                processingToPrint = min(abortions, key=len) + '    Abortada'
+            else:
+                processingToPrint = "No hay procesamientos posibles"
+
+            status = 'Sí' if len(acceptances) > 0 else 'No'
+
+            reportString = (f"Cadena:                         {cadena} \n" +
+                            f"Procesamiento:                  {processingToPrint} \n" +
+                            f"Número de procesamientos:       {numProcessings.__str__()} \n" +
+                            f"Procesamientos de aceptación    {numAcceptances.__str__()} \n" +
+                            f"Procesamientos de rechazo       {numRejections.__str__()} \n" +
+                            f"Procesamientos abortados        {numAbortions.__str__()} \n" +
+                            f"¿Aceptada?                      {status}  \n" +
+                            "----------------------------------------------\n"
+                            )
+
+            output += reportString
+
+        if imprimirPantalla:
+            print(output)
+
+        archivo.write(output)
+        archivo.close()
 
     def AFN_LambdaToAFN(self) -> AFN:
 
-        def printInSetFlavor(listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
+        def printInSetFlavor(
+                listToString: list[str]) -> str:  # Un método para obtener un string de una lista como un set
             listCommas = [elem + ',' for elem in listToString]
             return '{' + ''.join(listCommas)[:-1] + '}'
 
@@ -335,28 +420,45 @@ class AFN_Lambda:
 
                     print('d\'(' + estado + ',' + character +
                           ') = $[d($[' + estado + '],' + character +
-                          ') = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
-                          ') = ' + printInSetFlavor(targets))
+                          ')] = $[d(' + printInSetFlavor(lambdaClosure) + ',' + character +
+                          ')] = $[' + printInSetFlavor(intermediateStates) +
+                          '] = ' + printInSetFlavor(targets))
 
             newDelta[estado] = deltaState
 
-        AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial, estadosAceptacion=self.estadosAceptacion, delta=newDelta)
+        AFNtoReturn = AFN(alfabeto=self.alfabeto, estados=self.estados, estadoInicial=self.estadoInicial,
+                          estadosAceptacion=self.estadosAceptacion, delta=newDelta)
         return AFNtoReturn
+
+    def AFN_LambdaToAFD(self):
+        AFNo = self.AFN_LambdaToAFN()
+        print("\nPaso a AFD:")
+        AFDe = AFNo.AFNtoAFD()
+        return AFDe
+
+    def procesarCadenaConversion(self, cadena: str) -> bool:
+        AFDe = self.AFN_LambdaToAFD()
+        return AFDe.procesar_cadena(cadena)
+
+    def procesarCadenaConDetallesConversion(self, cadena:str) -> bool:
+        AFDe = self.AFN_LambdaToAFD()
+        print(AFDe.__str__())
+        return AFDe.procesar_cadena_con_detalles(cadena)
 
 
 class Iterator:
     """
     Clase que sirve para recorrer el autómata. Se usa en computarTodosLosProcesamientos.
     """
+
     def __init__(self, AFNL, cadena):
         self.AFNL: AFN_Lambda = AFNL
         self.cadena: str = cadena
 
-
         for character in cadena:
             if character not in self.AFNL.alfabeto:
                 raise Exception("En la cadena se introdujo el carácter " + character + ", pero ese "
-                                "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
+                                                                                       "carácter no existe en el alfabeto del autómata: " + self.AFNL.alfabeto.__str__())
 
         # El estado actual del autómata se puede determinar por dos cosas: El estado actual, y el índice del carácter
         # que acabamos de leer.
@@ -376,9 +478,10 @@ class Iterator:
         # y en los .txt los procesamientos por los que pasa la cadena. Es una pila porque, cuando nos devolvamos en la pila
         # de caminos, también tendremos que desapilar transiciones guardadas acá.
 
-    def calculateTransitionsFromHere(self) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
+    def calculateTransitionsFromHere(self, weAreInLastCharacter: bool = False) -> None:  # Averiguar los posibles procesamientos desde el estado y el carácter
         # actual, y guardarlos en la pila exploringStack (la de los caminos posibles)
-        currentChar = self.cadena[self.index]  # Avanzamos al siguiente carácter de la cadena
+
+        currentChar = self.cadena[self.index] if not weAreInLastCharacter else None # Avanzamos al siguiente carácter de la cadena
 
         # Guardamos en la pila todos los pasos posibles que podríamos dar desde acá
         def pushIntoList(stateList, char):
@@ -394,10 +497,13 @@ class Iterator:
                     self.exploringStack.put(pushStep)
 
         transitions = self.AFNL.delta.get(self.currentState)
-        lambdaStates, charStates = transitions.get('$'), transitions.get(currentChar)
 
+        if not weAreInLastCharacter:
+            charStates = transitions.get(currentChar)
+            pushIntoList(charStates, currentChar)
+
+        lambdaStates = transitions.get('$')
         pushIntoList(lambdaStates, '$')
-        pushIntoList(charStates, currentChar)
 
 
     def doStep(self, isComingBack: bool) -> None:  # Dar el paso computacional.
@@ -439,36 +545,40 @@ class Iterator:
         return True if self.index == len(self.cadena) else False
 
 
-
-# firstAFNL = AFN_Lambda(nombreArchivo="firstAFNLtest.NFE")
+firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 # print(firstAFNL.__str__())
+# AFde = firstAFNL.AFN_LambdaToAFD()
+alph = Alfabeto(firstAFNL.alfabeto)
+# print(firstAFNL.procesarCadenaConDetallesConversion(alph.generar_cadena_aleatoria(4)))
 
-#secondAFNL = AFN_Lambda(nombreArchivo="secondAFNLtest.NFE")
+
+secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+# print(secondAFNL.__str__())
 # secondAFNL.AFN_LambdaToAFN()
-# print(secondAFNL.calcularLambdaClausura('s0'))
+#   print(secondAFNL.calcularLambdaClausura('s0'))
 
-print(secondAFNL.computarTodosLosProcesamientos("0111012").__str__() + " procesamientos")
+print(secondAFNL.computarTodosLosProcesamientos("0111012", nombreArchivo="segundoAFNL").__str__() + " procesamientos")
 # print(secondAFNL.computarTodosLosProcesamientos("102").__str__() + " procesamientos")
-print(secondAFNL.procesarCadena("0111012", True))
+# print(secondAFNL.procesarCadena("0111012", True))
 # print(secondAFNL.procesarCadena("0", True))
 # print(secondAFNL.procesarCadena("2", True))
 # print(secondAFNL.procesarCadena("11", True))
 # print(secondAFNL.procesarCadena("102", True))
 
+
+# secondAFNL.procesarListaCadenas(["0111012", "0", "2", "102", "11"], nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
+
+# afnTest = AFN(nombreArchivo="testAFN.NFA")
+# afnTest.procesarListaCadenas(listaCadenas=['abbab', 'bababb', 'bbabb', 'aba'], nombreArchivo="cesarAFNTest", imprimirPantalla=True)
+
 # print(secondAFNL.__str__())
 # print(secondAFNL.imprimirAFNLSimplificado())
 # secondAFNL.exportar("HolaMundo.nfe")
 
-# print(secondAFNL.procesarCadena("0111012"))
-# print(secondAFNL.procesarCadena("0"))
-# print(secondAFNL.procesarCadena("2"))
-# print(secondAFNL.procesarCadena("11"))
-# print(secondAFNL.procesarCadena("102"))
-#
-# print("----------------")
-#
-
-#afnFrom = secondAFNL.AFN_LambdaToAFN()
+# afnFrom = secondAFNL.AFN_LambdaToAFN()
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
+# print(afnFrom.__str__())
+# afnFrom = firstAFNL.AFN_LambdaToAFN()
 
 # print(afnFrom.procesarCadena("0111012"))
 # print(afnFrom.procesarCadena("0"))
@@ -476,21 +586,21 @@ print(secondAFNL.procesarCadena("0111012", True))
 # print(afnFrom.procesarCadena("11"))
 # print(afnFrom.procesarCadena("102"))
 
+# def testingAutomatas(afn: AFN_Lambda):
+#     alphabet = Alfabeto(afn.alfabeto)
+#     trueFalsePairs = []
+#     for i in range(1, 100):
+#         cadena = alphabet.generar_cadena_aleatoria(i % 8)
+#         boolLambda = afn.procesarCadena(cadena)
+#         boolAfd = afn.procesarCadenaConversion(cadena)
+#         trueFalsePairs.append([boolLambda, boolAfd, cadena])
+#     for pair in trueFalsePairs:
+#         print(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2])
+#
+#
+# lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
+# testingAutomatas(lTest)
 
-#alphabet: Alfabeto = Alfabeto(secondAFNL.alfabeto)
-"""""
-for i in range(0, 10):
-    cadena = alphabet.generar_cadena_aleatoria(5)
-    strLambda = secondAFNL.procesarCadena(cadena)
-    strAFNNl = afnFrom.procesarCadena(cadena)
-    if strLambda != strAFNNl:
-        print("Discrepancia:")
-        print("Cadena: " + cadena)
-        print(strLambda)
-        print(strAFNNl)
-        print("---------------------------")
-    print(i)
-"""
 
 # print(secondAFNL.calcularLambdaClausura(states=['s0', 's6']))
 
@@ -510,9 +620,9 @@ print(lambdaClosureAFNL.calcularLambdaClausura(states=['s0', 's3']))
 print(lambdaClosureAFNL.calcularLambdaClausura(states=['s5', 's6']))
 '''
 
-# toStringTestAFNL = AFN_Lambda(nombreArchivo="toStringTestAFNL")
-# print(toStringTestAFNL.__str__())
+# LambdaToStringTest = AFN_Lambda(nombreArchivo="LambdaToStringTest")
+# print(LambdaToStringTest.__str__())
 
-# bifucationANFL = AFN_Lambda(nombreArchivo="bifurcationTest.NFE")
+# bifucationANFL = AFN_Lambda(nombreArchivo="LambdaBifurcationTest.NFE")
 # print(bifucationANFL.__str__())
 # print(bifucationANFL.procesarCadenaConDetalles('b'))
