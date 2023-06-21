@@ -1,6 +1,7 @@
 from queue import LifoQueue
 from AFN import AFN
 from Alfabeto import Alfabeto
+#from graphviz import Digraph
 
 
 class AFN_Lambda:
@@ -444,6 +445,32 @@ class AFN_Lambda:
         AFDe = self.AFN_LambdaToAFD()
         print(AFDe.__str__())
         return AFDe.procesar_cadena_con_detalles(cadena)
+    
+    def draw_nfa(automaton):
+        # Create a new directed graph
+        nfa = Digraph()
+        nfa.attr(rankdir='LR')
+
+        for estado in automaton.estados:
+            if estado in automaton.estadosAceptacion:
+                nfa.attr('node', shape='doublecircle')
+            else:
+                nfa.attr('node', shape='circle')
+            nfa.node(str(estado))
+
+        nfa.attr('node', shape='ellipse')
+
+        for source, transicion in automaton.delta.items():
+            for symbol, targets in transicion.items():
+                for target in targets:
+                    if target not in automaton.estadosInaccesibles:
+                        nfa.edge(str(source), str(target), label=str(symbol))
+
+        nfa.attr('node', style='invis', width='0')
+        nfa.node('start')
+        nfa.edge('start', str(automaton.estadoInicial), style='bold')
+
+        return nfa
 
 
 class Iterator:
@@ -635,7 +662,9 @@ def testingAutomatas(afn: AFN_Lambda):
 
 
 lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
-testingAutomatas(secondAFNL)
+print(lTest)
+#lTest.draw_nfa().render('test-output/LambdaFirstTest.gv', view=True,format='png') #grafico 
+#testingAutomatas(secondAFNL)
 
 
 

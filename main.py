@@ -1,6 +1,8 @@
 from AFD import AFD
 from AFPD import AFPD
 from Alfabeto import Alfabeto
+from AFN import AFN
+#from graphviz import Digraph
 
 def main():
     # print("Pruebas\n")
@@ -125,12 +127,12 @@ def main():
 
     #print("Construir a partir de archivo\n") 
    
-    afd1 = AFD(nombreArchivo='AFDParAParB.txt')
-    afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
-    alfabeto = Alfabeto(afpd2.alfabetoCinta)
-    cadena = alfabeto.generar_cadena_aleatoria(5)
-    #print("Imprimir automata\n")
-    print(afpd2)
+    # afd1 = AFD(nombreArchivo='AFDParAParB.txt')
+    # afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
+    # alfabeto = Alfabeto(afpd2.alfabetoCinta)
+    # cadena = alfabeto.generar_cadena_aleatoria(5)
+    # #print("Imprimir automata\n")
+    # print(afpd2)
 
     #print("\nProcesamiento con detalle\n")
 

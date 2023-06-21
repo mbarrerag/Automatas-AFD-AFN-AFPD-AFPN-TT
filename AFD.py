@@ -226,11 +226,11 @@ class AFD:
 
     def procesar_cadena(self, cadena):
         estadoActual = self.estadoInicial
-        for simbolo in cadena: # convertir lista a tupla
+        for simbolo in cadena: 
             if estadoActual not in self.delta:
                 return False
-            estadoActual = self.delta[estadoActual][simbolo] # convertir tupla de vuelta a lista
-        return estadoActual in self.estadosAceptacion  # convertir a tupla antes de chequear
+            estadoActual = self.delta[estadoActual][simbolo] 
+        return estadoActual in self.estadosAceptacion  
 
     
     def procesar_cadena_con_detalles(self, cadena):
@@ -302,9 +302,9 @@ class AFD:
     def hallarProductoCartesianoY(self, afd1, afd2):
         producto_cartesiano = AFD()  
 
-        producto_cartesiano.alfabeto = afd1.alfabeto
+        producto_cartesiano.alfabeto = afd1.alfabeto 
 
-        producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados}
+        producto_cartesiano.estados = {(estado1, estado2) for estado1 in afd1.estados for estado2 in afd2.estados} # Producto cartesiano de los estados de los dos AFD
 
         producto_cartesiano.estadoInicial = (afd1.estadoInicial, afd2.estadoInicial)
 
@@ -438,9 +438,9 @@ class AFD:
 
         while True:
             nueva_tabla = tabla.copy()
-            for par in tabla:
-                if not tabla[par]:
-                    p, q = list(par)
+            for par in tabla: 
+                if not tabla[par]: # Si no está marcado con 'X'
+                    p, q = list(par) 
                     for a in self.alfabeto:
                         if self.delta[p][a] != self.delta[q][a] and \
                         tabla[frozenset({self.delta[p][a], self.delta[q][a]})]:
