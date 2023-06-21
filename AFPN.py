@@ -1,3 +1,5 @@
+import AFD
+
 class AFPN:
     def __init__(self, estados=None, estadoInicial=None, estadosAceptacion=None, alfabetoCinta=None, alfabetoPila=None, delta=None, nombreArchivo=None):
         if nombreArchivo:
@@ -227,7 +229,7 @@ class AFPN:
                 texto += 'yes    '
             else:
                 texto += 'no    '
-            texto += '\n'
+            texto += '\n\n'
         if imprimirPantalla:
             print(texto)
         archivoListaCadenas.write(texto)
@@ -298,6 +300,57 @@ class AFPN:
         if node.next.__len__() == 0:
                 node.next.append('rejected')
 
+    def hallarProductoCartesianoConAFD(self, afd = AFD.AFD()):
+        # el alfabeto de cinta es el mismo, y el de pila es el del afpn
+        productoEstados = []
+        productoEstadoInicial = '{'+self.estadoInicial+','+afd.estadoInicial+'}'
+        procutoEstadosAceptacion = []
+        productoDelta = {}
+        estadosAFD = afd.estados.copy()
+        if 'limbo' in estadosAFD:
+            estadosAFD.remove('limbo')
+        for estadoAfpn in self.estados:
+            for estadoAfd in estadosAFD:
+                estadoResultante = '{'+estadoAfpn+','+estadoAfd+'}'
+                productoEstados.append(estadoResultante)
+                if estadoAfpn in self.estadosAceptacion and estadoAfd in afd.estadosAceptacion:
+                    procutoEstadosAceptacion.append(estadoResultante)
+                alfabetoSimbolos = self.alfabetoCinta.copy()
+                alfabetoSimbolos.append('$')
+                for simbolo in alfabetoSimbolos:
+                    if self.existeTransicionAFPN(estado=estadoAfpn, caracter= simbolo) or self.existeTransicionAFD(estado = estadoAfd, caracter = simbolo, delta = afd.delta):
+                        if estadoResultante not in productoDelta:
+                            productoDelta[estadoResultante] = {}
+                        if simbolo not in productoDelta[estadoResultante]:
+                            productoDelta[estadoResultante][simbolo] = {}
+                    if self.existeTransicionAFPN(estado=estadoAfpn, caracter= simbolo) and self.existeTransicionAFD(estado = estadoAfd, caracter = simbolo, delta = afd.delta):
+                        for simboloPila in self.delta[estadoAfpn][simbolo]:
+                            productoDelta[estadoResultante][simbolo][simboloPila] = []
+                            for resultado in self.delta[estadoAfpn][simbolo][simboloPila]:
+                                productoDelta[estadoResultante][simbolo][simboloPila].append(['{'+resultado[0]+','+afd.delta[estadoAfd][simbolo]+'}', resultado[1]])
+                    if not self.existeTransicionAFPN(estado=estadoAfpn, caracter= simbolo) and self.existeTransicionAFD(estado = estadoAfd, caracter = simbolo, delta = afd.delta):
+                        productoDelta[estadoResultante][simbolo]['$'].append(['{'+estadoAfpn+','+afd.delta[estadoAfd][simbolo]+'}', '$'])
+                    if self.existeTransicionAFPN(estado=estadoAfpn, caracter= simbolo) and not self.existeTransicionAFD(estado = estadoAfd, caracter = simbolo, delta = afd.delta):
+                        for simboloPila in self.delta[estadoAfpn][simbolo]:
+                            productoDelta[estadoResultante][simbolo][simboloPila] = []
+                            for resultado in self.delta[estadoAfpn][simbolo][simboloPila]:
+                                productoDelta[estadoResultante][simbolo][simboloPila].append(['{'+resultado[0]+','+estadoAfd+'}', resultado[1]])
+        return AFPN(estados=productoEstados, estadoInicial=productoEstadoInicial, estadosAceptacion=procutoEstadosAceptacion, alfabetoCinta=self.alfabetoCinta, alfabetoPila=self.alfabetoPila, delta=productoDelta)
+        
+    def existeTransicionAFPN(self, estado = '', caracter = ''):
+        hayTransicion = False
+        if estado in self.delta:
+            if caracter in self.delta[estado]:
+                hayTransicion = True
+        return hayTransicion
+    
+    def existeTransicionAFD(self, estado = '', caracter = '', delta = {}):
+        hayTransicion = False
+        if estado in delta:
+            if caracter in delta[estado]:
+                if delta[estado][caracter] != 'limbo':
+                    hayTransicion = True
+        return hayTransicion
 
     class nodo:
         def __init__(selfnodo, estado=None, cadena='', pila=None):
