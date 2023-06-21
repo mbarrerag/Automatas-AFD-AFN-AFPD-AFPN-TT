@@ -1,4 +1,5 @@
 import AFD
+from graphviz import Digraph
 
 class AFPN:
     def __init__(self, estados=None, estadoInicial=None, estadosAceptacion=None, alfabetoCinta=None, alfabetoPila=None, delta=None, nombreArchivo=None):
@@ -133,6 +134,10 @@ class AFPN:
                     output += '\n'
         return output
     
+    def exportar(self, nombreArchivo = 'resultado_exportarAFPN.txt'):
+        with open(nombreArchivo, 'w') as f:
+            f.write(str(self))
+
     def modificarPila(self, pila = [], operacion = '', parametro = ''):
         if operacion != parametro:
             if operacion == '$':
@@ -359,7 +364,28 @@ class AFPN:
             selfnodo.next = []
             selfnodo.pila = pila
 
-# afpn = AFPN(nombreArchivo="testAFPN.pda")
-# print(afpn.procesarCadenaConDetalle(''))
-# print(afpn.procesarCadenaConDetalle('abaaba'))
-# print(afpn.procesarCadenaConDetalle('ababa'))
+    def draw_npfa(automaton):
+        # Create a new directed graph
+        npfa = Digraph()
+        npfa.attr(rankdir='LR')
+
+        for estado in automaton.estados:
+            if estado in automaton.estadosAceptacion:
+                npfa.attr('node', shape='doublecircle')
+            else:
+                npfa.attr('node', shape='circle')
+            npfa.node(str(estado))
+
+        npfa.attr('node', shape='ellipse')
+
+        for estado in automaton.delta:
+            for simbolo in automaton.delta[estado]:
+                for proceso in automaton.delta[estado][simbolo]:
+                    for resultado in automaton.delta[estado][simbolo][proceso]:
+                            npfa.edge(str(estado), str(resultado[0]), label=f'{simbolo}, {proceso}|{resultado[1]}')
+
+        npfa.attr('node', style='invis', width='0')
+        npfa.node('start')
+        npfa.edge('start', str(automaton.estadoInicial), style='bold')
+
+        return npfa
