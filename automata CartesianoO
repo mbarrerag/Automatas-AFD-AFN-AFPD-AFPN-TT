@@ -1,0 +1,23 @@
+digraph {
+	rankdir=LR
+	node [shape=doublecircle]
+	"('s0', 's3')"
+	node [shape=doublecircle]
+	"('s0', 's2')"
+	node [shape=circle]
+	"('s1', 's3')"
+	node [shape=doublecircle]
+	"('s1', 's2')"
+	node [shape=ellipse]
+	"('s0', 's2')" -> "('s0', 's3')" [label=b]
+	"('s0', 's2')" -> "('s1', 's2')" [label=a]
+	"('s0', 's3')" -> "('s0', 's2')" [label=b]
+	"('s0', 's3')" -> "('s1', 's3')" [label=a]
+	"('s1', 's2')" -> "('s1', 's3')" [label=b]
+	"('s1', 's2')" -> "('s0', 's2')" [label=a]
+	"('s1', 's3')" -> "('s1', 's2')" [label=b]
+	"('s1', 's3')" -> "('s0', 's3')" [label=a]
+	node [style=invis width=0]
+	start
+	start -> "('s0', 's2')" [style=bold]
+}

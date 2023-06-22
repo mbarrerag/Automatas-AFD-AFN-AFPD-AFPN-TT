@@ -1,0 +1,16 @@
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	"s0,s3"
+	node [shape=doublecircle]
+	"s1,s4"
+	node [shape=circle]
+	"s2,s5"
+	node [shape=ellipse]
+	"s0,s3" -> "s1,s4" [label=a]
+	"s1,s4" -> "s2,s5" [label=a]
+	"s2,s5" -> "s0,s3" [label=a]
+	node [style=invis width=0]
+	start
+	start -> "s0,s3" [style=bold]
+}

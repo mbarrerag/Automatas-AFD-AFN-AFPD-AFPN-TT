@@ -2,6 +2,7 @@ from AFD import AFD
 from AFN import AFN
 #from AFN_Lambda import AFN_Lambda
 from AFPD import AFPD
+from AFPN import AFPN
 from queue import LifoQueue
 from Alfabeto import Alfabeto
 from MT import MT
@@ -219,7 +220,7 @@ class ClasePrueba:
         #     file.write(LambdaToStringTest.__str__())
 
     def probarAFPD(self):
-        afpd1 = AFPD(nombreArchivo='AFPD_Test.txt')
+        afpd1 = AFPD(nombreArchivo='AFPD_Test.PDA')
         alfabeto = Alfabeto(afpd1.alfabetoCinta)
         cadena = alfabeto.generar_cadena_aleatoria(5)
         print("Procesamiento con detalle\n")
@@ -228,13 +229,24 @@ class ClasePrueba:
         afpd1.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)
     
     def probarAFPDProductoCartesianoAFD(self):
-        afd1 = AFD(nombreArchivo='AFDParAParB.txt')
-        afpd2 = AFPD(nombreArchivo='AFPD_Test.txt')
+        afd1 = AFD(nombreArchivo='AFDParAParB.DFA')
+        afpd2 = AFPD(nombreArchivo='AFPD_Test.PDA')
         
-        #print(afd1.alfabeto,afpd2.alfabetoCinta)
+        #print(afd1.alfabeto,afpd2.alfabetoCint[a)
         #print(afpd2.delta)
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
+
+    def probarAFPN(self):
+        afpn= AFPN(nombreArchivo='testAFPN.pda')
+        print(afpn)
+        afpn.exportar()
+        afpn.procesarCadenaConDetalle(cadena='abaabbab')
+        afpn.procesarCadenaConDetalle(cadena='aaabbb')
+        afpn.computarTodosLosProcesamientos(cadena='aaabbb')
+        afpn.procesarListaCadenas(listaCadenas=['abaa', '', 'aaaabbbb'])
+        afd= AFD(nombreArchivo='testAFD.DFA')
+        print(afpn.hallarProductoCartesianoConAFD(afd=afd))
 
     def probarMT(self):
         #prueba usando TM de palindromes pares
@@ -277,7 +289,9 @@ clase_prueba = ClasePrueba()
 
 #clase_prueba.probarAFPDProductoCartesianoAFD()
 
-clase_prueba.probarAFPDProductoCartesianoAFD()
+# clase_prueba.probarAFPDProductoCartesianoAFD()
+#-------------AFPN-----------------
+# clase_prueba.probarAFPN()
 #--------------MT------------------
 #clase_prueba.probarMT()
 

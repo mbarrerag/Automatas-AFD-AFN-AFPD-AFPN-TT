@@ -1,7 +1,8 @@
 from queue import LifoQueue
 from AFN import AFN
 from Alfabeto import Alfabeto
-#from graphviz import Digraph
+from random import randint
+from graphviz import Digraph
 
 
 class AFN_Lambda:
@@ -323,7 +324,7 @@ class AFN_Lambda:
 
         for cadena in listaCadenas:
 
-            cadenaProcessed: [list[str], int] = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
+            cadenaProcessed = self.computarTodosLosProcesamientos(cadena, variousCadenas=True)
             allProcessings = cadenaProcessed[0]
             numProcessings = cadenaProcessed[1]
             acceptances = []
@@ -575,71 +576,72 @@ class Iterator:
 # firstAFNL = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
 
 secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
-testingAlphabet = Alfabeto(secondAFNL.alfabeto)
-print("Creado desde archivo")
-
-print("\n-----------------------------------")
-
-print("Lambda Clausuras")
-for estado in secondAFNL.estados:
-    print(f"{estado}: {secondAFNL.calcularLambdaClausura(individualState=estado)}")
-
-print("\n-----------------------------------")
-
-print("Lambda Clausuras de Conjuntos de estados")
-listsOfTesting = [['s0', 's3', 's6'], ['s1', 's2', 's3'], ['s0', 's1', 's6', 's7']]
-for test in listsOfTesting:
-    print(f"{test}:  {secondAFNL.calcularLambdaClausura(states=test)}")
-
-print("\n-----------------------------------")
-
-print("Hallas estados inaccesibles")
-print(secondAFNL.hallarEstadosInaccesibles())
-
-print("\n-----------------------------------")
-
-print("Imprimir autómata simplificado y completo")
-print("Simplificado:")
-print(secondAFNL.imprimirAFNLSimplificado())
-print("Completo:")
 print(secondAFNL.__str__())
+testingAlphabet = Alfabeto(secondAFNL.alfabeto)
+# print("Creado desde archivo")
 
-print("\n-----------------------------------")
+# print("\n-----------------------------------")
 
-print("Exportar a archivo")
-secondAFNL.exportar(nombreArchivo="ExportedTest.txt")
+# print("Lambda Clausuras")
+# for estado in secondAFNL.estados:
+#     print(f"{estado}: {secondAFNL.calcularLambdaClausura(individualState=estado)}")
 
-print("\n-----------------------------------")
-print("Procesar en detalle")
-secondAFNL.procesarCadenaConDetalles("0111012")
-print('\n')
-secondAFNL.procesarCadenaConDetalles(testingAlphabet.generar_cadena_aleatoria(5))
+# print("\n-----------------------------------")
 
-print("\n-----------------------------------")
-print("Computar todos los procesamientos")
+# print("Lambda Clausuras de Conjuntos de estados")
+# listsOfTesting = [['s0', 's3', 's6'], ['s1', 's2', 's3'], ['s0', 's1', 's6', 's7']]
+# for test in listsOfTesting:
+#     print(f"{test}:  {secondAFNL.calcularLambdaClausura(states=test)}")
 
-randomString = testingAlphabet.generar_cadena_aleatoria(5)
-isAccepted = secondAFNL.computarTodosLosProcesamientos(randomString, nombreArchivo="allProcessings2")
-print(f"{isAccepted.__str__()} Procesamientos")
+# print("\n-----------------------------------")
 
-print("\n-----------------------------------")
-print("Procesar lista de cadenas")
-listOfStrings = []
-for i in range(0,5):
-    listOfStrings.append(testingAlphabet.generar_cadena_aleatoria(n=5))
-secondAFNL.procesarListaCadenas(listOfStrings, nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
+# print("Hallas estados inaccesibles")
+# print(secondAFNL.hallarEstadosInaccesibles())
 
-print("-----------------------------------")
-print("Convertir a AFN:")
-AFNFrom = secondAFNL.AFN_LambdaToAFN()
+# print("\n-----------------------------------")
 
-print("\n-----------------------------------")
-print("Convertir a AFD:")
-AFDFrom = secondAFNL.AFN_LambdaToAFD()
+# print("Imprimir autómata simplificado y completo")
+# print("Simplificado:")
+# print(secondAFNL.imprimirAFNLSimplificado())
+# print("Completo:")
+# print(secondAFNL.__str__())
 
-print("\n-----------------------------------")
-print("Procesar con detalles a AFD:")
-print(secondAFNL.procesarCadenaConDetallesConversion(cadena=testingAlphabet.generar_cadena_aleatoria(n=5)))
+# print("\n-----------------------------------")
+
+# print("Exportar a archivo")
+# secondAFNL.exportar(nombreArchivo="ExportedTest.txt")
+
+# print("\n-----------------------------------")
+# print("Procesar en detalle")
+# secondAFNL.procesarCadenaConDetalles("0111012")
+# print('\n')
+# secondAFNL.procesarCadenaConDetalles(testingAlphabet.generar_cadena_aleatoria(5))
+
+# print("\n-----------------------------------")
+# print("Computar todos los procesamientos")
+
+# randomString = testingAlphabet.generar_cadena_aleatoria(5)
+# isAccepted = secondAFNL.computarTodosLosProcesamientos(randomString, nombreArchivo="allProcessings2")
+# print(f"{isAccepted.__str__()} Procesamientos")
+
+# print("\n-----------------------------------")
+# print("Procesar lista de cadenas")
+# listOfStrings = []
+# for i in range(0,5):
+#     listOfStrings.append(testingAlphabet.generar_cadena_aleatoria(n=5))
+# secondAFNL.procesarListaCadenas(listOfStrings, nombreArchivo="cesarAFNLTest", imprimirPantalla=True)
+
+# print("-----------------------------------")
+# print("Convertir a AFN:")
+# AFNFrom = secondAFNL.AFN_LambdaToAFN()
+
+# print("\n-----------------------------------")
+# print("Convertir a AFD:")
+# AFDFrom = secondAFNL.AFN_LambdaToAFD()
+
+# print("\n-----------------------------------")
+# print("Procesar con detalles a AFD:")
+# print(secondAFNL.procesarCadenaConDetallesConversion(cadena=testingAlphabet.generar_cadena_aleatoria(n=5)))
 
 def testingAutomatas(afn: AFN_Lambda):
     alphabet = Alfabeto(afn.alfabeto)
@@ -648,22 +650,49 @@ def testingAutomatas(afn: AFN_Lambda):
 
     archivo = open(f"AFNL-AFD-Results.txt", 'w')
 
-    for i in range(0, 5000):
-        cadena = alphabet.generar_cadena_aleatoria(i % 12)
+    top = 100
+    for i in range(0, top):
+        cadena = alphabet.generar_cadena_aleatoria(randint(3,12))
         boolLambda = afn.procesarCadena(cadena)
         boolAfd = afn.procesarCadenaConversion(cadena)
         if boolAfd == boolLambda:
             counterSuccess += 1
         trueFalsePairs.append([boolLambda, boolAfd, cadena])
     archivo.write(f"Número de éxitos: {counterSuccess}\n")
-    archivo.write(f"Número de fracasos: {5000-counterSuccess}\n\n")
+    archivo.write(f"Número de fracasos: {top-counterSuccess}\n\n")
     for pair in trueFalsePairs:
         archivo.write(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2] + '\n')
 
+# testingAutomatas(secondAFNL)
 
-lTest = AFN_Lambda(nombreArchivo="LambdafFirstTest.NFE")
-print(lTest)
-#lTest.draw_nfa().render('test-output/LambdaFirstTest.gv', view=True,format='png') #grafico 
+def testingAutomatasToAFN(afn: AFN_Lambda):
+    alphabet = Alfabeto(afn.alfabeto)
+    counterSuccess = 0
+    trueFalsePairs = []
+
+    archivo = open(f"AFNL-AFN-Results.txt", 'w')
+
+    afnConversion = afn.AFN_LambdaToAFN()
+
+    top = 100
+    for i in range(0, top):
+        cadena = alphabet.generar_cadena_aleatoria(randint(3,12))
+        boolLambda = afn.procesarCadena(cadena)
+        boolAfd = afnConversion.procesarCadena(cadena)
+        if boolAfd == boolLambda:
+            counterSuccess += 1
+        trueFalsePairs.append([boolLambda, boolAfd, cadena])
+    archivo.write(f"Número de éxitos: {counterSuccess}\n")
+    archivo.write(f"Número de fracasos: {top-counterSuccess}\n\n")
+    for pair in trueFalsePairs:
+        archivo.write(pair[0].__str__() + ' ' + pair[1].__str__() + ', ' + pair[2] + '\n')
+
+# testingAutomatasToAFN(secondAFNL)
+
+
+lTest = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
+# print(lTest)
+lTest.draw_nfa().render('test-output/LambdaSecondTest.gv', view=True,format='png') #grafico 
 #testingAutomatas(secondAFNL)
 
 

@@ -1,0 +1,17 @@
+digraph {
+	rankdir=LR
+	node [shape=doublecircle]
+	s0
+	node [shape=circle]
+	s1
+	node [shape=circle]
+	limbo
+	node [shape=ellipse]
+	s0 -> s1 [label=a]
+	s0 -> limbo [label=b]
+	s1 -> s0 [label=a]
+	s1 -> limbo [label=b]
+	node [style=invis width=0]
+	start
+	start -> s0 [style=bold]
+}

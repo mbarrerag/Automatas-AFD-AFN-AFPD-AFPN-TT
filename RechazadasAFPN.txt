@@ -1,0 +1,7 @@
+(q0,aaabbb,$)->(q1,aaabbb,$)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q1,aabbb,A)->(q1,abbb,$)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q0,abbb,AA)->(q1,abbb,AA)->(q1,bbb,A)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q0,abbb,AA)->(q0,bbb,AAA)->(q1,bbb,AAA)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q0,abbb,AA)->(q0,bbb,AAA)->(q0,bb,AAAB)->(q1,bb,AAAB)->(q1,b,AAA)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q0,abbb,AA)->(q0,bbb,AAA)->(q0,bb,AAAB)->(q0,b,AAABB)->(q1,b,AAABB)->(q1,$,AAAB)->rejected 
+(q0,aaabbb,$)->(q0,aabbb,A)->(q0,abbb,AA)->(q0,bbb,AAA)->(q0,bb,AAAB)->(q0,b,AAABB)->(q0,$,AAABBB)->(q1,$,AAABBB)->rejected 

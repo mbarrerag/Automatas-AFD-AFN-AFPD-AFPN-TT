@@ -1,0 +1,6 @@
+abaa    (q0,abaa,$)->(q0,baa,A)->(q0,aa,AB)->(q0,a,ABA)->(q0,$,ABAA)->(q1,$,ABAA)->rejected    5    0    5    no    
+
+    (q0,$,$)->(q1,$,$)->accepted    2    1    1    yes    
+
+aaaabbbb    (q0,aaaabbbb,$)->(q0,aaabbbb,A)->(q0,aabbbb,AA)->(q0,abbbb,AAA)->(q0,bbbb,AAAA)->(q0,bbb,AAAAB)->(q0,bb,AAAABB)->(q0,b,AAAABBB)->(q0,$,AAAABBBB)->(q1,$,AAAABBBB)->rejected    9    0    9    no    
+
