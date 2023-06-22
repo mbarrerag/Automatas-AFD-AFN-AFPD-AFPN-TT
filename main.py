@@ -2,7 +2,7 @@ from AFD import AFD
 from AFPD import AFPD
 from Alfabeto import Alfabeto
 from AFN import AFN
-#from graphviz import Digraph
+from graphviz import Digraph
 
 def main():
     # print("Pruebas\n")
@@ -106,6 +106,7 @@ def main():
     # automata = AFD(nombreArchivo='./Automatas_AFD/Min_Test.DFA')
     # automata.draw().render('automata originalMin', view=True, format='png')
     # automata.simplificarAFD()
+    # automata.draw().render('automata Min', view=True, format='png')
     # print(automata)
     
 
@@ -144,7 +145,7 @@ def main():
     
     #print("\nProducto cartesiano\n")
 
-    afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
-    print(afd_resultado)
+    # afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
+    # print(afd_resultado)
 
 main()
