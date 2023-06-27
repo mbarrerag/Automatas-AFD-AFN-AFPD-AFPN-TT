@@ -48,37 +48,58 @@ class ClasePrueba:
         print("\n--AFD Imprimir simplificado\n")
         print(afd1.imprimirAFDSimplificado())
         print("\n--AFD Simplificado\n")
-        print(afd1.simplificarAFD())
-        
-        
+        print(afd1.simplificarAFD())  
    
 
     def ProbarAFN(self):
-
-        afn1 = AFN(nombreArchivo='AFNTest.txt')
-        alfabeto = Alfabeto(afn1.alfabeto)
-        cadena = 'bbac'
-        procesar_cadena_con_detalle = afn1.procesar_cadena_con_detalles(cadena) 
-        print(f"\nProcesamiento  de la cadena '{cadena}' con detalle \n")
-        print(procesar_cadena_con_detalle)
-        print("\nProcesamiento un proesamiento de aceptacion \n")
-        procesar_cadena_detalle = afn1.procesar_cadena_con_detalles(cadena)
-        
-        print("\nProcesamiento  posible de la cadena \n")
-        procesamientos_posibles = afn1.computarTodosLosProcesamientos(cadena)
-
-    
-        print(f"\nProcesamiento  de lista de cadenas \n")
-        lista_cadenas = [alfabeto.generar_cadena_aleatoria(3), alfabeto.generar_cadena_aleatoria(5), alfabeto.generar_cadena_aleatoria(10)]
-        nombre_archivo = 'resultados_lista_de_cadenas.txt'
-        imprimir_pantalla = True
-        afn1.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
-        nombre_archivo1 = 'resultado_con_detalles.txt'
-        nombre_archivo2 = 'procesamientos_posibles.txt'
-        afn1.exportar(nombre_archivo1)
-        afn1.exportar(nombre_archivo2)
-        print("\n--AFN estados inaccesibles\n")
-        afn1.estadosInaccesibles
+        afn = AFN(nombreArchivo='AFNTest.txt')
+        while(True):
+            tipoPrueba =  int(input('''Escoja la prueba que desea realizar:
+            \n 1) Imprimir AFN.
+            \n 2) Imprimir simplificado AFN.
+            \n 3) Estados inaccesibles AFN.
+            \n 4) Exportar AFN.
+            \n 5) Procesar cadena con detalle AFN.
+            \n 6) Computar todos los procesamientos AFN.
+            \n 7) Procesar lista cadenas AFN.
+            \n 8) AFN to AFD.
+            \n 0) Acabar.
+            '''))
+            if tipoPrueba == 1:
+                print(afn)
+            elif tipoPrueba == 2:
+                afn.imprimirAFNSimplificado()
+            elif tipoPrueba == 3:
+                print('Estados inaccesibles: ' + afn.hallarEstadosInaccesibles())
+            elif tipoPrueba == 4:
+                afn.exportar()
+                print("AFN exportado")
+            elif tipoPrueba == 5:
+                afn.procesar_cadena_con_detalles(cadena=input('Cadena: '))
+            elif tipoPrueba == 6:
+                afn.computarTodosLosProcesamientos(cadena=input('Cadena: '), nombreArchivo='Todos los procesamientos AFN')
+            elif tipoPrueba == 7:
+                listaCadenas = []
+                while(True):
+                    nuevaCadena = input("Nueva cadena: ")
+                    if nuevaCadena != '$':
+                        listaCadenas.append(nuevaCadena)
+                    else:
+                        break
+                afn.procesarListaCadenas(listaCadenas = listaCadenas, nombreArchivo='Lista cadenas AFN', imprimirPantalla=True)
+            elif tipoPrueba == 8:
+                afd = afn.AFNtoAFD() 
+                afn.procesarCadenaConDetallesConversion(cadena=input('Cadena: '))
+                listaCadenas = []
+                while(True):
+                    nuevaCadena = input("Nueva cadena: ")
+                    if nuevaCadena != '$':
+                        listaCadenas.append(nuevaCadena)
+                    else:
+                        break
+                afn.procesarListaCadenasConversion(listaCadenas=listaCadenas, nombreArchivo='Lista cadenas conversion AFN', imprimirPantalla=True)
+            else:
+                break
 
     def simplificacionAFN(self):
         afn1 = AFN(nombreArchivo='AFNTest.txt')
@@ -237,16 +258,41 @@ class ClasePrueba:
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
 
-    def probarAFPN(self):
-        afpn= AFPN(nombreArchivo='testAFPN.pda')
-        print(afpn)
-        afpn.exportar()
-        afpn.procesarCadenaConDetalle(cadena='abaabbab')
-        afpn.procesarCadenaConDetalle(cadena='aaabbb')
-        afpn.computarTodosLosProcesamientos(cadena='aaabbb')
-        afpn.procesarListaCadenas(listaCadenas=['abaa', '', 'aaaabbbb'])
-        afd= AFD(nombreArchivo='testAFD.DFA')
-        print(afpn.hallarProductoCartesianoConAFD(afd=afd))
+   def probarAFPN(self):
+        afpn = AFPN(nombreArchivo='testAFPN.pda')
+        while(True):
+            tipoPrueba =  int(input('''Escoja la prueba que desea realizar:
+            \n 1) Imprimir AFPN.
+            \n 2) Exportar AFPN.
+            \n 3) Procesar cadena con detalle AFPN.
+            \n 4) Computar todos los procesamientos AFPN.
+            \n 5) Procesar lista cadenas AFPN.
+            \n 6) Producto carteciano AFPN con AFD.
+            \n 0) Acabar.
+            '''))
+            if tipoPrueba == 1:
+                print(afpn)
+            elif tipoPrueba == 2:
+                afpn.exportar()
+                print("AFPN exportado")
+            elif tipoPrueba == 3:
+                afpn.procesarCadenaConDetalle(cadena=input('Cadena: '))
+            elif tipoPrueba == 4:
+                afpn.computarTodosLosProcesamientos(cadena=input('Cadena: '), nombreArchivo='Todos los procesamientos AFPN')
+            elif tipoPrueba == 5:
+                listaCadenas = []
+                while(True):
+                    nuevaCadena = input("Nueva cadena: ")
+                    if nuevaCadena != '$':
+                        listaCadenas.append(nuevaCadena)
+                    else:
+                        break
+                afpn.procesarListaCadenas(listaCadenas = listaCadenas)
+            elif tipoPrueba == 6:
+                afd = AFD(nombreArchivo='testAFD.DFA')
+                print(afpn.hallarProductoCartesianoConAFD(afd=afd))
+            else:
+                break
 
     def probarMT(self):
         #prueba usando TM de palindromes pares
