@@ -260,43 +260,6 @@ class ClasePrueba:
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
 
-<<<<<<< Updated upstream
-   def probarAFPN(self):
-        afpn = AFPN(nombreArchivo='testAFPN.pda')
-        while(True):
-            tipoPrueba =  int(input('''Escoja la prueba que desea realizar:
-            \n 1) Imprimir AFPN.
-            \n 2) Exportar AFPN.
-            \n 3) Procesar cadena con detalle AFPN.
-            \n 4) Computar todos los procesamientos AFPN.
-            \n 5) Procesar lista cadenas AFPN.
-            \n 6) Producto carteciano AFPN con AFD.
-            \n 0) Acabar.
-            '''))
-            if tipoPrueba == 1:
-                print(afpn)
-            elif tipoPrueba == 2:
-                afpn.exportar()
-                print("AFPN exportado")
-            elif tipoPrueba == 3:
-                afpn.procesarCadenaConDetalle(cadena=input('Cadena: '))
-            elif tipoPrueba == 4:
-                afpn.computarTodosLosProcesamientos(cadena=input('Cadena: '), nombreArchivo='Todos los procesamientos AFPN')
-            elif tipoPrueba == 5:
-                listaCadenas = []
-                while(True):
-                    nuevaCadena = input("Nueva cadena: ")
-                    if nuevaCadena != '$':
-                        listaCadenas.append(nuevaCadena)
-                    else:
-                        break
-                afpn.procesarListaCadenas(listaCadenas = listaCadenas)
-            elif tipoPrueba == 6:
-                afd = AFD(nombreArchivo='testAFD.DFA')
-                print(afpn.hallarProductoCartesianoConAFD(afd=afd))
-            else:
-                break
-=======
     def probarAFPN(self):
         afpn= AFPN(nombreArchivo='testAFPN.pda')
         afpn.draw_npfa().render('automata CartesianoY3ds4', view=True, format='png')
@@ -308,7 +271,6 @@ class ClasePrueba:
         afpn.procesarListaCadenas(listaCadenas=['abaa', '', 'aaaabbbb'])
         afd= AFD(nombreArchivo='testAFD.DFA')
         print(afpn.hallarProductoCartesianoConAFD(afd=afd))
->>>>>>> Stashed changes
 
     def probarMT(self):
         #prueba usando TM de palindromes pares

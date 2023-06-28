@@ -221,7 +221,7 @@ class AFN_Lambda:
         return self.procesarCadena(cadena=cadena, toPrint=True)
 
     def computarTodosLosProcesamientos(self, cadena: str, simpleProcessing: bool = False,
-                                       variousCadenas: bool = False, nombreArchivo: str = "AFNL") -> int or [str, bool] or [str]:
+                                       variousCadenas: bool = False, nombreArchivo: str = "AFNL"):
         """
             Argumentos:
                 cadena: La cadena para ser procesada

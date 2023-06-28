@@ -306,28 +306,30 @@ class AFPD:
     
     def draw_dpfa(automaton):
         # Create a new directed graph
-        npfa = Digraph()
-        npfa.attr(rankdir='LR')
+        dpfa = Digraph()
+        dpfa.attr(rankdir='LR')
 
         for estado in automaton.estados:
             if estado in automaton.estadosAceptacion:
-                npfa.attr('node', shape='doublecircle')
+                dpfa.attr('node', shape='doublecircle')
             else:
-                npfa.attr('node', shape='circle')
-            npfa.node(str(estado))
+                dpfa.attr('node', shape='circle')
+            dpfa.node(str(estado))
 
-        npfa.attr('node', shape='ellipse')
+        dpfa.attr('node', shape='ellipse')
 
         for estado in automaton.delta:
             for simbolo in automaton.delta[estado]:
-                for proceso in automaton.delta[estado][simbolo]:
-                    for resultado in automaton.delta[estado][simbolo][proceso]:
-                            npfa.edge(str(estado), str(resultado[0]), label=f'{simbolo}, {proceso}|{resultado[1]}')
+                transicion = automaton.delta[estado][simbolo]  
+                dpfa.edge(str(estado), str(transicion[0]), label=f'{simbolo}, {transicion[1]}|{transicion[2]}')
 
-        npfa.attr('node', style='invis', width='0')
-        npfa.node('start')
-        npfa.edge('start', str(automaton.estadoInicial), style='bold')
+        dpfa.attr('node', style='invis', width='0')
+        dpfa.node('start')
+        dpfa.edge('start', str(automaton.estadoInicial), style='bold')
 
-        return npfa
-    
-    
+        return dpfa
+
+# Graficar AFPD
+# afpd= AFPD(nombreArchivo='AFPD_test.txt')
+# print(afpd.delta)
+# afpd.draw_dpfa().render('automata CartesianoY3ds4', view=True, format='png')

@@ -1,3 +1,5 @@
+from graphviz import Digraph
+
 class MT:
     def __init__(self, states=None, initial_state=None, accepting_states=None, input_alphabet=None, tape_alphabet=None, transitions=None, nombreArchivo=None):
     
@@ -322,6 +324,34 @@ class MT:
         file.close()
 
 
+    def draw_turing_machine(self):
+        tm = Digraph()
+        tm.attr(rankdir='LR')
+
+        # Adding the states to the graph
+        for state in self.states:
+            if state in self.accepting_states:
+                tm.attr('node', shape='doublecircle')
+            else:
+                tm.attr('node', shape='circle')
+            tm.node(str(state))
+
+        # Adding a starting point
+        tm.attr('node', shape='plaintext')
+        tm.node('start')
+        tm.edge('start', self.current_state, style='bold')
+
+        # Adding the transitions
+        for (start, read), (end, write, direction) in self.transitions.items():
+            tm.edge(str(start), str(end), label=f'{read}, {write}|{direction}')
+
+        return tm
+
+
+
+
+
+
 #prueba usando TM de palindromes pares
 
 # Turing = MT(nombreArchivo="MT.tm")  
@@ -331,5 +361,10 @@ class MT:
 # print(Turing.procesarFuncion("aabbaa"))
 # Turing.procesarListaCadenas(["aaaa", "aabbaa", "ababa"], "resultadosTM.txt", True)
 # print(Turing)
+
+
+# graficar MT
+# Turing = MT(nombreArchivo="MT.tm") 
+# Turing.draw_turing_machine().render('test-output/round-table.gv', view=True)  
 
       

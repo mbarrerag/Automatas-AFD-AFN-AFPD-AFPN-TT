@@ -1,0 +1,34 @@
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	q0
+	node [shape=circle]
+	q1
+	node [shape=circle]
+	q2
+	node [shape=circle]
+	q3
+	node [shape=circle]
+	q4
+	node [shape=circle]
+	q5
+	node [shape=doublecircle]
+	q6
+	node [shape=plaintext]
+	start
+	start -> q0 [style=bold]
+	q0 -> q1 [label="a, !|>"]
+	q0 -> q3 [label="b, !|>"]
+	q0 -> q6 [label="!, !|-"]
+	q1 -> q1 [label="a, a|>"]
+	q1 -> q1 [label="b, b|>"]
+	q1 -> q2 [label="!, !|<"]
+	q2 -> q5 [label="a, !|<"]
+	q3 -> q3 [label="a, a|>"]
+	q3 -> q3 [label="b, b|>"]
+	q3 -> q4 [label="!, !|<"]
+	q4 -> q5 [label="b, !|<"]
+	q5 -> q5 [label="a, a|<"]
+	q5 -> q5 [label="b, b|<"]
+	q5 -> q0 [label="!, !|>"]
+}

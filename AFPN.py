@@ -389,3 +389,7 @@ class AFPN:
         npfa.edge('start', str(automaton.estadoInicial), style='bold')
 
         return npfa
+    
+# Graficar AFPN   
+# afpn= AFPN(nombreArchivo='testAFPN.pda')
+# afpn.draw_npfa().render('automata CartesianoY3ds4', view=True, format='png')
