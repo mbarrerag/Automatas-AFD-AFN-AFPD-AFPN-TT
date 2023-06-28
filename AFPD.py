@@ -329,3 +329,5 @@ class AFPD:
         npfa.edge('start', str(automaton.estadoInicial), style='bold')
 
         return npfa
+    
+    

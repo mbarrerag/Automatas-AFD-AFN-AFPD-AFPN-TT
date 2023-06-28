@@ -353,7 +353,7 @@ clase_prueba = ClasePrueba()
 
 # clase_prueba.probarAFPDProductoCartesianoAFD()
 #-------------AFPN-----------------
-clase_prueba.probarAFPN()
+# clase_prueba.probarAFPN()
 #--------------MT------------------
 #clase_prueba.probarMT()
 
