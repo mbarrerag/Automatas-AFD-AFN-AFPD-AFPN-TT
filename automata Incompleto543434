@@ -1,0 +1,34 @@
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	s0
+	node [shape=circle]
+	s1
+	node [shape=doublecircle]
+	s2
+	node [shape=circle]
+	s3
+	node [shape=circle]
+	s4
+	node [shape=doublecircle]
+	s5
+	node [shape=circle]
+	s6
+	node [shape=doublecircle]
+	s7
+	node [shape=ellipse]
+	s0 -> s6 [label=1]
+	s0 -> s1 [label="$"]
+	s1 -> s2 [label=0]
+	s1 -> s6 [label=0]
+	s1 -> s0 [label=2]
+	s6 -> s2 [label=0]
+	s6 -> s7 [label=1]
+	s6 -> s7 [label="$"]
+	s7 -> s7 [label=1]
+	s7 -> s2 [label=2]
+	s7 -> s0 [label="$"]
+	node [style=invis width=0]
+	start
+	start -> s0 [style=bold]
+}

@@ -5,7 +5,7 @@ from AFN import AFN
 from graphviz import Digraph
 
 def main():
-    # print("Pruebas\n")
+    print("Pruebas\n")
     # print('\nPruebas de la clase AFD\n')
 
     # print("Revisar si el AFD esta completo y corregirlo")
@@ -135,14 +135,14 @@ def main():
     # #print("Imprimir automata\n")
     # print(afpd2)
 
-    #print("\nProcesamiento con detalle\n")
+    # print("\nProcesamiento con detalle\n")
 
-    #afpd2.procesarCadenaConDetalles(cadena)
+    # afpd2.procesarCadenaConDetalles(cadena)
     
-    #print("\nProcesamiento de lista de cadenas\n")
+    # #print("\nProcesamiento de lista de cadenas\n")
     
-    #afpd2.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
-    
+    # afpd2.procesarListaCadenas([alfabeto.generar_cadena_aleatoria(7),alfabeto.generar_cadena_aleatoria(2),alfabeto.generar_cadena_aleatoria(3)], "ResultadosAFPD.txt", True)    
+    # afpd2.draw_dpfa().render('automata CartesianoY3jcnasds4', view=True, format='png')
     #print("\nProducto cartesiano\n")
 
     # afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')

@@ -324,11 +324,12 @@ class MT:
 
 #prueba usando TM de palindromes pares
 
-#Turing = MT(nombreArchivo="MT.tm")  
-#print(Turing.procesarCadenaConDetalles("ababa"))
-#print(Turing.procesarCadena("ababa"))
-#print(Turing.procesarFuncion("aabbaa"))
-#Turing.procesarListaCadenas(["aaaa", "aabbaa", "ababa"], "resultadosTM.txt", True)
-#print(Turing)
+# Turing = MT(nombreArchivo="MT.tm")  
+# print(Turing.procesarCadenaConDetalles("ababa"))
+
+# print(Turing.procesarCadena("ababa"))
+# print(Turing.procesarFuncion("aabbaa"))
+# Turing.procesarListaCadenas(["aaaa", "aabbaa", "ababa"], "resultadosTM.txt", True)
+# print(Turing)
 
       

@@ -1,19 +1,19 @@
-baa
-s0--b-->s1--a-->s0--a-->//
+aca
+s0[s0,aca]-> Abortado
 1
 0
 0
 1
 no
-cabbb
-s0--c-->//
+a$a$c
+s0[s0,a$a$c]-> Abortado
 1
 0
 0
 1
 no
-ccccbcbaac
-s0--c-->//
+c$a$cbabac
+s0[s0,c$a$cbabac]-> Abortado
 1
 0
 0

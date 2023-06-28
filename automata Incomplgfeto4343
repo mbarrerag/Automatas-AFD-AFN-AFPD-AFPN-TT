@@ -1,0 +1,47 @@
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	"{s0}"
+	node [shape=circle]
+	"{s3}"
+	node [shape=doublecircle]
+	"{s0,s1,s2,s6,s7}"
+	node [shape=doublecircle]
+	"{s0,s1,s6,s7}"
+	node [shape=circle]
+	"{s0,s1}"
+	node [shape=doublecircle]
+	"{s3,s4,s5}"
+	node [shape=circle]
+	"{s3,s4}"
+	node [shape=doublecircle]
+	"{s0,s1,s2}"
+	node [shape=ellipse]
+	"{s0}" -> "{s0,s1,s2,s6,s7}" [label=0]
+	"{s0}" -> "{s0,s1,s6,s7}" [label=1]
+	"{s0}" -> "{s0,s1}" [label=2]
+	"{s3}" -> "{s3}" [label=0]
+	"{s3}" -> "{}" [label=1]
+	"{s3}" -> "{s3,s4,s5}" [label=2]
+	"{s0,s1,s2,s6,s7}" -> "{s0,s1,s2,s6,s7}" [label=0]
+	"{s0,s1,s2,s6,s7}" -> "{s0,s1,s6,s7}" [label=1]
+	"{s0,s1,s2,s6,s7}" -> "{s0,s1,s2}" [label=2]
+	"{s0,s1,s6,s7}" -> "{s0,s1,s2,s6,s7}" [label=0]
+	"{s0,s1,s6,s7}" -> "{s0,s1,s6,s7}" [label=1]
+	"{s0,s1,s6,s7}" -> "{s0,s1,s2}" [label=2]
+	"{s0,s1}" -> "{s0,s1,s2,s6,s7}" [label=0]
+	"{s0,s1}" -> "{s0,s1,s6,s7}" [label=1]
+	"{s0,s1}" -> "{s0,s1}" [label=2]
+	"{s3,s4,s5}" -> "{s3,s4}" [label=0]
+	"{s3,s4,s5}" -> "{s3,s4}" [label=1]
+	"{s3,s4,s5}" -> "{s3,s4,s5}" [label=2]
+	"{s3,s4}" -> "{s3,s4}" [label=0]
+	"{s3,s4}" -> "{s3,s4}" [label=1]
+	"{s3,s4}" -> "{s3,s4,s5}" [label=2]
+	"{s0,s1,s2}" -> "{s0,s1,s2,s6,s7}" [label=0]
+	"{s0,s1,s2}" -> "{s0,s1,s6,s7}" [label=1]
+	"{s0,s1,s2}" -> "{s0,s1}" [label=2]
+	node [style=invis width=0]
+	start
+	start -> "{s0}" [style=bold]
+}

@@ -1,0 +1,16 @@
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	q0
+	node [shape=doublecircle]
+	q1
+	node [shape=ellipse]
+	q0 -> q0 [label="a, $|A"]
+	q0 -> q0 [label="b, $|B"]
+	q0 -> q1 [label="$, $|$"]
+	q1 -> q1 [label="a, A|$"]
+	q1 -> q1 [label="b, B|$"]
+	node [style=invis width=0]
+	start
+	start -> q0 [style=bold]
+}

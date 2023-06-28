@@ -401,6 +401,7 @@ class AFD:
         dfa = Digraph()
         dfa.attr(rankdir='LR')
 
+
         for estado in self.estados:
             if estado in self.estadosAceptacion:
                 dfa.attr('node', shape='doublecircle')
@@ -497,4 +498,7 @@ class AFD:
             if any(estado in self.estadosAceptacion for estado in cluster):
                 self.estadosAceptacion = [self.combinar_estados(cluster) for cluster in clusters if any(estado in self.estadosAceptacion for estado in cluster)]
 
-
+    # print('Construir a partir de archivo y graficar\n')
+    # automata = AFD(nombreArchivo='./Automatas_AFD/Automata_Incompleto.DFA')
+    # print(automata)
+    # automata.draw().render('automata Incompleto2', view=True, format='png')

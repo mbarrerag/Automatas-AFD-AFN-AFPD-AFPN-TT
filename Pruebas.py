@@ -8,6 +8,7 @@ from Alfabeto import Alfabeto
 from MT import MT
 import ast
 import random
+from graphviz import Digraph
 
 class ClasePrueba:
     def __init__(self):
@@ -129,6 +130,7 @@ class ClasePrueba:
          nombre_archivo = 'resultados_lista_de_cadenas.txt'
          imprimir_pantalla = True
          afn_afd.procesarListaCadenas(lista_cadenas, nombre_archivo, imprimir_pantalla)
+         afn1.draw_nfa().render('automata CartesianoDifSim', view=True, format='png')
 
 
     def probarComplemento(self):
@@ -258,6 +260,7 @@ class ClasePrueba:
         afd_resultado = afpd2.hallarProductoCartesiano(afd1, afpd2, 'Y')
         print(afd_resultado)
 
+<<<<<<< Updated upstream
    def probarAFPN(self):
         afpn = AFPN(nombreArchivo='testAFPN.pda')
         while(True):
@@ -293,6 +296,19 @@ class ClasePrueba:
                 print(afpn.hallarProductoCartesianoConAFD(afd=afd))
             else:
                 break
+=======
+    def probarAFPN(self):
+        afpn= AFPN(nombreArchivo='testAFPN.pda')
+        afpn.draw_npfa().render('automata CartesianoY3ds4', view=True, format='png')
+        print(afpn)
+        afpn.exportar()
+        afpn.procesarCadenaConDetalle(cadena='abaabbab')
+        afpn.procesarCadenaConDetalle(cadena='aaabbb')
+        afpn.computarTodosLosProcesamientos(cadena='aaabbb')
+        afpn.procesarListaCadenas(listaCadenas=['abaa', '', 'aaaabbbb'])
+        afd= AFD(nombreArchivo='testAFD.DFA')
+        print(afpn.hallarProductoCartesianoConAFD(afd=afd))
+>>>>>>> Stashed changes
 
     def probarMT(self):
         #prueba usando TM de palindromes pares
@@ -314,10 +330,10 @@ clase_prueba = ClasePrueba()
 #clase_prueba.probarSimplificacion()
 #clase_prueba.probarProductoCartesiano()
 #-------------AFN-----------------
-#clase_prueba.ProbarAFN()
-#clase_prueba.simplificacionAFN()
-#clase_prueba.probarAFNtoAFD()
-#clase_prueba.validarAFNtoAFD() #validacion con mas de 5000 cadenas
+# clase_prueba.ProbarAFN()
+# clase_prueba.simplificacionAFN()
+# clase_prueba.probarAFNtoAFD()
+# clase_prueba.validarAFNtoAFD() #validacion con mas de 5000 cadenas
 
 #------------AFNL--------------
 
@@ -337,7 +353,7 @@ clase_prueba = ClasePrueba()
 
 # clase_prueba.probarAFPDProductoCartesianoAFD()
 #-------------AFPN-----------------
-# clase_prueba.probarAFPN()
+clase_prueba.probarAFPN()
 #--------------MT------------------
 #clase_prueba.probarMT()
 

@@ -1,0 +1,5 @@
+s0[s0,aaaaabbababba]->[s1,aaaabbababba]->[s1,aaabbababba]->[s1,aabbababba]->[s1,abbababba]->[s1,bbababba]->[s2,bababba]->[s2,ababba]->[s3,babba]-> Abortado 
+s0[s0,aaaaabbababba]->[s1,aaaabbababba]->[s1,aaabbababba]->[s1,aabbababba]->[s1,abbababba]->[s3,bbababba]-> Abortado 
+s0[s0,aaaaabbababba]->[s1,aaaabbababba]->[s1,aaabbababba]->[s1,aabbababba]->[s3,abbababba]-> Abortado 
+s0[s0,aaaaabbababba]->[s1,aaaabbababba]->[s1,aaabbababba]->[s3,aabbababba]-> Abortado 
+s0[s0,aaaaabbababba]->[s1,aaaabbababba]->[s3,aaabbababba]-> Abortado 

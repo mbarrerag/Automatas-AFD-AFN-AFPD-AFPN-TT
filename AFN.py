@@ -1,5 +1,5 @@
 import AFD
-#from graphviz import Digraph
+from graphviz import Digraph
 
 class AFN:
     def __init__(self, alfabeto=None, estados=None, estadoInicial=None, estadosAceptacion=None, delta=None, nombreArchivo=None):
@@ -411,3 +411,7 @@ class AFN:
             selfnodo.camino = camino
 
 
+# Graficar un AFN     
+# afn1 = AFN(nombreArchivo='testAFN.NFA') 
+# afn1.draw_nfa().render('automata CartesianoY34', view=True, format='png')
+# afn1.computarTodosLosProcesamientos(cadena="aaaaabbababba")

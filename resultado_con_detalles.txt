@@ -1,6 +1,7 @@
 !NFA
 #alphabet
 a-c
+$
 #states
 s0
 s1

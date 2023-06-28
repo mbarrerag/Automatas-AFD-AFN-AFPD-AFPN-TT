@@ -578,6 +578,7 @@ class Iterator:
 secondAFNL = AFN_Lambda(nombreArchivo="LambdaSecondTest.NFE")
 print(secondAFNL.__str__())
 testingAlphabet = Alfabeto(secondAFNL.alfabeto)
+secondAFNL.draw_nfa().render('automata Incompleto543434', view=True,format='png')
 # print("Creado desde archivo")
 
 # print("\n-----------------------------------")
@@ -634,10 +635,12 @@ testingAlphabet = Alfabeto(secondAFNL.alfabeto)
 # print("-----------------------------------")
 # print("Convertir a AFN:")
 # AFNFrom = secondAFNL.AFN_LambdaToAFN()
+# AFNFrom.draw_nfa().render('automata In45435completo', view=True,format='png')
 
 # print("\n-----------------------------------")
-# print("Convertir a AFD:")
-# AFDFrom = secondAFNL.AFN_LambdaToAFD()
+print("Convertir a AFD:")
+AFDFrom = secondAFNL.AFN_LambdaToAFD()
+AFDFrom.draw().render('automata Incomplgfeto4343', view=True,format='png')
 
 # print("\n-----------------------------------")
 # print("Procesar con detalles a AFD:")

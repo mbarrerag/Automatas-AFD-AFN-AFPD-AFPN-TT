@@ -1,5 +1,5 @@
 from AFD import AFD
-
+from graphviz import Digraph
 class AFPD:
     def __init__(self, estados=None, estadoInicial=None, estadosAceptacion=None, alfabetoCinta=None, alfabetoPila = None, delta=None, nombreArchivo=None):
         if nombreArchivo:
@@ -303,3 +303,29 @@ class AFPD:
                         "Los automatas tienen distintos lenguajes en la operacion hallarProductoCartesiano")
         inicial = f"{ '{}' , '{}' }".format(afd1.estadoInicial, afpd2.estadoInicial)
         return AFPD(estados=estados_Final,estadoInicial=inicial,  estadosAceptacion=aceptados,alfabetoCinta=afpd2.alfabetoCinta,alfabetoPila=afpd2.alfabetoPila,delta=delta_Final)
+    
+    def draw_dpfa(automaton):
+        # Create a new directed graph
+        npfa = Digraph()
+        npfa.attr(rankdir='LR')
+
+        for estado in automaton.estados:
+            if estado in automaton.estadosAceptacion:
+                npfa.attr('node', shape='doublecircle')
+            else:
+                npfa.attr('node', shape='circle')
+            npfa.node(str(estado))
+
+        npfa.attr('node', shape='ellipse')
+
+        for estado in automaton.delta:
+            for simbolo in automaton.delta[estado]:
+                for proceso in automaton.delta[estado][simbolo]:
+                    for resultado in automaton.delta[estado][simbolo][proceso]:
+                            npfa.edge(str(estado), str(resultado[0]), label=f'{simbolo}, {proceso}|{resultado[1]}')
+
+        npfa.attr('node', style='invis', width='0')
+        npfa.node('start')
+        npfa.edge('start', str(automaton.estadoInicial), style='bold')
+
+        return npfa
