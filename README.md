@@ -10,6 +10,9 @@ AFD is a finite state machine where for each state and input symbol, there is ex
 # AFN (Nondeterministic Finite Automaton)
 AFN is a finite state machine where for each state and input symbol, there can be multiple next states or no next state at all. It recognizes the same set of languages as AFD but allows for greater flexibility in design.
 
+# AFN-λ (Nondeterministic Finite Automaton with lambda transitions)
+AFN-lambda (Nondeterministic Finite Automaton with lambda transitions) is a finite automaton that allows multiple next states or epsilon transitions (lambda) for each state and input symbol, recognizing regular languages.
+
 # AFPD (Pushdown Automaton with Deterministic Control)
 AFPD is an extension of AFD, where the machine has a stack that can be used for additional storage and computation. The control is deterministic, meaning for each state and input symbol, there is exactly one next state. AFPD recognizes context-free languages.
 
