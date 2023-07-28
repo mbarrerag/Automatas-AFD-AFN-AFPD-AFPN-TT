@@ -1,3 +1,6 @@
+# VIDEO
+https://youtu.be/QRKZcl3YaNA
+
 # Automatas-AFD-AFN-AFPD-AFPN-TT
 This repository contains the implementation of various types of automata, including AFD (Deterministic Finite Automaton), AFN (Nondeterministic Finite Automaton), AFPD (Pushdown Automaton with Deterministic Control), AFPN (Pushdown Automaton with Nondeterministic Control), and TT (Turing Machine).
 
@@ -28,8 +31,7 @@ TT is a more powerful computational model than the previous automata types. It c
 # Cesar Arthuro Lemos Silva
 # Juan David Tique Triana
 # Cristian Camilo García Palacios
-# VIDEO
-https://youtu.be/QRKZcl3YaNA
+
 # Installation
 To install the necessary packages, run the following command in your terminal:
 
