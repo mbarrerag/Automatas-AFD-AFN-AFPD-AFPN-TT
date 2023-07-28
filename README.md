@@ -22,7 +22,7 @@ AFPN is similar to AFPD, but the control is nondeterministic, allowing for multi
 # TT (Turing Machine)
 TT is a more powerful computational model than the previous automata types. It consists of an infinite tape divided into cells and a read-write head that can move left or right. TT can perform arbitrary computations and recognize recursively enumerable languages.
 
-#Team Members
+# #Team Members
 # Dylan Rivero Esteves
 # Miller Estiven Barrera Gonzalez
 # Cesar Arthuro Lemos Silva
