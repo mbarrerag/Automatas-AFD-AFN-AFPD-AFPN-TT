@@ -28,7 +28,8 @@ TT is a more powerful computational model than the previous automata types. It c
 # Cesar Arthuro Lemos Silva
 # Juan David Tique Triana
 # Cristian Camilo García Palacios
-
+# VIDEO
+https://youtu.be/QRKZcl3YaNA
 # Installation
 To install the necessary packages, run the following command in your terminal:
 
